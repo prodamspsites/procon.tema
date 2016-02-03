@@ -6,4 +6,4 @@ omit =
     buildout-cache/eggs/*
     eggs/*
     parts/*
-    src/nfe.portal/*
+    src/procon.portal/*

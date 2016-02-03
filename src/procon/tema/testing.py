@@ -14,8 +14,8 @@ class Fixture(PloneSandboxLayer):
         # Load ZCML
         import plone.app.theming
         self.loadZCML(package=plone.app.theming)
-        import nfe.tema
-        self.loadZCML(package=nfe.tema)
+        import procon.tema
+        self.loadZCML(package=procon.tema)
 
     def setUpPloneSite(self, portal):
         # Install into Plone site using portal_setup
@@ -24,9 +24,9 @@ class Fixture(PloneSandboxLayer):
 FIXTURE = Fixture()
 INTEGRATION_TESTING = IntegrationTesting(
     bases=(FIXTURE,),
-    name='nfe.tema:Integration',
+    name='procon.tema:Integration',
 )
 FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(FIXTURE,),
-    name='nfe.tema:Functional',
+    name='procon.tema:Functional',
 )

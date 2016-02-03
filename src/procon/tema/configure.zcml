@@ -18,6 +18,6 @@
 
   <browser:jbot
       directory="jbot"
-      layer="nfe.portal.interfaces.IProdamPortal" />
+      layer="procon.portal.interfaces.IProdamPortal" />
 
 </configure>

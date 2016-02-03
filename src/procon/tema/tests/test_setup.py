@@ -2,7 +2,7 @@
 
 from plone.app.theming.utils import getAvailableThemes
 from plone.app.theming.utils import getTheme
-from nfe.tema.testing import INTEGRATION_TESTING
+from procon.tema.testing import INTEGRATION_TESTING
 import unittest
 
 

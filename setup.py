@@ -11,9 +11,9 @@ long_description = (
 )
 
 setup(
-    name='nfe.tema',
+    name='procon.tema',
     version=version,
-    description="nfe.tema",
+    description="procon.tema",
     long_description=long_description,
     classifiers=[
         "Development Status :: 1 - Planning",
@@ -35,11 +35,11 @@ setup(
     keywords='plone temas diazo',
     author='Prodam',
     author_email='',
-    url='https://github.com/prodamspsites/nfe.tema',
+    url='https://github.com/prodamspsites/procon.tema',
     license='GPLv2',
     packages=find_packages('src'),
     package_dir={'': 'src'},
-    namespace_packages=['nfe',],
+    namespace_packages=['procon',],
     include_package_data=True,
     zip_safe=False,
     install_requires=[

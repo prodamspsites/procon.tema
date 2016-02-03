@@ -23,6 +23,6 @@ versions-extracted.cfg
 Makefile
 parts/
 var/
-src/nfe.portal
+src/procon.portal
 src/prodam.tiles
 src/prodam.secoes
