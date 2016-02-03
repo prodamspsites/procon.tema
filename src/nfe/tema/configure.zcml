@@ -10,8 +10,8 @@
   <!-- Temas -->
   <plone:static
       type="theme"
-      name="nfe"
-      directory="themes/nfe"
+      name="procon"
+      directory="themes/procon"
       />
 
   <include package="z3c.jbot" file="meta.zcml" />
