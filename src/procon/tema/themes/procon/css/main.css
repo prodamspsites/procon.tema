@@ -1,16 +1,16 @@
 /*
  *
- * CSS com estilos genéricos para todos os temas
+ * CSS com estilos genÃ©ricos para todos os temas
  *
  * @Autores
  *
- * - Danilo Sartorelli Barbato
+ * - Victor Brosso Alvares
  * - Moisés de Aguiar Júnior
  * - Wellington Braga
  *
  * @Referencias
  *
- * Lista de padrões, convenções e boas praticas CSS que devem ser seguidas.
+ * Lista de padrÃµes, convenÃ§Ãµes e boas praticas CSS que devem ser seguidas.
  * https: //github.com/necolas/idiomatic-css/tree/master/translations/pt-BR
  *
  * Plugins para ordenar os atributos de CSS.
@@ -20,32 +20,492 @@
  * http://jigsaw.w3.org/css-validator/
  */
 
+/*RESET*/
+html, body, form, fieldset {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', Arial;
+}
+h1, h2, h3, h4, h5, h6, p, pre,
+blockquote, ul, ol, dl, address {
+    margin: 0;
+    padding: 0;
+}
+li, dd, blockquote {
+    margin-left: 1em;
+}
+form label {
+    cursor: pointer;
+}
+fieldset {
+    border: none;
+}
+input, select, textarea {
+    font-size: 100%;
+    font-family: inherit;
+}
+body{
+  font-family:'Roboto', Arial;
+}
+.wrap{
+  width: 1004px;
+  margin: 0 auto;
+}
+.hiddenStructure, .searchSection{
+  display:none;
+}
 
+/*HEADER*/
+#portal-header #logoProcon{
+  float:left;
+  margin-bottom: 20px;
+}
+#portal-header #logoProcon a{
+  float:left;
+  width: 129px;
+  height: 71px;
+  background: url('../img/logo.png');
+  text-indent: -9999px;
+  margin:5px 0 0 0;
+}
+#portal-header .divBusca{
+  float:left;
+  padding: 0 0 0 180px;
+}
+#portal-searchbox .searchField{
+  border:1px solid #868686;
+  width: 215px;
+  height: 28px;
+  padding: 3px 0 0 5px;
+  font-family: 'Roboto', Arial;
+}
+#portal-searchbox .searchButton{
+  -webkit-border-top-right-radius: 5px;
+  -webkit-border-bottom-right-radius: 5px;
+  -moz-border-radius-topright: 5px;
+  -moz-border-radius-bottomright: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  background: #800d1a;
+  color: #fff;
+  padding: 0px 14px 0 15px;
+  border: none;
+  height: 33px;
+  margin: 0 0 0 5px;
+  float: right;
+  font-family: 'Roboto', Arial;
+  font-weight: 600;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+#portal-header .logoNegocios{
+  float:right;
+  margin-bottom: 20px;
+}
+#portal-header .logoNegocios a{
+  float:left;
+  width: 148px;
+  height: 60px;
+  background: url('../img/logoNegocios.png') no-repeat;
+  text-indent: -9999px;
+  margin:5px 0 0 0;
+}
 
+/*MENU*/
+#portal-header nav.menu{
+  float: left;
+  width: 100%;
+  height: auto;
+  background: #f21c30;
+}
+#portal-header nav.menu li{
+  display: inline;
+  float:left;
+  padding:15px 15px 15px 5px;
+  margin: 0;
+}
+#portal-header nav.menu li a{
+  color:#fff;
+  font-family: 'Roboto', Arial;
+  font-weight: 600;
+  font-size: 0.9em;
+  padding: 0 5px 0 5px;
+}
+/*ACESSIBLIDADE*/
+.acessibilidade{
+  width:100%;
+  float:right;
+  height:40px;
+  background: #fff;
+}
+span.linhaAcessibilidade{
+  border-bottom:1px solid #e0e0e0;
+  float:left;
+  width: 100%;
+  margin-bottom: 20px;
+}
+.acessibilidade span{
+  float:right;
+  font-family: Arial;
+  font-size: 11px;
+  margin:12px 0 0 0;
+}
+.acessibilidade ul{
+  float:right;
+  margin:5px 0 0 0;
+  padding: 0;
+}
+.acessibilidade ul li{
+  list-style: none;
+  float: left;
+  width:20px;
+  height:20px;
+  margin: 3px 5px 0 5px;
+  text-align: center;
+}
+.acessibilidade ul li a{
+  float: left;
+  width:20px;
+  height:20px;
+  color: #000;
+  text-decoration: none;
+  font-family:Arial;
+  font-weight: bold;
+  font-size:19px;
+}
+.acessibilidade ul li a.icoDiminuir{
+  font-size:14px;
+  margin:3px 0 0 0;
+}
+.acessibilidade ul li a.icoContraste{
+  background:url(../img/icoContraste.png) no-repeat 0 3px;
+}
+
+/*DESTAQUES HOME*/
+.listaHome{
+  float:left;
+  background: #54918a;
+  width: 100%;
+}
+.listaHome ul{
+  width: 100%;
+  float: left;
+  margin: 20px 0 20px 0;
+}
+.listaHome ul li{
+  display: inline;
+  width: 33%;
+  float: left;
+  margin: 0;
+  position: relative;
+  min-height: 220px;
+}
+.listaHome ul li a{
+  text-align: center;
+  float: left;
+  color: #fff;
+  font-family: 'Roboto', Arial;
+  font-size: 1.1em;
+  width: 100%;
+  padding-top: 61%;
+}
+.listaHome ul li a.item1{
+  background:url(../img/icoRec.png) no-repeat center top;
+  background-size: 60%;
+}
+.listaHome ul li a.item2{
+  background:url(../img/icoDuv.png) no-repeat center top;
+  background-size: 60%;
+}
+.listaHome ul li a.item3{
+  background:url(../img/icoFund.png) no-repeat center top;
+  background-size: 60%;
+}
+.destaqueHome{
+  float:left;
+  clear: both;
+  width:625px;
+  margin: 35px 0 35px 0;
+}
+.destaqueHome h2{
+  color: #424242;
+  font-size: 1.3em;
+  font-weight: normal;
+  font-family: 'Roboto', Arial;
+  padding: 0 0 5px 0;
+  margin: 0;
+}
+.destaqueHome .imgDestaque{
+  float:left;
+}
+.destaqueHome .textoDestaque{
+  float:left;
+  border-top:1px solid #ccc;
+  border-bottom:1px solid #ccc;
+  border-right:1px solid #ccc;
+  border-left:none;
+  min-height: 146px;
+  width: 350px;
+  padding: 15px;
+}
+.destaqueHome .textoDestaque h3{
+  color:#e51139;
+  font-family: 'Roboto', Arial;
+  font-weight: 400;
+  font-size: 1.3em;
+}
+.destaqueHome .textoDestaque p{
+  color:#424242;
+  font-family: 'Roboto', Arial;
+  font-weight: normal;
+}
+.destaqueHome .textoDestaque a.lerMais{
+  color: #f21c30;
+  text-decoration: none;
+  margin: 20px 0 0 0;
+  float: left;
+  font-family: 'Roboto', Arial;
+}
+.divAcesse{
+  float:left;
+  width: 300px;
+  margin: 35px 0 35px 0;
+  padding: 0 0 0 25px;
+}
+.divAcesse h2{
+  color: #424242;
+  font-size: 1.3em;
+  font-weight: normal;
+  font-family: 'Roboto', Arial;
+  padding: 0 0 5px 0;
+  margin: 0;
+}
+.divNoticias{
+  background: #f21c30;
+  width: 100%;
+  float: left;
+  clear: both;
+}
+.divNoticias h1{
+  text-align: center;
+  color: #fff;
+  font-size: 1.3em;
+  font-weight: 400;
+  padding: 10px 0 10px 0;
+}
+.divNoticias a.verTodas{
+  color: #fff;
+  border:1px solid #fff;
+  padding: 8px;
+  float: right;
+  text-decoration: none;
+  margin:-40px;
+  font-size: 0.8em;
+}
+.blocoNoticias{
+  float:left;
+  clear: both;
+  margin: 40px 0 20px 0;
+}
+.blocoNoticias .noticiasColuna{
+  float: left;
+  width: 476px;
+}
+.blocoNoticias .noticiasColuna .imgNoticiasHome{
+  margin:10px 0 0 0;
+}
+.blocoNoticias .noticiasColuna .data{
+  color: #859597;
+  font-size: 0.9em;
+  float: left;
+  width: 100%;
+  margin: 10px 0 0 0;
+}
+.blocoNoticias .noticiasColuna h2{
+  color: #e51139;
+  font-size: 1.2em;
+  float: left;
+  width: 100%;
+  margin: 5px 0 0 0;
+}
+.blocoNoticias .noticiasColuna p{
+  color:#424242;
+  float: left;
+  width: 100%;
+}
+/*FOOTER*/
+#footer{
+  float:left;
+  clear: both;
+  width: 100%;
+  background: #3a3a3a;
+}
+#footer .logoFooter a{
+  background:url(../img/logoFooter.png) no-repeat;
+  float: left;
+  width: 169px;
+  height: 59px;
+  margin: 28px 0 0 0;
+}
+#footer .textoFooter{
+  float:left;
+  width: 315px;
+  color: #868686;
+  font-size: 0.9em;
+  margin: 0 0 0 70px;
+  padding: 28px 0 30px 0;
+}
+#footer .footerBottom{
+  float:left;
+  clear: both;
+  width: 100%;
+  background: #303030;
+  height: 54px;
+}
+#footer .footerBottom p.copyright{
+  float: left;
+  width: 58%;
+  color:#999999;
+  margin:10px 0 0 0;
+  font-size: 0.8em;
+}
+#footer .footerBottom p.copyright a{
+  text-decoration: underline;
+  color: #999;
+}
+#footer .footerBottom .logoGrx{
+  float:right;
+  width: 60px;
+  height: 40px;
+  background:url(../img/logoGrx.png) no-repeat;
+  margin:5px 0 0 0;
+  padding: 0 20px 0 0;
+}
+#footer .footerBottom .divProdam{
+  float: right;
+  width: 210px;
+  padding: 0;
+}
+#footer .footerBottom .divProdam p{
+  color:#999999;
+  font-size: 0.7em;
+  margin: 15px 0 0 0;
+  float: left;
+  text-align: right;
+}
+#footer .footerBottom .divProdam .logoProdam a{
+  background:url(../img/logoProdam.png) no-repeat;
+  width: 95px;
+  height: 33px;
+  margin: 12px 0 0 10px;
+  float: left;
+}
+#footer .menuFooter{
+  float: left;
+  width: 100%;
+  border-bottom: 1px solid #868686;
+  padding: 0 0 20px 0;
+  margin: 0 0 0 0;
+  letter-spacing: 0.01em;
+}
+#footer .menuFooter > ul > li a, #footer .menuFooter > ul > li > ul > li a{
+  color:#868686;
+  font-family: Arial;
+}
+#footer .menuFooter > ul > li a:hover, #footer .menuFooter > ul > li > ul > li a:hover{
+  color: #fff
+}
+#footer .menuFooter > ul{
+  width: 100%;
+  float:left;
+}
+#footer .menuFooter > ul > li{
+  width:30%;
+  display: inline;
+  float:left;
+  padding: 10px 0 0 0;
+  font-size: 0.9em;
+  font-family: Arial;
+}
+#footer .menuFooter > ul > li > ul{
+  width: 100%;
+  float:left;
+}
+#footer .menuFooter > ul > li > ul > li{
+  display: block;
+  padding: 10px 0 0 20px;
+  float:left;
+  font-size: 0.9em;
+  width: 100%;
+}
+#footer .menuFooter > ul > li > ul > li.tituloMenu{
+  padding: 10px 0 0 0px;
+}
 /* ==========================================================================
    Adaptações responsivas
    ========================================================================== */
 
-/* Custom, iPhone Retina */
-@media only screen and (min-width : 320px) {
-
-}
-
-/* Extra Small Devices, Phones */
-@media only screen and (min-width : 480px) {
-
-}
-
-/* Small Devices, Tablets */
-@media only screen and (min-width : 768px) {
-
-}
-
 /* Medium Devices, Desktops */
-@media only screen and (min-width : 992px) {
+@media only screen and (max-width : 900px) {
+  .wrap{
+    width:100%;
+  }
+  #footer .logoFooter a{
+    width: 100%;
+    background:url(../img/logoFooter.png) no-repeat center;
+  }
+  #portal-header .logoNegocios, .acessibilidade{
+    display:none;
+  }
+  #portal-header .divBusca{
+    float: left;
+    padding: 10px 0 0 25px;
+  }
+  #portal-searchbox .searchField{
+    width: 105px;
+  }
 }
 
-/* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {
+@media only screen and (max-width : 500px) {
+  .wrap{
+    width:100%;
+  }
+  #footer .menuFooter > ul > li{
+    clear: both;
+    width: 80%;
+  }
+  #footer .textoFooter{
+    text-align: center;
+    width: 100%;
+    margin: 0;
+  }
+  #footer .footerBottom p.copyright{
+    display:none;
+  }
+#footer .footerBottom .divProdam{
+    float:none;
+    margin: 0 auto;
+    position: relative;
+  }
+  #footer .footerBottom .logoGrx{
+    float:left;
+    left: 30px;
+    position: absolute;
+  }
+  .listaHome ul li{
+    display: block;
+    clear: both;
+    width: 100%;
+  }
+  .listaHome ul li a{
+    background-size: 180px !important;
+    padding-top: 183px;
+    margin: 0 0 30px 0;
+  }
+}
 
+/*CONTRASTE*/
+body.contraste1, body.contraste1 #footer, body.contraste1 #footer .footerBottom, body.contraste1 #footer .textoFooter{
+  background: #000 !important;
+  color: #fff !important;
 }
