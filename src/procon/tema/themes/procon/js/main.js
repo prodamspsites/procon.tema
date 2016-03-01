@@ -1,6 +1,14 @@
 (function($) {
   $(document).ready(function() {
-
+    //MENU HOVER
+    $(".menu .subMenu").mouseenter(function () {
+        $(this).parent().find('ul.menuNivel').show();
+        $(this).addClass('active');
+    });
+    $(".menu .subMenu").mouseleave(function () {
+        $(this).parent().find('ul.menuNivel').hide();
+        $(this).removeClass('active');
+     });
 
     // Cria os Cookies
         if ($.cookie('contraste1') === "true") {
