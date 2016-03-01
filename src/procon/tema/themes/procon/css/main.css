@@ -64,7 +64,7 @@ body{
   float:left;
   width: 129px;
   height: 71px;
-  background: url('../img/logo.png');
+  background: url('../img/logo.png') no-repeat;
   text-indent: -9999px;
   margin:5px 0 0 0;
 }
@@ -80,15 +80,12 @@ body{
   font-family: 'Roboto', Arial;
 }
 #portal-searchbox .searchButton{
-  -webkit-border-top-right-radius: 5px;
-  -webkit-border-bottom-right-radius: 5px;
-  -moz-border-radius-topright: 5px;
-  -moz-border-radius-bottomright: 5px;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  background: #800d1a;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  background: url('../img/icoBusca.png') no-repeat #128a89 12px 8px;
   color: #fff;
-  padding: 0px 14px 0 15px;
+  padding: 0px 18px 0 23px;
   border: none;
   height: 33px;
   margin: 0 0 0 5px;
@@ -97,6 +94,7 @@ body{
   font-weight: 600;
   font-size: 1.2em;
   cursor: pointer;
+  text-indent: -9999px;
 }
 #portal-header .logoNegocios{
   float:right;
@@ -184,13 +182,13 @@ span.linhaAcessibilidade{
 /*DESTAQUES HOME*/
 .listaHome{
   float:left;
-  background: #54918a;
+  background: #eee;
   width: 100%;
 }
 .listaHome ul{
   width: 100%;
   float: left;
-  margin: 20px 0 20px 0;
+  margin: 20px 0 35px 0;
 }
 .listaHome ul li{
   display: inline;
@@ -203,23 +201,41 @@ span.linhaAcessibilidade{
 .listaHome ul li a{
   text-align: center;
   float: left;
-  color: #fff;
+  color: #128a89;
   font-family: 'Roboto', Arial;
   font-size: 1.1em;
-  width: 100%;
-  padding-top: 61%;
+  width: 80%;
+  background-position: 40px 0;
 }
-.listaHome ul li a.item1{
-  background:url(../img/icoRec.png) no-repeat center top;
-  background-size: 60%;
+.listaHome ul li .item1{
+  background:url(../img/icoRec.png) no-repeat center 50px #128a89;
+    -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  float: left;
+  width: 200px;
+  height: 200px;
+  margin: 0 0 18px 30px;
 }
-.listaHome ul li a.item2{
-  background:url(../img/icoDuv.png) no-repeat center top;
-  background-size: 60%;
+.listaHome ul li .item2{
+  background:url(../img/icoDuv.png) no-repeat center 50px #128a89;
+    -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  float: left;
+  width: 200px;
+  height: 200px;
+  margin: 0 0 18px 30px;
 }
-.listaHome ul li a.item3{
-  background:url(../img/icoFund.png) no-repeat center top;
-  background-size: 60%;
+.listaHome ul li .item3{
+  background:url(../img/icoFund.png) no-repeat center 50px #128a89;
+    -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  float: left;
+  width: 200px;
+  height: 200px;
+  margin: 0 0 18px 30px;
 }
 .destaqueHome{
   float:left;
@@ -410,7 +426,12 @@ span.linhaAcessibilidade{
 }
 #footer .menuFooter > ul > li a, #footer .menuFooter > ul > li > ul > li a{
   color:#868686;
-  font-family: Arial;
+  font-family: 'Roboto';
+  font-size: 0.9em;
+}
+#footer .menuFooter > ul > li.tituloMenu a, #footer .menuFooter > ul > li > ul > li.tituloMenu a{
+  font-size:0.9em;
+  font-weight: 600;
 }
 #footer .menuFooter > ul > li a:hover, #footer .menuFooter > ul > li > ul > li a:hover{
   color: #fff
@@ -420,7 +441,7 @@ span.linhaAcessibilidade{
   float:left;
 }
 #footer .menuFooter > ul > li{
-  width:30%;
+  width:23%;
   display: inline;
   float:left;
   padding: 10px 0 0 0;
@@ -437,9 +458,10 @@ span.linhaAcessibilidade{
   float:left;
   font-size: 0.9em;
   width: 100%;
+  margin-left: 0;
 }
 #footer .menuFooter > ul > li > ul > li.tituloMenu{
-  padding: 10px 0 0 0px;
+  font-size: 1.1em;
 }
 /* ==========================================================================
    Adaptações responsivas
@@ -498,9 +520,10 @@ span.linhaAcessibilidade{
     width: 100%;
   }
   .listaHome ul li a{
-    background-size: 180px !important;
-    padding-top: 183px;
     margin: 0 0 30px 0;
+  }
+  .listaHome ul li .item1, .listaHome ul li .item2, .listaHome ul li .item3{
+    margin-left: 48px;
   }
 }
 
