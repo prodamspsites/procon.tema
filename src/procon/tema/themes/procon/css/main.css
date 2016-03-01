@@ -301,22 +301,25 @@ span.linhaAcessibilidade{
   width: 100%;
   float: left;
   clear: both;
+  height: 89px;
 }
 .divNoticias h1{
-  text-align: center;
-  color: #fff;
-  font-size: 1.3em;
-  font-weight: 400;
-  padding: 10px 0 10px 0;
+    text-align: center;
+    color: #fff;
+    font-size: 1.5em;
+    font-weight: 600;
+    padding: 24px 0 17px 0;
 }
 .divNoticias a.verTodas{
-  color: #fff;
-  border:1px solid #fff;
-  padding: 8px;
-  float: right;
-  text-decoration: none;
-  margin:-40px;
-  font-size: 0.8em;
+    color: #fff;
+    border: 1px solid #fff;
+    padding: 10px;
+    float: right;
+    text-decoration: none;
+    margin: -53px 0 0 0;
+    font-size: 1em;
+    font-family: 'Roboto';
+    font-weight: 600;
 }
 .blocoNoticias{
   float:left;
