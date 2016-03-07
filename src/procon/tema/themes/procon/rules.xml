@@ -13,7 +13,7 @@
 
         <copy attributes="class" css:theme="#portal-column-content" css:content="#portal-column-content" />
         <replace css:content="#portal-column-one" css:theme="#portal-column-one" />
-        <replace css:content="#portal-column-two" css:theme="#portal-column-two" />
+        <!--<replace css:content="#portal-column-two" css:theme="#portal-column-two" />-->
         <after css:theme-children="html head" css:content-children="html head" />
         <before css:theme="#content" css:content="#edit-bar" />
         <!--<replace css:theme="#content" css:content="#content" />-->

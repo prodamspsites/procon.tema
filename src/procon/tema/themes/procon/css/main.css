@@ -4,9 +4,9 @@
  *
  * @Autores
  *
- * - Victor Brosso Alvares
  * - Moisés de Aguiar Júnior
  * - Wellington Braga
+ * - Victor Brosso Alvares
  *
  * @Referencias
  *
@@ -46,6 +46,7 @@ input, select, textarea {
 }
 body{
   font-family:'Roboto', Arial;
+  color: #424242;
 }
 .wrap{
   width: 1004px;
@@ -132,7 +133,7 @@ body{
 #portal-header nav.menu li.subMenu{
   position:relative;
 }
-#portal-header nav.menu li.subMenu.active{
+#portal-header nav.menu li.active{
     background: #fff;
     color: #f21c30;
     margin: 5px 0 0 0;
@@ -143,8 +144,28 @@ body{
     -moz-border-radius-topright: 3px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px;
-    padding: 12px 0 0 0;
+    padding:12px 15px 0 5px;
 }
+#portal-header nav.menu li.active a{
+  color: #f21c30;
+}
+#portal-header nav.menu li:hover{
+    background: #fff;
+    color: #f21c30;
+    margin: 5px 0 0 0;
+    height: 31px;
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    padding:12px 15px 0 5px;
+}
+#portal-header nav.menu li:hover a{
+  color: #f21c30;
+}
+
 #portal-header nav.menu li.subMenu.active a{
   color: #f21c30;
 }
@@ -198,10 +219,149 @@ body{
   margin-right: 10px;
   width: 0;
   height: 0;
+  margin-top: 3px;
 
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-bottom: 5px solid #f21c30;
+  border-top: 5px solid #f21c30;
+}
+/*INTERNAS*/
+#portal-columns{
+  float: left;
+  width: 100%;
+  clear: both;
+}
+#contentInterna{
+  float: left;
+  width: 710px;
+}
+#portal-columns #contentInterna h1{
+  color: #424242;
+  font-family: 'Roboto', Arial ;
+}
+#portal-columns #contentInterna p{
+  padding: 15px 0 0 0;
+  font-family: 'Roboto', Arial ;
+  color: #424242;
+  font-size: 1em;
+}
+#portal-columns #contentInterna .blocoDuvidas{
+  border: 1px solid #e8e8e8;
+  padding: 10px;
+  margin: 20px 0 0 0;
+  width: 550px;
+}
+#portal-columns #contentInterna .blocoDuvidas .itensDuvidas{
+  float: left;
+  width: 600px;
+}
+#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li{
+  display: inline;
+  list-style: none;
+  float: left;
+  min-height: 150px;
+  width: 133px;
+  margin: 0;
+  padding: 0;
+}
+#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li:hover{
+  background-color:#ffd7d7;
+}
+#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a{
+  color: #424342;
+  float: left;
+  padding: 0 0 0 0;
+  text-align: center;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvFinanceiros{
+  background: url(../img/icoFinanceiros.png) no-repeat center top;
+}
+#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvTelemarketing{
+  background: url(../img/icoTelemarketing.png) no-repeat center top;
+}
+#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvHabitacao{
+  background: url(../img/icoHabitacao.png) no-repeat center top;
+}
+#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvLegislacao{
+  background: url(../img/icoLegislacao.png) no-repeat center top;
+}
+#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvProdutos{
+  background: url(../img/icoProdutos.png) no-repeat center top;
+}
+#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvSaude{
+  background: url(../img/icoSaude.png) no-repeat center top;
+}
+#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvServicos{
+  background: url(../img/icoServicos.png) no-repeat center top;
+}
+#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvServicosPriv{
+  background: url(../img/icoServicosPriv.png) no-repeat center top;
+}
+#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvRecall{
+  background: url(../img/icoRecall.png) no-repeat center top;
+}
+/*SIDEBAR*/
+#divSidebar{
+  float: left;
+  width: 270px;
+  font-family: 'Roboto', Arial;
+}
+#divSidebar h2{
+  font-family: 'Roboto', Arial;
+  font-size: 1.5em;
+  font-weight: 600;
+  color: #424242;
+}
+#divSidebar .lstServicos{
+  float: left;
+  width: 100%;
+  margin: 15px 0 0 0;
+}
+#divSidebar .lstServicos li{
+  list-style: none;
+  display: block;
+  width: 100%;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+#divSidebar .lstServicos li.itemDuvidas{
+  background: url(../img/icoTireDuvidas.png) no-repeat;
+  padding: 16px 0 0 64px;
+  height: 45px;
+}
+#divSidebar .lstServicos li.itemReclamacao{
+  background: url(../img/icoFacaReclamacao.png) no-repeat;
+  padding: 16px 0 0 64px;
+  height: 45px;
+}
+#divSidebar .lstServicos li a{
+  color:#128a89;
+  font-family: 'Roboto', Arial;
+  font-size: 1em;
+  float: left;
+}
+/*BREAD CRUMB*/
+#portal-breadcrumbs{
+  margin: 20px 0 0 0;
+}
+#portal-breadcrumbs a{
+  color:#f21c30;
+  font-family: 'Roboto', Arial;
+  border-bottom: 1px solid #f21c30 !important;
+}
+#portal-breadcrumbs span{
+  padding: 0 0 0 5px;
+}
+#portal-breadcrumbs span.breadcrumbSeparator{
+  padding: 0 0 0 9px;
+}
+#portal-breadcrumbs{
+  font-family: 'Roboto', Arial;
+  color: #868686;
 }
 /*ACESSIBLIDADE*/
 .acessibilidade{
