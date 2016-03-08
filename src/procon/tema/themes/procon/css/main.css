@@ -237,10 +237,11 @@ body{
 }
 #portal-columns #contentInterna h1{
   color: #424242;
-  font-family: 'Roboto', Arial ;
+  font-family: 'Roboto', Arial;
+  margin: 10px 0 0 0;
 }
 #portal-columns #contentInterna p{
-  padding: 15px 0 0 0;
+  padding: 15px 10px 0 0;
   font-family: 'Roboto', Arial ;
   color: #424242;
   font-size: 1em;
@@ -264,6 +265,9 @@ body{
   margin: 0;
   padding: 0;
 }
+#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li span{
+  clear: both;
+}
 #portal-columns #contentInterna .blocoDuvidas .itensDuvidas li:hover{
   background-color:#ffd7d7;
 }
@@ -276,33 +280,7 @@ body{
   position: relative;
   z-index: 1;
 }
-#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvFinanceiros{
-  background: url(../img/icoFinanceiros.png) no-repeat center top;
-}
-#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvTelemarketing{
-  background: url(../img/icoTelemarketing.png) no-repeat center top;
-}
-#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvHabitacao{
-  background: url(../img/icoHabitacao.png) no-repeat center top;
-}
-#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvLegislacao{
-  background: url(../img/icoLegislacao.png) no-repeat center top;
-}
-#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvProdutos{
-  background: url(../img/icoProdutos.png) no-repeat center top;
-}
-#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvSaude{
-  background: url(../img/icoSaude.png) no-repeat center top;
-}
-#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvServicos{
-  background: url(../img/icoServicos.png) no-repeat center top;
-}
-#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvServicosPriv{
-  background: url(../img/icoServicosPriv.png) no-repeat center top;
-}
-#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a.duvRecall{
-  background: url(../img/icoRecall.png) no-repeat center top;
-}
+
 /*SIDEBAR*/
 #divSidebar{
   float: left;
@@ -555,6 +533,10 @@ span.linhaAcessibilidade{
     font-family: 'Roboto';
     font-weight: 600;
 }
+.divNoticias a.verTodas:hover{
+  background: #ffd7d7;
+  color: red;
+}
 .blocoNoticias{
   float:left;
   clear: both;
@@ -585,6 +567,92 @@ span.linhaAcessibilidade{
   color:#424242;
   float: left;
   width: 100%;
+}
+/*ACCORDEON*/
+.divAccordeon{
+  margin: 15px 0 10px 0;
+}
+.divAccordeon h3{
+  background: #128a89;
+  margin: 1px 0 0 0;
+  color: #fff;
+  font-size: 1em;
+  font-family: 'Roboto', Arial;
+  padding: 8px 0 5px 10px;
+  position: relative;
+  cursor: pointer;
+}
+.divAccordeon h3::after{
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  width: 0;
+  height: 0;
+
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-top: 8px solid #fff;
+  position: absolute;
+  right: 0;
+  top: 15px;
+}
+.divAccordeon h3.active{
+  background: #ccc;
+  color: #424242;
+}
+.divAccordeon h3.active:after{
+  content: "";
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 10px;
+  width: 0;
+  height: 0;
+  border-top: none;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid #424242;
+  position: absolute;
+  right: 0;
+  top: 15px;
+}
+.divAccordeon p a{
+  color: #f21c30;
+}
+#portal-columns #contentInterna p.agradece{
+  font-weight: none;
+  margin: 0px 0 20px 0;
+  padding: 0 10px 0 0;
+  font-size: 0.9em !important;
+}
+.divAccordeon .respostaUtil{
+  border: none;
+  background: url(../img/img-dot.gif) repeat-x top;
+  margin: 30px 0 0 -12px;
+  padding: 5px 12px 0 0;
+}
+.divAccordeon .respostaUtil legend{
+  display: none;
+}
+.divAccordeon .respostaUtil label{
+  font-weight: normal;
+  font-size: 0.9em;
+}
+.divAccordeon .respostaUtil input{
+  margin: 0 10px 0 10px;
+}
+.divAccordeon .respostaUtil span{
+    margin: 0 18px 0 0;
+}
+.divAccordeon p.agradece strong{
+  color: red;
+  font-size: 0.9em !important;
+}
+.divAccordeon .textoAccordeon{
+  padding:5px 0 15px 10px;
+  border-bottom: 1px solid #ccc;
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
 }
 /*FOOTER*/
 #footer{

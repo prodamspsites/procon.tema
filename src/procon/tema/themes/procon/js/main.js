@@ -10,6 +10,13 @@
         $(this).removeClass('active');
      });
 
+    //ACCORDEON
+    $('.divAccordeon .textoAccordeon').hide();
+    $('.divAccordeon h3').click(function(){
+        $(this).toggleClass('active');
+        $(this).next().slideToggle();
+    });
+
     // Cria os Cookies
         if ($.cookie('contraste1') === "true") {
             $('body').addClass('contraste1');
