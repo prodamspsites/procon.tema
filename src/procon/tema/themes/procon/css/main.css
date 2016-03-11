@@ -244,7 +244,7 @@ body{
 }
 #content p{
   font-size: 1.2em;
-  color: #424242;
+  color: #333;
 }
 #content .tituloNoticias{
   color: #424242;
@@ -262,7 +262,7 @@ body{
   font-size: 1.4em;
 }
 #content .titLinhaFinaNot{
-  color:#868686;
+  color:#454545;
   font-size: 1.2em;
   padding: 20px 0 10px 0;
   font-weight: 500;
@@ -340,11 +340,19 @@ body{
   width: 270px;
   font-family: 'Roboto', Arial;
 }
+#divSidebar .noticiasTitulo{
+  font-family: 'Roboto', Arial;
+  font-size: 1.3em;
+  font-weight: 500;
+  color: #424242;
+  margin:20px 0 0 0;
+}
 #divSidebar h2{
   font-family: 'Roboto', Arial;
   font-size: 1.5em;
-  font-weight: 600;
+  font-weight: 500;
   color: #424242;
+  margin:20px 0 0 0;
 }
 #divSidebar .lstServicos{
   float: left;
@@ -372,9 +380,60 @@ body{
 #divSidebar .lstServicos li a{
   color:#128a89;
   font-family: 'Roboto', Arial;
-  font-size: 1em;
+  font-size: 1.3em;
   float: left;
   border-bottom: none;
+}
+#divSidebar .lstServicos li a:hover{
+  color:#128a89 !important;
+}
+#divSidebar .lstNoticias .imgNoticia{
+  margin:10px 0 0 0;
+  padding: 5px 8px 0 0;
+  float: left;
+}
+#divSidebar .lstNoticias time{
+  float: left;
+  padding: 10px 0 0 0;
+  color: #454545;
+}
+#divSidebar .footerNoticias{
+  float: left;
+  clear: both;
+  border-top: 1px solid #e8e8e8;
+  width: 100%;
+  margin: 10px 0 0 0;
+}
+#divSidebar .footerNoticias h3 a{
+    margin: 20px 0 30px 45px;
+    width: 170px;
+    float: left;
+    height: 30px;
+    background: #f21c30;
+    color: #fff;
+    padding: 3px 0 1px 0;
+    font-size: 0.8em;
+    text-align: center;
+    font-family: 'Roboto';
+}
+#divSidebar .footerNoticias h3 a:hover{
+  color: #f21c30 !important;
+  background: #ffd7d7;
+}
+
+#divSidebar .lstNoticias .itemNoticias{
+  border-top: 1px solid #e8e8e8;
+  float: left;
+  margin: 10px 0 0 0;
+}
+#divSidebar .lstNoticias .titNotPortlet{
+  color: #f21c30;
+  font-family: 'Roboto';
+  border-bottom: none !important;
+  display: block;
+}
+#divSidebar .lstNoticias .titNotPortlet:hover{
+  color: #f21c30 !important;
 }
 div.managePortletsLink, a.managePortletsFallback{
   background: none !important;
@@ -629,7 +688,7 @@ span.linhaAcessibilidade{
 .blocoNoticias{
   float:left;
   clear: both;
-  margin: 40px 0 20px 0;
+  margin: 0 0 20px 0;
 }
 .blocoNoticias > div{
   border-top: 1px solid #eee;
