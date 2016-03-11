@@ -297,17 +297,17 @@ body{
   color: #424242;
   font-size: 1em;
 }
-#portal-columns #contentInterna .blocoDuvidas{
+.blocoDuvidas{
   border: 1px solid #e8e8e8;
   padding: 10px;
   margin: 20px 0 0 0;
   width: 550px;
 }
-#portal-columns #contentInterna .blocoDuvidas .itensDuvidas{
+.blocoDuvidas .itensDuvidas{
   float: left;
   width: 600px;
 }
-#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li{
+.blocoDuvidas .itensDuvidas li{
   display: inline;
   list-style: none;
   float: left;
@@ -316,13 +316,14 @@ body{
   margin: 0;
   padding: 0;
 }
-#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li span{
+.blocoDuvidas .itensDuvidas li span{
   clear: both;
+  display: block;
 }
-#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li:hover{
+.blocoDuvidas .itensDuvidas li:hover{
   background-color:#ffd7d7;
 }
-#portal-columns #contentInterna .blocoDuvidas .itensDuvidas li a{
+.blocoDuvidas .itensDuvidas li a{
   color: #424342;
   float: left;
   padding: 0 0 0 0;
@@ -330,6 +331,7 @@ body{
   width: 100%;
   position: relative;
   z-index: 1;
+  border-bottom: none !important;
 }
 
 /*SIDEBAR*/
@@ -372,6 +374,10 @@ body{
   font-family: 'Roboto', Arial;
   font-size: 1em;
   float: left;
+  border-bottom: none;
+}
+div.managePortletsLink, a.managePortletsFallback{
+  background: none !important;
 }
 /*BREAD CRUMB*/
 #portal-breadcrumbs{
@@ -624,6 +630,20 @@ span.linhaAcessibilidade{
   float:left;
   clear: both;
   margin: 40px 0 20px 0;
+}
+.blocoNoticias > div{
+  border-top: 1px solid #eee;
+  margin:18px 0 0 0;
+  padding: 18px 0 0 0;
+}
+#content .blocoNoticias div h2 a{
+  color:#f21c30;
+}
+#content .blocoNoticias div h2 a:hover{
+  color:#f21c30 !important;
+}
+.blocoNoticias > div time{
+  color: #868686;
 }
 .blocoNoticias .noticiasColuna{
   float: left;
