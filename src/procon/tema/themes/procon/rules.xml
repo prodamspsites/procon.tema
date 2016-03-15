@@ -20,6 +20,7 @@
         <replace css:theme="#logoProcon" css:content="#logoProcon" />
         <replace css:theme=".logoNegocios" css:content=".logoNegocios" />
         <replace css:theme="#footer" css:content="#footer" />
+        <replace css:theme=".menu" css:content=".menu" />
     </rules>
 
 </rules>
