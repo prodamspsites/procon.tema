@@ -17,6 +17,23 @@
         $(this).next().slideToggle();
     });
 
+    $.ajax({
+      url: portal_url + '/consumidorjson',
+      dataType: 'json',
+      type: 'post',
+      success:function(data){
+        $( "#autocomplete_categoria" ).autocomplete({
+          source: function (request, response) {
+        var matches = $.map(data, function (acItem) {
+            if (acItem.toUpperCase().indexOf(request.term.toUpperCase()) === 0) {
+                return acItem;
+            }
+        });
+        response(matches); }
+        });
+      }
+    });
+
     // Cria os Cookies
         if ($.cookie('contraste1') === "true") {
             $('body').addClass('contraste1');

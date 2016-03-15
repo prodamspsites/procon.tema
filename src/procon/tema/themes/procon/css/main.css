@@ -913,6 +913,10 @@ span.linhaAcessibilidade{
     margin-left: 48px;
   }
 }
+.ui-autocomplete li{
+  display: block;
+  padding: 5px
+}
 
 /*CONTRASTE*/
 body.contraste1, body.contraste1 #footer, body.contraste1 #footer .footerBottom, body.contraste1 #footer .textoFooter{
