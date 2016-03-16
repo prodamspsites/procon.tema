@@ -17,20 +17,35 @@
         $(this).next().slideToggle();
     });
 
+    //categorias CONSUMIDOR.GOV
     $.ajax({
       url: portal_url + '/consumidorjson',
       dataType: 'json',
       type: 'post',
       success:function(data){
+        var chaves = [];
+        $.each(data,function(key,value){
+           chaves.push(value.titulo);
+        });
+
         $( "#autocomplete_categoria" ).autocomplete({
           source: function (request, response) {
-        var matches = $.map(data, function (acItem) {
-            if (acItem.toUpperCase().indexOf(request.term.toUpperCase()) === 0) {
-                return acItem;
+        var matches = $.map(chaves, function (acItem,value) {
+            var indof = acItem.indexOf(request.term.toUpperCase());
+            if (indof === 0) {
+                return {'id': value,'titulo':data[value].titulo,'categoria':data[value].categoria,'url':data[value].url };
             }
         });
-        response(matches); }
-        });
+          response(matches);
+          }
+        })
+        .data( "ui-autocomplete" )._renderItem = function( ul, matches ) {
+          // console.log(acItem);
+    			return $( "<li></li>" )
+    				.data( "item.autocomplete", matches )
+    				.append( "<a href='"+data[matches.id].url+"' target='_blank'><b>" + data[matches.id].titulo + "</b><br>" + data[matches.id].categoria + "</a>" )
+    				.appendTo( ul );
+    		};
       }
     });
 
