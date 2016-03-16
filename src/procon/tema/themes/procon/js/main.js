@@ -23,30 +23,54 @@
       dataType: 'json',
       type: 'post',
       success:function(data){
-        var chaves = [];
+        var projects = [
+           {
+             categoria: "jquery",
+             label: "jQuery",
+             desc: "the write less, do more, JavaScript library",
+             icon: "jquery_32x32.png"
+           },
+           {
+             categoria: "jquery-ui",
+             label: "jQuery UI",
+             desc: "the official user interface library for jQuery",
+             icon: "jqueryui_32x32.png"
+           },
+           {
+             categoria: "sizzlejs",
+             label: "Sizzle JS",
+             desc: "a pure-JavaScript CSS selector engine",
+             icon: "sizzlejs_32x32.png"
+           }
+         ];
+        var data_filtered = [];
         $.each(data,function(key,value){
-           chaves.push(value.titulo);
-        });
 
-        $( "#autocomplete_categoria" ).autocomplete({
-          source: function (request, response) {
-        var matches = $.map(chaves, function (acItem,value) {
-            var indof = acItem.indexOf(request.term.toUpperCase());
-            if (indof === 0) {
-                return {'id': value,'titulo':data[value].titulo,'categoria':data[value].categoria,'url':data[value].url };
-            }
+          data_filtered.push({'label': value.titulo, 'desc':value.categoria, 'url':value.url});
         });
-          response(matches);
-          }
+        console.log(data_filtered);
+        $( "#project" ).autocomplete({
+              minLength: 0,
+              source: data_filtered,
+              focus: function( event, ui ) {
+                $( "#project" ).val( ui.item.label );
+                return false;
+              },
+              select: function( event, ui ) {
+                $( "#project" ).val( ui.item.label );
+                $( "#project-id" ).val( ui.item.url );
+                // $( "#project-description" ).html( ui.item.desc );
+                // $( "#project-icon" ).attr( "src", "images/" + ui.item.icon );
+                return false;
+              }
         })
-        .data( "ui-autocomplete" )._renderItem = function( ul, matches ) {
-          // console.log(acItem);
-    			return $( "<li></li>" )
-    				.data( "item.autocomplete", matches )
-    				.append( "<a href='"+data[matches.id].url+"' target='_blank'><b>" + data[matches.id].titulo + "</b><br>" + data[matches.id].categoria + "</a>" )
-    				.appendTo( ul );
-    		};
-      }
+        .autocomplete( "instance" )._renderItem = function( ul, item ) {
+          return $( "<li>" )
+            .append( "<a href='"+item.url+"' target='_blank'><b>" + item.label + "</b><br>" + item.desc + "</a>" )
+            .appendTo( ul );
+        };
+
+       }
     });
 
     // Cria os Cookies
