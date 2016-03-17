@@ -23,26 +23,7 @@
       dataType: 'json',
       type: 'post',
       success:function(data){
-        var projects = [
-           {
-             categoria: "jquery",
-             label: "jQuery",
-             desc: "the write less, do more, JavaScript library",
-             icon: "jquery_32x32.png"
-           },
-           {
-             categoria: "jquery-ui",
-             label: "jQuery UI",
-             desc: "the official user interface library for jQuery",
-             icon: "jqueryui_32x32.png"
-           },
-           {
-             categoria: "sizzlejs",
-             label: "Sizzle JS",
-             desc: "a pure-JavaScript CSS selector engine",
-             icon: "sizzlejs_32x32.png"
-           }
-         ];
+
         var data_filtered = [];
         $.each(data,function(key,value){
 
@@ -69,7 +50,12 @@
             .append( "<a href='"+item.url+"' target='_blank'><b>" + item.label + "</b><br>" + item.desc + "</a>" )
             .appendTo( ul );
         };
-
+        $.ui.autocomplete.filter = function (array, term) {
+          var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+          return $.grep(data_filtered, function (value) {
+            return matcher.test(value.label || value.value || value);
+          });
+        };
        }
     });
 
