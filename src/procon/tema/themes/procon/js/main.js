@@ -1,5 +1,11 @@
 (function($) {
   $(document).ready(function() {
+    //MASCARA
+           $("#data-de-nascimento").mask("99/99/9999");
+           $("data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
+           $("#telefone").mask("(99) 9999-9999");
+           $("#cep").mask("99999-999");
+           $("#cpf").mask("999.999.999-99");
     //MENU HOVER
     $(".menu .subMenu a").mouseenter(function () {
         $(this).parent().find('ul.menuNivel').show();

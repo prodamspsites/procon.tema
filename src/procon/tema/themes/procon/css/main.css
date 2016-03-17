@@ -980,6 +980,109 @@ span.linhaAcessibilidade{
   display:inline-block;
 
 }
+/*FORMULARIO*/
+.pfg-form.formid-formularios{
+    border-left: 101px solid #4bafa3;
+    margin: 0 0 30px 0;
+    width: 779px;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 5px 0 30px 60px;
+    position: relative;
+    float: left;
+    margin-left: -480px;
+    left: 50%;
+}
+.pfg-form formid-formularios form{
+  float: left;
+}
+.pfg-form.formid-formularios:before{
+    content: '2';
+    position: absolute;
+    left: -60px;
+    top: 36px;
+    font-size: 2.8em;
+    color: #fff;
+    font-family: 'Roboto';
+    font-weight: normal;
+}
+.pfg-form.formid-formularios input{
+  border: 1px solid #ccc;
+  height: 25px;
+  padding: 3px 0 0 5px;
+}
+.pfg-form.formid-formularios input[type=radio]{
+  float: left;
+  clear: both;
+}
+.pfg-form.formid-formularios input[type=submit]{
+  margin-top: 20px;
+  cursor: pointer;
+  background: #f11c30;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 5px 8px 5px 8px;
+  display: inline;
+  margin: 15px 0 0 -15px;
+  border: none;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+clear: both;
+float: left
+}
+.pfg-form.formid-formularios textarea{
+  width: 70% !important;
+  float: left;
+}
+.pfg-form.formid-formularios .ArchetypesFileWidget{
+  float: left;
+  margin-top: 20px;
+}
+.pfg-form.formid-formularios input[type=file]{
+  border: none;
+  text-transform: uppercase;
+}
+.pfg-form.formid-formularios .ArchetypesBooleanWidget{
+  margin-top: 10px;
+  float: left;
+}
+.pfg-form.formid-formularios .ArchetypesBooleanWidget input{
+  float: left;
+}
+.pfg-form.formid-formularios .ArchetypesBooleanWidget label{
+  float: left;
+  padding: 3px 0 0 5px;
+}
+.pfg-form.formid-formularios #genero label{
+  float: left;
+  padding: 3px 0 0 8px;
+}
+.pfg-form.formid-formularios #deseja-informar-a-empresa label{
+  float: left;
+  padding: 3px 0 0 8px;
+}
+.pfg-form.formid-formularios .field{
+  margin-top: 25px;
+}
+.pfg-form.formid-formularios select{
+  height: 30px;
+  background: #fff;
+  padding: 3px;
+  border: 1px solid #ccc;
+}
+.pfg-form.formid-formularios .label, .pfg-form.formid-formularios label{
+  color: #424242;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 1.2em;
+}
+.pfg-form.formid-formularios span.required:after{
+  content:'*';
+  color: #454545;
+  margin: 0 0 0 -8px;
+}
 /*FOOTER*/
 #footer{
   float:left;
