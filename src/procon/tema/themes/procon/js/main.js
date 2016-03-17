@@ -1,7 +1,7 @@
 (function($) {
   $(document).ready(function() {
     //MENU HOVER
-    $(".menu .subMenu").mouseenter(function () {
+    $(".menu .subMenu a").mouseenter(function () {
         $(this).parent().find('ul.menuNivel').show();
         $(this).addClass('active');
     });
