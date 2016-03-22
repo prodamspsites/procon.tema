@@ -625,6 +625,9 @@ span.linhaAcessibilidade{
   margin: 0;
   width: 236px;
 }
+#content .destaqueHome .imag img.left{
+  float: left;
+}
 .destaqueHome .imgDestaque{
   float:left;
 }
