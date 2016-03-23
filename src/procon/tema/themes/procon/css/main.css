@@ -984,6 +984,62 @@ span.linhaAcessibilidade{
 
 }
 /*FORMULARIO*/
+.form-group{
+    border-left: 101px solid #4bafa3;
+    margin: 20px 0 30px 0;
+    width: 779px;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0 30px 60px;
+    position: relative;
+    float: left;
+    margin-left: -480px;
+    left: 50%;
+}
+.form-group:before{
+    content: '1';
+    position: absolute;
+    left: -60px;
+    top: 34px;
+    font-size: 2.8em;
+    color: #fff;
+    font-family: 'Roboto';
+    font-weight: normal;
+}
+#content-core .discreet{
+  padding: 90px 0 0 0;
+}
+.form-group .btnBuscar{
+    margin-top: 20px;
+    cursor: pointer;
+    background: #f11c30;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 5px 8px 5px 8px;
+    display: inline;
+    margin: 12px 0 0 3px;
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    float: left;
+    width: 90px;
+    height: 36px;
+    font-weight: 500;
+    font-family: 'Roboto';
+    font-size: 1.1em;
+}
+.form-group input{
+  border: 1px solid #ccc;
+  height: 32px;
+  padding: 3px 0 0 5px;
+  width: 50%;
+  float: left;
+  margin: 12px 0 0 0;
+  font-size: 1.3em;
+  font-family: 'Roboto';
+}
 .pfg-form.formid-formularios{
     border-left: 101px solid #4bafa3;
     margin: 0 0 30px 0;
