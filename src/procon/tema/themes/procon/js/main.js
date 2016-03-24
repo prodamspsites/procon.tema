@@ -1,5 +1,11 @@
 (function($) {
   $(document).ready(function() {
+    //MASCARA
+           $("#data-de-nascimento").mask("99/99/9999");
+           $("data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
+           $("#telefone").mask("(99) 9999-9999");
+           $("#cep").mask("99999-999");
+           $("#cpf").mask("999.999.999-99");
     //MENU HOVER
     $(".menu .subMenu a").mouseenter(function () {
         $(this).parent().find('ul.menuNivel').show();
@@ -42,12 +48,20 @@
                 $( "#project-id" ).val( ui.item.url );
                 // $( "#project-description" ).html( ui.item.desc );
                 // $( "#project-icon" ).attr( "src", "images/" + ui.item.icon );
+
+                //CAPTURA LINK CLICK AUTOCOMPLETE
+                urlEmpresa = $( "#project-id" ).val();
+
+                $('.linkRedireciona').attr('href', urlEmpresa);
+                $('.divRedireciona').slideUp();
+                $('.divRedireciona').slideDown();
+                $('.form-group').addClass('active');
                 return false;
               }
         })
         .autocomplete( "instance" )._renderItem = function( ul, item ) {
           return $( "<li>" )
-            .append( "<a href='"+item.url+"' target='_blank'><b>" + item.label + "</b><br>" + item.desc + "</a>" )
+            .append( "<a href='javascript:void(0);' title='"+item.label+"'><b>" + item.label + "</b><br>" + item.desc + "</a>" )
             .appendTo( ul );
         };
         $.ui.autocomplete.filter = function (array, term) {
@@ -58,6 +72,7 @@
         };
        }
     });
+
 
     // Cria os Cookies
         if ($.cookie('contraste1') === "true") {
