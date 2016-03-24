@@ -997,6 +997,23 @@ span.linhaAcessibilidade{
     margin-left: -480px;
     left: 50%;
 }
+.form-group.active{
+  background: #f5f5f5;
+  border-left: 101px solid #f5f5f5;
+  border-top: 1px solid transparent;
+  border-bottom: 1px solid transparent;
+  border-right: 1px solid transparent;
+}
+.form-group.active:before{
+    top: 12px;
+    font-size: 2.8em;
+    color: #424242;
+    font-family: 'Roboto';
+    font-weight: normal;
+    border-right: 1px solid #ccc;
+    height: 41px;
+    padding: 26px 31px 0 0;
+}
 .form-group:before{
     content: '1';
     position: absolute;
@@ -1141,6 +1158,115 @@ float: left
   content:'*';
   color: #454545;
   margin: 0 0 0 -8px;
+}
+.ui-widget-content{
+  border:1px solid #128a89 !important;
+}
+.ui-menu .ui-menu-item.ui-state-focus{
+  background: #128a89 !important;
+}
+.ui-menu .ui-menu-item.ui-state-focus a{
+  color: #fff !important;
+}
+.ui-state-highlight{
+  text-decoration: underline;
+}
+.divRedireciona{
+    border-left: 101px solid #4bafa3;
+    margin: 0 0 30px 0;
+    width: 779px;
+    border-top: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 15px 0 30px 60px;
+    position: relative;
+    float: left;
+    margin-left: -480px;
+    left: 50%;
+    clear: both;
+    display: none;
+}
+#content .divRedireciona p{
+  color: #414141
+}
+#content .divRedireciona p strong{
+  font-weight: 600;
+}
+.divRedireciona:before {
+    content: '2';
+    position: absolute;
+    left: -60px;
+    top: 34px;
+    font-size: 2.8em;
+    color: #fff;
+    font-family: 'Roboto';
+    font-weight: normal;
+}
+.divRedireciona .linkRedireciona{
+  background: #f11c30;
+  color: #fff !important;
+  text-align: center;
+  width: 178px;
+  height: 37px;
+  line-height: 1.2em;
+  display: block;
+  margin: 0 auto;
+  padding: 7px 0 0 0;
+}
+#content .divRedireciona .linkRedireciona:hover{
+  color: #fff !important;
+  text-decoration: underline;
+}
+.divRedireciona .imgSeta{
+  background: url(../img/imgSetaConsumidor.png) no-repeat;
+  width: 28px;
+  height: 33px;
+  display: block;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.divRedireciona .imgConsumidor{
+  background: url(../img/imgBannerConsumidor.png) no-repeat;
+  display: block;
+  width: 340px;
+  height: 70px;
+  margin: 0 auto;
+  margin-top: 10px;
+  padding-bottom: 30px;
+}
+.divProtocolo{
+  width: 330px;
+  margin: 0 auto;
+}
+.divRedireciona .btnProsseguir{
+    margin-top: 20px;
+    cursor: pointer;
+    background: #f11c30;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 5px 8px 5px 8px;
+    display: inline;
+    margin: 12px 0 0 3px;
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    float: left;
+    width: 90px;
+    height: 36px;
+    font-weight: 500;
+    font-family: 'Roboto';
+    font-size: 1.1em;
+}
+.divRedireciona .inputProtocolo{
+    border: 1px solid #ccc;
+    height: 32px;
+    padding: 3px 0 0 5px;
+    width: 212px;
+    float: left;
+    margin: 12px 0 0 0;
+    font-size: 1.3em;
+    font-family: 'Roboto';
 }
 /*FOOTER*/
 #footer{

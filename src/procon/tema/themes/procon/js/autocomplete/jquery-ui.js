@@ -16155,6 +16155,10 @@ var tabs = $.widget( "ui.tabs", {
 });
 
 
+var t = item.label.replace(re,"<span style='font-weight:bold;color:Blue;'>" + 
+          "$&" + 
+          "</span>");
+          
 /*!
  * jQuery UI Tooltip 1.11.4
  * http://jqueryui.com
