@@ -1047,6 +1047,10 @@ span.linhaAcessibilidade{
     font-family: 'Roboto';
     font-size: 1.1em;
 }
+.form-group .btnBuscar.disabled{
+  opacity: 0.5;
+  cursor: auto;
+}
 .form-group input{
   border: 1px solid #ccc;
   height: 32px;
@@ -1069,6 +1073,7 @@ span.linhaAcessibilidade{
     float: left;
     margin-left: -480px;
     left: 50%;
+    clear: both;
 }
 .pfg-form formid-formularios form{
   float: left;

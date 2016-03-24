@@ -23,6 +23,15 @@
         $(this).next().slideToggle();
     });
 
+    //OCULTA FORMULARIO CONSUMIDOR
+    var itensForm = $(".formDuvidas").detach();
+
+    $('.form-group .btnBuscar').click(function(){
+        $('#content #content-core').append(itensForm);
+        $('.form-group').addClass('active');
+    });
+
+
     //categorias CONSUMIDOR.GOV
     $.ajax({
       url: portal_url + '/consumidorjson',
@@ -43,6 +52,10 @@
                 $( "#project" ).val( ui.item.label );
                 return false;
               },
+              close: function(event, ui){
+                $('.form-group .btnBuscar').removeClass('disabled');
+                $('.form-group .btnBuscar').attr('disabled', false);
+              },
               select: function( event, ui ) {
                 $( "#project" ).val( ui.item.label );
                 $( "#project-id" ).val( ui.item.url );
@@ -55,8 +68,14 @@
                 $('.linkRedireciona').attr('href', urlEmpresa);
                 $('.divRedireciona').slideUp();
                 $('.divRedireciona').slideDown();
+
                 $('.form-group').addClass('active');
+                var itensForm = $(".formDuvidas").detach();
                 return false;
+              },
+              open: function(event, ui){
+                $('.form-group .btnBuscar').addClass('disabled');
+                $('.form-group .btnBuscar').attr('disabled', true);
               }
         })
         .autocomplete( "instance" )._renderItem = function( ul, item ) {
