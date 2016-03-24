@@ -29,6 +29,7 @@
     $('.form-group .btnBuscar').click(function(){
         $('#content #content-core').append(itensForm);
         $('.form-group').addClass('active');
+        $('.divRedireciona').slideUp();
     });
 
 
@@ -68,6 +69,7 @@
                 $('.linkRedireciona').attr('href', urlEmpresa);
                 $('.divRedireciona').slideUp();
                 $('.divRedireciona').slideDown();
+                $('.form-group .btnBuscar').hide();
 
                 $('.form-group').addClass('active');
                 var itensForm = $(".formDuvidas").detach();
@@ -76,6 +78,7 @@
               open: function(event, ui){
                 $('.form-group .btnBuscar').addClass('disabled');
                 $('.form-group .btnBuscar').attr('disabled', true);
+                $('.form-group .btnBuscar').show();
               }
         })
         .autocomplete( "instance" )._renderItem = function( ul, item ) {
