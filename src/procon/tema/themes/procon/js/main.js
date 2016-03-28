@@ -24,13 +24,48 @@
     });
 
     //OCULTA FORMULARIO CONSUMIDOR
-    var itensForm = $(".formDuvidas").detach();
 
-    $('.form-group .btnBuscar').click(function(){
-        $('#content #content-core').append(itensForm);
-        $('.form-group').addClass('active');
-        $('.divRedireciona').slideUp();
-    });
+    if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('section-consumidor')) {
+        empresa = $('#archetypes-fieldname-empresa');
+        data_compra = $('#archetypes-fieldname-data-da-compra-ou-assinatura-do-contrato');
+        produto = $('#archetypes-fieldname-produto-ou-servico-contratado');
+        $(empresa, data_compra, produto).hide();
+        var itensForm = $(".formDuvidas").detach();
+
+        $('.form-group .btnBuscar').click(function(){
+            $('#content #content-core').append(itensForm);
+            $('.form-group').addClass('active');
+            $('.divRedireciona').slideUp();
+        });
+
+        $(document).on('change', 'input[type=radio][name=deseja-informar-a-empresa]', function(){
+            if (this.value == 'Sim') {
+                $(empresa, data_compra, produto).show();
+                $('input', empresa, data_compra, produto).prop('required',true);
+            }
+            else if (this.value == 'Não') {
+                $(empresa, data_compra, produto).hide();
+                $('input', empresa, data_compra, produto).prop('required',false);
+            }
+        })
+
+        tooltip_url = portal_url + '/consumidor/area';
+        lightbox_url = portal_url + '/consumidor/termos-de-uso-e-politicas-de-privacidade';
+        $.ajax({
+            url: tooltip_url, success: function(tooltip) {
+              tooltip = $(tooltip).find('.contentBody');
+            }
+        })
+
+        $.ajax({
+            url: lightbox_url, success: function(lightbox) {
+              lightbox_titulo = $(lightbox).find('.subTitNoticias');
+              lightbox_text = $(lightbox).find('.contentBody');
+            }
+        })
+
+    }
+
 
 
     //categorias CONSUMIDOR.GOV
@@ -45,7 +80,6 @@
 
           data_filtered.push({'label': value.titulo, 'desc':value.categoria, 'url':value.url});
         });
-        console.log(data_filtered);
         $( "#project" ).autocomplete({
               minLength: 0,
               source: data_filtered,
@@ -130,7 +164,6 @@
         (function(){
             var tam = $.cookie('tamanhoLetra');
             $('body').css("font-size",tam+"px");
-            console.log("TAMANHO INICIAL",$.cookie('tamanhoLetra'));
         })();
 
         function maisFont(){
@@ -139,7 +172,6 @@
             maisUm++;
             $.cookie('tamanhoLetra', maisUm,{ path: '/' });
             $('body').css("font-size",maisUm+"px");
-            console.log("MAiS",$.cookie('tamanhoLetra'));
         }
         function menosFont(){
             var tamanho = $('body').css("font-size");
