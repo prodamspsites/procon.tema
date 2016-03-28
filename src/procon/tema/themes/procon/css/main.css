@@ -1284,6 +1284,55 @@ float: left
     font-size: 1.3em;
     font-family: 'Roboto';
 }
+/*Página de Login*/
+#content #login-form{
+  text-align: left;
+  margin-left: 160px;
+}
+#content #login-form h2{
+  font-size: 3em;
+  margin-top: 80px;
+  margin-bottom: 20px;
+}
+#content #login-form .field label{
+  text-align: left;
+  margin-right: 0;
+  margin-bottom: 5px;
+  width: 5em;
+  display: block;
+  font-size: 1.3em;
+  font-weight: normal;
+}
+#content #login-form .field label input{
+  margin-top: 5px;
+}
+#content #login-form .discreet{
+  padding: 0;
+  color: #f21c30;
+}
+#content #login-form .discreet span a{
+  color: #f21c30;
+  border:0;
+  font-size: 1.3em;
+  font-weight: bold;
+}
+#content #login-form .discreet span a:hover{
+  color: #f21c30 !important;
+}
+#content #login-form .formControls{
+  margin-left: 0;
+}
+#content #login-form .formControls input{
+  margin-left: 0;
+  font-size: 1em;
+  padding: 10px 15px;
+  color: #fff;
+  background: #f21c30;
+  font-family: 'Roboto';
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
 /*FOOTER*/
 #footer{
   float:left;
