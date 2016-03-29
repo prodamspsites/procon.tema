@@ -18,6 +18,7 @@
         <before css:theme="#content" css:content="#edit-bar" />
         <replace css:theme="#content" css:content="#content" />
         <replace css:theme="#logoProcon" css:content="#logoProcon" />
+        <replace css:theme=".social" css:content=".social" />
         <replace css:theme=".logoNegocios" css:content=".logoNegocios" />
         <replace css:theme="#footer" css:content="#footer" />
         <replace css:theme=".menu" css:content=".menu" />

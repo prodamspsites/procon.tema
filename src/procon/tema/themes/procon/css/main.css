@@ -97,6 +97,36 @@ body{
   cursor: pointer;
   text-indent: -9999px;
 }
+#portal-header .social{
+  width: 140px;
+  height: 50px;
+  float: left;
+  margin-left: 90px;
+  margin-top: 20px;
+}
+#portal-header .social li{
+  margin-left: 5px;
+}
+#portal-header .faceSocial a{
+  background: url('../img/icoFacebook.png') no-repeat;
+  width: 30px;
+  height: 29px;
+  float: left;
+}
+#portal-header .twitterSocial a{
+  background: url('../img/icoTwitter.png') no-repeat;
+  width: 30px;
+  height: 29px;
+  float: left;
+  margin-left: 5px;
+}
+#portal-header .youtubeSocial a{
+  background: url('../img/icoYoutube.png') no-repeat;
+  width: 30px;
+  height: 29px;
+  float: left;
+  margin-left: 5px;
+}
 #portal-header .logoNegocios{
   float:right;
   margin-bottom: 20px;
@@ -107,7 +137,7 @@ body{
   height: 60px;
   background: url('../img/logoNegocios.png') no-repeat;
   text-indent: -9999px;
-  margin:5px 0 0 0;
+  margin:12px 0 0 0;
 }
 
 /*MENU*/
