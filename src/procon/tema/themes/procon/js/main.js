@@ -44,7 +44,7 @@
 
         $.ajax({
             url: lightbox_url, success: function(lightbox) {
-              lightbox_titulo = $(lightbox).find('.subTitNoticias').html();
+              lightbox_titulo = $(lightbox).find('.titPage').html();
               lightbox_text = $(lightbox).find('.contentBody').html();
               $('body').append("<div class='lightboxGeral'><div class='lightbox-div'><h2>"+lightbox_titulo+"</h2><div class='divScrollLight'>"+lightbox_text+"</div><a href='javascript:void(0);' class='fechaLightbox'>FECHAR</a></div></div>");
               $(btn_enviar).before("<div class='contentLightbox'><input type='checkbox'>Concordo em disponibilizar as informações contidas em minha reclamação para que sejam divulgadas no site de acordo com os <a href='javascript:void(0);' class='linkLightbox'>Termos de Uso e Políticas de Privacidade.</a></div></div>");
