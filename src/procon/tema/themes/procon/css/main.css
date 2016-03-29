@@ -1086,6 +1086,164 @@ span.linhaAcessibilidade{
     font-family: 'Roboto';
     font-size: 1.1em;
 }
+/*TOOLTIP*//
+#archetypes-fieldname-area{
+  position: relative;
+}
+.tooltip-area{
+  position: absolute;
+  width: 450px;
+  padding: 0px;
+  background: #FFFFFF;
+  -webkit-border-radius: 0px;
+  -moz-border-radius: 0px;
+  border-radius: 0px;
+  -webkit-box-shadow: 0px 0px 14px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 0px 0px 14px -2px rgba(0,0,0,0.75);
+  box-shadow: 0px 0px 14px -2px rgba(0,0,0,0.75);
+  left: -192px;
+  top: 33px;
+  background: #f5f5f5;
+  padding: 15px 10px 10px 10px;
+  display: none;
+}
+#content .tooltip-area .fechaTooltip{
+  margin-top: 20px;
+    cursor: pointer;
+    color: #f11c30;
+    text-transform: uppercase;
+    padding: 3px 5px 3px 5px;
+    display: inline;
+    margin: 0px 0 0 -3px;
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    clear: both;
+    float: left;
+}
+#content .tooltip-area .fechaTooltip:hover{
+    color: red !important;
+}
+.divGeralTootltip{
+  float: left;
+  position: relative;
+}
+.tooltip-area:after 
+{
+  content: '';
+  position: absolute;
+  border-style: solid;
+  border-width: 0 14px 14px;
+  border-color: #f5f5f5 transparent;
+  display: block;
+  width: 0;
+  z-index: 1;
+  top: -14px;
+  left: 201px;
+}
+/*LIGHTBOX*/
+.lightboxGeral{
+  position: fixed;
+  z-index: 998;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+}
+.lightbox-div{
+  z-index: 999;
+  position: relative;
+  margin: 0 auto;
+  background: white;
+  width: 70%;
+  padding:20px 20px 50px 20px;
+  color: #424242;
+  font-size: 1.1em;
+}
+.divScrollLight{
+  height: 450px;
+  width: 100%;
+  overflow: auto;
+}
+.lightbox-div p{
+  color: #424242;
+  text-align: left;
+  font-size: 1.0em;
+}
+.lightbox-div h2{
+  color: #424242;
+  text-align: left;
+}
+
+.lightbox-div .fechaLightbox{
+  margin-top: 20px;
+    cursor: pointer;
+    background: #f11c30;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 3px 5px 3px 8px;
+    display: inline;
+    margin: 17px 0 0 9px;
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    clear: both;
+    float: left;
+    font-size: 0.8em;
+    position: absolute;
+    top: -8px;
+    right: 14px;
+}
+.contentLightbox{
+  float: left;
+  clear: both;
+  width: 100%;
+  margin: 5px 0 5px 0;
+  font-size: 1.2em;
+  color: #424242;
+}
+#content a.linkLightbox{
+  font-weight: 500;
+  color: red !important;
+  text-decoration: none;
+  border-bottom: none !important;
+}
+#content a.linkLightbox:hover{
+  text-decoration: underline;
+  color: red !important;
+}
+.contentLightbox input{
+  display: inline;
+  margin: -3px 5px 0 0;
+  float: left;
+}
+#content .formDuvidas #area{
+  float:left;
+}
+#content .formDuvidas .btnTooltip{
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  background: red;
+  color: white;
+  width: 11px;
+  height: 15px;
+  padding: 3px 3px 3px 7px;
+  margin: 0 0 0 12px;
+  display: inline-block;
+  font-family: 'Roboto';
+  font-weight: normal;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+#content .formDuvidas .btnTooltip:hover{
+  color: white !important;
+}
 .form-group .btnBuscar.disabled{
   opacity: 0.5;
   cursor: auto;
