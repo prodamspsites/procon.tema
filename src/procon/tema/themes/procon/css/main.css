@@ -1036,6 +1036,9 @@ span.linhaAcessibilidade{
   width: 1005px;
   float: none;
 }
+#portal-column-content{
+  clear: both;
+}
 .cover-layout-empty-layout #portal-columns{
   margin: auto;
   width: auto;
