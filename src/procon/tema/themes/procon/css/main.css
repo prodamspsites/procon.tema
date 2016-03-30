@@ -454,7 +454,51 @@ border-radius: 0px;
   z-index: 1;
   border-bottom: none !important;
 }
-
+/*SIDE BAR NAVEGACAO*/
+#portal-column-one .navTree{
+  background: #ffd7d7;
+  width: 200px;
+}
+#portal-column-one .navTree.navTreeLevel0{
+  margin-top: 30px;
+}
+#portal-column-one .navTree .navTreeItem a{
+  color:#434142 !important;
+  font-family: 'Roboto';
+  font-size: 1.2em;
+  border-left: none;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding: 10px 5px 5px 10px !important;
+}
+#portal-column-one .navTree .navTreeItem{
+  padding: 0;
+  margin: 0;
+  border-bottom: none;
+  width: 100%;
+}
+#portal-column-one .navTree .navTreeItem a:hover{
+  background: #f11c30;
+  color: white !important;
+}
+#portal-column-one .navTree .navTreeItem .navTreeCurrentNode{
+  color: white !important;
+}
+#portal-column-one .navTree .navTreeCurrentItem{
+  background: #f11c30;
+}
+#portal-column-one .navTree .navTreeCurrentItem a{
+  /*color: white !important;*/
+}
+#portal-column-one .navTree .navTreeItem:hover a{
+  /*color: white !important;*/
+}
+#portal-column-one .navTree .navTreeItem a img{
+  display: none;
+}
+#portal-column-one .navTree .navTreeItem .contenttype-folder{
+  background-image: none;
+}
 /*SIDEBAR*/
 #divSidebar{
   float: left;
@@ -986,6 +1030,15 @@ span.linhaAcessibilidade{
 #search-results-wrapper .blocoBusca dt a .highlightedSearchTerm{
   text-decoration: underline;
   font-weight: 400;
+}
+#portal-columns{
+  margin: 0 auto;
+  width: 1005px;
+  float: none;
+}
+.cover-layout-empty-layout #portal-columns{
+  margin: auto;
+  width: auto;
 }
 #portal-columns #contentInterna .blocoBusca p{
   color: #f21c30;
