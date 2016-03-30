@@ -272,6 +272,51 @@ border-radius: 0px;
   border-right: 5px solid transparent;
   border-top: 5px solid #f21c30;
 }
+/*SOCIAL SHARE INTERNAS*/
+#content .socialShare{
+  width: 100%;
+  height: 30px;
+  display: inline-block;
+  border-top:1px solid #e8e8e8;
+  border-bottom:1px solid #e8e8e8;
+  padding: 5px 0;
+  margin-top: 20px;
+}
+#content .socialShare p{
+  font-family: 'Roboto', Arial;
+  float: left;
+  margin-top: 4px;
+  color: #8a8a8a;
+}
+#content .socialShare ul{
+  width: 150px;
+  float: right;
+
+}
+#content .socialShare li{
+  display: inline-block;
+}
+#content .socialShare ul li.shareFacebook a{
+  background: url(../img/icoCompFace.png) no-repeat;
+  width: 34px;
+  height: 30px;
+  float: left;
+  border-bottom: none;
+}
+#content .socialShare ul li.shareTwitter a{
+  background: url(../img/icoCompTwitter.png) no-repeat;
+  width: 34px;
+  height: 30px;
+  float: left;
+  border-bottom: none;
+}
+#content .socialShare ul li.shareGoogle a{
+  background: url(../img/icoCompGoogle.png) no-repeat;
+  width: 34px;
+  height: 30px;
+  float: left;
+  border-bottom: none;
+}
 /*INTERNAS*/
 #content .wrap article .contentBody p .external-link,
 #content .wrap article .contentBody p .internal-link {
