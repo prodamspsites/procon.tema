@@ -64,6 +64,43 @@
             }
         })
 
+
+        //upload plone form gen
+        var file = $("input:file");
+        $.each(file,function(value){
+          if( value > 0 ){
+             $("#"+file[value].id).parent().parent().hide();
+          }
+        });
+
+        $("input[type='file']").on('change',function(){
+            var id  = $(this).attr('id');
+            console.log(id);
+            $("#"+id).parent().parent().next().show();
+            var nomeArquivo = this.files[0].name;
+            var tamanhoArquivo = this.files[0].size;
+            $("#"+id).after('<a href="#" class="clearImage">Clear</a><br><span style="margin-top:20px;width:600px;height:400px; padding:5px">Nome:'+nomeArquivo+'<br>Tamanho:'+formatar(tamanhoArquivo)+'</spam>');
+        });
+
+        //formata tamanho do arquivo upload
+        var formatar = function formatBytes(bytes,decimals) {
+           if(bytes == 0) return '0 Byte';
+           var k = 1000;
+           var dm = decimals + 1 || 2;
+           var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+           var i = Math.floor(Math.log(bytes) / Math.log(k));
+           return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+        };
+
+        $(document).on('click', '.clearImage', function(e) {
+          e.preventDefault();
+          thisParent = $(this).parent()
+          input = $('input', thisParent);
+          $(input).val('');
+          $(this).remove();
+          $('span',thisParent).remove();
+          return false;
+        })
     }
 
 
@@ -128,7 +165,6 @@
         };
        }
     });
-
 
     // Cria os Cookies
         if ($.cookie('contraste1') === "true") {
