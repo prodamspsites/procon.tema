@@ -91,8 +91,6 @@
             }
         })
 
-
-
         //upload plone form gen
         var file = $("input:file");
         $.each(file,function(value){
