@@ -1,5 +1,13 @@
 (function($) {
   $(document).ready(function() {
+    //LINK EM NOVA JANELA
+        $(".contentBody a.external-link").each(function(e) {
+            link_url = $(this).attr('href');
+            if (link_url.indexOf(portal_url) != 0) {
+                $(this).attr('target', '_blank')
+            }
+        });
+
     //MASCARA
            $("#data-de-nascimento").mask("99/99/9999");
            $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
