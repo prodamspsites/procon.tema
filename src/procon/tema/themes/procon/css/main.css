@@ -685,6 +685,7 @@ span.linhaAcessibilidade{
   background: #eee;
   width: 100%;
   margin-bottom: 35px;
+  margin-top: -25px;
 }
 .listaHome ul{
   width: 100%;
@@ -840,6 +841,7 @@ span.linhaAcessibilidade{
   float: left;
   clear: both;
   height: 89px;
+  margin-top: 100px;
 }
 .divNoticias h1{
     text-align: center;
@@ -1095,64 +1097,67 @@ span.linhaAcessibilidade{
 /* Pagination */
 /* ---------------------------------------------------------- */
 
-#pagination{
-  float:left;
-  width:100%;
-  clear:left;
-  margin:50px 0;
-}
 
-#pagination ul{
-  margin:0;
+.listingBar{
+  margin:20px 0 0 0 !important;
   padding:0;
   text-align:center;
 }
 
-#pagination li{
-  display:inline-block;
-  margin: 0 0 0 5px;
-}
-
-#pagination li a{
+.listingBar a{
   border:1px solid #128a89;
   background: #128a89;
   display:inline-block !important;
-  padding:7px 13px;
-  color: #fff;
+  padding:7px 13px !important;
+  color: #fff !important;
+  font-family: 'Roboto';
+  font-size: 1.4em !important;
+  border: none !important;
 }
-
-#pagination li a:hover, #pagination li .current-pagination{
+#content .listingBar a:hover{
+  color: white !important;
+}
+.listingBar a:hover,.listingBar .current{
   border:1px solid #ccc;
   background:#fff;
   display:inline-block !important;
-  color:#868686;
+  color:#868686 !important;
+  padding:7px 13px !important;
+  font-size: 1.4em !important;
+    -webkit-border-top-left-radius: 0em;
+    -webkit-border-top-right-radius: 0em;
+    -moz-border-radius-topleft: 0em;
+    -moz-border-radius-topright: 0em;
+    border-top-left-radius: 0em;
+    border-top-right-radius: 0em;  
 }
-#pagination li a.btnPrev{
+.listingBar a.previous{
   background: url(../img/setaPagPrev.png) no-repeat 13px 12px #128a89 !important;
   text-indent: -9999px;
   padding-left:17px;
   padding-right:17px;
+  float: left;
+  width: 7px;
 }
-#pagination li a.btnNext{
+.listingBar a.previous span{
+    text-indent: -9999px;
+    float: left;
+}
+.listingBar a.previous:hover{
+  background: url(../img/setaPagPrev.png) no-repeat 13px 12px  #329fd7  !important;
+}
+.listingBar a.next{
   background: url(../img/setaPagNext.png) no-repeat 15px 12px #128a89 !important;
   text-indent: -9999px;
   padding-left:17px;
   padding-right:17px;
+  float: right;
+  width: 7px;
+}
+.listingBar a.next:hover{
+  background: url(../img/setaPagNext.png) no-repeat 15px 12px #329fd7 !important;
 }
 
-#pagination li a.last{
-  border:0;
-  display:inline-block;
-  padding:10px 15px;
-}
-
-#pagination li a:hover.last{
-  border:0;
-  background:#fff;
-  color:#000;
-  display:inline-block;
-
-}
 /*FORMULARIO*/
 .form-group{
     border-left: 101px solid #4bafa3;
