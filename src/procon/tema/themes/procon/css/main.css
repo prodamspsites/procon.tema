@@ -1769,6 +1769,40 @@ float: left
 #footer .menuFooter > ul > li > ul > li.tituloMenu{
   font-size: 1.1em;
 }
+#footer .socialFooter{
+  float: left;
+  width: 115px;
+  height: 50px;
+  margin: 29px 0 0 215px;
+}
+#footer .socialFooter p{
+  font-size: 0.9em;
+  color: #868686;
+  margin-bottom: 10px;
+}
+#footer .socialFooter li{
+  margin-left: 5px;
+}
+#footer .faceSocial a{
+  background: url('../img/icoFacebookFooter.png') no-repeat;
+  width: 30px;
+  height: 29px;
+  float: left;
+}
+#footer .twitterSocial a{
+  background: url('../img/icoTwitterFooter.png') no-repeat;
+  width: 30px;
+  height: 29px;
+  float: left;
+  margin-left: 5px;
+}
+#footer .youtubeSocial a{
+  background: url('../img/icoYoutubeFooter.png') no-repeat;
+  width: 30px;
+  height: 29px;
+  float: left;
+  margin-left: 5px;
+}
 /* ==========================================================================
    Adaptações responsivas
    ========================================================================== */
