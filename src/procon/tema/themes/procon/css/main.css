@@ -680,6 +680,9 @@ span.linhaAcessibilidade{
   font-size: 1.6em;
   padding: 0 0 10px 0;
 }
+body.userrole-authenticated .listaHome{
+  margin-top: 5px;
+}
 .listaHome{
   float:left;
   background: #eee;
