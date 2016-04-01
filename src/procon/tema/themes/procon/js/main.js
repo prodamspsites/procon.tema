@@ -30,7 +30,8 @@
         $(this).toggleClass('active');
         $(this).next().slideToggle();
     });
-
+    //TABLEADMIN ZEBRA
+    $( ".tableReclamacoes table tr:odd" ).css( "background-color", "#f5f5f5" );
     //OCULTA FORMULARIO CONSUMIDOR
 
     if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('section-consumidor')) {

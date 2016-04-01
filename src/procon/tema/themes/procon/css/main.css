@@ -52,6 +52,10 @@ body{
   width: 1004px;
   margin: 0 auto;
 }
+.wrapAdmin{
+  width: 942px;
+  margin: 0 auto;
+}
 .hiddenStructure, .searchSection{
   display:none;
 }
@@ -1222,7 +1226,294 @@ span.linhaAcessibilidade{
     font-family: 'Roboto';
     font-size: 1.1em;
 }
-/*TOOLTIP*//
+/*MODULO ADMINISTRATIVO*/
+.divReclamacoes{
+  float: left;
+  clear: both;
+  width: 100%;
+  font-family: 'Rooto';
+}
+.divReclamacoes h1{
+  font-family: 'Roboto';
+  color: #424242;
+  font-size: 2.5em;
+  font-weight: normal;
+}
+.divReclamacoes .totalReclamacoes{
+  font-family: 'Roboto';
+  color: #424242;
+  font-size: 1.4em;
+  font-weight: 500;
+  float: right;
+  margin-top: -30px;
+}
+.divReclamacoes form.filterReclamacoes{
+  border:none;
+}
+#content .divReclamacoes form.filterReclamacoes fieldset{
+  border:none;
+}
+#content .divReclamacoes form.filterReclamacoes label{
+  color: #424242;
+  float: left;
+  padding: 5px 8px 0 0;
+  font-size: 1.1em;
+  font-weight: normal;
+}
+#content .divReclamacoes form.filterReclamacoes label.exibir{
+  padding: 5px 3px 0 35px;
+  float: left;
+}
+#content .divReclamacoes form.filterReclamacoes input{
+  float: left;
+  color: #424242;
+  margin:0 0 0 8px;
+  border:1px solid #ccc;
+  height: 32px;
+}
+#content .divReclamacoes form.filterReclamacoes span.registros{
+  padding: 5px 3px 0 0;
+  float: left;
+  font-size: 1.2em;
+  color: #424242;
+}
+#content .divReclamacoes form.filterReclamacoes input.nome{
+  width: 270px;
+  padding: 0 0 0 8px;
+}
+#content .divReclamacoes form.filterReclamacoes select{
+  float: left;
+  color: #424242;
+  margin:0 0 0 8px;
+  height: 32px;
+  border:1px solid #ccc;
+  background: white;
+  width: 175px;
+}
+#content .divReclamacoes form.filterReclamacoes select.registros{
+  width: 40px;
+  margin: 0 15px 0 0;
+}
+#content .divReclamacoes form.filterReclamacoes .btnFiltrar{
+    cursor: pointer;
+    background: #f11c30;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 3px 10px 3px 10px;
+    display: inline;
+    margin: 0px 0 0 3px;
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    float: left;
+    height: 33px;
+    font-weight: 500;
+    font-family: 'Roboto';
+    font-size: 1.0em;
+}
+.divReclamacoes form.filterReclamacoes legend{
+  display:none;
+}
+.tableReclamacoes{
+  float: left;
+  clear: both;
+  width: 100%;
+  margin: 15px 0 24px 0;
+}
+.tableReclamacoes table{
+  width: 99%;
+  float: left;
+  clear: both;
+  border:1px solid #cbcbcb;
+}
+.tableReclamacoes table tr th, .tableReclamacoes table tr td{
+  padding:5px 5px 5px 5px;
+  font-size: 1.2em;
+}
+.tableReclamacoes table tr th{
+  background: #818181;
+  color: #fff;
+  font-family: 'Roboto';
+  padding: 8px 8px 8px 8px;
+}
+#content .tableReclamacoes table tr th a.setaDown{
+  background: url(../img/icoSetaRecDown-off.png) no-repeat;
+  width: 12px;
+  height: 13px;
+  float: left;
+  border-bottom: none;
+  margin: 2px 0 0 0;
+}
+#content .tableReclamacoes table tr th a.setaDown.active{
+  background: url(../img/icoSetaRecDown.png) no-repeat;
+}
+.tableReclamacoes table tr th span{
+  float: left;
+  padding: 0 10px 0 0;
+}
+#content .tableReclamacoes table tr th a.setaUp{
+  background: url(../img/icoSetaRecUp-off.png) no-repeat;
+  width: 12px;
+  height: 13px;
+  float: left;
+  border-bottom: none;
+  margin: 2px 0 0 0;
+}
+#content .tableReclamacoes table tr th a.setaUp.active{
+  background: url(../img/icoSetaRecUp.png) no-repeat;
+}
+.tableReclamacoes table tr {
+  border-bottom: 1px solid #c7c7c7;
+}
+.tableReclamacoes table tr td{
+  color: #424242;
+  font-family: 'Roboto';
+  vertical-align: top;
+}
+.tableReclamacoes table tr{
+  cursor: pointer;
+}
+.tableReclamacoes table tr:hover{
+  background: #dfdfdf !important;
+}
+#content .divReclamacoes .voltarReclamacoes{
+  color: #f21c30;
+  font-family: 'Roboto';
+  font-size: 1.2em;
+  margin:22px 0 0 0;
+  padding: 0 0 20px 0;
+  width: 100%;
+  border-bottom: none;
+}
+#content .divReclamacoes .voltarReclamacoes:hover{
+  color: #f21c30 !important;
+  margin-top: 15px;
+}
+.dadosReclamacoes{
+  float: left;
+  clear: both;
+}
+.dadosReclamacoes label{
+  font-family: 'Roboto';
+  font-size: 1.2em;
+  float: left;
+  clear: both;
+  width: 100%;
+  color: #424242;
+  margin: 20px 0 0 0;
+}
+.dadosReclamacoes input{
+  height: 31px;
+  border: 1px solid #ccc;
+  float: left;
+  clear: both;
+  color: #727272;
+  font-family: 'Roboto';
+  padding: 0 0 0 10px;
+  margin-top: 5px;
+}
+.dadosReclamacoes textarea{
+  border: 1px solid #ccc;
+  width: 620px;
+  height: 199px;
+  font-family: 'Roboto' !important;
+  color: #727272;
+  font-size: 1.2em !important;
+  float: left;
+  padding: 10px 0 0 10px;
+  margin-top: 5px;
+}
+.dadosReclamacoes span{
+  float: left;
+  clear: both;
+  font-family: 'Roboto';
+  font-size: 1.2em;
+  color: #424242;
+}
+.dadosReclamacoes span.genero{
+  clear: none;
+  margin: 12px 0 0 5px;
+}
+.dadosReclamacoes span.informar{
+  clear: none;
+  margin: 12px 0 0 5px;
+}
+.dadosReclamacoes span.portador{
+  clear: none;
+  font-size: 1.0em;
+  font-weight: normal;
+  margin: 12px 0 0 5px;
+}
+.dadosReclamacoes .sindec{
+  background: #f5f5f5;
+  border:1px solid #ccc;
+  padding: 8px;
+  float: left;
+  clear: both;
+  width: 100%;
+  margin: 30px 0 15px 0;
+}
+.dadosReclamacoes .extencao{
+  background: #128a89;
+  padding: 30px;
+  color: #fff;
+  text-align: center;
+  font-family: 'Roboto';
+  font-size: 2em;
+}
+.dadosReclamacoes .nomeArquivo{
+  clear: none;
+  padding: 0 0 0 25px;
+  width: 280px;
+}
+#content .dadosReclamacoes .fileDownload{
+  clear: none;
+  padding: 8px 0 0 25px;
+  color: red !important;
+  font-family: 'Roboto';
+  border-bottom: none;
+  display: table;
+  font-size: 1.2em;
+}
+#content .dadosReclamacoes .voltarLista{
+  float:left;
+  clear: both;
+  color: red !important;
+  font-family: 'Roboto';
+  margin:30px 0 0 0;
+  font-size: 1.2em;
+  border-bottom: none;
+}
+.dadosReclamacoes .divFile{
+  float: left;
+  clear: both;
+  margin-top: 20px;
+  width: 415px;
+}
+.dadosReclamacoes .sindec label{
+  margin: 0;
+}
+.dadosReclamacoes .btnInserir{
+  cursor: pointer;
+  background: #f11c30;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 3px 10px 3px 10px;
+  display: inline;
+  margin: 0px 0 0 15px;
+  border: none;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  float: left;
+  height: 33px;
+  font-weight: 500;
+  font-family: 'Roboto';
+  font-size: 1.0em;
+  clear: none;
+}
+/*TOOLTIP*/
 #archetypes-fieldname-area{
   position: relative;
 }
@@ -1655,6 +1946,71 @@ float: left
   border: none;
   cursor: pointer;
 }
+/*RECLAMACOES RECEBIDAS*/
+
+.paginationReclamacoes{
+  margin:40px 0 20px 0 !important;
+  padding:0;
+  text-align:center;
+}
+
+.paginationReclamacoes a{
+  border:1px solid #128a89;
+  background: #128a89;
+  display:inline-block !important;
+  padding:7px 13px !important;
+  color: #fff !important;
+  font-family: 'Roboto';
+  font-size: 1.4em !important;
+  border: none !important;
+}
+#content .paginationReclamacoes a:hover{
+  color: white !important;
+  background: #329fd7;
+}
+.paginationReclamacoes .current{
+  border:1px solid #ccc;
+  background:#fff;
+  display:inline-block !important;
+  color:#868686 !important;
+  padding:7px 13px !important;
+  font-size: 1.4em !important;
+    -webkit-border-top-left-radius: 0em;
+    -webkit-border-top-right-radius: 0em;
+    -moz-border-radius-topleft: 0em;
+    -moz-border-radius-topright: 0em;
+    border-top-left-radius: 0em;
+    border-top-right-radius: 0em;
+}
+.paginationReclamacoes .prev a{
+  background: url(../img/setaPagPrev.png) no-repeat 13px 12px #128a89 !important;
+  text-indent: -9999px;
+  padding-left:17px;
+  padding-right:17px;
+  float: left;
+  width: 7px;
+}
+.paginationReclamacoes .prev span{
+    text-indent: -9999px;
+    float: left;
+}
+.paginationReclamacoes .prev a:hover{
+  background: url(../img/setaPagPrev.png) no-repeat 13px 12px  #329fd7  !important;
+}
+.paginationReclamacoes .next a{
+  background: url(../img/setaPagNext.png) no-repeat 15px 12px #128a89 !important;
+  text-indent: -9999px;
+  padding-left:10px;
+  padding-right:17px;
+  float: right;
+  margin-right: 20px;
+  width: 7px;
+}
+.paginationReclamacoes .next a:hover{
+  background: url(../img/setaPagNext.png) no-repeat 15px 12px #329fd7 !important;
+}
+
+
 /*FOOTER*/
 #footer{
   float:left;
