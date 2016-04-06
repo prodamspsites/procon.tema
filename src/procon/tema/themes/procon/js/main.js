@@ -307,5 +307,34 @@
             $.cookie('librasCookie',$(this).attr('id'),{ path: '/' });
 
         });
+
+        // DUVIDAS PERGUNTA
+        $( 'body.template-duvidas_view input[type=radio][class=duvida_util]' ).change( function() {
+            var util = $(this).val();
+            var parent_div = $(this).parent().parent().parent().parent().parent();
+            var plone_id = $("h3",parent_div).data('id');
+            var pergunta = $("h3",parent_div).text();
+            var resposta = $(".textoAccordeon span.resposta_duvida",parent_div).text();
+            if(util == 'sim'){
+              util = true
+            }else{
+              util = false;
+            }
+            var assunto = $("select option:selected",parent_div).val();
+            var mensagem = $("textarea",parent_div).val();
+
+            url = portal_url + '/@@pergunta';
+            $.post( url,
+            {
+                util: util,
+                plone_id: plone_id,
+                pergunta: pergunta,
+                resposta: resposta,
+                assunto: assunto,
+                mensagem: mensagem
+            })
+
+        })
+
   })
 })(jQuery);
