@@ -1084,10 +1084,41 @@ body.userrole-authenticated .listaHome{
 }
 .divAccordeon .respostaUtil label{
   font-weight: normal;
-  font-size: 0.9em;
+  font-size: 1.1em;
+  font-family: 'Roboto';
+  margin:15px 0 0 0;
+  float: left;
+  clear: both;
 }
-.divAccordeon .respostaUtil input{
+.divAccordeon .respostaUtil textarea{
+  border:1px solid #ccc;
+  width: 413px;
+  height: 119px;
+  background: white;
+}
+.divAccordeon .respostaUtil .enviaDuvida{
+  background: #f11c30;
+  color: white;
+  text-align: center;
+  padding:5px 12px 5px 12px;
+  margin-top: 10px;
+  border: none;
+  font-size: 1em;
+  float: left;
+  clear: both;
+  font-family: 'Roboto';
+  font-size: 0.85em;
+  cursor: pointer;
+}
+.divAccordeon .respostaUtil select{
   margin: 0 10px 0 10px;
+  width: 283px;
+  background: white;
+  border:1px solid #ccc;
+  height: 25px;
+}
+.divAccordeon .respostaUtil input[type='radio']{
+  margin: 0 3px 0 3px;
 }
 .divAccordeon .respostaUtil span{
     margin: 0 18px 0 0;
@@ -1107,6 +1138,7 @@ body.userrole-authenticated .listaHome{
 }
 #content .divAccordeon .textoAccordeon form fieldset{
   border-top: none;
+  margin:0 0 0 15px;
 }
 .actionMenuContent ul li{
   display: block;
