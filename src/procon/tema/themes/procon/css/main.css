@@ -272,6 +272,17 @@ border-radius: 0px;
   border-right: 5px solid transparent;
   border-top: 5px solid #f21c30;
 }
+.btnMenuResp{
+  background: url(../img/icoMenuResp.png) no-repeat center 20px #f21c30;
+  width:64px;
+  height: 64px;
+  float: left;
+  margin: 32px 0 0 0;
+  display: none;
+}
+.btnMenuResp.active{
+  background: url(../img/icoMenuResp-on.png) no-repeat center 20px #f21c30;
+}
 /*SOCIAL SHARE INTERNAS*/
 #content .socialShare{
   width: 100%;
@@ -1097,6 +1108,9 @@ body.userrole-authenticated .listaHome{
 #content .divAccordeon .textoAccordeon form fieldset{
   border-top: none;
 }
+.actionMenuContent ul li{
+  display: block;
+}
 /* Pagination */
 /* ---------------------------------------------------------- */
 
@@ -1268,8 +1282,7 @@ body.userrole-authenticated .listaHome{
   float: left;
   position: relative;
 }
-.tooltip-area:after 
-{
+.tooltip-area:after{
   content: '';
   position: absolute;
   border-style: solid;
@@ -1825,15 +1838,287 @@ float: left
   #portal-header .divBusca{
     float: left;
     padding: 10px 0 0 25px;
+    position: absolute;
+    top: 99px;
+    width: 90%;
+  }
+  #portal-searchbox{
+    float: left !important;
+    width: 100%;
+  }
+  #portal-searchbox .LSBox{
+    float:left;
+    width: 100%;
   }
   #portal-searchbox .searchField{
-    width: 105px;
+    width: 80%;
+    float: left;
+    border: none;
+    height: 29px;
+  }
+  #portal-searchbox .searchButton{
+    float: left;
+    margin: 0;
+  }
+  #portal-header .social{
+    display: none;
+  }
+  #portal-header nav.menu{
+    padding:55px 0 0 0;
+  }
+  #portal-header nav.menu li{
+    clear: both;
+    display: block;
+  }
+  #portal-header nav.menu{
+    height: auto;
+  }
+  #portal-header #logoProcon a{
+    margin:1px 0 0 45px;
+    background-image: url('../img/logo.png') no-repeat;
+    background-size: 80%;
+    height: 55px;
+  }
+  .btnMenuResp{
+    display: block;
+    margin-top: 0;
+  }
+  #portal-header nav.menu{
+    display: none;
+  }
+  #portal-header nav.menu li{
+    border-top:1px solid white;
+    width: 100%;
+  }
+  #portal-header nav.menu li:hover{
+    padding: 15px 6px 15px 5px;
+    background: none !important;
+  }
+  #portal-header nav.menu li:hover a{
+    background: none !important;
+    color: white;
+    padding:6px 5px 0 5px;
+  }
+  #portal-header .divBusca{
+    display: none;
+  }
+  #portal-header #logoProcon{
+    margin: 0;
+  }
+  #portal-searchbox{
+    margin:-11px 0 0 0 !important;
+  }
+  #portal-header nav.menu li .menuNivel{
+    position: relative;
+    margin: 0 0 0 -5px;
+    top: 16px;
+    width: 100%;
+    padding: 0;
+    left: 0;
+  }
+  #content .listaHome ul li{
+    clear: both;
+    width: 100%;
+    min-height: auto;
+    margin: 0;
+    padding: 0
+  }
+  #content .listaHome ul li a{
+    text-align: left;
+    width: 130px;
+    padding: 0 0 0 0;
+    margin: 22px 0 0 27px;
+  }
+  #content .listaHome ul li span{
+    width: 84px;
+    height: 84px;
+    background-position: center 15px;
+    background-size: 60px;
+    margin-left: 30px;
+  }
+  .portaltype-collective-cover-content div.position-2{
+    margin: 0;
+    clear: both;
+  }
+  .portaltype-collective-cover-content div.position-10{
+    margin: 0;
+    clear: both;
+  }
+  .portaltype-collective-cover-content div.position-8{
+    margin-left: -98%;
+    clear: both;
+  }
+  #footer .menuFooter{
+    display:none;
+  }
+  #footer .textoFooter{
+    width: 98%;
+    margin: 0;
+    text-align: center;
+  }
+  #footer .socialFooter{
+    float: none;
+    width: 115px;
+    height: 50px;
+    margin: 0 auto;
+  }
+  #footer .footerBottom{
+    margin-top: 22px;
+  }
+  #footer .footerBottom p.copyright{
+    text-align: center;
+    width: 98%;
+  }
+  #footer .footerBottom .logoGrx{
+    float: left;
+    clear: both;
+    width: 80px;
+    left: -28px;
+    position: relative;
+    margin-left: 50%;
+    display: none;
+  }
+  #footer .footerBottom{
+    height: auto;
+  }
+  #footer .footerBottom .divProdam {
+    float: none;
+    width: 210px;
+    padding: 0;
+    margin: 0 auto;
+    clear: both;
+  }
+  .blocoNoticias .noticiasColuna{
+    width: 100%;
+  }
+  .blocoNoticias .noticiasColuna time{
+    clear: both;
+  }
+  #portal-header nav.menu li.active a{
+    color:white;
+  }
+  #portal-header nav.menu li.subMenu.active a::after{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 0;
+    height: 0;
+
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #fff;
+    border-bottom: none;
+  }
+  #portal-header nav.menu li .menuNivel li a{
+    color: #424242 !important;
+    padding: 8px;
+    margin-top: 5px;
+    float: left;
+  }
+  .form-group{
+      border-top: 40px solid #4bafa3;
+      width: 95%;
+      border-left: 0;
+      margin-left: 0;
+      left: 0;
+      padding:15px 0 30px 12px;
+  }
+  .form-group:before{
+    content: 'Etapa 1';
+    position: absolute;
+    left: 50%;
+    top: -30px;
+    font-size: 1.8em;
+    color: #fff;
+    font-family: 'Roboto';
+    font-weight: normal;
+    width: 100%;
+    float: left;
+    z-index: 5;
+  }
+  .pfg-form.formid-formularios{
+    border-top: 40px solid #4bafa3;
+      width: 95%;
+      border-left: 0;
+      margin-left: 0;
+      left: 0;
+      padding:15px 0 30px 12px;
+  }
+  .pfg-form.formid-formularios:before{
+    content: 'Etapa 2';
+    position: absolute;
+    left: 2%;
+    top: -30px;
+    font-size: 1.8em;
+    color: #fff;
+    font-family: 'Roboto';
+    font-weight: normal;
+    width: 100%;
+    float: left;
+    z-index: 5;
+  }
+  div.width-full{
+    width: auto !important;
+  }
+  .form-group input{
+    width: 92%;
+  }
+  .form-group .btnBuscar{
+    margin-left: 50%;
+    left: -45px;
+    position: relative;
+  }
+  #portal-columns{
+    width: 100%;
+  }
+  #portal-column-content{
+    margin-left: 0;
+    left: 0;
+  }
+  .divRedireciona{
+    width: 100%;
+    padding-left: 10px;
+  }
+  .divRedireciona .linkRedireciona{
+    margin:0;
+  }
+  .divRedireciona .imgConsumidor{
+    margin: 0;
+  }
+  .divProtocolo{
+    margin: 0;
+  }
+  #content .divRedireciona p{
+    width: 300px;
+    padding: 0 0 0 20px;
+  }
+  .divAccordeon h3{
+    font-size: 0.8em;
+    padding: 8px 30px 1px 10px;
+  }
+  .divAccordeon{
+    margin: 41px 0 10px 0;
+  }
+  .destaqueHome{
+    width: 100%;
+  }
+  .destaqueHome .textoDestaque{
+    width: auto;
+  }
+  .divNoticias {
+    width: 82%;
+    height: 81px;
+    padding: 0 20px 0 0;
   }
 }
 
 @media only screen and (max-width : 500px) {
   .wrap{
     width:100%;
+  }
+  .blocoNoticias .noticiasColuna .firstItem .left{
+    width: 90%;
   }
   #footer .menuFooter > ul > li{
     clear: both;

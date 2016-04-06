@@ -1,28 +1,46 @@
 (function($) {
   $(document).ready(function() {
+    //MENU RESP
+    var desativaLnkMenu = false;
+    $('.btnMenuResp').bind('click', function() {
+        $(this).toggleClass('active');
+        $('#portal-header nav.menu').slideToggle();
+        $('#portal-header .divBusca').toggle();
+        desativaLnkMenu = true;
+        if (desativaLnkMenu == true){
+            $('.subMenu a').bind('click', function() {
+                $(this).parent().find('.menuNivel').slideToggle();
+                $(this).parent().toggleClass('active');
+                return false;
+            });
+        }
+    });
     //LINK EM NOVA JANELA
-        $(".contentBody a.external-link").each(function(e) {
-            link_url = $(this).attr('href');
-            if (link_url.indexOf(portal_url) != 0) {
-                $(this).attr('target', '_blank')
-            }
-        });
+    $(".contentBody a.external-link").each(function(e) {
+        link_url = $(this).attr('href');
+        if (link_url.indexOf(portal_url) != 0) {
+            $(this).attr('target', '_blank')
+        }
+    });
 
     //MASCARA
-           $("#data-de-nascimento").mask("99/99/9999");
-           $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
-           $("#telefone").mask("(99) 9999-9999");
-           $("#cep").mask("99999-999");
-           $("#cpf").mask("999.999.999-99");
+       $("#data-de-nascimento").mask("99/99/9999");
+       $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
+       $("#telefone").mask("(99) 9999-9999");
+       $("#cep").mask("99999-999");
+       $("#cpf").mask("999.999.999-99");
+
     //MENU HOVER
-    $(".menu .subMenu a").mouseenter(function () {
-        $(this).parent().find('ul.menuNivel').show();
-        $(this).addClass('active');
-    });
-    $(".menu .subMenu").mouseleave(function () {
-        $(this).parent().find('ul.menuNivel').hide();
-        $(this).removeClass('active');
-     });
+        if ($(window).width() >= 900){
+            $(".menu .subMenu a").mouseenter(function () {
+                $(this).parent().find('ul.menuNivel').show();
+                $(this).addClass('active');
+            });
+            $(".menu .subMenu").mouseleave(function () {
+                $(this).parent().find('ul.menuNivel').hide();
+                $(this).removeClass('active');
+             });
+        }
 
     //ACCORDEON
     $('.divAccordeon .textoAccordeon').hide();
@@ -75,6 +93,9 @@
         var itensForm = $(".formDuvidas").detach();
 
         $('.form-group .btnBuscar').click(function(){
+            $('#portal-column-content').css('margin-left','-98%');
+            $('#portal-column-content').css('left','98%');
+            $('#portal-column-content').css('clear','none');
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
