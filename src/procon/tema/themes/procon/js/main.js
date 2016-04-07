@@ -1,46 +1,28 @@
 (function($) {
   $(document).ready(function() {
-    //MENU RESP
-    var desativaLnkMenu = false;
-    $('.btnMenuResp').bind('click', function() {
-        $(this).toggleClass('active');
-        $('#portal-header nav.menu').slideToggle();
-        $('#portal-header .divBusca').toggle();
-        desativaLnkMenu = true;
-        if (desativaLnkMenu == true){
-            $('.subMenu a').bind('click', function() {
-                $(this).parent().find('.menuNivel').slideToggle();
-                $(this).parent().toggleClass('active');
-                return false;
-            });
-        }
-    });
     //LINK EM NOVA JANELA
-    $(".contentBody a.external-link").each(function(e) {
-        link_url = $(this).attr('href');
-        if (link_url.indexOf(portal_url) != 0) {
-            $(this).attr('target', '_blank')
-        }
-    });
+        $(".contentBody a.external-link").each(function(e) {
+            link_url = $(this).attr('href');
+            if (link_url.indexOf(portal_url) != 0) {
+                $(this).attr('target', '_blank')
+            }
+        });
 
     //MASCARA
-       $("#data-de-nascimento").mask("99/99/9999");
-       $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
-       $("#telefone").mask("(99) 9999-9999");
-       $("#cep").mask("99999-999");
-       $("#cpf").mask("999.999.999-99");
-
+           $("#data-de-nascimento").mask("99/99/9999");
+           $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
+           $("#telefone").mask("(99) 9999-9999");
+           $("#cep").mask("99999-999");
+           $("#cpf").mask("999.999.999-99");
     //MENU HOVER
-        if ($(window).width() >= 900){
-            $(".menu .subMenu a").mouseenter(function () {
-                $(this).parent().find('ul.menuNivel').show();
-                $(this).addClass('active');
-            });
-            $(".menu .subMenu").mouseleave(function () {
-                $(this).parent().find('ul.menuNivel').hide();
-                $(this).removeClass('active');
-             });
-        }
+    $(".menu .subMenu a").mouseenter(function () {
+        $(this).parent().find('ul.menuNivel').show();
+        $(this).addClass('active');
+    });
+    $(".menu .subMenu").mouseleave(function () {
+        $(this).parent().find('ul.menuNivel').hide();
+        $(this).removeClass('active');
+     });
 
     //ACCORDEON
     $('.divAccordeon .textoAccordeon').hide();
@@ -48,7 +30,8 @@
         $(this).toggleClass('active');
         $(this).next().slideToggle();
     });
-
+    //TABLEADMIN ZEBRA
+    $( ".tableReclamacoes table tr:odd" ).css( "background-color", "#f5f5f5" );
     //OCULTA FORMULARIO CONSUMIDOR
 
     if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('section-consumidor')) {
@@ -93,9 +76,6 @@
         var itensForm = $(".formDuvidas").detach();
 
         $('.form-group .btnBuscar').click(function(){
-            $('#portal-column-content').css('margin-left','-98%');
-            $('#portal-column-content').css('left','98%');
-            $('#portal-column-content').css('clear','none');
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
@@ -327,5 +307,54 @@
             $.cookie('librasCookie',$(this).attr('id'),{ path: '/' });
 
         });
+
+        // DUVIDAS PERGUNTA
+        $(document).on('change','body.template-duvidas_view input[type=radio][class=duvida_util]',function(){
+            url = portal_url + '/@@duvidas_salvar';
+            var util = $(this).val();
+            var parent_div = $(this).parent().parent().parent().parent().parent();
+            var plone_id = $("h3",parent_div).data('id');
+            var pergunta = $("h3",parent_div).text();
+            var usuario = $("#form_usuario_duvida",parent_div).val()
+            console.log(usuario);
+            var resposta = $(".textoAccordeon span.resposta_duvida",parent_div).text();
+
+            if(util == 'sim'){
+              util = true
+            }else{
+              util = false;
+            }
+
+            if (this.value == 'sim') {
+              $(".replica").hide();
+              $.post( url,
+              {
+                  util: util,
+                  plone_id: plone_id,
+                  pergunta: pergunta,
+                  resposta: resposta,
+                  usuario:usuario
+              })
+            }
+            else if (this.value == 'nao') {
+              $(".replica").show();
+              $(document).on('click', "#enviarDuvida", function(e){
+                e.preventDefault();
+                var assunto = $("#assunto_opcao option:selected",parent_div).val();
+                var mensagem = $("textarea",parent_div).val();
+                $.post( url,
+                {
+                      util: util,
+                      plone_id: plone_id,
+                      pergunta: pergunta,
+                      resposta: resposta,
+                      assunto: assunto,
+                      mensagem: mensagem,
+                      usuario:usuario
+                })
+              });
+            }
+        })
+
   })
 })(jQuery);
