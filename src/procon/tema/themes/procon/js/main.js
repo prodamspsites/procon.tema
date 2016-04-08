@@ -308,6 +308,17 @@
 
         });
 
+
+        $("td").on('click',function(){
+          $(".teste").show();
+          $(".divReclamacoes").hide();
+        });
+
+        $("#voltar").on('click',function(){
+          $(".teste").hide();
+          $(".divReclamacoes").show();
+        });
+
         // DUVIDAS PERGUNTA
         $(document).on('change','body.template-duvidas_view input[type=radio][class=duvida_util]',function(){
             url = portal_url + '/@@duvidas_salvar';
