@@ -731,8 +731,8 @@ body.userrole-authenticated .listaHome{
     width: 100%;
     background-position: 40px 0;
     border-bottom: none;
-    padding: 230px 0 0 0;
-    margin: -323px 0 0 5px;
+    padding: 0 0 0 0;
+    margin: -98px 0 0 5px;
     font-weight: 500;
     line-height: 1.5em;
 }
