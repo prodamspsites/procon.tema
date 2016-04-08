@@ -357,20 +357,6 @@
                 })
               });
             }
-
-            var assunto = $("select option:selected",parent_div).val();
-            var mensagem = $("textarea",parent_div).val();
-
-            $.post( url,
-            {
-                util: util,
-                plone_id: plone_id,
-                pergunta: pergunta,
-                resposta: resposta,
-                assunto: assunto,
-                mensagem: mensagem
-            })
         })
-
   })
 })(jQuery);
