@@ -309,30 +309,22 @@
         });
 
         // DUVIDAS PERGUNTA
-<<<<<<< HEAD
         $(document).on('change','body.template-duvidas_view input[type=radio][class=duvida_util]',function(){
             url = portal_url + '/@@duvidas_salvar';
-=======
-        $( 'body.template-duvidas_view input[type=radio][class=duvida_util]' ).change( function() {
->>>>>>> 37a2b6299cb97bf87e0551435f0962b9cf458496
+
             var util = $(this).val();
             var parent_div = $(this).parent().parent().parent().parent().parent();
             var plone_id = $("h3",parent_div).data('id');
+            var categoria = $("h3",parent_div).data('categoria');
+            console.log(categoria);
             var pergunta = $("h3",parent_div).text();
-<<<<<<< HEAD
             var usuario = $("#form_usuario_duvida",parent_div).val()
-            console.log(usuario);
             var resposta = $(".textoAccordeon span.resposta_duvida",parent_div).text();
-
-=======
-            var resposta = $(".textoAccordeon span.resposta_duvida",parent_div).text();
->>>>>>> 37a2b6299cb97bf87e0551435f0962b9cf458496
             if(util == 'sim'){
               util = true
             }else{
               util = false;
             }
-<<<<<<< HEAD
 
             if (this.value == 'sim') {
               $(".replica").hide();
@@ -342,7 +334,8 @@
                   plone_id: plone_id,
                   pergunta: pergunta,
                   resposta: resposta,
-                  usuario:usuario
+                  usuario:usuario,
+                  categoria:categoria
               })
             }
             else if (this.value == 'nao') {
@@ -359,15 +352,15 @@
                       resposta: resposta,
                       assunto: assunto,
                       mensagem: mensagem,
-                      usuario:usuario
+                      usuario:usuario,
+                      categoria:categoria
                 })
               });
             }
-=======
+
             var assunto = $("select option:selected",parent_div).val();
             var mensagem = $("textarea",parent_div).val();
 
-            url = portal_url + '/@@pergunta';
             $.post( url,
             {
                 util: util,
@@ -377,8 +370,6 @@
                 assunto: assunto,
                 mensagem: mensagem
             })
-
->>>>>>> 37a2b6299cb97bf87e0551435f0962b9cf458496
         })
 
   })
