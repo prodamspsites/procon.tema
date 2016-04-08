@@ -52,6 +52,10 @@ body{
   width: 1004px;
   margin: 0 auto;
 }
+.wrapAdmin{
+  width: 942px;
+  margin: 0 auto;
+}
 .hiddenStructure, .searchSection{
   display:none;
 }
@@ -84,7 +88,7 @@ body{
   -webkit-border-radius: 3px;
   -moz-border-radius: 3px;
   border-radius: 3px;
-  background: url('../img/icoBusca.png') no-repeat #128a89 12px 8px;
+  background: url('../img/icoBusca.png') no-repeat #710e0f 12px 8px;
   color: #fff;
   padding: 0px 18px 0 23px;
   border: none;
@@ -98,32 +102,32 @@ body{
   text-indent: -9999px;
 }
 #portal-header .social{
-  width: 140px;
+  width: 144px;
   height: 50px;
   float: left;
   margin-left: 90px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 #portal-header .social li{
   margin-left: 5px;
 }
 #portal-header .faceSocial a{
   background: url('../img/icoFacebook.png') no-repeat;
-  width: 30px;
-  height: 29px;
+  width: 39px;
+  height: 39px;
   float: left;
 }
 #portal-header .twitterSocial a{
   background: url('../img/icoTwitter.png') no-repeat;
-  width: 30px;
-  height: 29px;
+  width: 39px;
+  height: 39px;
   float: left;
   margin-left: 5px;
 }
 #portal-header .youtubeSocial a{
   background: url('../img/icoYoutube.png') no-repeat;
-  width: 30px;
-  height: 29px;
+  width: 39px;
+  height: 39px;
   float: left;
   margin-left: 5px;
 }
@@ -145,7 +149,7 @@ body{
   float: left;
   width: 100%;
   height: 48px;
-  background: #f21c30;
+  background: #3f393b;
 }
 #portal-header nav.menu li{
   display: inline;
@@ -271,6 +275,17 @@ border-radius: 0px;
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
   border-top: 5px solid #f21c30;
+}
+.btnMenuResp{
+  background: url(../img/icoMenuResp.png) no-repeat center 20px #f21c30;
+  width:64px;
+  height: 64px;
+  float: left;
+  margin: 32px 0 0 0;
+  display: none;
+}
+.btnMenuResp.active{
+  background: url(../img/icoMenuResp-on.png) no-repeat center 20px #f21c30;
 }
 /*SOCIAL SHARE INTERNAS*/
 #content .socialShare{
@@ -707,63 +722,63 @@ body.userrole-authenticated .listaHome{
   list-style: none;
 }
 #content .listaHome ul li a{
-  text-align: center;
-  float: left;
-  color: #128a89;
-  font-family: 'Roboto', Arial;
-  font-size: 1.1em;
-  width: 100%;
-  background-position: 40px 0;
-  border-bottom: none;
-  padding: 230px 0 0 0;
-  margin: -230px 0 0 0;
+    text-align: center;
+    float: left;
+    color: #fff;
+    text-transform: uppercase;
+    font-family: 'Roboto', Arial;
+    font-size: 1.4em;
+    width: 100%;
+    background-position: 40px 0;
+    border-bottom: none;
+    padding: 230px 0 0 0;
+    margin: -323px 0 0 5px;
+    font-weight: 500;
+    line-height: 1.5em;
 }
 #content .listaHome ul li:hover a{
-  color: #128a89 !important;
+  color: #fff !important;
 }
 
 .listaHome ul li .item1{
-  background:url(../img/icoRec.png) no-repeat center 50px #128a89;
-    -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
+  background:url(../img/icoRec.png) no-repeat center 16px #710e0f;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
   margin: 0 0 18px 30px;
 }
 .listaHome ul li .item2{
-  background:url(../img/icoDuv.png) no-repeat center 50px #128a89;
-    -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
+  background:url(../img/icoDuv.png) no-repeat center 16px #710e0f;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
   margin: 0 0 18px 30px;
 }
 .listaHome ul li .item3{
-  background:url(../img/icoFund.png) no-repeat center 50px #128a89;
-    -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
+  background:url(../img/icoFund.png) no-repeat center 16px #710e0f;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
   margin: 0 0 18px 30px;
 }
 .listaHome ul li .item4{
-  background:url(../img/icoDenuncia.png) no-repeat center 50px #128a89;
-    -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
+  background:url(../img/icoDenuncia.png) no-repeat center 16px #710e0f;
+-webkit-border-radius: 15px;
+-moz-border-radius: 15px;
+border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
   margin: 0 0 18px 30px;
-}
-.listaHome ul li:hover{
-  background: #ffd7d7;
 }
 .destaqueHome{
   float:left;
@@ -839,7 +854,7 @@ body.userrole-authenticated .listaHome{
   margin: 0;
 }
 .divNoticias{
-  background: #f21c30;
+  background: #3f393b;
   width: 100%;
   float: left;
   clear: both;
@@ -1090,10 +1105,41 @@ body.template-capa_noticias_view .documentFirstHeading{
 }
 .divAccordeon .respostaUtil label{
   font-weight: normal;
-  font-size: 0.9em;
+  font-size: 1.1em;
+  font-family: 'Roboto';
+  margin:15px 0 0 0;
+  float: left;
+  clear: both;
 }
-.divAccordeon .respostaUtil input{
+.divAccordeon .respostaUtil textarea{
+  border:1px solid #ccc;
+  width: 413px;
+  height: 119px;
+  background: white;
+}
+.divAccordeon .respostaUtil .enviaDuvida{
+  background: #f11c30;
+  color: white;
+  text-align: center;
+  padding:5px 12px 5px 12px;
+  margin-top: 10px;
+  border: none;
+  font-size: 1em;
+  float: left;
+  clear: both;
+  font-family: 'Roboto';
+  font-size: 0.85em;
+  cursor: pointer;
+}
+.divAccordeon .respostaUtil select{
   margin: 0 10px 0 10px;
+  width: 283px;
+  background: white;
+  border:1px solid #ccc;
+  height: 25px;
+}
+.divAccordeon .respostaUtil input[type='radio']{
+  margin: 0 3px 0 3px;
 }
 .divAccordeon .respostaUtil span{
     margin: 0 18px 0 0;
@@ -1113,6 +1159,10 @@ body.template-capa_noticias_view .documentFirstHeading{
 }
 #content .divAccordeon .textoAccordeon form fieldset{
   border-top: none;
+  margin:0 0 0 15px;
+}
+.actionMenuContent ul li{
+  display: block;
 }
 /* Pagination */
 /* ---------------------------------------------------------- */
@@ -1149,7 +1199,7 @@ body.template-capa_noticias_view .documentFirstHeading{
     -moz-border-radius-topleft: 0em;
     -moz-border-radius-topright: 0em;
     border-top-left-radius: 0em;
-    border-top-right-radius: 0em;  
+    border-top-right-radius: 0em;
 }
 .listingBar a.previous{
   background: url(../img/setaPagPrev.png) no-repeat 13px 12px #128a89 !important;
@@ -1242,7 +1292,294 @@ body.template-capa_noticias_view .documentFirstHeading{
     font-family: 'Roboto';
     font-size: 1.1em;
 }
-/*TOOLTIP*//
+/*MODULO ADMINISTRATIVO*/
+.divReclamacoes{
+  float: left;
+  clear: both;
+  width: 100%;
+  font-family: 'Rooto';
+}
+.divReclamacoes h1{
+  font-family: 'Roboto';
+  color: #424242;
+  font-size: 2.5em;
+  font-weight: normal;
+}
+.divReclamacoes .totalReclamacoes{
+  font-family: 'Roboto';
+  color: #424242;
+  font-size: 1.4em;
+  font-weight: 500;
+  float: right;
+  margin-top: -30px;
+}
+.divReclamacoes form.filterReclamacoes{
+  border:none;
+}
+#content .divReclamacoes form.filterReclamacoes fieldset{
+  border:none;
+}
+#content .divReclamacoes form.filterReclamacoes label{
+  color: #424242;
+  float: left;
+  padding: 5px 8px 0 0;
+  font-size: 1.1em;
+  font-weight: normal;
+}
+#content .divReclamacoes form.filterReclamacoes label.exibir{
+  padding: 5px 3px 0 35px;
+  float: left;
+}
+#content .divReclamacoes form.filterReclamacoes input{
+  float: left;
+  color: #424242;
+  margin:0 0 0 8px;
+  border:1px solid #ccc;
+  height: 32px;
+}
+#content .divReclamacoes form.filterReclamacoes span.registros{
+  padding: 5px 3px 0 0;
+  float: left;
+  font-size: 1.2em;
+  color: #424242;
+}
+#content .divReclamacoes form.filterReclamacoes input.nome{
+  width: 270px;
+  padding: 0 0 0 8px;
+}
+#content .divReclamacoes form.filterReclamacoes select{
+  float: left;
+  color: #424242;
+  margin:0 0 0 8px;
+  height: 32px;
+  border:1px solid #ccc;
+  background: white;
+  width: 175px;
+}
+#content .divReclamacoes form.filterReclamacoes select.registros{
+  width: 40px;
+  margin: 0 15px 0 0;
+}
+#content .divReclamacoes form.filterReclamacoes .btnFiltrar{
+    cursor: pointer;
+    background: #f11c30;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 3px 10px 3px 10px;
+    display: inline;
+    margin: 0px 0 0 3px;
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    float: left;
+    height: 33px;
+    font-weight: 500;
+    font-family: 'Roboto';
+    font-size: 1.0em;
+}
+.divReclamacoes form.filterReclamacoes legend{
+  display:none;
+}
+.tableReclamacoes{
+  float: left;
+  clear: both;
+  width: 100%;
+  margin: 15px 0 24px 0;
+}
+.tableReclamacoes table{
+  width: 99%;
+  float: left;
+  clear: both;
+  border:1px solid #cbcbcb;
+}
+.tableReclamacoes table tr th, .tableReclamacoes table tr td{
+  padding:5px 5px 5px 5px;
+  font-size: 1.2em;
+}
+.tableReclamacoes table tr th{
+  background: #818181;
+  color: #fff;
+  font-family: 'Roboto';
+  padding: 8px 8px 8px 8px;
+}
+#content .tableReclamacoes table tr th a.setaDown{
+  background: url(../img/icoSetaRecDown-off.png) no-repeat;
+  width: 12px;
+  height: 13px;
+  float: left;
+  border-bottom: none;
+  margin: 2px 0 0 0;
+}
+#content .tableReclamacoes table tr th a.setaDown.active{
+  background: url(../img/icoSetaRecDown.png) no-repeat;
+}
+.tableReclamacoes table tr th span{
+  float: left;
+  padding: 0 10px 0 0;
+}
+#content .tableReclamacoes table tr th a.setaUp{
+  background: url(../img/icoSetaRecUp-off.png) no-repeat;
+  width: 12px;
+  height: 13px;
+  float: left;
+  border-bottom: none;
+  margin: 2px 0 0 0;
+}
+#content .tableReclamacoes table tr th a.setaUp.active{
+  background: url(../img/icoSetaRecUp.png) no-repeat;
+}
+.tableReclamacoes table tr {
+  border-bottom: 1px solid #c7c7c7;
+}
+.tableReclamacoes table tr td{
+  color: #424242;
+  font-family: 'Roboto';
+  vertical-align: top;
+}
+.tableReclamacoes table tr{
+  cursor: pointer;
+}
+.tableReclamacoes table tr:hover{
+  background: #dfdfdf !important;
+}
+#content .divReclamacoes .voltarReclamacoes{
+  color: #f21c30;
+  font-family: 'Roboto';
+  font-size: 1.2em;
+  margin:22px 0 0 0;
+  padding: 0 0 20px 0;
+  width: 100%;
+  border-bottom: none;
+}
+#content .divReclamacoes .voltarReclamacoes:hover{
+  color: #f21c30 !important;
+  margin-top: 15px;
+}
+.dadosReclamacoes{
+  float: left;
+  clear: both;
+}
+.dadosReclamacoes label{
+  font-family: 'Roboto';
+  font-size: 1.2em;
+  float: left;
+  clear: both;
+  width: 100%;
+  color: #424242;
+  margin: 20px 0 0 0;
+}
+.dadosReclamacoes input{
+  height: 31px;
+  border: 1px solid #ccc;
+  float: left;
+  clear: both;
+  color: #727272;
+  font-family: 'Roboto';
+  padding: 0 0 0 10px;
+  margin-top: 5px;
+}
+.dadosReclamacoes textarea{
+  border: 1px solid #ccc;
+  width: 620px;
+  height: 199px;
+  font-family: 'Roboto' !important;
+  color: #727272;
+  font-size: 1.2em !important;
+  float: left;
+  padding: 10px 0 0 10px;
+  margin-top: 5px;
+}
+.dadosReclamacoes span{
+  float: left;
+  clear: both;
+  font-family: 'Roboto';
+  font-size: 1.2em;
+  color: #424242;
+}
+.dadosReclamacoes span.genero{
+  clear: none;
+  margin: 12px 0 0 5px;
+}
+.dadosReclamacoes span.informar{
+  clear: none;
+  margin: 12px 0 0 5px;
+}
+.dadosReclamacoes span.portador{
+  clear: none;
+  font-size: 1.0em;
+  font-weight: normal;
+  margin: 12px 0 0 5px;
+}
+.dadosReclamacoes .sindec{
+  background: #f5f5f5;
+  border:1px solid #ccc;
+  padding: 8px;
+  float: left;
+  clear: both;
+  width: 100%;
+  margin: 30px 0 15px 0;
+}
+.dadosReclamacoes .extencao{
+  background: #128a89;
+  padding: 30px;
+  color: #fff;
+  text-align: center;
+  font-family: 'Roboto';
+  font-size: 2em;
+}
+.dadosReclamacoes .nomeArquivo{
+  clear: none;
+  padding: 0 0 0 25px;
+  width: 280px;
+}
+#content .dadosReclamacoes .fileDownload{
+  clear: none;
+  padding: 8px 0 0 25px;
+  color: red !important;
+  font-family: 'Roboto';
+  border-bottom: none;
+  display: table;
+  font-size: 1.2em;
+}
+#content .dadosReclamacoes .voltarLista{
+  float:left;
+  clear: both;
+  color: red !important;
+  font-family: 'Roboto';
+  margin:30px 0 0 0;
+  font-size: 1.2em;
+  border-bottom: none;
+}
+.dadosReclamacoes .divFile{
+  float: left;
+  clear: both;
+  margin-top: 20px;
+  width: 415px;
+}
+.dadosReclamacoes .sindec label{
+  margin: 0;
+}
+.dadosReclamacoes .btnInserir{
+  cursor: pointer;
+  background: #f11c30;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 3px 10px 3px 10px;
+  display: inline;
+  margin: 0px 0 0 15px;
+  border: none;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  float: left;
+  height: 33px;
+  font-weight: 500;
+  font-family: 'Roboto';
+  font-size: 1.0em;
+  clear: none;
+}
+/*TOOLTIP*/
 #archetypes-fieldname-area{
   position: relative;
 }
@@ -1285,8 +1622,7 @@ body.template-capa_noticias_view .documentFirstHeading{
   float: left;
   position: relative;
 }
-.tooltip-area:after 
-{
+.tooltip-area:after{
   content: '';
   position: absolute;
   border-style: solid;
@@ -1675,6 +2011,71 @@ float: left
   border: none;
   cursor: pointer;
 }
+/*RECLAMACOES RECEBIDAS*/
+
+.paginationReclamacoes{
+  margin:40px 0 20px 0 !important;
+  padding:0;
+  text-align:center;
+}
+
+.paginationReclamacoes a{
+  border:1px solid #128a89;
+  background: #128a89;
+  display:inline-block !important;
+  padding:7px 13px !important;
+  color: #fff !important;
+  font-family: 'Roboto';
+  font-size: 1.4em !important;
+  border: none !important;
+}
+#content .paginationReclamacoes a:hover{
+  color: white !important;
+  background: #329fd7;
+}
+.paginationReclamacoes .current{
+  border:1px solid #ccc;
+  background:#fff;
+  display:inline-block !important;
+  color:#868686 !important;
+  padding:7px 13px !important;
+  font-size: 1.4em !important;
+    -webkit-border-top-left-radius: 0em;
+    -webkit-border-top-right-radius: 0em;
+    -moz-border-radius-topleft: 0em;
+    -moz-border-radius-topright: 0em;
+    border-top-left-radius: 0em;
+    border-top-right-radius: 0em;
+}
+.paginationReclamacoes .prev a{
+  background: url(../img/setaPagPrev.png) no-repeat 13px 12px #128a89 !important;
+  text-indent: -9999px;
+  padding-left:17px;
+  padding-right:17px;
+  float: left;
+  width: 7px;
+}
+.paginationReclamacoes .prev span{
+    text-indent: -9999px;
+    float: left;
+}
+.paginationReclamacoes .prev a:hover{
+  background: url(../img/setaPagPrev.png) no-repeat 13px 12px  #329fd7  !important;
+}
+.paginationReclamacoes .next a{
+  background: url(../img/setaPagNext.png) no-repeat 15px 12px #128a89 !important;
+  text-indent: -9999px;
+  padding-left:10px;
+  padding-right:17px;
+  float: right;
+  margin-right: 20px;
+  width: 7px;
+}
+.paginationReclamacoes .next a:hover{
+  background: url(../img/setaPagNext.png) no-repeat 15px 12px #329fd7 !important;
+}
+
+
 /*FOOTER*/
 #footer{
   float:left;
@@ -1842,15 +2243,287 @@ float: left
   #portal-header .divBusca{
     float: left;
     padding: 10px 0 0 25px;
+    position: absolute;
+    top: 99px;
+    width: 90%;
+  }
+  #portal-searchbox{
+    float: left !important;
+    width: 100%;
+  }
+  #portal-searchbox .LSBox{
+    float:left;
+    width: 100%;
   }
   #portal-searchbox .searchField{
-    width: 105px;
+    width: 80%;
+    float: left;
+    border: none;
+    height: 29px;
+  }
+  #portal-searchbox .searchButton{
+    float: left;
+    margin: 0;
+  }
+  #portal-header .social{
+    display: none;
+  }
+  #portal-header nav.menu{
+    padding:55px 0 0 0;
+  }
+  #portal-header nav.menu li{
+    clear: both;
+    display: block;
+  }
+  #portal-header nav.menu{
+    height: auto;
+  }
+  #portal-header #logoProcon a{
+    margin:1px 0 0 45px;
+    background-image: url('../img/logo.png') no-repeat;
+    background-size: 80%;
+    height: 55px;
+  }
+  .btnMenuResp{
+    display: block;
+    margin-top: 0;
+  }
+  #portal-header nav.menu{
+    display: none;
+  }
+  #portal-header nav.menu li{
+    border-top:1px solid white;
+    width: 100%;
+  }
+  #portal-header nav.menu li:hover{
+    padding: 15px 6px 15px 5px;
+    background: none !important;
+  }
+  #portal-header nav.menu li:hover a{
+    background: none !important;
+    color: white;
+    padding:6px 5px 0 5px;
+  }
+  #portal-header .divBusca{
+    display: none;
+  }
+  #portal-header #logoProcon{
+    margin: 0;
+  }
+  #portal-searchbox{
+    margin:-11px 0 0 0 !important;
+  }
+  #portal-header nav.menu li .menuNivel{
+    position: relative;
+    margin: 0 0 0 -5px;
+    top: 16px;
+    width: 100%;
+    padding: 0;
+    left: 0;
+  }
+  #content .listaHome ul li{
+    clear: both;
+    width: 100%;
+    min-height: auto;
+    margin: 0;
+    padding: 0
+  }
+  #content .listaHome ul li a{
+    text-align: left;
+    width: 130px;
+    padding: 0 0 0 0;
+    margin: 22px 0 0 27px;
+  }
+  #content .listaHome ul li span{
+    width: 84px;
+    height: 84px;
+    background-position: center 15px;
+    background-size: 60px;
+    margin-left: 30px;
+  }
+  .portaltype-collective-cover-content div.position-2{
+    margin: 0;
+    clear: both;
+  }
+  .portaltype-collective-cover-content div.position-10{
+    margin: 0;
+    clear: both;
+  }
+  .portaltype-collective-cover-content div.position-8{
+    margin-left: -98%;
+    clear: both;
+  }
+  #footer .menuFooter{
+    display:none;
+  }
+  #footer .textoFooter{
+    width: 98%;
+    margin: 0;
+    text-align: center;
+  }
+  #footer .socialFooter{
+    float: none;
+    width: 115px;
+    height: 50px;
+    margin: 0 auto;
+  }
+  #footer .footerBottom{
+    margin-top: 22px;
+  }
+  #footer .footerBottom p.copyright{
+    text-align: center;
+    width: 98%;
+  }
+  #footer .footerBottom .logoGrx{
+    float: left;
+    clear: both;
+    width: 80px;
+    left: -28px;
+    position: relative;
+    margin-left: 50%;
+    display: none;
+  }
+  #footer .footerBottom{
+    height: auto;
+  }
+  #footer .footerBottom .divProdam {
+    float: none;
+    width: 210px;
+    padding: 0;
+    margin: 0 auto;
+    clear: both;
+  }
+  .blocoNoticias .noticiasColuna{
+    width: 100%;
+  }
+  .blocoNoticias .noticiasColuna time{
+    clear: both;
+  }
+  #portal-header nav.menu li.active a{
+    color:white;
+  }
+  #portal-header nav.menu li.subMenu.active a::after{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 0;
+    height: 0;
+
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid #fff;
+    border-bottom: none;
+  }
+  #portal-header nav.menu li .menuNivel li a{
+    color: #424242 !important;
+    padding: 8px;
+    margin-top: 5px;
+    float: left;
+  }
+  .form-group{
+      border-top: 40px solid #4bafa3;
+      width: 95%;
+      border-left: 0;
+      margin-left: 0;
+      left: 0;
+      padding:15px 0 30px 12px;
+  }
+  .form-group:before{
+    content: 'Etapa 1';
+    position: absolute;
+    left: 50%;
+    top: -30px;
+    font-size: 1.8em;
+    color: #fff;
+    font-family: 'Roboto';
+    font-weight: normal;
+    width: 100%;
+    float: left;
+    z-index: 5;
+  }
+  .pfg-form.formid-formularios{
+    border-top: 40px solid #4bafa3;
+      width: 95%;
+      border-left: 0;
+      margin-left: 0;
+      left: 0;
+      padding:15px 0 30px 12px;
+  }
+  .pfg-form.formid-formularios:before{
+    content: 'Etapa 2';
+    position: absolute;
+    left: 2%;
+    top: -30px;
+    font-size: 1.8em;
+    color: #fff;
+    font-family: 'Roboto';
+    font-weight: normal;
+    width: 100%;
+    float: left;
+    z-index: 5;
+  }
+  div.width-full{
+    width: auto !important;
+  }
+  .form-group input{
+    width: 92%;
+  }
+  .form-group .btnBuscar{
+    margin-left: 50%;
+    left: -45px;
+    position: relative;
+  }
+  #portal-columns{
+    width: 100%;
+  }
+  #portal-column-content{
+    margin-left: 0;
+    left: 0;
+  }
+  .divRedireciona{
+    width: 100%;
+    padding-left: 10px;
+  }
+  .divRedireciona .linkRedireciona{
+    margin:0;
+  }
+  .divRedireciona .imgConsumidor{
+    margin: 0;
+  }
+  .divProtocolo{
+    margin: 0;
+  }
+  #content .divRedireciona p{
+    width: 300px;
+    padding: 0 0 0 20px;
+  }
+  .divAccordeon h3{
+    font-size: 0.8em;
+    padding: 8px 30px 1px 10px;
+  }
+  .divAccordeon{
+    margin: 41px 0 10px 0;
+  }
+  .destaqueHome{
+    width: 100%;
+  }
+  .destaqueHome .textoDestaque{
+    width: auto;
+  }
+  .divNoticias {
+    width: 82%;
+    height: 81px;
+    padding: 0 20px 0 0;
   }
 }
 
 @media only screen and (max-width : 500px) {
   .wrap{
     width:100%;
+  }
+  .blocoNoticias .noticiasColuna .firstItem .left{
+    width: 90%;
   }
   #footer .menuFooter > ul > li{
     clear: both;

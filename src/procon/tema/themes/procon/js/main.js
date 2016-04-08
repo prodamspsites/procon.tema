@@ -30,7 +30,8 @@
         $(this).toggleClass('active');
         $(this).next().slideToggle();
     });
-
+    //TABLEADMIN ZEBRA
+    $( ".tableReclamacoes table tr:odd" ).css( "background-color", "#f5f5f5" );
     //OCULTA FORMULARIO CONSUMIDOR
 
     if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('section-consumidor')) {
@@ -306,5 +307,56 @@
             $.cookie('librasCookie',$(this).attr('id'),{ path: '/' });
 
         });
+
+        // DUVIDAS PERGUNTA
+        $(document).on('change','body.template-duvidas_view input[type=radio][class=duvida_util]',function(){
+            url = portal_url + '/@@duvidas_salvar';
+
+            var util = $(this).val();
+            var parent_div = $(this).parent().parent().parent().parent().parent();
+            var plone_id = $("h3",parent_div).data('id');
+            var categoria = $("h3",parent_div).data('categoria');
+            console.log(categoria);
+            var pergunta = $("h3",parent_div).text();
+            var usuario = $("#form_usuario_duvida",parent_div).val()
+            var resposta = $(".textoAccordeon span.resposta_duvida",parent_div).text();
+            if(util == 'sim'){
+              util = true
+            }else{
+              util = false;
+            }
+
+            if (this.value == 'sim') {
+              $(".replica").hide();
+              $.post( url,
+              {
+                  util: util,
+                  plone_id: plone_id,
+                  pergunta: pergunta,
+                  resposta: resposta,
+                  usuario:usuario,
+                  categoria:categoria
+              })
+            }
+            else if (this.value == 'nao') {
+              $(".replica").show();
+              $(document).on('click', "#enviarDuvida", function(e){
+                e.preventDefault();
+                var assunto = $("#assunto_opcao option:selected",parent_div).val();
+                var mensagem = $("textarea",parent_div).val();
+                $.post( url,
+                {
+                      util: util,
+                      plone_id: plone_id,
+                      pergunta: pergunta,
+                      resposta: resposta,
+                      assunto: assunto,
+                      mensagem: mensagem,
+                      usuario:usuario,
+                      categoria:categoria
+                })
+              });
+            }
+        })
   })
 })(jQuery);

@@ -29,6 +29,7 @@
       <header id="portal-header">
         <!--WRAP HEADER-->
         <div class="wrap">
+          <a href="javascript:void(0);" title="Menu" class="btnMenuResp"></a>
           <div id="logoProcon"></div>
           <div class="divBusca"></div>
           <div class="social"></div>
@@ -86,7 +87,242 @@
                     </span>
                 </div>
 
-              <div id="content"></div>
+              <div id="content">
+
+
+                <!--RECLAMACOES-->
+                <div class="wrapAdmin">
+                  <div class="divReclamacoes">
+                    <h1>Reclamações recebidas</h1>
+                    <span class="totalReclamacoes">Total: 5488</span>
+                    <form class="filterReclamacoes">
+                      <fieldset>
+                        <legend>Reclamações recebidas</legend>
+                        <label>Filtrar por:</label>
+                        <select class="filtro">
+                          <option>Nome</option>
+                        </select>
+                        <input type="text" class="nome" placeholder="Digite o nome"/>
+                        <input type="submit" value="FILTRAR" class="btnFiltrar">
+                        <label class="exibir">Exibir</label>
+                        <select class="registros">
+                          <option>20</option>
+                        </select>
+                        <span class="registros">registros por página</span>
+                      </fieldset>
+                    </form>
+
+                    <div class="tableReclamacoes">
+                      <table>
+                        <tr>
+                          <th width="12%">
+                            <span>Data</span>
+                            <a href="#" title="ordenar mais recente" class="setaDown active"></a>
+                            <a href="#" title="ordenar mais recente" class="setaUp"></a>
+                          </th>
+                          <th width="25%">
+                            <span>Tipo de cadastro</span>
+                            <a href="#" title="ordenar mais recente" class="setaDown active"></a>
+                            <a href="#" title="ordenar mais recente" class="setaUp"></a>
+                          </th>
+                          <th width="13%">
+                            <span>Protoloco</span>
+                            <a href="#" title="ordenar mais recente" class="setaDown active"></a>
+                            <a href="#" title="ordenar mais recente" class="setaUp"></a>
+                          </th>
+                          <th width="35%">
+                            <span>Nome</span>
+                            <a href="#" title="ordenar mais recente" class="setaDown active"></a>
+                            <a href="#" title="ordenar mais recente" class="setaUp active"></a>
+                          </th>
+                          <th width="15%">
+                            <span>SINDEC</span>
+                            <a href="#" title="ordenar mais recente" class="setaDown active"></a>
+                            <a href="#" title="ordenar mais recente" class="setaUp active"></a>
+                          </th>
+                        </tr>
+                        <tr>
+                          <td>17/02/2016</td>
+                          <td>Pessoa Física</td>
+                          <td>00000000</td>
+                          <td>José da Silva Pereira os Sanos Rocha Azevedo dos Santos Vieira Marx Inácio</td>
+                          <td><input type="checkbox" value="cadastro" /> Cadastrado</td>
+                        </tr>
+                        <tr>
+                          <td>17/02/2016</td>
+                          <td>Pessoa Física</td>
+                          <td>00000000</td>
+                          <td>José da Silva Pereira os Sanos Rocha Azevedo</td>
+                          <td><input type="checkbox" value="cadastro" /> Cadastrado</td>
+                        </tr>
+                        <tr>
+                          <td>17/02/2016</td>
+                          <td>Pessoa Física</td>
+                          <td>00000000</td>
+                          <td>José da Silva Pereira os Sanos Rocha Azevedo Inácio</td>
+                          <td><input type="checkbox" value="cadastro" /> Cadastrado</td>
+                        </tr>
+                        <tr>
+                          <td>17/02/2016</td>
+                          <td>Pessoa Física</td>
+                          <td>00000000</td>
+                          <td>José da Silva Pereira os Sanos Rocha Azevedo Santos Vieira Marx Inácio</td>
+                          <td><input type="checkbox" value="cadastro" /> Cadastrado</td>
+                        </tr>
+                      </table>
+                    </div>
+
+                    <div class="paginationReclamacoes">
+                      <span class="next">
+                          <a href="#">Próximos 10 itens»
+                          </a>
+                      </span>
+                      <span class="prev">
+                          <a href="#">Próximos 10 itens»
+                          </a>
+                      </span>
+                      <span class="current">1</span>
+                      <a href="#">2</a>
+                      <a href="#">3</a>
+                      <a href="#">4</a>
+                      <a href="#">5</a>
+                      <a href="#">6</a>
+                    </div>
+
+                    <a href="#" title="Voltar à lista de reclamações" class="voltarReclamacoes">Voltar à lista de reclamações</a>
+
+                    <div class="tableReclamacoes">
+                      <table>
+                        <tr>
+                          <th width="12%">
+                            <span>Data</span>
+                            <a href="#" title="ordenar mais recente" class="setaDown active"></a>
+                            <a href="#" title="ordenar mais recente" class="setaUp"></a>
+                          </th>
+                          <th width="25%">
+                            <span>Tipo de cadastro</span>
+                            <a href="#" title="ordenar mais recente" class="setaDown active"></a>
+                            <a href="#" title="ordenar mais recente" class="setaUp"></a>
+                          </th>
+                          <th width="13%">
+                            <span>Protoloco</span>
+                            <a href="#" title="ordenar mais recente" class="setaDown active"></a>
+                            <a href="#" title="ordenar mais recente" class="setaUp"></a>
+                          </th>
+                          <th width="35%">
+                            <span>Nome</span>
+                            <a href="#" title="ordenar mais recente" class="setaDown active"></a>
+                            <a href="#" title="ordenar mais recente" class="setaUp active"></a>
+                          </th>
+                          <th width="15%">
+                            <span>SINDEC</span>
+                            <a href="#" title="ordenar mais recente" class="setaDown active"></a>
+                            <a href="#" title="ordenar mais recente" class="setaUp active"></a>
+                          </th>
+                        </tr>
+                        <tr>
+                          <td>17/02/2016</td>
+                          <td>Pessoa Física</td>
+                          <td>00000000</td>
+                          <td>José da Silva Pereira os Sanos Rocha Azevedo dos Santos Vieira Marx Inácio</td>
+                          <td><input type="checkbox" value="cadastro" /> Cadastrado</td>
+                        </tr>
+                      </table>
+
+                      <div class="dadosReclamacoes">
+
+                        <label>Protocolo Consumidor.gov.br</label>
+                        <input type="text" value="0123654587-970" readonly />
+
+                        <label>CPF*</label>
+                        <input type="text" value="32105857741" readonly />
+
+                        <label>Nome completo *</label>
+                        <input type="text" value="Jesenilson Reclamildo da Silva" readonly size="75" />
+
+                        <label>Data de nascimento *</label>
+                        <input type="text" value="04/08/1982" readonly />
+
+                        <label>Gênero *</label>
+                        <input type="radio"> <span class="genero">Feminino</span> <input type="radio"> <span class="genero">Masculino</span>
+
+                        <label><input type="checkbox"> <span class="portador">Portador de necessidades especiais </span></label>
+
+                        <label>Telefone *</label>
+                        <input type="text" value="11 31596655" readonly />
+
+                        <label>Email *</label>
+                        <input type="text" value="reclamildo@bol.com.br" readonly  size="75" />
+
+                        <label>CEP *</label>
+                        <input type="text" value="01046-010" readonly />
+
+                        <label>Endereço *</label>
+                        <input type="text" value="Avenida Ipiranga" readonly  size="75" />
+
+                        <label>Número *</label>
+                        <input type="text" value="210" readonly />
+
+                        <label>Complemento *</label>
+                        <input type="text" value="21" readonly />
+
+                        <label>Bairro *</label>
+                        <input type="text" value="21" readonly />
+
+                        <label>UF *</label>
+                        <input type="text" value="21" readonly  size="5" />
+
+                        <label>Cidade *</label>
+                        <input type="text" value="21" readonly />
+
+                        <label>Deseja informar a empresa? *</label>
+                        <input type="radio"> <span class="informar">Sim</span> <input type="radio"> <span class="informar">Não</span>
+
+                        <label>Empresa *</label>
+                        <input type="text" value="ACME Corporações" readonly />
+
+                        <label>Data da compra ou assinatura de contrato*</label>
+                        <input type="text" value="04/08/2016" readonly />
+
+                        <label>Produto ou serviço contratado</label>
+                        <input type="text" value="" readonly />
+
+                        <label>Área *</label>
+                        <input type="text" value="21" readonly />
+
+                        <label>Digite a sua reclamação</label>
+                        <textarea readonly>In sem justo, commodo ut suscipit at, pharetra vitae, orci. Duis sapien nunc etil lopi commodo interdum suscipit, sollicitudin et, dolor. Pellentesque habitant morbitang tristique senectus et netus et malesuada fames ac turpis egestas. Aliquam id quas dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per jung el inceptos hymenaeos. Mauris dictum facilisis augue. Fusce tellus. Pellentesque on arcu. Maecenas fermentum, sem in pharetra pellentesque, velit turpis volutpatil ante, in pharetra metus odio a lectus. Sed elit dui, pellentesque a, faucibus velurim interdum noc.</textarea>
+
+                        <label>Arquivo(s) anexado(s)</label>
+
+                        <div class="divFile">
+                          <span class="extencao">PDF</span>
+                          <span class="nomeArquivo">Contrato de prestalçao se serviços</span>
+                          <a href="#" title="Download" class="fileDownload">Download</a>
+                        </div>
+
+                        <div class="divFile">
+                          <span class="extencao">PDF</span>
+                          <span class="nomeArquivo">Contrato de prestalçao se serviços</span>
+                          <a href="#" title="Download" class="fileDownload">Download</a>
+                        </div>
+
+                        <div class="sindec">
+                            <label>Insira o FA (SINDEC)</label>
+                            <input type="text">
+                            <input type="submit" class="btnInserir">
+                        </div>
+                        <a href="#" title="Voltar à lista de reclamações" class="voltarLista">Voltar à lista de reclamações</a>
+
+                      </div>
+                    </div>
+
+
+                  </div>
+                </div>
+                <!--RECLAMACOES-->
+
+              </div>
             </div>
           </div>
           <!-- Column 2-->
