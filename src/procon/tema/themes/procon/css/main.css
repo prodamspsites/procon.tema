@@ -625,7 +625,7 @@ div.managePortletsLink, a.managePortletsFallback{
 #portal-breadcrumbs a{
   color:#f21c30;
   font-family: 'Roboto', Arial;
-  border-bottom: 1px solid #f21c30 !important;
+  font-weight: 500;
 }
 #portal-breadcrumbs span{
   padding: 0 0 0 5px;
@@ -731,8 +731,8 @@ body.userrole-authenticated .listaHome{
     width: 100%;
     background-position: 40px 0;
     border-bottom: none;
-    padding: 230px 0 0 0;
-    margin: -323px 0 0 5px;
+    padding: 0 0 0 0;
+    margin: -98px 0 0 5px;
     font-weight: 500;
     line-height: 1.5em;
 }
@@ -884,15 +884,31 @@ border-radius: 15px;
   background: #ffd7d7;
   color: red !important;
 }
-.blocoNoticias{
+body.template-capa_noticias_view #content-core{
   float:left;
   clear: both;
   margin: 0 0 20px 0;
 }
-.blocoNoticias > div{
+body.template-capa_noticias_view .documentFirstHeading{
+  font-weight: 400;
+  font-family: 'Roboto';
+  color: #424242;
+  font-size: 2.5em;
+  padding: 0 0 10px 0;
+  margin-top: 30px !important;
+}
+.blocoNoticias .left{
+  float: left;
+  margin-right: 15px;
+}
+.blocoNoticias{
   border-top: 1px solid #eee;
   margin:18px 0 0 0;
   padding: 18px 0 0 0;
+}
+.blocoNoticias p.description{
+  font-family: 'Roboto';
+  color: #424242 !important;
 }
 #content .blocoNoticias div h2 a{
   color:#f21c30;
@@ -902,6 +918,7 @@ border-radius: 15px;
 }
 .blocoNoticias > div time{
   color: #868686;
+  font-size: 1.2em;
 }
 .blocoNoticias .noticiasColuna{
   float: left;
