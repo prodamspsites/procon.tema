@@ -1169,12 +1169,22 @@ body.template-capa_noticias_view .documentFirstHeading{
 
 
 .listingBar{
-  margin:20px 0 0 0 !important;
+  float:left;
+  width:100%;
+  clear:left;
+  margin:50px 0;
+}
+#content .listingBar ul{
+  margin:0;
   padding:0;
   text-align:center;
 }
+#content .listingBar ul li{
+    display:inline-block;
+    float: none;
+}
 
-.listingBar a{
+#content .listingBar a{
   border:1px solid #128a89;
   background: #128a89;
   display:inline-block !important;
@@ -1184,15 +1194,16 @@ body.template-capa_noticias_view .documentFirstHeading{
   font-size: 1.4em !important;
   border: none !important;
 }
-#content .listingBar a:hover{
-  color: white !important;
+#content .listingBar ul li:hover a{
+  background:#205c90;
+  color: #fff !important;
 }
-.listingBar a:hover,.listingBar .current{
+.listingBar .current{
   border:1px solid #ccc;
   background:#fff;
   display:inline-block !important;
   color:#868686 !important;
-  padding:7px 13px !important;
+  padding:5px 11px !important;
   font-size: 1.4em !important;
     -webkit-border-top-left-radius: 0em;
     -webkit-border-top-right-radius: 0em;
