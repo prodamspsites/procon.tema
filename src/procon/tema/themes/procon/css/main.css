@@ -1166,13 +1166,14 @@ body.template-capa_noticias_view .documentFirstHeading{
 }
 /* Pagination */
 /* ---------------------------------------------------------- */
-
-
+.pagination {
+  display: none;
+}
 .listingBar{
   float:left;
   width:100%;
   clear:left;
-  margin:50px 0;
+  margin:50px 0 !important;
 }
 #content .listingBar ul{
   margin:0;
