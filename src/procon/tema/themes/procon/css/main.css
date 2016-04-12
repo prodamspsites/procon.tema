@@ -71,11 +71,14 @@ body{
   height: 71px;
   background: url('../img/logo.png') no-repeat;
   text-indent: -9999px;
-  margin:5px 0 0 0;
+  margin:5px 0 0 -35px;
 }
 #portal-header .divBusca{
   float:left;
-  padding: 0 0 0 180px;
+  padding: 0 0 0 119px;
+}
+#portal-header .wrap{
+  width:943px;
 }
 #portal-searchbox .searchField{
   border:1px solid #868686;
@@ -141,7 +144,7 @@ body{
   height: 60px;
   background: url('../img/logoNegocios.png') no-repeat;
   text-indent: -9999px;
-  margin:12px 0 0 0;
+  margin:12px 25px 0 0;
 }
 
 /*MENU*/
@@ -658,7 +661,7 @@ span.linhaAcessibilidade{
 }
 .acessibilidade ul{
   float:right;
-  margin:5px 0 0 0;
+  margin:5px 59px 0 0;
   padding: 0;
 }
 .acessibilidade ul li{
@@ -713,7 +716,7 @@ body.userrole-authenticated .listaHome{
 }
 .listaHome ul li{
   display: inline;
-  width: 25%;
+  width: 23.5%;
   float: left;
   margin: 0 0 0 0;
   padding: 20px 0 15px 0;
@@ -748,7 +751,7 @@ border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
-  margin: 0 0 18px 6px;
+  margin: 0 0 18px 0;
 }
 .listaHome ul li a.item1{
   margin-left: -18px;
@@ -761,7 +764,7 @@ border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
-  margin: 0 0 18px 17px;
+  margin: 0 0 18px 15px;
 }
 .listaHome ul li a.item2{
   margin-left: -8px;
@@ -774,7 +777,7 @@ border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
-  margin: 0 0 18px 25px;
+  margin: 0 0 18px 20px;
 }
 .listaHome ul li a.item3{
   margin-left: 
@@ -787,7 +790,7 @@ border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
-  margin: 0 0 18px 36px;
+  margin: 0 0 18px 30px;
 }
 .listaHome ul li a.item4{
   margin-left: 12px;
