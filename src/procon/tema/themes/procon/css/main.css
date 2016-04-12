@@ -732,7 +732,7 @@ body.userrole-authenticated .listaHome{
     background-position: 40px 0;
     border-bottom: none;
     padding: 0 0 0 0;
-    margin: -98px 0 0 5px;
+    margin-top: -98px;
     font-weight: 500;
     line-height: 1.5em;
 }
@@ -740,7 +740,7 @@ body.userrole-authenticated .listaHome{
   color: #fff !important;
 }
 
-.listaHome ul li .item1{
+.listaHome ul li span.item1{
   background:url(../img/icoRec.png) no-repeat center 16px #710e0f;
 -webkit-border-radius: 15px;
 -moz-border-radius: 15px;
@@ -748,9 +748,12 @@ border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
-  margin: 0 0 18px 30px;
+  margin: 0 0 18px 6px;
 }
-.listaHome ul li .item2{
+.listaHome ul li a.item1{
+  margin-left: -18px;
+}
+.listaHome ul li span.item2{
   background:url(../img/icoDuv.png) no-repeat center 16px #710e0f;
 -webkit-border-radius: 15px;
 -moz-border-radius: 15px;
@@ -758,9 +761,12 @@ border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
-  margin: 0 0 18px 30px;
+  margin: 0 0 18px 17px;
 }
-.listaHome ul li .item3{
+.listaHome ul li a.item2{
+  margin-left: -8px;
+}
+.listaHome ul li span.item3{
   background:url(../img/icoFund.png) no-repeat center 16px #710e0f;
 -webkit-border-radius: 15px;
 -moz-border-radius: 15px;
@@ -768,9 +774,12 @@ border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
-  margin: 0 0 18px 30px;
+  margin: 0 0 18px 25px;
 }
-.listaHome ul li .item4{
+.listaHome ul li a.item3{
+  margin-left: 
+}
+.listaHome ul li span.item4{
   background:url(../img/icoDenuncia.png) no-repeat center 16px #710e0f;
 -webkit-border-radius: 15px;
 -moz-border-radius: 15px;
@@ -778,7 +787,10 @@ border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
-  margin: 0 0 18px 30px;
+  margin: 0 0 18px 36px;
+}
+.listaHome ul li a.item4{
+  margin-left: 12px;
 }
 .destaqueHome{
   float:left;
