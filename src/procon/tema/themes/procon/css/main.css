@@ -619,33 +619,21 @@ div.managePortletsLink, a.managePortletsFallback{
   background: none !important;
 }
 /*BREAD CRUMB*/
-#portal-breadcrumbs,
-#breadcrumbs{
+#portal-breadcrumbs{
   margin: 20px 0 0 0;
 }
-#breadcrumbs{
-  margin-bottom: 20px;
-}
-#portal-breadcrumbs a,
-#breadcrumbs a,
-#content #breadcrumbs a:hover{
-  color:#f21c30 !important;
+#portal-breadcrumbs a{
+  color:#f21c30;
   font-family: 'Roboto', Arial;
   font-weight: 500;
 }
-#portal-breadcrumbs span,
-#breadcrumbs span{
+#portal-breadcrumbs span{
   padding: 0 0 0 5px;
 }
-#portal-breadcrumbs span.breadcrumbSeparator,
-.breadcrumbs span.breadcrumbSeparator{
+#portal-breadcrumbs span.breadcrumbSeparator{
   padding: 0 0 0 9px;
 }
-body.template-busca #portal-breadcrumbs{
-  display: none;
-}
-#portal-breadcrumbs,
-#breadcrumbs{
+#portal-breadcrumbs{
   font-family: 'Roboto', Arial;
   color: #868686;
 }
