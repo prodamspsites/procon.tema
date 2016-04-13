@@ -24,7 +24,7 @@
         <replace css:theme=".logoNegocios" css:content=".logoNegocios" />
         <replace css:theme="#footer" css:content="#footer" />
         <replace css:theme=".menu" css:content=".menu" />
-        <drop css:content=".socialShare" css:if-content="body.portaltype-collective-cover-content,body.template-folder_listing, body.template-folder_contents, body.portaltype-formfolder, body.template-capa_noticias_view" />
+        <drop css:content=".socialShare" css:if-content="body.portaltype-collective-cover-content,body.template-folder_listing, body.template-folder_contents, body.portaltype-formfolder, body.template-capa_noticias_view, body.template-capa_duvidas_view" />
         <drop css:content=".documentByLine" />
     </rules>
 
