@@ -156,11 +156,35 @@
       type: 'post',
       success:function(data){
 
+        // expressao regular para tratar acentos
+        var tirarAcentos = function(newStringComAcento){
+          var string = newStringComAcento;
+          var mapaAcentosHex = {
+            a : /[\xE0-\xE6-Á]/g,
+        		e : /[\xE8-\xEB]/g,
+        		i : /[\xEC-\xEF]/g,
+        		o : /[\xF2-\xF6]/g,
+        		u : /[\xF9-\xFC]/g,
+        		c : /\xE7/g,
+        		n : /\xF1/g
+          }
+          for ( var letra in mapaAcentosHex ) {
+        		var expressaoRegular = mapaAcentosHex[letra];
+        		string = string.replace( expressaoRegular, letra );
+        	}
+        	return string;
+        }
+
         var data_filtered = [];
         $.each(data,function(key,value){
-
-          data_filtered.push({'label': value.titulo, 'desc':value.categoria, 'url':value.url});
+          data_filtered.push(
+            {'label': tirarAcentos(value.titulo),
+             'desc':value.categoria,
+             'url':value.url,
+             'original': value.titulo
+            });
         });
+
         $( "#project" ).autocomplete({
               minLength: 0,
               source: data_filtered,
@@ -198,10 +222,11 @@
         })
         .autocomplete( "instance" )._renderItem = function( ul, item ) {
           return $( "<li>" )
-            .append( "<a href='javascript:void(0);' title='"+item.label+"'><b>" + item.label + "</b><br>" + item.desc + "</a>" )
+            .append( "<a href='javascript:void(0);' title='"+item.original+"'><b>" + item.original + "</b><br>" + item.desc + "</a>" )
             .appendTo( ul );
         };
         $.ui.autocomplete.filter = function (array, term) {
+          term = tirarAcentos(term);
           var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
           return $.grep(data_filtered, function (value) {
             return matcher.test(value.label || value.value || value);
