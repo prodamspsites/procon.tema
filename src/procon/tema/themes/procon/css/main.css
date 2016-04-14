@@ -202,7 +202,7 @@ body{
     padding:12px 0px 0 5px;
 }
 #portal-header nav.menu li:hover a{
-  color: #f21c30;
+  color: #3f393b;
       background: #fff;
     -webkit-border-top-left-radius: 3px;
     -webkit-border-top-right-radius: 3px;
@@ -228,7 +228,7 @@ body{
   padding: 8px;
   float:left;
   width: 194px;
-  background:#ffd7d7;
+  background:#cdcdcd;
 -webkit-border-radius: 0px;
 -moz-border-radius: 0px;
 border-radius: 0px;
@@ -241,10 +241,10 @@ border-radius: 0px;
 }
 #portal-header nav.menu li .menuNivel li a:hover{
   color:#fff;
-  background: #f21c30;
+  background: #3f393b;
 }
 #portal-header nav.menu li .menuNivel{
-  background: #ffd7d7;
+  background: #cdcdcd;
   width: 210px;
   -webkit-box-shadow: 6px 7px 38px -11px rgba(0,0,0,0.75);
   -moz-box-shadow: 6px 7px 38px -11px rgba(0,0,0,0.75);
@@ -254,7 +254,7 @@ border-radius: 0px;
   top: 50px;
   left: 35px;
   display: none;
-  border-top: 1px solid #f21c30;
+  border-top: 1px solid #3f393b;
 }
 #portal-header nav.menu li.subMenu a::after{
   content: "";
@@ -2263,6 +2263,9 @@ float: left
   .wrap{
     width:100%;
   }
+  #portal-header nav.menu ul{
+    margin-left: 0;
+  }
   #footer .logoFooter a{
     width: 100%;
     background:url(../img/logoFooter.png) no-repeat center;
@@ -2274,7 +2277,7 @@ float: left
     float: left;
     padding: 10px 0 0 25px;
     position: absolute;
-    top: 99px;
+    top: 77px;
     width: 90%;
   }
   #portal-searchbox{
@@ -2545,6 +2548,15 @@ float: left
     width: 82%;
     height: 81px;
     padding: 0 20px 0 0;
+  }
+  span.linhaAcessibilidade{
+    display: none;
+  }
+  #content .listaHome ul li a{
+    color: #710e0f;
+  }
+  #content .listaHome ul li a:hover{
+    color: #710e0f !important;
   }
 }
 

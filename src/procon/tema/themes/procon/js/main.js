@@ -7,6 +7,21 @@
                 $(this).attr('target', '_blank')
             }
         });
+    //MENU RESP
+     var desativaLnkMenu = false;
+     $('.btnMenuResp').bind('click', function() {
+         $(this).toggleClass('active');
+         $('#portal-header nav.menu').slideToggle();
+         $('#portal-header .divBusca').toggle();
+         desativaLnkMenu = true;
+         if (desativaLnkMenu == true){
+             $('.subMenu a').bind('click', function() {
+                 $(this).parent().find('.menuNivel').slideToggle();
+                 $(this).parent().toggleClass('active');
+                 return false;
+             });
+        }
+    });
 
     //MASCARA
            $("#data-de-nascimento").mask("99/99/9999");
@@ -15,14 +30,16 @@
            $("#cep").mask("99999-999");
            $("#cpf").mask("999.999.999-99");
     //MENU HOVER
-    $(".menu .subMenu a").mouseenter(function () {
-        $(this).parent().find('ul.menuNivel').show();
-        $(this).addClass('active');
-    });
-    $(".menu .subMenu").mouseleave(function () {
-        $(this).parent().find('ul.menuNivel').hide();
-        $(this).removeClass('active');
-     });
+    if ($(window).width() >= 900){
+             $(".menu .subMenu a").mouseenter(function () {
+                 $(this).parent().find('ul.menuNivel').show();
+                 $(this).addClass('active');
+             });
+             $(".menu .subMenu").mouseleave(function () {
+                 $(this).parent().find('ul.menuNivel').hide();
+                 $(this).removeClass('active');
+             });
+        }
 
     //ACCORDEON
     $('.divAccordeon .textoAccordeon').hide();
