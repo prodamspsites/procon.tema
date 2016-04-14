@@ -154,6 +154,9 @@ body{
   height: 48px;
   background: #3f393b;
 }
+#portal-header nav.menu ul{
+  margin:0 0 0 -30px;
+}
 #portal-header nav.menu li{
   display: inline;
   float:left;
@@ -249,7 +252,7 @@ border-radius: 0px;
   float: left;
   position: absolute;
   top: 50px;
-  left: 0;
+  left: 35px;
   display: none;
   border-top: 1px solid #f21c30;
 }
@@ -712,7 +715,7 @@ body.userrole-authenticated .listaHome{
   width: 100%;
   float: left;
   margin: 20px 0 35px 0;
-  margin-left: 0 !important;
+  margin-left: -5px !important;
 }
 .listaHome ul li{
   display: inline;
@@ -2195,7 +2198,7 @@ float: left
   float:left;
 }
 #footer .menuFooter > ul > li{
-  width:23%;
+  width:19.5%;
   display: inline;
   float:left;
   padding: 10px 0 0 0;
