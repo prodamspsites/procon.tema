@@ -71,11 +71,14 @@ body{
   height: 71px;
   background: url('../img/logo.png') no-repeat;
   text-indent: -9999px;
-  margin:5px 0 0 0;
+  margin:5px 0 0 -35px;
 }
 #portal-header .divBusca{
   float:left;
-  padding: 0 0 0 180px;
+  padding: 0 0 0 119px;
+}
+#portal-header .wrap{
+  width:943px;
 }
 #portal-searchbox .searchField{
   border:1px solid #868686;
@@ -141,7 +144,7 @@ body{
   height: 60px;
   background: url('../img/logoNegocios.png') no-repeat;
   text-indent: -9999px;
-  margin:12px 0 0 0;
+  margin:12px 25px 0 0;
 }
 
 /*MENU*/
@@ -150,6 +153,9 @@ body{
   width: 100%;
   height: 48px;
   background: #3f393b;
+}
+#portal-header nav.menu ul{
+  margin:0 0 0 -30px;
 }
 #portal-header nav.menu li{
   display: inline;
@@ -196,7 +202,7 @@ body{
     padding:12px 0px 0 5px;
 }
 #portal-header nav.menu li:hover a{
-  color: #f21c30;
+  color: #3f393b;
       background: #fff;
     -webkit-border-top-left-radius: 3px;
     -webkit-border-top-right-radius: 3px;
@@ -222,7 +228,7 @@ body{
   padding: 8px;
   float:left;
   width: 194px;
-  background:#ffd7d7;
+  background:#cdcdcd;
 -webkit-border-radius: 0px;
 -moz-border-radius: 0px;
 border-radius: 0px;
@@ -235,10 +241,10 @@ border-radius: 0px;
 }
 #portal-header nav.menu li .menuNivel li a:hover{
   color:#fff;
-  background: #f21c30;
+  background: #3f393b;
 }
 #portal-header nav.menu li .menuNivel{
-  background: #ffd7d7;
+  background: #cdcdcd;
   width: 210px;
   -webkit-box-shadow: 6px 7px 38px -11px rgba(0,0,0,0.75);
   -moz-box-shadow: 6px 7px 38px -11px rgba(0,0,0,0.75);
@@ -246,9 +252,9 @@ border-radius: 0px;
   float: left;
   position: absolute;
   top: 50px;
-  left: 0;
+  left: 35px;
   display: none;
-  border-top: 1px solid #f21c30;
+  border-top: 1px solid #3f393b;
 }
 #portal-header nav.menu li.subMenu a::after{
   content: "";
@@ -659,7 +665,7 @@ span.linhaAcessibilidade{
 }
 .acessibilidade ul{
   float:right;
-  margin:5px 0 0 0;
+  margin:5px 59px 0 0;
   padding: 0;
 }
 .acessibilidade ul li{
@@ -699,6 +705,9 @@ span.linhaAcessibilidade{
 body.userrole-authenticated .listaHome{
   margin-top: 5px;
 }
+body.section-procon{
+  background: url(../img/bgHome.jpg) repeat-x;
+}
 .listaHome{
   float:left;
   background: #eee;
@@ -710,11 +719,11 @@ body.userrole-authenticated .listaHome{
   width: 100%;
   float: left;
   margin: 20px 0 35px 0;
-  margin-left: 0 !important;
+  margin-left: -5px !important;
 }
 .listaHome ul li{
   display: inline;
-  width: 25%;
+  width: 23.5%;
   float: left;
   margin: 0 0 0 0;
   padding: 20px 0 15px 0;
@@ -749,7 +758,7 @@ border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
-  margin: 0 0 18px 6px;
+  margin: 0 0 18px 0;
 }
 .listaHome ul li a.item1{
   margin-left: -18px;
@@ -762,7 +771,7 @@ border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
-  margin: 0 0 18px 17px;
+  margin: 0 0 18px 15px;
 }
 .listaHome ul li a.item2{
   margin-left: -8px;
@@ -775,7 +784,7 @@ border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
-  margin: 0 0 18px 25px;
+  margin: 0 0 18px 20px;
 }
 .listaHome ul li a.item3{
   margin-left: 
@@ -788,7 +797,7 @@ border-radius: 15px;
   float: left;
   width: 200px;
   height: 200px;
-  margin: 0 0 18px 36px;
+  margin: 0 0 18px 30px;
 }
 .listaHome ul li a.item4{
   margin-left: 12px;
@@ -1274,6 +1283,9 @@ body.template-capa_noticias_view .documentFirstHeading{
   border-bottom: 1px solid transparent;
   border-right: 1px solid transparent;
 }
+.active.form-group::before{
+    font-size: 1em;
+}
 .form-group.active:before{
     top: 12px;
     font-size: 2.8em;
@@ -1742,6 +1754,10 @@ body.template-capa_noticias_view .documentFirstHeading{
 #content .formDuvidas #area{
   float:left;
 }
+#parent-fieldname-description{
+  float: left;
+  clear: both;
+}
 #content .formDuvidas .btnTooltip{
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -2193,7 +2209,7 @@ float: left
   float:left;
 }
 #footer .menuFooter > ul > li{
-  width:23%;
+  width:19.5%;
   display: inline;
   float:left;
   padding: 10px 0 0 0;
@@ -2258,6 +2274,12 @@ float: left
   .wrap{
     width:100%;
   }
+  body.section-procon{
+    background: none;
+  }
+  #portal-header nav.menu ul{
+    margin-left: 0;
+  }
   #footer .logoFooter a{
     width: 100%;
     background:url(../img/logoFooter.png) no-repeat center;
@@ -2269,7 +2291,7 @@ float: left
     float: left;
     padding: 10px 0 0 25px;
     position: absolute;
-    top: 99px;
+    top: 77px;
     width: 90%;
   }
   #portal-searchbox{
@@ -2540,6 +2562,15 @@ float: left
     width: 82%;
     height: 81px;
     padding: 0 20px 0 0;
+  }
+  span.linhaAcessibilidade{
+    display: none;
+  }
+  #content .listaHome ul li a{
+    color: #710e0f;
+  }
+  #content .listaHome ul li a:hover{
+    color: #710e0f !important;
   }
 }
 
