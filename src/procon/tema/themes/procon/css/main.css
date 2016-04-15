@@ -704,6 +704,9 @@ span.linhaAcessibilidade{
 body.userrole-authenticated .listaHome{
   margin-top: 5px;
 }
+body.section-procon{
+  background: url(../img/bgHome.jpg) repeat-x;
+}
 .listaHome{
   float:left;
   background: #eee;
@@ -1279,6 +1282,9 @@ body.template-capa_noticias_view .documentFirstHeading{
   border-bottom: 1px solid transparent;
   border-right: 1px solid transparent;
 }
+.active.form-group::before{
+    font-size: 1em;
+}
 .form-group.active:before{
     top: 12px;
     font-size: 2.8em;
@@ -1746,6 +1752,10 @@ body.template-capa_noticias_view .documentFirstHeading{
 }
 #content .formDuvidas #area{
   float:left;
+}
+#parent-fieldname-description{
+  float: left;
+  clear: both;
 }
 #content .formDuvidas .btnTooltip{
   -webkit-border-radius: 10px;
@@ -2262,6 +2272,9 @@ float: left
 @media only screen and (max-width : 900px) {
   .wrap{
     width:100%;
+  }
+  body.section-procon{
+    background: none;
   }
   #portal-header nav.menu ul{
     margin-left: 0;
