@@ -2264,6 +2264,16 @@ float: left
   float: left;
   margin-left: 5px;
 }
+.wa_btn.wa_btn_s{
+    display: none;
+    background: url('../img/whats_btn.png') no-repeat 0 -2px;
+    width: 34px;
+    height: 30px;
+    float: left;
+    border-bottom: none !important;
+    float: left;
+    text-indent: -9999px;
+  }
 /* ==========================================================================
    Adaptações responsivas
    ========================================================================== */
@@ -2275,6 +2285,15 @@ float: left
   }
   body.section-procon{
     background: none;
+  }
+  .wa_btn.wa_btn_s{
+    display: block;
+  }
+  .socialShare .whatsapp{
+    margin: 0 0 0 6px;
+  }
+  #content .socialShare ul{
+    width: 213px;
   }
   #portal-header nav.menu ul{
     margin-left: 0;
