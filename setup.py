@@ -36,7 +36,7 @@ setup(
     author='Prodam',
     author_email='',
     url='https://github.com/prodamspsites/procon.tema',
-    license='GPLv2',
+    license='GPLv2.0',
     packages=find_packages('src'),
     package_dir={'': 'src'},
     namespace_packages=['procon',],
