@@ -2408,8 +2408,11 @@ float: left
     margin-left: 30px;
   }
   .portaltype-collective-cover-content div.position-2{
-    margin: 0;
-    clear: both;
+    margin-left: -98%;
+  }
+  .cover-banner-tile.tile-content img{
+    width: 135%;
+    height: auto;
   }
   .portaltype-collective-cover-content div.position-10{
     margin: 0;
@@ -2498,8 +2501,24 @@ float: left
   .form-group:before{
     content: 'Etapa 1';
     position: absolute;
-    left: 50%;
+    left: 5%;
     top: -30px;
+    font-size: 1.8em;
+    color: #fff;
+    font-family: 'Roboto';
+    font-weight: normal;
+    width: 100%;
+    float: left;
+    z-index: 5;
+  }
+  .form-group.active{
+     border-top: 40px solid #4bafa3;
+  }
+  .active .form-group:before{
+    content: 'Etapa 2';
+    position: absolute;
+    left: 2%;
+    top: -20px;
     font-size: 1.8em;
     color: #fff;
     font-family: 'Roboto';
@@ -2533,11 +2552,11 @@ float: left
     width: auto !important;
   }
   .form-group input{
-    width: 92%;
+    width: 79%;
   }
   .form-group .btnBuscar{
-    margin-left: 50%;
-    left: -45px;
+    margin-left: 2px;
+    left: 0;
     position: relative;
   }
   #portal-columns{
@@ -2590,6 +2609,15 @@ float: left
   }
   #content .listaHome ul li a:hover{
     color: #710e0f !important;
+  }
+  .width-2.estilo3{
+    display: none;
+  }
+  #content .cell.estilo4{
+    margin: 
+  }
+  .row.estilo3{
+    float:left;
   }
 }
 
