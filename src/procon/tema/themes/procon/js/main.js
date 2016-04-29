@@ -15,7 +15,7 @@
          $('#portal-header .divBusca').toggle();
          desativaLnkMenu = true;
          if (desativaLnkMenu == true){
-             $('.subMenu a').bind('click', function() {
+             $('.subMenu > a').bind('click', function() {
                  $(this).parent().find('.menuNivel').slideToggle();
                  $(this).parent().toggleClass('active');
                  return false;
@@ -29,6 +29,7 @@
            $("#telefone").mask("(99) 9999-9999");
            $("#cep").mask("99999-999");
            $("#cpf").mask("999.999.999-99");
+           $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
     //MENU HOVER
     if ($(window).width() >= 900){
              $(".menu .subMenu a").mouseenter(function () {
