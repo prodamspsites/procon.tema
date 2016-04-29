@@ -354,6 +354,15 @@
         $("td").on('click',function(){
           $(".teste").show();
           $(".divReclamacoes").hide();
+          $this = $(this).attr("class");
+          var _id = $this.split('_')[0];
+          var $categoria = $("."+_id+"_categoria").html();
+          var $data = $("."+_id+"_data").html();
+          var $usuario = $("."+_id+"_usuario").html();
+          console.log($categoria);
+          $("#tbl2").html($categoria);
+          $("#tbl1").html($data);
+          $("#tbl3").html($usuario);
         });
 
         $("#voltar").on('click',function(){
