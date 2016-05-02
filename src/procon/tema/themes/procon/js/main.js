@@ -92,7 +92,7 @@
 
         var itensForm = $(".formDuvidas").detach();
 
-        $('.form-group .btnBuscar').click(function(){
+        $('.form-group .btnBuscar, .btnProsseguir').click(function(){
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
