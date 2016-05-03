@@ -932,6 +932,9 @@ body.template-capa_noticias_view .documentFirstHeading{
   width: 430px;
   text-align: center;
 }
+.blocoNoticias .firstItem a{
+  border-bottom:none !important;
+}
 .blocoNoticias .firstItem img{
   max-width: 426px;
   margin-bottom: 10px;
