@@ -934,6 +934,7 @@ body.template-capa_noticias_view .documentFirstHeading{
 }
 .blocoNoticias .firstItem img{
   max-width: 426px;
+  margin-bottom: 10px;
 }
 .blocoNoticias p.description{
   font-family: 'Roboto';
@@ -952,7 +953,10 @@ body.template-capa_noticias_view .documentFirstHeading{
 .blocoNoticias .noticiasColuna{
   float: left;
   width: 476px;
-  margin-top: 50px;
+  margin-top: 30px;
+}
+.blocoNoticias .noticiasColuna div{
+  margin-top: 12px;
 }
 .blocoNoticias .noticiasColuna .imgNoticiasHome{
   margin:10px 0 0 0;
@@ -979,7 +983,6 @@ body.template-capa_noticias_view .documentFirstHeading{
   text-align: left;
 }
 .blocoNoticias .noticiasColuna time{
-  margin:7px 0 3px 0;
   color: #859597;
   float: left;
   width: 100%;
