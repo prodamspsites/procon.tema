@@ -15,7 +15,7 @@
          $('#portal-header .divBusca').toggle();
          desativaLnkMenu = true;
          if (desativaLnkMenu == true){
-             $('.subMenu a').bind('click', function() {
+             $('.subMenu > a').bind('click', function() {
                  $(this).parent().find('.menuNivel').slideToggle();
                  $(this).parent().toggleClass('active');
                  return false;
@@ -29,6 +29,7 @@
            $("#telefone").mask("(99) 9999-9999");
            $("#cep").mask("99999-999");
            $("#cpf").mask("999.999.999-99");
+           $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
     //MENU HOVER
     if ($(window).width() >= 900){
              $(".menu .subMenu a").mouseenter(function () {
@@ -92,7 +93,7 @@
 
         var itensForm = $(".formDuvidas").detach();
 
-        $('.form-group .btnBuscar').click(function(){
+        $('.form-group .btnBuscar, .btnProsseguir').click(function(){
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
@@ -354,6 +355,15 @@
         $("td").on('click',function(){
           $(".teste").show();
           $(".divReclamacoes").hide();
+          $this = $(this).attr("class");
+          var _id = $this.split('_')[0];
+          var $categoria = $("."+_id+"_categoria").html();
+          var $data = $("."+_id+"_data").html();
+          var $usuario = $("."+_id+"_usuario").html();
+          console.log($categoria);
+          $("#tbl2").html($categoria);
+          $("#tbl1").html($data);
+          $("#tbl3").html($usuario);
         });
 
         $("#voltar").on('click',function(){
