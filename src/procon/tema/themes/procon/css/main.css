@@ -52,6 +52,9 @@ body{
   width: 1004px;
   margin: 0 auto;
 }
+body.template-news_item_view .wrap{
+  width: 725px;
+}
 .wrapAdmin{
   width: 942px;
   margin: 0 auto;
