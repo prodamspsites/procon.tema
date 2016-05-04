@@ -578,12 +578,11 @@ border-radius: 0px;
   color:#128a89 !important;
 }
 #divSidebar .lstNoticias .imgNoticia{
-  margin:10px 0 0 0;
+  margin:-2px 0 0 0;
   padding: 5px 8px 0 0;
   float: left;
 }
 #divSidebar .lstNoticias time{
-  float: left;
   padding: 10px 0 0 0;
   color: #454545;
 }
@@ -615,6 +614,8 @@ border-radius: 0px;
   border-top: 1px solid #e8e8e8;
   float: left;
   margin: 10px 0 0 0;
+  width: 100%;
+  padding: 10px 0 0 0;
 }
 #divSidebar .lstNoticias .titNotPortlet{
   color: #f21c30;
