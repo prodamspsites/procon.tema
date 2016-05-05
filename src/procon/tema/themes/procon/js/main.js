@@ -398,7 +398,7 @@
             }
 
             if (this.value == 'sim') {
-              $(".replica").hide();
+              $(".replica", $(this).parent().parent()).hide();
               $.post( url,
               {
                   util: util,
@@ -410,9 +410,10 @@
               })
             }
             else if (this.value == 'nao') {
-              $(".replica").show();
+              $(".replica", $(this).parent().parent()).show();
               $(document).on('click', "#enviarDuvida", function(e){
                 e.preventDefault();
+                $(this).addClass('ok')
                 var assunto = $("#assunto_opcao option:selected",parent_div).val();
                 var mensagem = $("textarea",parent_div).val();
                 $("#enviarDuvida").attr("disabled",true);
@@ -429,7 +430,8 @@
                 }).done(function(){
                   $("#enviarDuvida").attr("disabled",false);
                   $(".replica").hide();
-                  $(".mensagem_enviada").append("<b>O Procon Paulistano agradece sua colaboração</b>");
+                  console.log($(this));
+                  $('.mensagem_enviada', $('input.ok').removeClass('ok').parent().parent()).append("<b>O Procon Paulistano agradece sua colaboração</b>");
                 })
               });
             }
