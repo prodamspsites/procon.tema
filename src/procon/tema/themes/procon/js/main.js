@@ -415,6 +415,7 @@
                 e.preventDefault();
                 var assunto = $("#assunto_opcao option:selected",parent_div).val();
                 var mensagem = $("textarea",parent_div).val();
+                $("#enviarDuvida").attr("disabled",true);
                 $.post( url,
                 {
                       util: util,
@@ -425,6 +426,10 @@
                       mensagem: mensagem,
                       usuario:usuario,
                       categoria:categoria
+                }).done(function(){
+                  $("#enviarDuvida").attr("disabled",false);
+                  $(".replica").hide();
+                  $(".mensagem_enviada").append("<b>O Procon Paulistano agradece sua colaboração</b>");
                 })
               });
             }
@@ -440,7 +445,7 @@
 
         ],
         "pagingType": "full_numbers",
-        "iDisplayLength": 2,
+        "iDisplayLength": 7,
         "bLengthChange": false,
         });
 
