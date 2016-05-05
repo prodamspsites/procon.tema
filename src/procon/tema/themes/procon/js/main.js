@@ -360,10 +360,18 @@
           var $categoria = $("."+_id+"_categoria").html();
           var $data = $("."+_id+"_data").html();
           var $usuario = $("."+_id+"_usuario").html();
+          var $pergunta = $("."+_id+"_pergunta").html();
+          var $resposta = $("."+_id+"_resposta").html();
+          var $mensagem = $("."+_id+"_mensagem").html();
+          var $assunto = $("."+_id+"_assunto").html();
           console.log($categoria);
           $("#tbl2").html($categoria);
           $("#tbl1").html($data);
           $("#tbl3").html($usuario);
+          $("#pergunta").html($pergunta);
+          $("#resposta").html($resposta);
+          $("#mensagem").html($mensagem);
+          $("#assunto").html($assunto);
         });
 
         $("#voltar").on('click',function(){
@@ -421,5 +429,36 @@
               });
             }
         })
+
+        $('#table_id').dataTable( {
+        "aoColumns": [
+        { "sType": "date-uk" },
+        null,
+        null,
+        null,
+        null
+
+        ],
+        "pagingType": "full_numbers",
+        "iDisplayLength": 2,
+        "bLengthChange": false,
+        });
+
+
+        jQuery.extend( jQuery.fn.dataTableExt.oSort, {
+        "date-uk-pre": function ( a ) {
+            var ukDatea = a.split('/');
+            return (ukDatea[2] + ukDatea[1] + ukDatea[0]) * 1;
+        },
+
+        "date-uk-asc": function ( a, b ) {
+            return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+        },
+
+        "date-uk-desc": function ( a, b ) {
+            return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+        }
+        } );
+
   })
 })(jQuery);
