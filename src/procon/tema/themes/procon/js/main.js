@@ -399,6 +399,8 @@
 
             if (this.value == 'sim') {
               $(".replica", $(this).parent().parent()).hide();
+              $(this).addClass('ok');
+
               $.post( url,
               {
                   util: util,
@@ -407,7 +409,9 @@
                   resposta: resposta,
                   usuario:usuario,
                   categoria:categoria
-              })
+              }).done(function(){
+                $('.mensagem_enviada', $('input.ok').removeClass('ok').parent().parent()).append("<b>O Procon Paulistano agradece sua colaboração</b>");
+              });
             }
             else if (this.value == 'nao') {
               $(".replica", $(this).parent().parent()).show();
