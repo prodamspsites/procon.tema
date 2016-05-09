@@ -441,8 +441,28 @@
             }
         })
 
+        $(".lido").on('click',function(){
+          var r = confirm("Deseja mudar este registro para lido?");
+          $(this).addClass('ok');
+          if (r == true) {
+            var identificacao =  $("._id",$('input[type=checkbox].ok').parent().parent() ).html();
+
+            $.post( portal_url + '/@@duvidas_salvar',
+            {
+                identificacao: identificacao,
+            }).done(function(){
+              console.log('deu certo');
+              $('input[type=checkbox].ok').attr('checked',true);
+              $('input[type=checkbox].ok').removeClass('ok').attr('disabled',true);
+            })
+          } else {
+            $('input[type=checkbox].ok').removeClass('ok').attr('checked',false);
+          }
+        });
+
         $('#table_id').dataTable( {
         "aoColumns": [
+        null,
         { "sType": "date-uk" },
         null,
         null,
