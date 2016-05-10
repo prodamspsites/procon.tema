@@ -367,14 +367,20 @@
           var $mensagem = $("."+_id+"_mensagem").html();
           var $assunto = $("."+_id+"_assunto").html();
           var $id = $("."+_id+"_id").html();
+          var $lido = $("."+_id+"_lido").html();
 
           if($observacao !== ""){
-            console.log("n vazio");
             $("#observacao").html($observacao).attr('disabled',true);
           } else {
-            console.log("vazio");
             $("#observacao").html($observacao).attr('disabled',false);
           }
+          console.log($lido);
+          if($lido == "True"){
+            $("#lido_check").attr('disabled',true).attr("checked",true);
+          } else{
+            $("#lido_check").attr('disabled',false).attr("checked",false);
+          }
+
           $("#tbl2").html($categoria);
           $("#tbl1").html($data);
           $("#tbl3").html($usuario);
@@ -459,7 +465,9 @@
           $(this).addClass('ok');
           if (r == true) {
             var identificacao =  $("._id",$('input[type=checkbox].ok').parent().parent() ).html();
-
+            if (identificacao == undefined || identificacao == ""){
+              identificacao = $("#idObservacao").html();
+            }
             $.post( portal_url + '/@@duvidas_salvar',
             {
                 identificacao: identificacao,
@@ -495,7 +503,7 @@
 
         ],
         "pagingType": "full_numbers",
-        "iDisplayLength": 7,
+        "iDisplayLength": 1,
         });
 
 
