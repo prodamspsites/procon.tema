@@ -357,6 +357,8 @@
           $(".divReclamacoes").hide();
           $this = $(this).attr("class");
           var _id = $this.split('_')[0];
+          $(this).parent().addClass('ok');
+          var $observacao = $("."+_id+"_observacao").html();
           var $categoria = $("."+_id+"_categoria").html();
           var $data = $("."+_id+"_data").html();
           var $usuario = $("."+_id+"_usuario").html();
@@ -364,7 +366,15 @@
           var $resposta = $("."+_id+"_resposta").html();
           var $mensagem = $("."+_id+"_mensagem").html();
           var $assunto = $("."+_id+"_assunto").html();
-          console.log($categoria);
+          var $id = $("."+_id+"_id").html();
+
+          if($observacao !== ""){
+            console.log("n vazio");
+            $("#observacao").html($observacao).attr('disabled',true);
+          } else {
+            console.log("vazio");
+            $("#observacao").html($observacao).attr('disabled',false);
+          }
           $("#tbl2").html($categoria);
           $("#tbl1").html($data);
           $("#tbl3").html($usuario);
@@ -372,6 +382,7 @@
           $("#resposta").html($resposta);
           $("#mensagem").html($mensagem);
           $("#assunto").html($assunto);
+          $("#idObservacao").html(_id);
         });
 
         $("#voltar").on('click',function(){
@@ -415,8 +426,9 @@
             }
             else if (this.value == 'nao') {
               $(".replica", $(this).parent().parent()).show();
-              $(document).on('click', "#enviarDuvida", function(e){
-                e.preventDefault();
+              $(".replica", $(this).parent().parent()).addClass('current');
+              $(".respostaUtil > fieldset > .current > #enviarDuvida").on('click', function(){
+
                 $(this).addClass('ok')
                 var assunto = $("#assunto_opcao option:selected",parent_div).val();
                 var mensagem = $("textarea",parent_div).val();
@@ -432,6 +444,7 @@
                       usuario:usuario,
                       categoria:categoria
                 }).done(function(){
+                  $(".respostaUtil > fieldset").find('.current').removeClass('current');
                   $("#enviarDuvida").attr("disabled",false);
                   $(".replica").hide();
                   console.log($(this));
@@ -460,6 +473,17 @@
           }
         });
 
+        $("#enviarComentario").on('click',function(){
+            $.post( portal_url + '/@@duvidas_salvar',
+            {
+                identificacao: $("#idObservacao").html(),
+                observacao: $("#observacao").val()
+            }).done(function(){
+              console.log('deu certo');
+              $('#observacao').attr('disabled',true);
+            })
+        });
+
         $('#table_id').dataTable( {
         "aoColumns": [
         null,
@@ -472,7 +496,6 @@
         ],
         "pagingType": "full_numbers",
         "iDisplayLength": 7,
-        "bLengthChange": false,
         });
 
 
