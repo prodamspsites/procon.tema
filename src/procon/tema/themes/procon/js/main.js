@@ -506,7 +506,9 @@
         "iDisplayLength": 1,
         "bInfo": true,
         });
-
+        var Totaltable = $('#table_id').DataTable();
+         var Totaltable = (Totaltable.data().length);
+         $('.divReclamacoes .total .totalRegistros').text(Totaltable);
 
         jQuery.extend( jQuery.fn.dataTableExt.oSort, {
         "date-uk-pre": function ( a ) {
