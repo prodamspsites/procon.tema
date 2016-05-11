@@ -509,7 +509,7 @@
           "emptyTable": "Nenhum registro encontrado"
         }
         });
-
+        
         $.fn.dataTable.ext.order['dom-checkbox'] = function  ( settings, col )
         {
            return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {

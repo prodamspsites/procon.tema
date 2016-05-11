@@ -1516,6 +1516,9 @@ table.dataTable thead .sorting_asc{
   float: right;
   margin-top: -30px;
 }
+.divReclamacoes .total strong{
+  font-weight: normal;
+}
 .divReclamacoes form.filterReclamacoes{
   border:none;
 }
