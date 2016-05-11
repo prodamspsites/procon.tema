@@ -504,6 +504,7 @@
         ],
         "pagingType": "full_numbers",
         "iDisplayLength": 1,
+        "bInfo": true,
         });
 
 

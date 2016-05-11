@@ -64,6 +64,30 @@ body.template-news_item_view .wrap{
 }
 
 /*HEADER*/
+#portal-header{
+  position: relative;
+}
+.loginAdmin{
+    position: absolute;
+    right: 10px;
+    top: 167px;
+    background: url(../img/icoLogin.png) no-repeat;
+    width: 241px;
+    height: 21px;
+    text-align: left;
+    color: #fff;
+    padding: 4px 0 0 31px;
+}
+.loginAdmin span.nome{
+  font-size: 0.9em;
+}
+.loginAdmin .btnSair{
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 6px 12px 6px 12px;
+  margin: 0 0 0 10px;
+  font-size: 0.9em;
+}
 #portal-header #logoProcon{
   float:left;
   margin-bottom: 20px;
