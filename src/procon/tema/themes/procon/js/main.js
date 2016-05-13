@@ -427,10 +427,12 @@
                   usuario:usuario,
                   categoria:categoria
               }).done(function(){
-                $('.mensagem_enviada', $('input.ok').removeClass('ok').parent().parent()).append("<b>O Procon Paulistano agradece sua colaboração</b>");
+                $('.mensagem_enviada', $('input.flashMessage').removeClass('flashMessage').parent().parent()).html("");
+                $('.mensagem_enviada', $('input.ok').removeClass('ok').addClass('flashMessage').parent().parent()).append("<b>O Procon Paulistano agradece sua colaboração</b>");
               });
             }
             else if (this.value == 'nao') {
+              $('.mensagem_enviada', $('input.flashMessage').parent().parent()).html("");
               $(".replica", $(this).parent().parent()).show();
               $(".replica", $(this).parent().parent()).addClass('current');
               $(".respostaUtil > fieldset > .current > #enviarDuvida").on('click', function(){
@@ -472,7 +474,6 @@
             {
                 identificacao: identificacao,
             }).done(function(){
-              console.log('deu certo');
               $('input[type=checkbox].ok').attr('checked',true);
               $('input[type=checkbox].ok').removeClass('ok').attr('disabled',true);
             })
@@ -487,7 +488,6 @@
                 identificacao: $("#idObservacao").html(),
                 observacao: $("#observacao").val()
             }).done(function(){
-              console.log('deu certo');
               $('#observacao').attr('disabled',true);
             })
         });
@@ -509,7 +509,7 @@
           "emptyTable": "Nenhum registro encontrado"
         }
         });
-        
+
         $.fn.dataTable.ext.order['dom-checkbox'] = function  ( settings, col )
         {
            return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {
