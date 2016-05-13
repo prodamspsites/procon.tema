@@ -77,6 +77,7 @@ body.template-news_item_view .wrap{
     text-align: left;
     color: #fff;
     padding: 4px 0 0 31px;
+    display: none;
 }
 .loginAdmin span.nome{
   font-size: 0.9em;
@@ -2914,6 +2915,11 @@ float: left
   display: block;
   padding: 5px
 }
+
+@media only screen and (min-width : 1500px) {
+  .div.position-2{
+    margin-left: 77.4%;
+  }
 
 /*CONTRASTE*/
 body.contraste1, body.contraste1 #footer, body.contraste1 #footer .footerBottom, body.contraste1 #footer .textoFooter{
