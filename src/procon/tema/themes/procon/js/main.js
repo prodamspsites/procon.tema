@@ -499,16 +499,24 @@
         null,
         null,
         null,
-        null
+        { "orderDataType": "dom-checkbox", targets: 0 }
 
         ],
         "pagingType": "full_numbers",
-        "iDisplayLength": 1,
+        "iDisplayLength": 10,
         "bInfo": true,
+        "language": {
+          "emptyTable": "Nenhum registro encontrado"
+        }
         });
-        var Totaltable = $('#table_id').DataTable();
-         var Totaltable = (Totaltable.data().length);
-         $('.divReclamacoes .total .totalRegistros').text(Totaltable);
+        
+        $.fn.dataTable.ext.order['dom-checkbox'] = function  ( settings, col )
+        {
+           return this.api().column( col, {order:'index'} ).nodes().map( function ( td, i ) {
+               return $('input', td).prop('checked') ? '1' : '0';
+           } );
+        };
+
 
         jQuery.extend( jQuery.fn.dataTableExt.oSort, {
         "date-uk-pre": function ( a ) {
