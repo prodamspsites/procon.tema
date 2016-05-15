@@ -7,6 +7,21 @@
                 $(this).attr('target', '_blank')
             }
         });
+    //MENU RESP
+     var desativaLnkMenu = false;
+     $('.btnMenuResp').bind('click', function() {
+         $(this).toggleClass('active');
+         $('#portal-header nav.menu').slideToggle();
+         $('#portal-header .divBusca').toggle();
+         desativaLnkMenu = true;
+         if (desativaLnkMenu == true){
+             $('.subMenu > a').bind('click', function() {
+                 $(this).parent().find('.menuNivel').slideToggle();
+                 $(this).parent().toggleClass('active');
+                 return false;
+             });
+        }
+    });
 
     //MASCARA
            $("#data-de-nascimento").mask("99/99/9999");
@@ -14,15 +29,18 @@
            $("#telefone").mask("(99) 9999-9999");
            $("#cep").mask("99999-999");
            $("#cpf").mask("999.999.999-99");
+           $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
     //MENU HOVER
-    $(".menu .subMenu a").mouseenter(function () {
-        $(this).parent().find('ul.menuNivel').show();
-        $(this).addClass('active');
-    });
-    $(".menu .subMenu").mouseleave(function () {
-        $(this).parent().find('ul.menuNivel').hide();
-        $(this).removeClass('active');
-     });
+    if ($(window).width() >= 900){
+             $(".menu .subMenu a").mouseenter(function () {
+                 $(this).parent().find('ul.menuNivel').show();
+                 $(this).addClass('active');
+             });
+             $(".menu .subMenu").mouseleave(function () {
+                 $(this).parent().find('ul.menuNivel').hide();
+                 $(this).removeClass('active');
+             });
+        }
 
     //ACCORDEON
     $('.divAccordeon .textoAccordeon').hide();
@@ -75,7 +93,7 @@
 
         var itensForm = $(".formDuvidas").detach();
 
-        $('.form-group .btnBuscar').click(function(){
+        $('.form-group .btnBuscar, .btnProsseguir').click(function(){
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
@@ -139,11 +157,35 @@
       type: 'post',
       success:function(data){
 
+        // expressao regular para tratar acentos
+        var tirarAcentos = function(newStringComAcento){
+          var string = newStringComAcento;
+          var mapaAcentosHex = {
+            a : /[\xE0-\xE6-Á]/g,
+        		e : /[\xE8-\xEB]/g,
+        		i : /[\xEC-\xEF]/g,
+        		o : /[\xF2-\xF6]/g,
+        		u : /[\xF9-\xFC]/g,
+        		c : /\xE7/g,
+        		n : /\xF1/g
+          }
+          for ( var letra in mapaAcentosHex ) {
+        		var expressaoRegular = mapaAcentosHex[letra];
+        		string = string.replace( expressaoRegular, letra );
+        	}
+        	return string;
+        }
+
         var data_filtered = [];
         $.each(data,function(key,value){
-
-          data_filtered.push({'label': value.titulo, 'desc':value.categoria, 'url':value.url});
+          data_filtered.push(
+            {'label': tirarAcentos(value.titulo),
+             'desc':value.categoria,
+             'url':value.url,
+             'original': value.titulo
+            });
         });
+
         $( "#project" ).autocomplete({
               minLength: 0,
               source: data_filtered,
@@ -181,10 +223,11 @@
         })
         .autocomplete( "instance" )._renderItem = function( ul, item ) {
           return $( "<li>" )
-            .append( "<a href='javascript:void(0);' title='"+item.label+"'><b>" + item.label + "</b><br>" + item.desc + "</a>" )
+            .append( "<a href='javascript:void(0);' title='"+item.original+"'><b>" + item.original + "</b><br>" + item.desc + "</a>" )
             .appendTo( ul );
         };
         $.ui.autocomplete.filter = function (array, term) {
+          term = tirarAcentos(term);
           var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
           return $.grep(data_filtered, function (value) {
             return matcher.test(value.label || value.value || value);
@@ -308,33 +351,75 @@
 
         });
 
+
+        $("td").on('click',function(){
+          $(".teste").show();
+          $(".divReclamacoes").hide();
+          $this = $(this).attr("class");
+          var _id = $this.split('_')[0];
+          var $categoria = $("."+_id+"_categoria").html();
+          var $data = $("."+_id+"_data").html();
+          var $usuario = $("."+_id+"_usuario").html();
+          console.log($categoria);
+          $("#tbl2").html($categoria);
+          $("#tbl1").html($data);
+          $("#tbl3").html($usuario);
+        });
+
+        $("#voltar").on('click',function(){
+          $(".teste").hide();
+          $(".divReclamacoes").show();
+        });
+
         // DUVIDAS PERGUNTA
-        $( 'body.template-duvidas_view input[type=radio][class=duvida_util]' ).change( function() {
+        $(document).on('change','body.template-duvidas_view input[type=radio][class=duvida_util]',function(){
+            url = portal_url + '/@@duvidas_salvar';
+
             var util = $(this).val();
             var parent_div = $(this).parent().parent().parent().parent().parent();
             var plone_id = $("h3",parent_div).data('id');
+            var categoria = $("h3",parent_div).data('categoria');
+            console.log(categoria);
             var pergunta = $("h3",parent_div).text();
+            var usuario = $("#form_usuario_duvida",parent_div).val()
             var resposta = $(".textoAccordeon span.resposta_duvida",parent_div).text();
             if(util == 'sim'){
               util = true
             }else{
               util = false;
             }
-            var assunto = $("select option:selected",parent_div).val();
-            var mensagem = $("textarea",parent_div).val();
 
-            url = portal_url + '/@@pergunta';
-            $.post( url,
-            {
-                util: util,
-                plone_id: plone_id,
-                pergunta: pergunta,
-                resposta: resposta,
-                assunto: assunto,
-                mensagem: mensagem
-            })
-
+            if (this.value == 'sim') {
+              $(".replica").hide();
+              $.post( url,
+              {
+                  util: util,
+                  plone_id: plone_id,
+                  pergunta: pergunta,
+                  resposta: resposta,
+                  usuario:usuario,
+                  categoria:categoria
+              })
+            }
+            else if (this.value == 'nao') {
+              $(".replica").show();
+              $(document).on('click', "#enviarDuvida", function(e){
+                e.preventDefault();
+                var assunto = $("#assunto_opcao option:selected",parent_div).val();
+                var mensagem = $("textarea",parent_div).val();
+                $.post( url,
+                {
+                      util: util,
+                      plone_id: plone_id,
+                      pergunta: pergunta,
+                      resposta: resposta,
+                      assunto: assunto,
+                      mensagem: mensagem,
+                      usuario:usuario,
+                      categoria:categoria
+                })
+              });
+            }
         })
-
   })
 })(jQuery);
