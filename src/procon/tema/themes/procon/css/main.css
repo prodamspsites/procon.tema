@@ -1473,6 +1473,35 @@ table.dataTable thead .sorting_asc{
     font-family: 'Roboto';
     font-weight: normal;
 }
+.form-group.sucesso:before{
+    content: '3';
+    position: absolute;
+    left: -60px;
+    top: 34px;
+    font-size: 2.8em;
+    color: #fff;
+    font-family: 'Roboto';
+    font-weight: normal;
+}
+#content .sucessoReclamacao p{
+  font-family: 'Roboto';
+  font-size: 1em;
+  float: left;
+  clear: both;
+  margin: 15px 0 0 0;
+  padding: 0;
+}
+.sucessoReclamacao p strong{
+    font-size: 1.3em;
+}
+.sucessoReclamacao span.numeroProtocolo{
+  background: #eee;
+  font-size: 1.8em;
+  padding:8px;
+  float: left;
+  clear: both;
+  margin: 1px 0 10px 0;
+}
 #content-core .discreet{
   padding: 90px 0 0 0;
 }
