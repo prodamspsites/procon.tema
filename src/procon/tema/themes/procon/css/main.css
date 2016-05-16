@@ -1848,28 +1848,35 @@ table.dataTable thead .sorting_asc{
   width: 380px;
   border: none;
 }
-#content .rowlike .rowlike {
+#content .rowlike {
   padding: 60px 18px 18px 18px;
   border: 1px solid #eee;
   font-family: 'Roboto';
   margin: 0 0 20px 0;
 }
-#content .rowlike .rowlike label{
+#content .rowlike label{
    font-family: 'Roboto';
    font-weight: normal !important;
    font-size: 1.2em;
+}
+#content .rowlike label.horizontal{
+  width: 100%;
+  clear: both;
+  float: left;
+  margin: 18px 0 3px 0;
 }
 #content .divLoginCadastre .field label{
     font-family: 'Roboto';
    font-weight: normal !important;
    font-size: 1.2em;
 }
-#content .rowlike .rowlike .formHelp{
+#content .rowlike .formHelp{
   display: none;
 }
-#content .rowlike .rowlike input[type="text"], #content .rowlike .rowlike input[type="password"]{
+#content .rowlike input[type="text"], #content .rowlike input[type="password"]{
   width: 310px;
   margin: 8px 0 5px 0;
+  display: block;
 }
 #content .field .formHelp{
   font-size: 0.9em;
@@ -1899,8 +1906,8 @@ table.dataTable thead .sorting_asc{
   width: 300px;
 }
 #content .rowlike #form-buttons-register{
-    margin-left: -12px;
-    margin-top: 5px;
+    margin-left: 0;
+    margin-top: 12px;
     font-size: 1em;
     padding: 10px 15px;
     color: #fff;
@@ -1910,14 +1917,15 @@ table.dataTable thead .sorting_asc{
     border: none;
     cursor: pointer;
     text-transform: uppercase;
+    width: auto;
 }
-#content .rowlike .rowlike .option{
+#content .rowlike .option{
     display: inline;
-    margin: 20px 30px 26px 15px;
+    margin: 0 30px 10px 15px;
     font-weight: normal;
     float: left;
 }
-#content .rowlike .rowlike .option span{
+#content .rowlike .option span{
   font-weight: normal;
   padding:0 0 0 10px;
 }
