@@ -330,6 +330,17 @@ if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('section-c
       $('#content').html('<div class="form-group active"></div><div class="form-group2 active"></div><div class="form-group sucesso"><div class="sucessoReclamacao"><p><strong>Sua reclamação foi enviada com sucesso!</strong></p><p>O número de seu atendimento é:</p><span class="numeroProtocolo">'+protocoloNumber+'</span><p>Aguarde o retorno de sua reclamação via e-mail e guarde o número de seu atendimento</p></div></div>');
     }
 
+
+    //CADASTRO PESSOA FISICA OU JURIDICA
+    $('.formid-cadastro-de-pessoa-fisica-e-juridica #tipo-de-consumidor_1').click(function(){
+      $('#pfg-fieldsetname-juridica').hide();
+      $('#pfg-fieldsetname-fisica').show();
+    });
+    $('.formid-cadastro-de-pessoa-fisica-e-juridica #tipo-de-consumidor_2').click(function(){
+      $('#pfg-fieldsetname-fisica').hide();
+      $('#pfg-fieldsetname-juridica').show();
+    });
+
     //categorias CONSUMIDOR.GOV
     $.ajax({
       url: portal_url + '/consumidorjson',

@@ -2363,7 +2363,60 @@ float: left;
     padding: 3px;
     border: 1px solid #ccc;
   }
-
+.formid-cadastro-de-pessoa-fisica-e-juridica{
+  font-family: 'Roboto';
+}
+.formid-cadastro-de-pessoa-fisica-e-juridica label{
+    color: #424242;
+    font-family: 'Roboto';
+    font-weight: normal;
+    font-size: 1.2em;
+    float: left;
+    padding: 3px 0 0 8px;
+    margin: 15px 0 0 0;
+}
+.formid-cadastro-de-pessoa-fisica-e-juridica .formQuestion{
+    color: #424242;
+    font-family: 'Roboto';
+    font-weight: normal;
+    font-size: 1.2em;
+    float: left;
+    padding: 3px 0 0 8px;
+    width: 100%;
+    margin: 15px 0 0 0;
+}
+.formid-cadastro-de-pessoa-fisica-e-juridica input[type=radio]{
+  margin: 15px 0 0 15px;
+}
+.formid-cadastro-de-pessoa-fisica-e-juridica input[type=checkbox]{
+  margin: 15px 0 0 15px;
+}
+.formid-cadastro-de-pessoa-fisica-e-juridica input{
+  float: left;
+  clear: both;
+}
+.formid-cadastro-de-pessoa-fisica-e-juridica select {
+    height: 30px;
+    background: #fff;
+    padding: 3px;
+    border: 1px solid #ccc;
+    float: left;
+    clear: both;
+  }
+#pfg-fieldsetname-fisica, #pfg-fieldsetname-juridica{
+   display: none;
+}
+#content .formid-cadastro-de-pessoa-fisica-e-juridica fieldset{
+  margin-top: 0;
+  border: none;
+  float: left;
+  clear: both;
+}
+.pfg-form.formid-cadastro-de-pessoa-fisica-e-juridica input{
+  border: 1px solid #ccc;
+  height: 25px;
+  padding: 3px 0 0 5px;
+}
 .ui-widget-content{
   border:1px solid #128a89 !important;
 }
