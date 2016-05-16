@@ -199,11 +199,6 @@
 
 
 
-
-
-
-
-
 if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('section-consumidor')) {
         empresa = $('#archetypes-fieldname-empresa');
         area = $('#archetypes-fieldname-area');
@@ -301,11 +296,24 @@ if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('section-c
         })
     }
 
-    //FORMULARIO NOVO DE DENUNCIA
+
     if ($('body').hasClass('section-denuncia')){
-        //CRIA IMPUT COM NUMERO DE PROTOCOLO
-        var inputProtocolo = '<input type="hidden" val="" id="inputProtocolo"/>'
-        $('#content #content-core .formid-formulario-de-denuncia form').append(inputProtocolo);
+
+    //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
+     var protocolo = $.ajax({ type: "POST",
+                             url: portal_url + "/@@protocolo",
+                             async: false,
+                             data: { action: 'create' }
+                           }).responseText;
+
+    function updateProtocolo(protocolo) {
+      $.ajax({ type: "POST",
+               url: portal_url + "/@@protocolo",
+               async: false,
+               data: { action: 'update', protocolo: protocolo }
+             })
+    }
+    $('#archetypes-fieldname-protocolo input').val(protocolo);
 
         var itensForm = $(".pfg-form.formid-formulario-de-denuncia").detach();
             $('.form-group .btnBuscar').click(function(){
@@ -313,8 +321,15 @@ if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('section-c
                 $('.form-group').addClass('active');
                 $('.divRedireciona').slideUp();
             });
-
     }
+
+    //CARREGA O NUMERO DE PROTOCOLO NA PAGINA DE OBRIGADO
+    if ($('body').hasClass('template-fg_thankspage_view_p3')){
+      var protocoloNumber = $( "dl dd:last-child" ).text();
+      //var itensObrigado = $("#content").detach();
+      $('#content').html('<div class="form-group active"></div><div class="form-group2 active"></div><div class="form-group sucesso"><div class="sucessoReclamacao"><p><strong>Sua reclamação foi enviada com sucesso!</strong></p><p>O número de seu atendimento é:</p><span class="numeroProtocolo">'+protocoloNumber+'</span><p>Aguarde o retorno de sua reclamação via e-mail e guarde o número de seu atendimento</p></div></div>');
+    }
+
     //categorias CONSUMIDOR.GOV
     $.ajax({
       url: portal_url + '/consumidorjson',
