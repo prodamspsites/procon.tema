@@ -1842,6 +1842,77 @@ table.dataTable thead .sorting_asc{
   top: -14px;
   left: 201px;
 }
+/*FORMULARIO CADASTRO*/
+#content .rowlike{
+  float: left;
+  width: 380px;
+  border: none;
+}
+#content .rowlike .rowlike {
+  padding: 60px 18px 18px 18px;
+  border: 1px solid #eee;
+  font-family: 'Roboto';
+  margin: 0 0 20px 0;
+}
+#content .rowlike .rowlike label{
+   font-family: 'Roboto';
+   font-weight: normal !important;
+   font-size: 1.2em;
+}
+#content .divLoginCadastre .field label{
+    font-family: 'Roboto';
+   font-weight: normal !important;
+   font-size: 1.2em;
+}
+#content .field .formHelp{
+  font-size: 0.9em;
+}
+.template-register .documentFirstHeading{
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  font-family: 'Roboto';
+  color: #424242;
+}
+#login-form .divLoginCadastre{
+  float: left;
+  width: 380px;
+  background: #f5f5f5;
+  margin: 0 0 0 70px;
+  padding: 18px;
+}
+#content #login-form .divLoginCadastre h2{
+  margin-top: 0;
+  font-size: 2.3em;
+}
+#content .divLoginCadastre .field #__ac_name{
+  width: 220px;
+}
+#content .divLoginCadastre .field #__ac_password{
+  width: 300px;
+}
+#content .rowlike #form-buttons-register{
+    margin-left: -12px;
+    margin-top: 5px;
+    font-size: 1em;
+    padding: 10px 15px;
+    color: #fff;
+    background: #f21c30;
+    font-family: 'Roboto';
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+}
+#content .rowlike .rowlike .option{
+    display: inline;
+    margin: 20px 30px 26px 15px;
+    font-weight: normal;
+    float: left;
+}
+#content .rowlike .rowlike .option span{
+  font-weight: normal;
+  padding:0 0 0 10px;
+}
 /*LIGHTBOX*/
 .lightboxGeral{
   position: fixed;

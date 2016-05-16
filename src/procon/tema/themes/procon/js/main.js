@@ -2,7 +2,7 @@
   $(document).ready(function() {
     //AJUSTE NO TEMPLATE DE CADASTRO
     if ($('body').hasClass('template-register')) {
-      form = $('.kssattr-formname-register')      
+      form = $('.kssattr-formname-register')
       $('#form-widgets-tipo-0').prop('checked', true);
       tipo = $('.kssattr-fieldname-form\\.widgets\\.tipo').clone();
       tipo_pj = $('.kssattr-fieldname-form\\.widgets\\.tipo').clone();
@@ -32,12 +32,21 @@
       $('div', pj).remove();
       $(pf).prepend(tipo, nome, user, cpf, email, senha, senha_confirmacao, enviar);
       $(pj).prepend(tipo_pj, razao_social, nome_fantasia, user_pj, responsavel, cnpj, email_pj, senha_pj, senha_confirmacao_pj, enviar_pj)
-      form.html($(pj)).show()
+      form.html($(pf)).show()
 
-      $('#content-core').append('<form class="enableAutoFocus" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><h2>Login</h2><div class="field"><label for="__ac_name">Usuário :</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form>')
+      $('#form-widgets-tipo-0').click(function(){
+        form = $('.kssattr-formname-register')
+        form.html($(pf)).show()
+      });
+
+       $('#form-widgets-tipo-1').click(function(){
+        form = $('.kssattr-formname-register')
+        form.html($(pj)).show()
+      });
+
+      $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Faça seu login</h2><p>Faça seu login para realizar sua reclamação:</p><div class="field"><label for="__ac_name">Usuário :</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
 
     }
-
 
     //LINK EM NOVA JANELA
         $(".contentBody a.external-link").each(function(e) {
@@ -201,18 +210,18 @@
           var string = newStringComAcento;
           var mapaAcentosHex = {
             a : /[\xE0-\xE6-Á]/g,
-        		e : /[\xE8-\xEB]/g,
-        		i : /[\xEC-\xEF]/g,
-        		o : /[\xF2-\xF6]/g,
-        		u : /[\xF9-\xFC]/g,
-        		c : /\xE7/g,
-        		n : /\xF1/g
+            e : /[\xE8-\xEB]/g,
+            i : /[\xEC-\xEF]/g,
+            o : /[\xF2-\xF6]/g,
+            u : /[\xF9-\xFC]/g,
+            c : /\xE7/g,
+            n : /\xF1/g
           }
           for ( var letra in mapaAcentosHex ) {
-        		var expressaoRegular = mapaAcentosHex[letra];
-        		string = string.replace( expressaoRegular, letra );
-        	}
-        	return string;
+            var expressaoRegular = mapaAcentosHex[letra];
+            string = string.replace( expressaoRegular, letra );
+          }
+          return string;
         }
 
         var data_filtered = [];
@@ -396,7 +405,6 @@
           $(".divReclamacoes").hide();
           $this = $(this).attr("class");
           var _id = $this.split('_')[0];
-<<<<<<< HEAD
           $(this).parent().addClass('ok');
           var $observacao = $("."+_id+"_observacao").html();
           var $categoria = $("."+_id+"_categoria").html();
@@ -429,15 +437,6 @@
           $("#mensagem").html($mensagem);
           $("#assunto").html($assunto);
           $("#idObservacao").html(_id);
-=======
-          var $categoria = $("."+_id+"_categoria").html();
-          var $data = $("."+_id+"_data").html();
-          var $usuario = $("."+_id+"_usuario").html();
-          console.log($categoria);
-          $("#tbl2").html($categoria);
-          $("#tbl1").html($data);
-          $("#tbl3").html($usuario);
->>>>>>> 457b6403088c4c596da693a60386aef6d8bc05f0
         });
 
         $("#voltar").on('click',function(){
@@ -462,7 +461,6 @@
             }else{
               util = false;
             }
-<<<<<<< HEAD
 
             if (this.value == 'sim') {
               $(".replica", $(this).parent().parent()).hide();
@@ -583,40 +581,5 @@
         }
         } );
 
-=======
-
-            if (this.value == 'sim') {
-              $(".replica").hide();
-              $.post( url,
-              {
-                  util: util,
-                  plone_id: plone_id,
-                  pergunta: pergunta,
-                  resposta: resposta,
-                  usuario:usuario,
-                  categoria:categoria
-              })
-            }
-            else if (this.value == 'nao') {
-              $(".replica").show();
-              $(document).on('click', "#enviarDuvida", function(e){
-                e.preventDefault();
-                var assunto = $("#assunto_opcao option:selected",parent_div).val();
-                var mensagem = $("textarea",parent_div).val();
-                $.post( url,
-                {
-                      util: util,
-                      plone_id: plone_id,
-                      pergunta: pergunta,
-                      resposta: resposta,
-                      assunto: assunto,
-                      mensagem: mensagem,
-                      usuario:usuario,
-                      categoria:categoria
-                })
-              });
-            }
-        })
->>>>>>> 457b6403088c4c596da693a60386aef6d8bc05f0
   })
 })(jQuery);
