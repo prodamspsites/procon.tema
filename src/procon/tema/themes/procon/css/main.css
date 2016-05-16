@@ -1864,6 +1864,13 @@ table.dataTable thead .sorting_asc{
    font-weight: normal !important;
    font-size: 1.2em;
 }
+#content .rowlike .rowlike .formHelp{
+  display: none;
+}
+#content .rowlike .rowlike input[type="text"], #content .rowlike .rowlike input[type="password"]{
+  width: 310px;
+  margin: 8px 0 5px 0;
+}
 #content .field .formHelp{
   font-size: 0.9em;
 }
@@ -1902,6 +1909,7 @@ table.dataTable thead .sorting_asc{
     font-weight: bold;
     border: none;
     cursor: pointer;
+    text-transform: uppercase;
 }
 #content .rowlike .rowlike .option{
     display: inline;
