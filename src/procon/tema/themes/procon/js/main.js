@@ -7,7 +7,6 @@
       tipo = $('.kssattr-fieldname-form\\.widgets\\.tipo').clone();
       tipo_pj = $('.kssattr-fieldname-form\\.widgets\\.tipo').clone();
       $(tipo).remove();
-      form.prepend(tipo);
       nome = $('.kssattr-fieldname-form\\.widgets\\.fullname').clone();
       user = $('.kssattr-fieldname-form\\.widgets\\.username').clone();
       user_pj = $('.kssattr-fieldname-form\\.widgets\\.username').clone();
@@ -21,7 +20,7 @@
       senha_confirmacao = $('.kssattr-fieldname-form\\.widgets\\.password_ctl').clone();
       senha_confirmacao_pj = $('.kssattr-fieldname-form\\.widgets\\.password_ctl').clone();
       razao_social = $('.kssattr-fieldname-form\\.widgets\\.razao_social').clone();
-      nome_fantasia = $('kssattr-fieldname-form.widgets.nome_fantasia').clone();
+      nome_fantasia = $('kssattr-fieldname-form\\.widgets\\.nome_fantasia').clone();
       responsavel = $('.kssattr-fieldname-form\\.widgets\\.fullname').clone();
       enviar = $('.formControls').clone();
       enviar_pj = $('.formControls').clone();
@@ -30,18 +29,19 @@
       pj = $(form).clone();
       $('div', pf).remove();
       $('div', pj).remove();
-      $(pf).prepend(tipo, nome, user, cpf, email, senha, senha_confirmacao, enviar);
-      $(pj).prepend(tipo_pj, razao_social, nome_fantasia, user_pj, responsavel, cnpj, email_pj, senha_pj, senha_confirmacao_pj, enviar_pj)
-      form.html($(pf)).show()
+      $(pf).prepend($(tipo).html() + $(nome).html() + $(user).html() + $(cpf).html() + $(email).html() + $(senha).html() + $(senha_confirmacao).html() + $(enviar).html());
+      $(pj).prepend($(tipo_pj).html() + $(razao_social).html() + $(nome_fantasia).html() + $(user_pj).html() + $(responsavel).html() + $(cnpj).html() + $(email_pj).html() + $(senha_pj).html() + $(senha_confirmacao_pj).html() + $(enviar_pj).html())
+      form.html($(pf).html()).show()
 
-      $('#form-widgets-tipo-0').click(function(){
-        form = $('.kssattr-formname-register')
-        form.html($(pf)).show()
+      $(document).on('click', '#form-widgets-tipo-0', function(){
+        form.html($(pf).html()).show()
+        $('#form-widgets-tipo-0').prop('checked', true);
+
       });
 
-       $('#form-widgets-tipo-1').click(function(){
-        form = $('.kssattr-formname-register')
-        form.html($(pj)).show()
+      $(document).on('click', '#form-widgets-tipo-1', function(){
+        form.html($(pj).html()).show()
+        $('#form-widgets-tipo-1').prop('checked', true);
       });
 
       $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Faça seu login</h2><p>Faça seu login para realizar sua reclamação:</p><div class="field"><label for="__ac_name">Usuário :</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
