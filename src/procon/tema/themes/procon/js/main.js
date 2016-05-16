@@ -1,5 +1,44 @@
 (function($) {
   $(document).ready(function() {
+    //AJUSTE NO TEMPLATE DE CADASTRO
+    if ($('body').hasClass('template-register')) {
+      form = $('.kssattr-formname-register')      
+      $('#form-widgets-tipo-0').prop('checked', true);
+      tipo = $('.kssattr-fieldname-form\\.widgets\\.tipo').clone();
+      tipo_pj = $('.kssattr-fieldname-form\\.widgets\\.tipo').clone();
+      $(tipo).remove();
+      form.prepend(tipo);
+      nome = $('.kssattr-fieldname-form\\.widgets\\.fullname').clone();
+      user = $('.kssattr-fieldname-form\\.widgets\\.username').clone();
+      user_pj = $('.kssattr-fieldname-form\\.widgets\\.username').clone();
+      cpf = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
+      cnpj = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
+      $('label', cnpj).text('CNPJ');
+      email = $('.kssattr-fieldname-form\\.widgets\\.email').clone();
+      email_pj = $('.kssattr-fieldname-form\\.widgets\\.email').clone();
+      senha = $('.kssattr-fieldname-form\\.widgets\\.password').clone();
+      senha_pj = $('.kssattr-fieldname-form\\.widgets\\.password').clone();
+      senha_confirmacao = $('.kssattr-fieldname-form\\.widgets\\.password_ctl').clone();
+      senha_confirmacao_pj = $('.kssattr-fieldname-form\\.widgets\\.password_ctl').clone();
+      razao_social = $('.kssattr-fieldname-form\\.widgets\\.razao_social').clone();
+      nome_fantasia = $('kssattr-fieldname-form.widgets.nome_fantasia').clone();
+      responsavel = $('.kssattr-fieldname-form\\.widgets\\.fullname').clone();
+      enviar = $('.formControls').clone();
+      enviar_pj = $('.formControls').clone();
+
+      pf = $(form).clone();
+      pj = $(form).clone();
+      $('div', pf).remove();
+      $('div', pj).remove();
+      $(pf).prepend(tipo, nome, user, cpf, email, senha, senha_confirmacao, enviar);
+      $(pj).prepend(tipo_pj, razao_social, nome_fantasia, user_pj, responsavel, cnpj, email_pj, senha_pj, senha_confirmacao_pj, enviar_pj)
+      form.html($(pj)).show()
+
+      $('#content-core').append('<form class="enableAutoFocus" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><h2>Login</h2><div class="field"><label for="__ac_name">Usuário :</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form>')
+
+    }
+
+
     //LINK EM NOVA JANELA
         $(".contentBody a.external-link").each(function(e) {
             link_url = $(this).attr('href');
@@ -357,6 +396,7 @@
           $(".divReclamacoes").hide();
           $this = $(this).attr("class");
           var _id = $this.split('_')[0];
+<<<<<<< HEAD
           $(this).parent().addClass('ok');
           var $observacao = $("."+_id+"_observacao").html();
           var $categoria = $("."+_id+"_categoria").html();
@@ -389,6 +429,15 @@
           $("#mensagem").html($mensagem);
           $("#assunto").html($assunto);
           $("#idObservacao").html(_id);
+=======
+          var $categoria = $("."+_id+"_categoria").html();
+          var $data = $("."+_id+"_data").html();
+          var $usuario = $("."+_id+"_usuario").html();
+          console.log($categoria);
+          $("#tbl2").html($categoria);
+          $("#tbl1").html($data);
+          $("#tbl3").html($usuario);
+>>>>>>> 457b6403088c4c596da693a60386aef6d8bc05f0
         });
 
         $("#voltar").on('click',function(){
@@ -413,6 +462,7 @@
             }else{
               util = false;
             }
+<<<<<<< HEAD
 
             if (this.value == 'sim') {
               $(".replica", $(this).parent().parent()).hide();
@@ -533,5 +583,40 @@
         }
         } );
 
+=======
+
+            if (this.value == 'sim') {
+              $(".replica").hide();
+              $.post( url,
+              {
+                  util: util,
+                  plone_id: plone_id,
+                  pergunta: pergunta,
+                  resposta: resposta,
+                  usuario:usuario,
+                  categoria:categoria
+              })
+            }
+            else if (this.value == 'nao') {
+              $(".replica").show();
+              $(document).on('click', "#enviarDuvida", function(e){
+                e.preventDefault();
+                var assunto = $("#assunto_opcao option:selected",parent_div).val();
+                var mensagem = $("textarea",parent_div).val();
+                $.post( url,
+                {
+                      util: util,
+                      plone_id: plone_id,
+                      pergunta: pergunta,
+                      resposta: resposta,
+                      assunto: assunto,
+                      mensagem: mensagem,
+                      usuario:usuario,
+                      categoria:categoria
+                })
+              });
+            }
+        })
+>>>>>>> 457b6403088c4c596da693a60386aef6d8bc05f0
   })
 })(jQuery);
