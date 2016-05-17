@@ -20,13 +20,6 @@
  * http://jigsaw.w3.org/css-validator/
  */
 
-body.subsection-adesao-ao-procon-paulistano #viewlet-below-content-title .form-group {
-  display: none !important;
-}
-
-body.subsection-adesao-ao-procon-paulistano #viewlet-below-content-title .form-group * {
-  display: none !important;
-}
 
 /*RESET*/
 html, body, form, fieldset {
@@ -1438,6 +1431,109 @@ table.dataTable thead .sorting_asc{
 }
 
 /*FORMULARIO*/
+body.subsection-adesao-ao-procon-paulistano #viewlet-below-content-title .form-group {
+  display: none !important;
+}
+
+body.subsection-adesao-ao-procon-paulistano #viewlet-below-content-title .form-group * {
+  display: none !important;
+}
+body.subsection-adesao-ao-procon-paulistano #pfg-fieldwrapper{
+  border: none;
+  padding: 15px 16px 45px 0;
+}
+body.subsection-adesao-ao-procon-paulistano #pfg-fieldwrapper:before{
+  display: none;
+}
+body.subsection-adesao-ao-procon-paulistano .pfg-form .formid-adesao-ao-procon-paulistano input[type=submit] {
+    margin-top: 20px;
+    cursor: pointer;
+    background: #f11c30;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 5px 8px 5px 8px;
+    display: inline;
+    margin: 15px 0 0 -15px;
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    clear: both;
+    float: left;
+    margin: -62px 0 0 55px;
+    position: relative;
+    z-index: 1;
+}
+.formid-adesao-ao-procon-paulistano input[type=submit] {
+  margin-top: 20px;
+  cursor: pointer;
+  background: #f11c30;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 5px 8px 5px 8px;
+  display: inline;
+  border: none;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  clear: both;
+  float: left;
+  margin: -62px 0 0 -5px;
+  position: relative;
+  z-index: 1;
+}
+body.subsection-adesao-ao-procon-paulistano #pfg-fieldwrapper label {
+    color: #424242;
+    font-family: 'Roboto';
+    font-weight: normal;
+    font-size: 1.2em;
+    float: left;
+    padding: 3px 0 0 0px;
+    width: 100%;
+}
+body.subsection-adesao-ao-procon-paulistano #pfg-fieldwrapper input {
+    border: 1px solid #ccc;
+    height: 25px;
+    padding: 3px 0 0 5px;
+}
+body.subsection-adesao-ao-procon-paulistano #pfg-fieldwrapper select {
+  height: 30px;
+  background: #fff;
+  padding: 3px;
+  border: 1px solid #ccc;
+}
+body.subsection-adesao-ao-procon-paulistano #pfg-fieldwrapper input[type=radio] {
+    float: left;
+    clear: both;
+}
+body.subsection-adesao-ao-procon-paulistano .formQuestion {
+    color: #424242;
+    font-family: 'Roboto';
+    font-weight: normal;
+    font-size: 1.2em;
+    margin: 20px 0 0 0;
+    padding: 0 0 0 0;
+    width: 100%;
+    float: left;
+}
+body.subsection-adesao-ao-procon-paulistano label {
+    color: #424242;
+    font-family: 'Roboto';
+    font-weight: normal;
+    font-size: 1.2em;
+    float: left;
+    padding: 3px 0 0 8px;
+}
+body.section-denuncia .form-group{
+  display: none;
+}
+body.section-denuncia #pfg-fieldwrapper{
+  border: none !important;
+  padding-left: 0px;
+}
+body.section-denuncia #pfg-fieldwrapper input[type=submit]{
+  margin: -62px 0 0 55px;
+}
 .form-group{
     border-left: 101px solid #4bafa3;
     margin: 20px 0 30px 0;
@@ -2247,6 +2343,7 @@ table.dataTable thead .sorting_asc{
 .pfg-form.formid-formularios input[type=radio]{
   float: left;
   clear: both;
+  margin: -3px 8px 0 0;
 }
 .pfg-form.formid-formularios input[type=submit]{
   margin-top: 20px;
@@ -2351,14 +2448,13 @@ float: left
   text-transform: uppercase;
   padding: 5px 8px 5px 8px;
   display: inline;
-  margin: 15px 0 0 -15px;
   border: none;
 -webkit-border-radius: 2px;
 -moz-border-radius: 2px;
 border-radius: 2px;
 clear: both;
 float: left;
-    margin: -62px 0 0 155px;
+    margin: -62px 0 0 -5px;
     position: relative;
     z-index: 1;
 }
@@ -2373,6 +2469,17 @@ float: left;
   }
 .formid-cadastro-de-pessoa-fisica-e-juridica{
   font-family: 'Roboto';
+}
+#pfg-fieldsetname-procurou-a-empresa-sim{
+  display: none;
+}
+#pfg-fieldsetname-procurou-a-empresa-nao{
+  display: none;
+}
+#content #pfg-fieldwrapper fieldset{
+  border: none;
+  border-style: none;
+  clear: both;
 }
 #content .formid-cadastro-de-pessoa-fisica-e-juridica input[type=submit]{
   margin-top: 20px;
@@ -2475,6 +2582,14 @@ z-index: 1;
 }
 #content .divRedireciona p strong{
   font-weight: 600;
+}
+body.section-consumidor #pfg-fieldwrapper{
+  border-left: none;
+  margin: 0;
+  width: auto;
+  border:none !important;
+  padding: 0;
+  left: 0;
 }
 #pfg-fieldwrapper{
     border-left: 101px solid #4bafa3;
