@@ -4,34 +4,65 @@
     if ($('body').hasClass('template-register')) {
       form = $('.kssattr-formname-register')
       $('#form-widgets-tipo-0').prop('checked', true);
+      municipio = $('.kssattr-fieldname-form\\.widgets\\.municipio').clone();
       tipo = $('.kssattr-fieldname-form\\.widgets\\.tipo').clone();
-      tipo_pj = $('.kssattr-fieldname-form\\.widgets\\.tipo').clone();
-      $(tipo).remove();
       nome = $('.kssattr-fieldname-form\\.widgets\\.fullname').clone();
       user = $('.kssattr-fieldname-form\\.widgets\\.username').clone();
-      user_pj = $('.kssattr-fieldname-form\\.widgets\\.username').clone();
       cpf = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
       cnpj = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
       $('label', cnpj).text('CNPJ');
+      tipo_societario = $('.kssattr-fieldname-form\\.widgets\\.tipo_societario')
+      enquadramento = $('.kssattr-fieldname-form\\.widgets\\.enquadramento')
+      cpf_pj = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
+      $('label', cpf_pj).text('CPF do representante').clone();
+      rg_pj = $('.kssattr-fieldname-form\\.widgets\\.rg').clone();
+      $('label', rg_pj).text('RG do representante').clone();
+      site = $('.kssattr-fieldname-form\\.widgets\\.site').clone();
+      uf = $('.kssattr-fieldname-form\\.widgets\\.unidade_federativa').clone();
+      cidade = $('.kssattr-fieldname-form\\.widgets\\.cidade').clone();
+      bairro = $('.kssattr-fieldname-form\\.widgets\\.bairro').clone();
+      complemento = $('.kssattr-fieldname-form\\.widgets\\.complemento').clone();
+      logradouro = $('.kssattr-fieldname-form\\.widgets\\.logradouro').clone();
+      cep = $('.kssattr-fieldname-form\\.widgets\\.codigo_enderecamento_postal').clone();
+      telefone = $('.kssattr-fieldname-form\\.widgets\\.contato_telefone').clone();
+      expeditor = $('.kssattr-fieldname-form\\.widgets\\.expeditor').clone();
+      rg = $('.kssattr-fieldname-form\\.widgets\\.rg').clone();
+      genero = $('.kssattr-fieldname-form\\.widgets\\.genero').clone();
       email = $('.kssattr-fieldname-form\\.widgets\\.email').clone();
-      email_pj = $('.kssattr-fieldname-form\\.widgets\\.email').clone();
       senha = $('.kssattr-fieldname-form\\.widgets\\.password').clone();
-      senha_pj = $('.kssattr-fieldname-form\\.widgets\\.password').clone();
       senha_confirmacao = $('.kssattr-fieldname-form\\.widgets\\.password_ctl').clone();
-      senha_confirmacao_pj = $('.kssattr-fieldname-form\\.widgets\\.password_ctl').clone();
       razao_social = $('.kssattr-fieldname-form\\.widgets\\.razao_social').clone();
-      nome_fantasia = $('kssattr-fieldname-form\\.widgets\\.nome_fantasia').clone();
+      nome_fantasia = $('.kssattr-fieldname-form\\.widgets\\.nome_fantasia').clone();
       responsavel = $('.kssattr-fieldname-form\\.widgets\\.fullname').clone();
+      estado_civil = $('.kssattr-fieldname-form\\.widgets\\.estadocivil').clone();
+      nascimento = $('.kssattr-fieldname-form\\.widgets\\.data_nascimento').clone();
+      celular = $('.kssattr-fieldname-form\\.widgets\\.contato_celular').clone();
       enviar = $('.formControls').clone();
-      enviar_pj = $('.formControls').clone();
 
       pf = $(form).clone();
       pj = $(form).clone();
       $('div', pf).remove();
       $('div', pj).remove();
-      $(pf).prepend($(tipo).html() + $(nome).html() + $(user).html() + $(cpf).html() + $(email).html() + $(senha).html() + $(senha_confirmacao).html() + $(enviar).html());
-      $(pj).prepend($(tipo_pj).html() + $(razao_social).html() + $(nome_fantasia).html() + $(user_pj).html() + $(responsavel).html() + $(cnpj).html() + $(email_pj).html() + $(senha_pj).html() + $(senha_confirmacao_pj).html() + $(enviar_pj).html())
-      form.html($(pf).html()).show()
+      form.html( $(pj).append($(municipio).html()).html()).show()
+      $(pf).prepend($(municipio).html() + $(tipo).html() + $(user).html() + $(cpf).html() + $(rg).html() + $(expeditor).html() +
+                    $(nome).html() + $(genero).html() + $(estado_civil).html() + $(nascimento).html() +
+                    '<div class="formQuestion label">Dados de contato<span class="formHelp"' +
+                    'id="dados-de-contato-juridico_help"></span></div>' +
+                    $(telefone).html() + $(celular).html() + $(cep).html() + 
+                    $(logradouro).html() + $(complemento).html() + $(bairro).html() +
+                    $(cidade).html() + $(uf).html() + $(site).html() + $(email).html() +
+                    $(senha).html() + $(senha_confirmacao).html() + $(enviar).html() 
+                   );
+      $(pj).prepend($(municipio).html() + $(tipo).html() + $(user).html() + $(razao_social).html() + $(nome_fantasia).html() + 
+                    $(tipo_societario).html() + $(enquadramento).html() + $(nome).html() +
+                    $(cpf_pj).html() + $(rg_pj).html() + $(expeditor).html() +
+                    '<div class="formQuestion label">Dados de contato<span class="formHelp"' +
+                    'id="dados-de-contato-juridico_help"></span></div>' +
+                    $(telefone).html() + $(cep).html() + $(logradouro).html() + 
+                    $(complemento).html() + $(bairro).html() + $(cidade).html() +
+                    $(uf).html() + $(site).html() + $(email).html() +
+                    $(senha).html() + $(senha_confirmacao).html() + $(enviar).html()
+                   );
 
       $(document).on('click', '#form-widgets-tipo-0', function(){
         form.html($(pf).html()).show()
@@ -45,6 +76,17 @@
       });
 
       $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Faça seu login</h2><p>Faça seu login para realizar sua reclamação:</p><div class="field"><label for="__ac_name">Usuário :</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
+
+      $(document).on('click', '#form-widgets-municipio-0', function(){
+        form.html($(pj).html()).show()
+        $('#form-widgets-municipio-0').prop('checked', true);
+      });
+
+      $(document).on('click', '#form-widgets-municipio-1', function(){
+        form.html($(municipio).html()).show()
+        $('#form-widgets-municipio-1').prop('checked', true);
+      });
+
 
     }
 
