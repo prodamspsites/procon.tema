@@ -2028,6 +2028,11 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   width: 380px;
   border: none;
 }
+#content .rowlike .proconSPmessage{
+  clear: both;
+  float: left;
+  padding: 10px 0 0 0;
+}
 #content .rowlike {
   padding: 60px 18px 18px 18px;
   border: 1px solid #eee;
@@ -2043,7 +2048,7 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   width: 100%;
   clear: both;
   float: left;
-  margin: 18px 0 3px 0;
+  margin: 18px 0 6px 0;
 }
 #content .divLoginCadastre .field label{
     font-family: 'Roboto';
@@ -2060,6 +2065,9 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
 }
 #content .field .formHelp{
   font-size: 0.9em;
+}
+body.template-register .select-widget.choice-field{
+  float: left
 }
 .template-register .documentFirstHeading{
   position: absolute;

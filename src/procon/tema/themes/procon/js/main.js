@@ -67,26 +67,30 @@
       $(document).on('click', '#form-widgets-tipo-0', function(){
         form.html($(pf).html()).show()
         $('#form-widgets-tipo-0').prop('checked', true);
+        $('#content .rowlike select').find('option:first-child').remove();
 
       });
 
       $(document).on('click', '#form-widgets-tipo-1', function(){
         form.html($(pj).html()).show()
         $('#form-widgets-tipo-1').prop('checked', true);
+        $('#content .rowlike select').find('option:first-child').remove();
       });
 
       $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Faça seu login</h2><p>Faça seu login para realizar sua reclamação:</p><div class="field"><label for="__ac_name">Usuário :</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
 
       $(document).on('click', '#form-widgets-municipio-0', function(){
-        form.html($(pj).html()).show()
+        form.html($(pf).html()).show()
         $('#form-widgets-municipio-0').prop('checked', true);
+        $('#content-core .rowlike').find('.proconSPmessage').hide();
+        $('#content .rowlike select').find('option:first-child').remove();
       });
 
       $(document).on('click', '#form-widgets-municipio-1', function(){
         form.html($(municipio).html()).show()
         $('#form-widgets-municipio-1').prop('checked', true);
+        $('#content-core .rowlike').append('<p class="proconSPmessage">O PROCON PAULISTANO DIGITAL tem como atribuição atender apenas os consumidores<br />domiciliados no Município de São Paulo.<br />Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade. A proteção e defesa do consumidor constitui-se em um sistema nacional coordenado. <a href="http://www.procon.sp.gov.br/categoria.asp?id=209" target="_blank">Acesse aqui</a> a lista dos Procons Municipais. Se sua cidade não estiver na lista, dirija seu caso à<br /><br />FUNDAÇÃO PROCON.</p>')
       });
-
 
     }
 
