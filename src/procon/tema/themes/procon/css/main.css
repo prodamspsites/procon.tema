@@ -2343,6 +2343,7 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
 .pfg-form.formid-formularios input[type=radio]{
   float: left;
   clear: both;
+  margin: -3px 8px 0 0;
 }
 .pfg-form.formid-formularios input[type=submit]{
   margin-top: 20px;
