@@ -3260,3 +3260,11 @@ body.contraste1, body.contraste1 #footer, body.contraste1 #footer .footerBottom,
   background: #000 !important;
   color: #fff !important;
 }
+
+body.subsection-adesao-ao-procon-paulistano #viewlet-below-content-title .form-group {
+  display: none !important;
+}
+
+body.subsection-adesao-ao-procon-paulistano #viewlet-below-content-title .form-group * {
+  display: none !important;
+}
