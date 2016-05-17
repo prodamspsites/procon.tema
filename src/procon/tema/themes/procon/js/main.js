@@ -334,11 +334,21 @@ if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('section-c
     //CADASTRO PESSOA FISICA OU JURIDICA
     $('.formid-cadastro-de-pessoa-fisica-e-juridica #tipo-de-consumidor_1').click(function(){
       $('#pfg-fieldsetname-juridica').hide();
-      $('#pfg-fieldsetname-fisica').show();
+      $('#pfg-fieldsetname-procurou-a-empresa-sim').show();
     });
     $('.formid-cadastro-de-pessoa-fisica-e-juridica #tipo-de-consumidor_2').click(function(){
       $('#pfg-fieldsetname-fisica').hide();
       $('#pfg-fieldsetname-juridica').show();
+    });
+
+    //FORMULARIO DE DENUNCIA OCULTA ITENS
+    $('#voce-procurou-a-empresa-para-solucionar-o-problema_1').click(function(){
+      $('#pfg-fieldsetname-procurou-a-empresa-sim').show();
+      $('#pfg-fieldsetname-procurou-a-empresa-nao').hide();
+    });
+    $('#voce-procurou-a-empresa-para-solucionar-o-problema_2').click(function(){
+      $('#pfg-fieldsetname-procurou-a-empresa-sim').hide();
+      $('#pfg-fieldsetname-procurou-a-empresa-nao').show();
     });
 
     //categorias CONSUMIDOR.GOV
