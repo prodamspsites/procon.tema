@@ -99,8 +99,19 @@
     });
     //TABLEADMIN ZEBRA
     $( ".tableReclamacoes table tr:odd" ).css( "background-color", "#f5f5f5" );
-    //OCULTA FORMULARIO CONSUMIDOR
 
+    //FORMULARIO DE DENUNCIA OCULTA ITENS
+    $('#voce-procurou-a-empresa-para-solucionar-o-problema_1').click(function(){
+      $('#pfg-fieldsetname-procurou-a-empresa-sim').show();
+      $('#pfg-fieldsetname-procurou-a-empresa-nao').hide();
+    });
+    $('#voce-procurou-a-empresa-para-solucionar-o-problema_2').click(function(){
+      $('#pfg-fieldsetname-procurou-a-empresa-sim').hide();
+      $('#pfg-fieldsetname-procurou-a-empresa-nao').show();
+    });
+
+
+    //OCULTA FORMULARIO CONSUMIDOR
     if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('section-consumidor')) {
         /*empresa = $('#archetypes-fieldname-empresa');
         area = $('#archetypes-fieldname-area');
@@ -143,10 +154,10 @@
         var itensForm = $(".formDuvidas .pfg-form").detach();
 
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
-            console.log(itensForm);
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
+
           //upload plone form gen
             var file = $("input:file");
             $.each(file,function(value){
@@ -340,16 +351,6 @@
     $('.formid-cadastro-de-pessoa-fisica-e-juridica #tipo-de-consumidor_2').click(function(){
       $('#pfg-fieldsetname-fisica').hide();
       $('#pfg-fieldsetname-juridica').show();
-    });
-
-    //FORMULARIO DE DENUNCIA OCULTA ITENS
-    $('#voce-procurou-a-empresa-para-solucionar-o-problema_1').click(function(){
-      $('#pfg-fieldsetname-procurou-a-empresa-sim').show();
-      $('#pfg-fieldsetname-procurou-a-empresa-nao').hide();
-    });
-    $('#voce-procurou-a-empresa-para-solucionar-o-problema_2').click(function(){
-      $('#pfg-fieldsetname-procurou-a-empresa-sim').hide();
-      $('#pfg-fieldsetname-procurou-a-empresa-nao').show();
     });
 
     //categorias CONSUMIDOR.GOV
