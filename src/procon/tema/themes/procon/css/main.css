@@ -1464,6 +1464,24 @@ body.subsection-adesao-ao-procon-paulistano .pfg-form .formid-adesao-ao-procon-p
     position: relative;
     z-index: 1;
 }
+.formid-adesao-ao-procon-paulistano input[type=submit] {
+  margin-top: 20px;
+  cursor: pointer;
+  background: #f11c30;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 5px 8px 5px 8px;
+  display: inline;
+  border: none;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  clear: both;
+  float: left;
+  margin: -62px 0 0 -5px;
+  position: relative;
+  z-index: 1;
+}
 body.subsection-adesao-ao-procon-paulistano #pfg-fieldwrapper label {
     color: #424242;
     font-family: 'Roboto';
@@ -2429,14 +2447,13 @@ float: left
   text-transform: uppercase;
   padding: 5px 8px 5px 8px;
   display: inline;
-  margin: 15px 0 0 -15px;
   border: none;
 -webkit-border-radius: 2px;
 -moz-border-radius: 2px;
 border-radius: 2px;
 clear: both;
 float: left;
-    margin: -62px 0 0 55px;
+    margin: -62px 0 0 -5px;
     position: relative;
     z-index: 1;
 }

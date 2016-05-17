@@ -73,6 +73,7 @@
 
     //MASCARA
            $("#data-de-nascimento").mask("99/99/9999");
+           #("#quando-o-produto-ou-servico-apresentou-problema").mask("99/99/9999");
            $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
            $("#telefone").mask("(99) 9999-9999");
            $("#cep").mask("99999-999");
