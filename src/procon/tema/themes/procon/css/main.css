@@ -1473,6 +1473,21 @@ body.subsection-adesao-ao-procon-paulistano #pfg-fieldwrapper label {
     padding: 3px 0 0 0px;
     width: 100%;
 }
+body.subsection-adesao-ao-procon-paulistano #pfg-fieldwrapper input {
+    border: 1px solid #ccc;
+    height: 25px;
+    padding: 3px 0 0 5px;
+}
+body.subsection-adesao-ao-procon-paulistano #pfg-fieldwrapper select {
+  height: 30px;
+  background: #fff;
+  padding: 3px;
+  border: 1px solid #ccc;
+}
+body.subsection-adesao-ao-procon-paulistano #pfg-fieldwrapper input[type=radio] {
+    float: left;
+    clear: both;
+}
 body.subsection-adesao-ao-procon-paulistano .formQuestion {
     color: #424242;
     font-family: 'Roboto';
