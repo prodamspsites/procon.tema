@@ -73,7 +73,7 @@
 
     //MASCARA
            $("#data-de-nascimento").mask("99/99/9999");
-           #("#quando-o-produto-ou-servico-apresentou-problema").mask("99/99/9999");
+           $("#quando-o-produto-ou-servico-apresentou-problema").mask("99/99/9999");
            $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
            $("#telefone").mask("(99) 9999-9999");
            $("#cep").mask("99999-999");
@@ -309,8 +309,7 @@
     }
 */
 
-    if ($('body').hasClass('section-denuncia')){
-
+    if ($('body').hasClass('section-denuncia') || $('body').hasClass('section-consumidor')){
     //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
      var protocolo = $.ajax({ type: "POST",
                              url: portal_url + "/@@protocolo",
@@ -332,6 +331,12 @@
                 $('#content #content-core').append(itensForm);
                 $('.form-group').addClass('active');
                 $('.divRedireciona').slideUp();
+                var protocolo = $.ajax({ type: "POST",
+                             url: portal_url + "/@@protocolo",
+                             async: false,
+                             data: { action: 'create' }
+                           }).responseText;
+                $('#archetypes-fieldname-protocolo input').val(protocolo);
             });
     }
 
