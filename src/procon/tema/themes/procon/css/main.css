@@ -1506,6 +1506,16 @@ body.subsection-adesao-ao-procon-paulistano label {
     float: left;
     padding: 3px 0 0 8px;
 }
+body.section-denuncia .form-group{
+  display: none;
+}
+body.section-denuncia #pfg-fieldwrapper{
+  border: none !important;
+  padding-left: 0px;
+}
+body.section-denuncia #pfg-fieldwrapper input[type=submit]{
+  margin: -62px 0 0 55px;
+}
 .form-group{
     border-left: 101px solid #4bafa3;
     margin: 20px 0 30px 0;
@@ -2426,7 +2436,7 @@ float: left
 border-radius: 2px;
 clear: both;
 float: left;
-    margin: -62px 0 0 155px;
+    margin: -62px 0 0 55px;
     position: relative;
     z-index: 1;
 }
@@ -2554,6 +2564,14 @@ z-index: 1;
 }
 #content .divRedireciona p strong{
   font-weight: 600;
+}
+body.section-consumidor #pfg-fieldwrapper{
+  border-left: none;
+  margin: 0;
+  width: auto;
+  border:none !important;
+  padding: 0;
+  left: 0;
 }
 #pfg-fieldwrapper{
     border-left: 101px solid #4bafa3;
