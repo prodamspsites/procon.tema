@@ -20,6 +20,14 @@
  * http://jigsaw.w3.org/css-validator/
  */
 
+body.subsection-adesao-ao-procon-paulistano #viewlet-below-content-title .form-group {
+  display: none !important;
+}
+
+body.subsection-adesao-ao-procon-paulistano #viewlet-below-content-title .form-group * {
+  display: none !important;
+}
+
 /*RESET*/
 html, body, form, fieldset {
     margin: 0;
@@ -3259,12 +3267,4 @@ z-index: 1;
 body.contraste1, body.contraste1 #footer, body.contraste1 #footer .footerBottom, body.contraste1 #footer .textoFooter{
   background: #000 !important;
   color: #fff !important;
-}
-
-body.subsection-adesao-ao-procon-paulistano #viewlet-below-content-title .form-group {
-  display: none !important;
-}
-
-body.subsection-adesao-ao-procon-paulistano #viewlet-below-content-title .form-group * {
-  display: none !important;
 }
