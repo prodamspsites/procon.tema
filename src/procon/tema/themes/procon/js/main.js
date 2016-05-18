@@ -204,6 +204,8 @@
             $('.tooltip-area').hide();
         });*/
 
+        var currentUser = $('.currentUser').text();
+
         var itensForm = $(".formDuvidas .pfg-form").detach();
 
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
@@ -227,6 +229,7 @@
                 var tamanhoArquivo = this.files[0].size;
                 $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER ARQUIVO</a></div>');
             });
+            $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
 
             //formata tamanho do arquivo upload
             var formatar = function formatBytes(bytes,decimals) {

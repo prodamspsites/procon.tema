@@ -60,7 +60,7 @@ body.template-news_item_view .wrap{
   width: 942px;
   margin: 0 auto;
 }
-.hiddenStructure, .searchSection{
+.hiddenStructure, .searchSection, .currentUser{
   display:none;
 }
 
@@ -2437,6 +2437,11 @@ float: left
 .pfg-form.formid-formularios .ArchetypesBooleanWidget label{
   float: left;
   padding: 3px 0 0 5px;
+}
+.pfg-form.formid-formularios .ArchetypesBooleanWidget .formQuestion{
+  float: none;
+  display: block;
+  margin-left: 15px;
 }
 .pfg-form.formid-formularios #genero label{
   float: left;
