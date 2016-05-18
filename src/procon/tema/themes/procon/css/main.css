@@ -1926,14 +1926,25 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   clear: both;
   float: left;
   width: 90%;
-  margin: 30px 0 0 0;
+  margin: -5px 0 0 0;
   background: #efefef;
   padding: 10px;
+}
+#content .usuario-ativo{
+  color: #424242;
+  margin: 0 0 0 -13px;
+  float: left;
+  clear: both;
+}
+#content .usuario-ativo a{
+  color:#f11c30 !important;
+  border-bottom: none!important;
+
 }
 .botaoUpload{
   width: 600px;
   float: left;
-  margin: 10px 0 0 0;
+  margin: 13px 0 0 0;
 }
 .botaoUpload .btnupload{
   background: #f11c30;
@@ -2070,7 +2081,7 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   left: 201px;
 }
 /*FORMULARIO CADASTRO*/
-#content .rowlike{
+body.template-register #content .rowlike{
   float: left;
   width: 380px;
   border: none;
@@ -2080,18 +2091,18 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   float: left;
   padding: 10px 0 0 0;
 }
-#content .rowlike {
+body.template-register #content .rowlike {
   padding: 60px 18px 18px 18px;
   border: 1px solid #eee;
   font-family: 'Roboto';
   margin: 0 0 20px 0;
 }
-#content .rowlike label{
+body.template-register #content .rowlike label{
    font-family: 'Roboto';
    font-weight: normal !important;
    font-size: 1.2em;
 }
-#content .rowlike label.horizontal{
+body.template-register #content .rowlike label.horizontal{
   width: 100%;
   clear: both;
   float: left;
@@ -2102,10 +2113,10 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
    font-weight: normal !important;
    font-size: 1.2em;
 }
-#content .rowlike .formHelp{
+body.template-register #content .rowlike .formHelp{
   display: none;
 }
-#content .rowlike input[type="text"], #content .rowlike input[type="password"]{
+body.template-register #content .rowlike input[type="text"], body.template-register #content .rowlike input[type="password"]{
   width: 310px;
   margin: 8px 0 5px 0;
   display: block;

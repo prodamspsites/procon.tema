@@ -1,5 +1,30 @@
 (function($) {
   $(document).ready(function() {
+    //LIGHTBOX
+    function lightboxForm() {
+          lightbox_url = portal_url + '/consumidor/lightbox-titulo';
+          $.ajax({
+              url: lightbox_url, success: function(lightbox) {
+                lightbox_titulo = $(lightbox).find('.titPage').html();
+                lightbox_text = $(lightbox).find('.contentBody').html();
+                $('body').append("<div class='lightboxGeral'><div class='lightbox-div'><h2>"+lightbox_titulo+"</h2><div class='divScrollLight'>"+lightbox_text+"</div><a href='javascript:void(0);' class='fechaLightbox'>FECHAR</a></div></div>");
+                $('.usuario-ativo').before("<div class='contentLightbox'><input type='checkbox'>Concordo em disponibilizar as informações contidas em minha reclamação para que sejam divulgadas no site de acordo com os <a href='javascript:void(0);' class='linkLightbox'>Termos de Uso e Políticas de Privacidade.</a></div></div>");
+              }
+          })
+          $(document).on('click','.linkLightbox', function(){
+              $('.lightboxGeral').show();
+          });
+           $(document).on('click','.btnTooltip', function(){
+              $('.tooltip-area').toggle();
+          });
+          $(document).on('click','.fechaLightbox', 'body',function(){
+              $('.lightboxGeral').hide();
+          });
+          $(document).on('click','.fechaTooltip', function(){
+              $('.tooltip-area').hide();
+          });
+      }
+
     //AJUSTE NO TEMPLATE DE CADASTRO
     if ($('body').hasClass('template-register')) {
       form = $('.kssattr-formname-register')
@@ -209,18 +234,21 @@
         var itensForm = $(".formDuvidas .pfg-form").detach();
 
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
+            lightboxForm();
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
 
           //upload plone form gen
-            var file = $("input:file").hide();
+            var file = $("input:file").css('visibility', 'hidden');
             $.each(file,function(value){
               if( value > 0 ){
                  $("#"+file[value].id).parent().parent().hide();
               }
             });
-            $("input:file").after('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com exteñções JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
+            $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com exteñções JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
+
+
             $("input[type='file']").on('change',function(){
                 var id  = $(this).attr('id');
                 console.log(id);
@@ -229,7 +257,7 @@
                 var tamanhoArquivo = this.files[0].size;
                 $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER ARQUIVO</a></div>');
             });
-            $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
+            $('<div class="usuario-ativo"><span>Logado como: <strong>'+currentUser+'</strong> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
 
             //formata tamanho do arquivo upload
             var formatar = function formatBytes(bytes,decimals) {
@@ -253,103 +281,8 @@
 
         });
 
-        $(document).on('change', 'input[type=radio][name=deseja-informar-a-empresa]', function(){
-            if (this.value == 'Sim') {
-                $(empresa, data_compra, produto, area).show();
-                $('input', empresa, data_compra, produto, area).prop('required',true);
-            }
-            else if (this.value == 'Não') {
-                $(empresa, data_compra, produto, area).hide();
-                $('input', empresa, data_compra, produto, area).prop('required',false);
-            }
-        })
-    }
-
-
-
-/*if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('section-consumidor')) {
-        empresa = $('#archetypes-fieldname-empresa');
-        area = $('#archetypes-fieldname-area');
-        data_compra = $('#archetypes-fieldname-data-da-compra-ou-assinatura-do-contrato');
-        produto = $('#archetypes-fieldname-produto-ou-servico-contratado');
-        btn_enviar = $('input[name=form_submit]');
-        $(empresa, data_compra, produto, area).hide();
-
-        tooltip_url = portal_url + '/consumidor/area';
-        lightbox_url = portal_url + '/consumidor/termos-de-uso-e-politicas-de-privacidade';
-        $.ajax({
-            url: tooltip_url, success: function(tooltip) {
-              tooltip = $(tooltip).find('.contentBody').html();
-              $(area).append("<div class='divGeralTootltip'><a href='javascript:void(0);' class='btnTooltip'>?</a><div class='tooltip-area'>"+tooltip+"<a href='javascript:void(0);' class='fechaTooltip'>FECHAR</a></div></div>");
-            }
-        })
-
-        $.ajax({
-            url: lightbox_url, success: function(lightbox) {
-              lightbox_titulo = $(lightbox).find('.titPage').html();
-              lightbox_text = $(lightbox).find('.contentBody').html();
-              $('body').append("<div class='lightboxGeral'><div class='lightbox-div'><h2>"+lightbox_titulo+"</h2><div class='divScrollLight'>"+lightbox_text+"</div><a href='javascript:void(0);' class='fechaLightbox'>FECHAR</a></div></div>");
-              $(btn_enviar).before("<div class='contentLightbox'><input type='checkbox'>Concordo em disponibilizar as informações contidas em minha reclamação para que sejam divulgadas no site de acordo com os <a href='javascript:void(0);' class='linkLightbox'>Termos de Uso e Políticas de Privacidade.</a></div></div>");
-            }
-        })
-
-        $(document).on('click','.linkLightbox', function(){
-            $('.lightboxGeral').show();
-        });
-         $(document).on('click','.btnTooltip', function(){
-            $('.tooltip-area').toggle();
-        });
-        $(document).on('click','.fechaLightbox', 'body',function(){
-            $('.lightboxGeral').hide();
-        });
-        $(document).on('click','.fechaTooltip', function(){
-            $('.tooltip-area').hide();
-        });
-
-        var itensForm = $("#pfg-fieldwrapper").detach();
-
-        $('.form-group .btnBuscar, .btnProsseguir').click(function(){
-            $('#content #content-core').append(itensForm);
-            $('.form-group').addClass('active');
-            $('.divRedireciona').slideUp();
-
-          //upload plone form gen
-            var file = $("input:file");
-            $.each(file,function(value){
-              if( value > 0 ){
-                 $("#"+file[value].id).parent().parent().hide();
-              }
-            });
-
-            $("input[type='file']").on('change',function(){
-                var id  = $(this).attr('id');
-                console.log(id);
-                $("#"+id).parent().parent().next().show();
-                var nomeArquivo = this.files[0].name;
-                var tamanhoArquivo = this.files[0].size;
-                $("#"+id).after('<a href="#" class="clearImage">Clear</a><br><span style="margin-top:20px;width:600px;height:400px; padding:5px">Nome:'+nomeArquivo+'<br>Tamanho:'+formatar(tamanhoArquivo)+'</spam>');
-            });
-
-            //formata tamanho do arquivo upload
-            var formatar = function formatBytes(bytes,decimals) {
-               if(bytes == 0) return '0 Byte';
-               var k = 1000;
-               var dm = decimals + 1 || 2;
-               var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-               var i = Math.floor(Math.log(bytes) / Math.log(k));
-               return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-            };
-
-            $(document).on('click', '.clearImage', function(e) {
-              e.preventDefault();
-              thisParent = $(this).parent()
-              input = $('input', thisParent);
-              $(input).val('');
-              $(this).remove();
-              $('span',thisParent).remove();
-              return false;
-            });
-
+        $(document).on('click','.btnupload', function(){
+            $(this).parent().parent().find('input').trigger('click');
         });
 
         $(document).on('change', 'input[type=radio][name=deseja-informar-a-empresa]', function(){
@@ -363,7 +296,10 @@
             }
         })
     }
-*/
+
+
+
+//FIM
 
     if ($('body').hasClass('section-denuncia') || $('body').hasClass('section-consumidor')){
     //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
