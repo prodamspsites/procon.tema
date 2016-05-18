@@ -1916,6 +1916,53 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   font-family: 'Roboto';
   font-size: 2em;
 }
+.clearImage{
+    font-family: 'Roboto';
+    text-decoration: none !important;
+    border-bottom: none !important;
+    color: red !important;
+}
+.divDadosUpload{
+  clear: both;
+  float: left;
+  width: 90%;
+  margin: 30px 0 0 0;
+  background: #efefef;
+  padding: 10px;
+}
+.botaoUpload{
+  width: 600px;
+  float: left;
+  margin: 10px 0 0 0;
+}
+.botaoUpload .btnupload{
+  background: #f11c30;
+  color: #fff;
+  text-align: center;
+  font-size: 1.2em;
+  font-family: 'Roboto';
+  padding: 10px;
+  float: left;
+}
+#content .botaoUpload .btnupload:hover{
+  cursor: pointer;
+  color: #fff !important;
+}
+#content .botaoUpload .infoUpload{
+  font-family: 'Roboto';
+  color: #424242 !important;
+  padding: 0 0 0 10px;
+  float: left;
+  font-size: 1em;
+  width: 330px;
+}
+.nomeArq, .tamanhoArq{
+    font-family: 'Roboto';
+    color: #424242;
+    font-size: 1.2em;
+    width: 250px;
+    float: left;
+}
 .dadosReclamacoes .nomeArquivo{
   clear: none;
   padding: 0 0 0 25px;

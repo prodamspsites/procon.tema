@@ -212,20 +212,20 @@
             $('.divRedireciona').slideUp();
 
           //upload plone form gen
-            var file = $("input:file");
+            var file = $("input:file").hide();
             $.each(file,function(value){
               if( value > 0 ){
                  $("#"+file[value].id).parent().parent().hide();
               }
             });
-
+            $("input:file").after('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com exteñções JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
             $("input[type='file']").on('change',function(){
                 var id  = $(this).attr('id');
                 console.log(id);
                 $("#"+id).parent().parent().next().show();
                 var nomeArquivo = this.files[0].name;
                 var tamanhoArquivo = this.files[0].size;
-                $("#"+id).after('<a href="#" class="clearImage">Clear</a><br><span style="margin-top:20px;width:600px;height:400px; padding:5px">Nome:'+nomeArquivo+'<br>Tamanho:'+formatar(tamanhoArquivo)+'</spam>');
+                $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER ARQUIVO</a></div>');
             });
 
             //formata tamanho do arquivo upload
