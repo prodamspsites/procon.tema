@@ -60,7 +60,7 @@ body.template-news_item_view .wrap{
   width: 942px;
   margin: 0 auto;
 }
-.hiddenStructure, .searchSection{
+.hiddenStructure, .searchSection, .currentUser{
   display:none;
 }
 
