@@ -119,14 +119,19 @@
 
     //MASCARA
            $("#data-de-nascimento").mask("99/99/9999");
+           $("#data-de-compra-ou-assinatura-do-contrato").mask("99/99/9999");
            $("#quando-voce-comprou-o-produto-ou-contratou-o-servico-1").mask("99/99/9999");
            $("#qual-o-valor-total-do-produto-servico-clique-ou-toque-aqui-para-inserir-o-texto-1").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
+           $("#valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
            $("#quando-o-produto-ou-servico-apresentou-problema").mask("99/99/9999");
            $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
            $("#telefone").mask("(99) 9999-9999");
            $("#cep").mask("99999-999");
            $("#cpf").mask("999.999.999-99");
            $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
+           $('#quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto').keyup(function () { 
+              this.value = this.value.replace(/[^0-9\.]/g,'');
+          });
     //MENU HOVER
     if ($(window).width() >= 900){
              $(".menu .subMenu a").mouseenter(function () {
