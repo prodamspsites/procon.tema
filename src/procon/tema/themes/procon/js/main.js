@@ -2,7 +2,7 @@
   $(document).ready(function() {
     //LIGHTBOX
     function lightboxForm() {
-          lightbox_url = portal_url + '/consumidor/lightbox-titulo';
+          lightbox_url = portal_url + '/termo-de-uso/termo';
           $.ajax({
               url: lightbox_url, success: function(lightbox) {
                 lightbox_titulo = $(lightbox).find('.titPage').html();
