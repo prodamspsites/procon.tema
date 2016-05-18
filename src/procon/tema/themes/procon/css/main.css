@@ -2449,11 +2449,6 @@ float: left
   float: left;
   padding: 3px 0 0 5px;
 }
-.pfg-form.formid-formularios .ArchetypesBooleanWidget .formQuestion{
-  float: none;
-  display: block;
-  margin-left: 15px;
-}
 .pfg-form.formid-formularios #genero label{
   float: left;
   padding: 3px 0 0 8px;
