@@ -119,6 +119,8 @@
 
     //MASCARA
            $("#data-de-nascimento").mask("99/99/9999");
+           $("#quando-voce-comprou-o-produto-ou-contratou-o-servico-1").mask("99/99/9999");
+           $("#qual-o-valor-total-do-produto-servico-clique-ou-toque-aqui-para-inserir-o-texto-1").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
            $("#quando-o-produto-ou-servico-apresentou-problema").mask("99/99/9999");
            $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
            $("#telefone").mask("(99) 9999-9999");
