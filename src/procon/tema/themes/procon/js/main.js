@@ -25,6 +25,50 @@
           });
       }
 
+    function insereInputFile() {
+          //upload plone form gen
+            var file = $("input:file").css('display', 'none');
+            $.each(file,function(value){
+              if( value > 0 ){
+                 $("#"+file[value].id).parent().parent().hide();
+              }
+            });
+            $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com exteñções JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
+
+
+            $("input[type='file']").on('change',function(){
+                var id  = $(this).attr('id');
+                console.log(id);
+                $("#"+id).parent().parent().next().show();
+                var nomeArquivo = this.files[0].name;
+                var tamanhoArquivo = this.files[0].size;
+                $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER ARQUIVO</a></div>');
+            });
+
+            //formata tamanho do arquivo upload
+            var formatar = function formatBytes(bytes,decimals) {
+               if(bytes == 0) return '0 Byte';
+               var k = 1000;
+               var dm = decimals + 1 || 2;
+               var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+               var i = Math.floor(Math.log(bytes) / Math.log(k));
+               return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+            };
+
+            $(document).on('click', '.clearImage', function(e) {
+              e.preventDefault();
+              thisParent = $(this).parent()
+              input = $('input', thisParent);
+              $(input).val('');
+              $(this).remove();
+              $('span',thisParent).remove();
+              return false;
+            });
+    }
+    $(document).on('click','.btnupload', function(){
+        $(this).parent().parent().find('input').trigger('click');
+    });
+
     //AJUSTE NO TEMPLATE DE CADASTRO
     if ($('body').hasClass('template-register')) {
       form = $('.kssattr-formname-register')
@@ -238,52 +282,12 @@
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
-
-          //upload plone form gen
-            var file = $("input:file").css('visibility', 'hidden');
-            $.each(file,function(value){
-              if( value > 0 ){
-                 $("#"+file[value].id).parent().parent().hide();
-              }
-            });
-            $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com exteñções JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
-
-
-            $("input[type='file']").on('change',function(){
-                var id  = $(this).attr('id');
-                console.log(id);
-                $("#"+id).parent().parent().next().show();
-                var nomeArquivo = this.files[0].name;
-                var tamanhoArquivo = this.files[0].size;
-                $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER ARQUIVO</a></div>');
-            });
             $('<div class="usuario-ativo"><span>Logado como: <strong>'+currentUser+'</strong> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
 
-            //formata tamanho do arquivo upload
-            var formatar = function formatBytes(bytes,decimals) {
-               if(bytes == 0) return '0 Byte';
-               var k = 1000;
-               var dm = decimals + 1 || 2;
-               var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-               var i = Math.floor(Math.log(bytes) / Math.log(k));
-               return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-            };
-
-            $(document).on('click', '.clearImage', function(e) {
-              e.preventDefault();
-              thisParent = $(this).parent()
-              input = $('input', thisParent);
-              $(input).val('');
-              $(this).remove();
-              $('span',thisParent).remove();
-              return false;
-            });
+            insereInputFile();
 
         });
 
-        $(document).on('click','.btnupload', function(){
-            $(this).parent().parent().find('input').trigger('click');
-        });
 
         $(document).on('change', 'input[type=radio][name=deseja-informar-a-empresa]', function(){
             if (this.value == 'Sim') {
@@ -302,6 +306,10 @@
 //FIM
 
     if ($('body').hasClass('section-denuncia') || $('body').hasClass('section-consumidor')){
+    var currentUser = $('.currentUser').text();
+    $('<div class="usuario-ativo"><span>Logado como: <strong>'+currentUser+'</strong> &nbsp;&nbsp;|&nbsp;&nbsp; <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
+    lightboxForm();
+    insereInputFile();
     //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
      var protocolo = $.ajax({ type: "POST",
                              url: portal_url + "/@@protocolo",

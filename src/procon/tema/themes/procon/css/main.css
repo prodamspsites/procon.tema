@@ -1530,6 +1530,8 @@ body.section-denuncia .form-group{
 body.section-denuncia #pfg-fieldwrapper{
   border: none !important;
   padding-left: 0px;
+  margin-bottom: 0;
+  padding-bottom: 0
 }
 body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   margin: -62px 0 0 55px;
@@ -1971,7 +1973,7 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
     font-family: 'Roboto';
     color: #424242;
     font-size: 1.2em;
-    width: 250px;
+    width: 212px;
     float: left;
 }
 .dadosReclamacoes .nomeArquivo{
@@ -2514,14 +2516,14 @@ float: left
   padding: 5px 8px 5px 8px;
   display: inline;
   border: none;
--webkit-border-radius: 2px;
--moz-border-radius: 2px;
-border-radius: 2px;
-clear: both;
-float: left;
-    margin: -62px 0 0 -5px;
-    position: relative;
-    z-index: 1;
+  -webkit-border-radius: 2px;
+  -moz-border-radius: 2px;
+  border-radius: 2px;
+  clear: both;
+  float: left;
+  margin: 13px 0 0 -15px;
+  position: relative;
+  z-index: 1;
 }
 .pfg-form.formid-formulario-de-denuncia textarea{
   width: 70% !important;
@@ -2666,7 +2668,7 @@ body.section-consumidor #pfg-fieldwrapper{
     padding: 15px 16px 45px 60px;
     position: relative;
     float: left;
-    margin-left: -480px;
+    margin-left: -489px;
     left: 50%;
     clear: both;
 }
