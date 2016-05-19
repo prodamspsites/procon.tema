@@ -1,5 +1,12 @@
 (function($) {
   $(document).ready(function() {
+    //TEMPLATE BUSCAR_DUVIDAS
+    if ($('body').hasClass('template-buscar_duvidas')) {
+      $('#portal-header nav.menu ul').html('<li><a href="#">Reclamações</a></li><li><a href="#">Dúvidas</a></li><li><a href="#">Denúncias</a></li><li><a href="#">Fornecedores</a></li>')
+      $('#portal-header').append('<div class="loginAdmin"><span class="nome">Nome do usuario</span> <a href="#" title="sair" class="btnSair">Sair</a></div>');
+      $('.loginAdmin').show();
+    }
+
     //AJUSTE NO TEMPLATE DE CADASTRO
     if ($('body').hasClass('template-register')) {
       form = $('.kssattr-formname-register')
