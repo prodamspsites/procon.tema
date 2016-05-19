@@ -70,7 +70,7 @@ body.template-news_item_view .wrap{
 }
 .loginAdmin{
     position: absolute;
-    right: 203px;
+    right: -25px;
     top: 167px;
     background: url(../img/icoLogin.png) no-repeat;
     width: 241px;
