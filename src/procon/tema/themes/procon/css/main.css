@@ -176,6 +176,13 @@ body.template-news_item_view .wrap{
   margin:12px 25px 0 0;
 }
 
+#portal-header .modoAdmin{
+  margin-top: 30px;
+  margin-left: 30px;
+  display: block;
+  float: left;
+}
+
 /*MENU*/
 #portal-header nav.menu{
   float: left;
