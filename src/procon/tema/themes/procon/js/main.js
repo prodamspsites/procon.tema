@@ -225,7 +225,7 @@
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
             if ($('body').hasClass('userrole-anonymous')) {
-              window.location.replace(portal_url + '/@@register');
+              $('#content').append('<div class="pfg-form formid-formularios"><div class="facaReclamaLogin"><strong>Cadastre-se ou faça login para prosseguir:<br><a href="'+portal_url+'/@@register" class="irparalogin" title="IR PARA CADASTRO/LOGIN">IR PARA CADASTRO/LOGIN</a></div></div>');
             }
           //upload plone form gen
             var file = $("input:file");
@@ -378,11 +378,11 @@
         })
     }
 */
+    if ($('body').hasClass('userrole-anonymous') && $('body').hasClass('section-denuncia')){
+         window.location.replace(portal_url + '/@@register');
+    }
 
     if ($('body').hasClass('section-denuncia') || $('body').hasClass('section-consumidor')){
-      if ($('body').hasClass('userrole-anonymous')) {
-        window.location.replace(portal_url + '/@@register');
-      }
 
     //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
      var protocolo = $.ajax({ type: "POST",
@@ -410,7 +410,7 @@
                              async: false,
                              data: { action: 'create' }
                            }).responseText;
-		console.log(protocolo);
+    console.log(protocolo);
                 $('#archetypes-fieldname-protocolo input').val(protocolo);
             });
     }
@@ -717,6 +717,9 @@
               });
             }
             else if (this.value == 'nao') {
+              if ($('body').hasClass('userrole-anonymous')) {
+                $('.respostaUtil .divReplica').html('<p><strong>Por favor <a href="'+portal_url+'/@@register" title="se autentique">se autentique</a> para prosseguir.</strong></p>').show()
+              }
               $('.mensagem_enviada', $('input.flashMessage').parent().parent()).html("");
               $(".replica", $(this).parent().parent()).show();
               $(".replica", $(this).parent().parent()).addClass('current');

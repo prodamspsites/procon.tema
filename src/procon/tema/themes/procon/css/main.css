@@ -2665,6 +2665,41 @@ body.section-consumidor #pfg-fieldwrapper{
   padding: 0;
   left: 0;
 }
+body.section-consumidor .divLoginDenuncia{
+  display: none;
+}
+.facaReclamaLogin{
+  padding:20px 0 0 0;
+  min-height: 60px;
+}
+.facaReclamaLogin strong{
+  font-family: 'Roboto';
+  font-size: 1.1em;
+  color: #424242;
+}
+.facaReclamaLogin .irparalogin{
+    margin-top: 20px;
+    cursor: pointer;
+    background: #f11c30;
+    color: #fff !important;
+    text-transform: uppercase;
+    padding: 10px 8px 0 8px;
+    display: inline;
+    margin: 12px 0 0 3px;
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    float: left;
+    width: autopx;
+    height: 28px;
+    font-weight: 500;
+    font-family: 'Roboto';
+    font-size: 1.1em;
+}
+#content .facaReclamaLogin .irparalogin{
+  color:#fff !important;
+}
 #pfg-fieldwrapper{
     border-left: 101px solid #4bafa3;
     margin: 0 0 30px 0;
