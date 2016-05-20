@@ -223,7 +223,6 @@
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
-
           //upload plone form gen
             var file = $("input:file");
             $.each(file,function(value){
@@ -485,6 +484,7 @@
 
                 $('.linkRedireciona').attr('href', urlEmpresa);
                 $('.divRedireciona').slideUp();
+                $('.pfg-form.formid-formularios').hide();
                 $('.divRedireciona').slideDown();
                 $('.form-group .btnBuscar').hide();
 
