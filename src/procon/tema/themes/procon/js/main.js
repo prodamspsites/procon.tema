@@ -2,8 +2,9 @@
   $(document).ready(function() {
     //TEMPLATE BUSCAR_DUVIDAS
     if ($('body').hasClass('template-buscar_duvidas')) {
+      var currentUser = $('.currentUser').text();
       $('#portal-header nav.menu ul').html('<li><a href="#">Reclamações</a></li><li><a href="#">Dúvidas</a></li><li><a href="#">Denúncias</a></li><li><a href="#">Fornecedores</a></li>')
-      $('#portal-header').append('<div class="wrap" style="position:relative"><div class="loginAdmin"><span class="nome">Nome do usuario</span> <a href="#" title="sair" class="btnSair">Sair</a></div></div>');
+      $('#portal-header').append('<div class="wrap" style="position:relative"><div class="loginAdmin"><span class="nome">'+currentUser+'</span> <a href="#" title="sair" class="btnSair">Sair</a></div></div>');
       $('.wrap .loginAdmin').show();
     }
 
@@ -223,6 +224,9 @@
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
+            if ($('body').hasClass('userrole-anonymous')) {
+              window.location.replace(portal_url + '/@@register');
+            }
           //upload plone form gen
             var file = $("input:file");
             $.each(file,function(value){
@@ -376,6 +380,10 @@
 */
 
     if ($('body').hasClass('section-denuncia') || $('body').hasClass('section-consumidor')){
+      if ($('body').hasClass('userrole-anonymous')) {
+        window.location.replace(portal_url + '/@@register');
+      }
+
     //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
      var protocolo = $.ajax({ type: "POST",
                              url: portal_url + "/@@protocolo",

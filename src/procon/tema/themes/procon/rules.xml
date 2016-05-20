@@ -21,9 +21,11 @@
         <drop css:theme="#portal-breadcrumbs" css:if-content=".portaltype-collective-cover-content" />
         <replace css:theme="#logoProcon" css:content="#logoProcon" />
         <replace css:theme=".social" css:content=".social" />
+        <!-- <replace css:theme=".modoAdmin" css:content=".modoAdmin" /> -->
         <replace css:theme=".logoNegocios" css:content=".logoNegocios" />
         <replace css:theme="#footer" css:content="#footer" />
         <replace css:theme=".menu" css:content=".menu" />
+       <!--  <replace css:theme-children=".menu" css:content=".menuModAdmin" /> -->
         <drop css:content=".socialShare" css:if-content="body.portaltype-collective-cover-content,body.template-folder_listing, body.template-folder_contents, body.portaltype-formfolder, body.template-capa_noticias_view, body.template-capa_duvidas_view" />
         <drop css:content=".documentByLine" />
     </rules>
