@@ -1,5 +1,7 @@
 (function($) {
   $(document).ready(function() {
+    var currentUser = $('.currentUser').text();
+
     //TEMPLATE BUSCAR_DUVIDAS
     if ($('body').hasClass('template-buscar_duvidas')) {
       var currentUser = $('.currentUser').text();
@@ -7,6 +9,10 @@
       $('#portal-header').append('<div class="wrap" style="position:relative"><div class="loginAdmin"><span class="nome">'+currentUser+'</span> <a href="#" title="sair" class="btnSair">Sair</a></div></div>');
       $('.wrap .loginAdmin').show();
     }
+
+    $(document).on('click','.btnupload', function(){
+        $(this).parent().parent().find('input').trigger('click');
+    });
 
     //AJUSTE NO TEMPLATE DE CADASTRO
     if ($('body').hasClass('template-register')) {
@@ -79,6 +85,50 @@
         $('#form-widgets-tipo-0').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-municipio-0').attr('checked', 'checked');
+      });
+
+      function insereInputFile() {
+          //upload plone form gen
+            var file = $("input:file").css('display', 'none');
+            $.each(file,function(value){
+              if( value > 0 ){
+                 $("#"+file[value].id).parent().parent().hide();
+              }
+            });
+            $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com exteñções JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
+
+
+            $("input[type='file']").on('change',function(){
+                var id  = $(this).attr('id');
+                console.log(id);
+                $("#"+id).parent().parent().next().show();
+                var nomeArquivo = this.files[0].name;
+                var tamanhoArquivo = this.files[0].size;
+                $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER ARQUIVO</a></div>');
+            });
+
+            //formata tamanho do arquivo upload
+            var formatar = function formatBytes(bytes,decimals) {
+               if(bytes == 0) return '0 Byte';
+               var k = 1000;
+               var dm = decimals + 1 || 2;
+               var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+               var i = Math.floor(Math.log(bytes) / Math.log(k));
+               return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
+            };
+
+            $(document).on('click', '.clearImage', function(e) {
+              e.preventDefault();
+              thisParent = $(this).parent()
+              input = $('input', thisParent);
+              $(input).val('');
+              $(this).remove();
+              $('span',thisParent).remove();
+              return false;
+            });
+      }
+      $(document).on('click','.btnupload', function(){
+          $(this).parent().parent().find('input').trigger('click');
       });
 
       $(document).on('click', '#form-widgets-tipo-1', function(){
@@ -175,6 +225,32 @@
       $('#pfg-fieldsetname-procurou-a-empresa-nao').show();
     });
 
+    //LIGHTBOX
+    function lightboxForm() {
+          lightbox_url = portal_url + '/termo-de-uso/termo';
+          $.ajax({
+              url: lightbox_url, success: function(lightbox) {
+                lightbox_titulo = $(lightbox).find('.titPage').html();
+                lightbox_text = $(lightbox).find('.contentBody').html();
+                $('body').append("<div class='lightboxGeral'><div class='lightbox-div'><h2>"+lightbox_titulo+"</h2><div class='divScrollLight'>"+lightbox_text+"</div><a href='javascript:void(0);' class='fechaLightbox'>FECHAR</a></div></div>");
+                $('.usuario-ativo').before("<div class='contentLightbox'><input type='checkbox'>Concordo em disponibilizar as informações contidas em minha reclamação para que sejam divulgadas no site de acordo com os <a href='javascript:void(0);' class='linkLightbox'>Termos de Uso e Políticas de Privacidade.</a></div></div>");
+              }
+          })
+          $(document).on('click','.linkLightbox', function(){
+              $('.lightboxGeral').show();
+          });
+           $(document).on('click','.btnTooltip', function(){
+              $('.tooltip-area').toggle();
+          });
+          $(document).on('click','.fechaLightbox', 'body',function(){
+              $('.lightboxGeral').hide();
+          });
+          $(document).on('click','.fechaTooltip', function(){
+              $('.tooltip-area').hide();
+          });
+      }
+
+
 
     //OCULTA FORMULARIO CONSUMIDOR
     if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('section-consumidor')) {
@@ -216,54 +292,18 @@
             $('.tooltip-area').hide();
         });*/
 
-        var currentUser = $('.currentUser').text();
-
         var itensForm = $(".formDuvidas .pfg-form").detach();
 
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
+            lightboxForm();
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
             if ($('body').hasClass('userrole-anonymous')) {
               $('#content').append('<div class="pfg-form formid-formularios"><div class="facaReclamaLogin"><strong>Cadastre-se ou faça login para prosseguir:<br><a href="'+portal_url+'/@@register" class="irparalogin" title="IR PARA CADASTRO/LOGIN">IR PARA CADASTRO/LOGIN</a></div></div>');
             }
-          //upload plone form gen
-            var file = $("input:file");
-            $.each(file,function(value){
-              if( value > 0 ){
-                 $("#"+file[value].id).parent().parent().hide();
-              }
-            });
-
-            $("input[type='file']").on('change',function(){
-                var id  = $(this).attr('id');
-                console.log(id);
-                $("#"+id).parent().parent().next().show();
-                var nomeArquivo = this.files[0].name;
-                var tamanhoArquivo = this.files[0].size;
-                $("#"+id).after('<a href="#" class="clearImage">Clear</a><br><span style="margin-top:20px;width:600px;height:400px; padding:5px">Nome:'+nomeArquivo+'<br>Tamanho:'+formatar(tamanhoArquivo)+'</spam>');
-            });
             $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
-
-            //formata tamanho do arquivo upload
-            var formatar = function formatBytes(bytes,decimals) {
-               if(bytes == 0) return '0 Byte';
-               var k = 1000;
-               var dm = decimals + 1 || 2;
-               var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-               var i = Math.floor(Math.log(bytes) / Math.log(k));
-               return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-            };
-
-            $(document).on('click', '.clearImage', function(e) {
-              e.preventDefault();
-              thisParent = $(this).parent()
-              input = $('input', thisParent);
-              $(input).val('');
-              $(this).remove();
-              $('span',thisParent).remove();
-              return false;
-            });
+             insereInputFile();
 
         });
 
@@ -383,7 +423,9 @@
     }
 
     if ($('body').hasClass('section-denuncia') || $('body').hasClass('section-consumidor')){
-
+     $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
+     insereInputFile();
+     lightboxForm();
     //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
      var protocolo = $.ajax({ type: "POST",
                              url: portal_url + "/@@protocolo",
