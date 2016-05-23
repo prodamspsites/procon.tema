@@ -536,14 +536,14 @@ border-radius: 0px;
   width: 100%;
 }
 #portal-column-one .navTree .navTreeItem a:hover{
-  background: #f11c30;
+  background: #710e0f;
   color: white !important;
 }
 #portal-column-one .navTree .navTreeItem .navTreeCurrentNode{
   color: white !important;
 }
 #portal-column-one .navTree .navTreeCurrentItem{
-  background: #f11c30;
+  background: #710e0f;
 }
 #portal-column-one .navTree .navTreeCurrentItem a{
   /*color: white !important;*/
@@ -601,14 +601,14 @@ border-radius: 0px;
   height: 45px;
 }
 #divSidebar .lstServicos li a{
-  color:#128a89;
+  color:#710e0f;
   font-family: 'Roboto', Arial;
   font-size: 1.3em;
   float: left;
   border-bottom: none;
 }
 #divSidebar .lstServicos li a:hover{
-  color:#128a89 !important;
+  color:#710e0f !important;
 }
 #divSidebar .lstNoticias .imgNoticia{
   margin:-2px 0 0 0;
@@ -1033,7 +1033,7 @@ body.template-capa_noticias_view .documentFirstHeading{
   margin: 15px 0 10px 0;
 }
 .divAccordeon h3{
-  background: #128a89;
+  background: #710e0f;
   margin: 1px 0 0 0;
   color: #fff;
   font-size: 1em;
@@ -1195,7 +1195,7 @@ body.template-capa_noticias_view .documentFirstHeading{
   background: white;
 }
 .divAccordeon .respostaUtil .enviaDuvida{
-  background: #f11c30;
+  background: #710e0f;
   color: white;
   text-align: center;
   padding:5px 12px 5px 12px;
@@ -1250,7 +1250,7 @@ body.template-capa_noticias_view .documentFirstHeading{
   display: none;
 }
 #table_id_previous{
-  background: url(../img/setaPagPrev.png) no-repeat 13px 12px #128a89 !important;
+  background: url(../img/setaPagPrev.png) no-repeat 13px 12px #710e0f !important;
     text-indent: -9999px;
     padding-left: 17px;
     padding-right: 17px;
@@ -1262,7 +1262,7 @@ body.template-capa_noticias_view .documentFirstHeading{
   opacity: 0.5;
 }
 #table_id_next{
-    background: url(../img/setaPagNext.png) no-repeat 15px 12px #128a89 !important;
+    background: url(../img/setaPagNext.png) no-repeat 15px 12px #710e0f !important;
     text-indent: -9999px;
     padding-left: 10px;
     padding-right: 25px;
@@ -1331,7 +1331,7 @@ table.dataTable thead .sorting_asc{
       background: url(../img/setaPagNext.png) no-repeat 15px 12px #329fd7 !important;
 }
 #content .dataTables_paginate span a{
-  background: #128a89;
+  background: #710e0f;
   color: #fff !important;
   font-family: 'Roboto';
   font-size: 1.1em;
@@ -1383,8 +1383,8 @@ table.dataTable thead .sorting_asc{
 }
 
 #content .listingBar a{
-  border:1px solid #128a89;
-  background: #128a89;
+  border:1px solid #710e0f;
+  background: #710e0f;
   display:inline-block !important;
   padding:7px 13px !important;
   color: #fff !important;
@@ -1411,7 +1411,7 @@ table.dataTable thead .sorting_asc{
     border-top-right-radius: 0em;
 }
 .listingBar a.previous{
-  background: url(../img/setaPagPrev.png) no-repeat 13px 12px #128a89 !important;
+  background: url(../img/setaPagPrev.png) no-repeat 13px 12px #710e0f !important;
   text-indent: -9999px;
   padding-left:17px;
   padding-right:17px;
@@ -1426,7 +1426,7 @@ table.dataTable thead .sorting_asc{
   background: url(../img/setaPagPrev.png) no-repeat 13px 12px  #329fd7  !important;
 }
 .listingBar a.next{
-  background: url(../img/setaPagNext.png) no-repeat 15px 12px #128a89 !important;
+  background: url(../img/setaPagNext.png) no-repeat 15px 12px #710e0f !important;
   text-indent: -9999px;
   padding-left:17px;
   padding-right:17px;
@@ -1455,7 +1455,7 @@ body.subsection-adesao-ao-procon-paulistano #pfg-fieldwrapper:before{
 body.subsection-adesao-ao-procon-paulistano .pfg-form .formid-adesao-ao-procon-paulistano input[type=submit] {
     margin-top: 20px;
     cursor: pointer;
-    background: #f11c30;
+    background: #710e0f;
     color: #fff;
     text-transform: uppercase;
     padding: 5px 8px 5px 8px;
@@ -1474,7 +1474,7 @@ body.subsection-adesao-ao-procon-paulistano .pfg-form .formid-adesao-ao-procon-p
 .formid-adesao-ao-procon-paulistano input[type=submit] {
   margin-top: 20px;
   cursor: pointer;
-  background: #f11c30;
+  background: #710e0f;
   color: #fff;
   text-transform: uppercase;
   padding: 5px 8px 5px 8px;
@@ -1544,7 +1544,7 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   margin: -62px 0 0 55px;
 }
 .form-group{
-    border-left: 101px solid #4bafa3;
+    border-left: 101px solid #3f393b;
     margin: 20px 0 30px 0;
     width: 779px;
     border-top: 1px solid #ccc;
@@ -1558,7 +1558,7 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
     clear: both;
 }
 .form-group2{
-    border-left: 101px solid #4bafa3;
+    border-left: 101px solid #3f393b;
     margin: 0px 0 30px 0;
     width: 779px;
     border-top: 1px solid #ccc;
@@ -1668,7 +1668,7 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
 .form-group .btnBuscar{
     margin-top: 20px;
     cursor: pointer;
-    background: #f11c30;
+    background: #710e0f;
     color: #fff;
     text-transform: uppercase;
     padding: 5px 8px 5px 8px;
@@ -1758,7 +1758,7 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
 }
 #content .divReclamacoes form.filterReclamacoes .btnFiltrar{
     cursor: pointer;
-    background: #f11c30;
+    background: #710e0f;
     color: #fff;
     text-transform: uppercase;
     padding: 3px 10px 3px 10px;
@@ -1918,7 +1918,7 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   margin: 30px 0 15px 0;
 }
 .dadosReclamacoes .extencao{
-  background: #128a89;
+  background: #710e0f;
   padding: 30px;
   color: #fff;
   text-align: center;
@@ -1956,7 +1956,7 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   margin: 13px 0 0 0;
 }
 .botaoUpload .btnupload{
-  background: #f11c30;
+  background: #710e0f;
   color: #fff;
   text-align: center;
   font-size: 1.2em;
@@ -2017,7 +2017,7 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
 }
 .dadosReclamacoes .btnInserir{
   cursor: pointer;
-  background: #f11c30;
+  background: #710e0f;
   color: #fff;
   text-transform: uppercase;
   padding: 3px 10px 3px 10px;
@@ -2383,7 +2383,7 @@ body.template-register .select-widget.choice-field{
   font-family: 'Roboto';
 }
 .pfg-form.formid-formularios{
-    border-left: 101px solid #4bafa3;
+    border-left: 101px solid #3f393b;
     margin: 0 0 30px 0;
     width: 779px;
     border-top: 1px solid #ccc;
@@ -2423,7 +2423,7 @@ body.template-register .select-widget.choice-field{
 .pfg-form.formid-formularios input[type=submit]{
   margin-top: 20px;
   cursor: pointer;
-  background: #f11c30;
+  background: #710e0f;
   color: #fff;
   text-transform: uppercase;
   padding: 5px 8px 5px 8px;
@@ -2625,10 +2625,10 @@ z-index: 1;
   padding: 3px 0 0 5px;
 }
 .ui-widget-content{
-  border:1px solid #128a89 !important;
+  border:1px solid #710e0f !important;
 }
 .ui-menu .ui-menu-item.ui-state-focus{
-  background: #128a89 !important;
+  background: #710e0f !important;
 }
 .ui-menu .ui-menu-item.ui-state-focus a{
   color: #fff !important;
@@ -2637,7 +2637,7 @@ z-index: 1;
   text-decoration: underline;
 }
 .divRedireciona{
-    border-left: 101px solid #4bafa3;
+    border-left: 101px solid #3f393b;
     margin: 0 0 30px 0;
     width: 779px;
     border-top: 1px solid #ccc;
@@ -2680,7 +2680,7 @@ body.section-consumidor .divLoginDenuncia{
 .facaReclamaLogin .irparalogin{
     margin-top: 20px;
     cursor: pointer;
-    background: #f11c30;
+    background: #710e0f;
     color: #fff !important;
     text-transform: uppercase;
     padding: 10px 8px 0 8px;
@@ -2701,7 +2701,7 @@ body.section-consumidor .divLoginDenuncia{
   color:#fff !important;
 }
 #pfg-fieldwrapper{
-    border-left: 101px solid #4bafa3;
+    border-left: 101px solid #3f393b;
     margin: 0 0 30px 0;
     width: 764px;
     border-top: 1px solid #ccc;
@@ -2752,16 +2752,20 @@ body.section-consumidor .divLoginDenuncia{
     padding: 26px 31px 0 0;
 }
 
-.divRedireciona .linkRedireciona{
-  background: #f11c30;
+#content .divRedireciona .linkRedireciona{
+  background: url(../img/bannerEmpresaProcon.png) no-repeat;
   color: #fff !important;
   text-align: center;
-  width: 178px;
-  height: 37px;
+  width: 547px;
+  height: 170px;
   line-height: 1.2em;
   display: block;
   margin: 0 auto;
   padding: 7px 0 0 0;
+  margin-bottom:20px;
+  margin-top:12px;
+  text-indent: -9999px;
+  border-bottom: none !important;
 }
 #content .divRedireciona .linkRedireciona:hover{
   color: #fff !important;
@@ -2791,7 +2795,7 @@ body.section-consumidor .divLoginDenuncia{
 .divRedireciona .btnProsseguir{
     margin-top: 20px;
     cursor: pointer;
-    background: #f11c30;
+    background: #710e0f;
     color: #fff;
     text-transform: uppercase;
     padding: 5px 8px 5px 8px;
@@ -2861,7 +2865,7 @@ body.section-consumidor .divLoginDenuncia{
   font-size: 1em;
   padding: 10px 15px;
   color: #fff;
-  background: #f21c30;
+  background: #710e0f;
   font-family: 'Roboto';
   font-weight: bold;
   border: none;
@@ -2876,8 +2880,8 @@ body.section-consumidor .divLoginDenuncia{
 }
 
 .paginationReclamacoes a{
-  border:1px solid #128a89;
-  background: #128a89;
+  border:1px solid #710e0f;
+  background: #710e0f;
   display:inline-block !important;
   padding:7px 13px !important;
   color: #fff !important;
@@ -2904,7 +2908,7 @@ body.section-consumidor .divLoginDenuncia{
     border-top-right-radius: 0em;
 }
 .paginationReclamacoes .prev a{
-  background: url(../img/setaPagPrev.png) no-repeat 13px 12px #128a89 !important;
+  background: url(../img/setaPagPrev.png) no-repeat 13px 12px #710e0f !important;
   text-indent: -9999px;
   padding-left:17px;
   padding-right:17px;
@@ -2919,7 +2923,7 @@ body.section-consumidor .divLoginDenuncia{
   background: url(../img/setaPagPrev.png) no-repeat 13px 12px  #329fd7  !important;
 }
 .paginationReclamacoes .next a{
-  background: url(../img/setaPagNext.png) no-repeat 15px 12px #128a89 !important;
+  background: url(../img/setaPagNext.png) no-repeat 15px 12px #710e0f !important;
   text-indent: -9999px;
   padding-left:10px;
   padding-right:17px;
@@ -3306,7 +3310,7 @@ body.section-consumidor .divLoginDenuncia{
     float: left;
   }
   .form-group{
-      border-top: 40px solid #4bafa3;
+      border-top: 40px solid #3f393b;
       width: 95%;
       border-left: 0;
       margin-left: 0;
@@ -3327,7 +3331,7 @@ body.section-consumidor .divLoginDenuncia{
     z-index: 5;
   }
   .form-group.active{
-     border-top: 40px solid #4bafa3;
+     border-top: 40px solid #3f393b;
   }
   .active .form-group:before{
     content: 'Etapa 2';
@@ -3343,7 +3347,7 @@ body.section-consumidor .divLoginDenuncia{
     z-index: 5;
   }
   .pfg-form.formid-formularios{
-    border-top: 40px solid #4bafa3;
+    border-top: 40px solid #3f393b;
       width: 95%;
       border-left: 0;
       margin-left: 0;
