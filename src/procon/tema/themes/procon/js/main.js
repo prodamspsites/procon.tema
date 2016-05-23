@@ -151,8 +151,7 @@
       $(document).on('click', '#form-widgets-municipio-1', function(){
         form.html($(municipio).html()).show()
         $('#form-widgets-municipio-1').prop('checked', true);
-        $('#content-core .rowlike').append('<p class="proconSPmessage"><strong>O PROCON Paulistano tem como atribuição atender os consumidores
-domiciliados no Município de São Paulo.</strong><br /><br />Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade.</p>')
+        $('#content-core .rowlike').append('<p class="proconSPmessage">O PROCON Paulistano tem como atribuição atender os consumidores domiciliados no Município de São Paulo.</strong><br><br>Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade.</p>')
       });
 
     }
