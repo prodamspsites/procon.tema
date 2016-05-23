@@ -151,7 +151,8 @@
       $(document).on('click', '#form-widgets-municipio-1', function(){
         form.html($(municipio).html()).show()
         $('#form-widgets-municipio-1').prop('checked', true);
-        $('#content-core .rowlike').append('<p class="proconSPmessage">O PROCON PAULISTANO DIGITAL tem como atribuição atender apenas os consumidores<br />domiciliados no Município de São Paulo.<br />Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade. A proteção e defesa do consumidor constitui-se em um sistema nacional coordenado. <a href="http://www.procon.sp.gov.br/categoria.asp?id=209" target="_blank">Acesse aqui</a> a lista dos Procons Municipais. Se sua cidade não estiver na lista, dirija seu caso à<br /><br />FUNDAÇÃO PROCON.</p>')
+        $('#content-core .rowlike').append('<p class="proconSPmessage"><strong>O PROCON Paulistano tem como atribuição atender os consumidores
+domiciliados no Município de São Paulo.</strong><br /><br />Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade.</p>')
       });
 
     }
