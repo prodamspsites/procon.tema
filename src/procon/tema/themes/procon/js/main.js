@@ -461,6 +461,80 @@
 
     if ($('body').hasClass('section-denuncia')) {
       insereInputFile();
+      //FORMULARIOS AREA SELECIONADA
+      $('#archetypes-fieldname-especificar-comprou').hide();
+      function escondeItens(){
+        $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-alimentos').hide();
+        $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-assuntos-financeiros').hide();
+        $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-fiscalizacao').hide();
+        $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-habitacao').hide();
+        $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-produtos').hide();
+        $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-saude').hide();
+        $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-servicos-essenciais').hide();
+        $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-servicos-privados').hide();
+        $('#archetypes-fieldname-especificar-produto-servicos').hide();
+        $('#archetypes-fieldname-especificar-problema-apresentado').hide();
+      }
+      escondeItens();
+      $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-alimentos').show();
+
+      $('#assinale-o-tipo-de-problema-apresentado-alimentos, #assinale-o-tipo-de-problema-apresentado-assuntos-financeiros, #assinale-o-tipo-de-problema-apresentado-fiscalizacao, #assinale-o-tipo-de-problema-apresentado-habitacao, #assinale-o-tipo-de-problema-apresentado-produtos, #assinale-o-tipo-de-problema-apresentado-saude, #assinale-o-tipo-de-problema-apresentado-servicos-essenciais, #assinale-o-tipo-de-problema-apresentado-servicos-privados').change(function(){
+        if ($(this).val() == 'Outros'){
+          $('#archetypes-fieldname-especificar-problema-apresentado').show();
+        }
+        else{
+          $('#archetypes-fieldname-especificar-problema-apresentado').hide();
+        }
+      });
+
+      $('#como-voce-comprou-contratou').change(function(){
+        if ($(this).val() == 'Outros'){
+          $('#archetypes-fieldname-especificar-comprou').show();
+        }
+        else{
+          $('#archetypes-fieldname-especificar-comprou').hide();
+        }
+      });
+
+
+      $('#area-relativa-ao-produto-servico-reclamado').change(function(){
+        if ($(this).val() == 'Alimentos'){
+          escondeItens();
+          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-alimentos').show();
+        }
+        else if ($(this).val() == 'Assuntos Financeiros'){
+          escondeItens();
+          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-assuntos-financeiros').show();
+        }
+        else if ($(this).val() == 'Fiscalização'){
+          escondeItens();
+          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-fiscalizacao').show();
+        }
+        else if ($(this).val() == 'Habitação'){
+          escondeItens();
+          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-habitacao').show();
+        }
+        else if ($(this).val() == 'Produtos'){
+          escondeItens();
+          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-produtos').show();
+        }
+        else if ($(this).val() == 'Saúde'){
+          escondeItens();
+          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-saude').show();
+        }
+        else if ($(this).val() == 'Serviços Essenciais'){
+          escondeItens();
+          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-servicos-essenciais').show();
+        }
+        else if ($(this).val() == 'Serviços Privados'){
+          escondeItens();
+          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-servicos-privados').show();
+        }
+        else if ($(this).val() == 'Outros'){
+          escondeItens();
+          $('#archetypes-fieldname-especificar-produto-servicos').show();
+        }
+      });
     }
 
     if ($('body').hasClass('section-denuncia') || $('body').hasClass('section-consumidor')){
