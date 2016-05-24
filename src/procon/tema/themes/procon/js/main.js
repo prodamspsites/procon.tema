@@ -422,9 +422,12 @@
          window.location.replace(portal_url + '/@@register');
     }
 
+    if ($('body').hasClass('section-denuncia') {
+      insereInputFile();
+    }
+
     if ($('body').hasClass('section-denuncia') || $('body').hasClass('section-consumidor')){
      $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
-     insereInputFile();
      lightboxForm();
     //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
      var protocolo = $.ajax({ type: "POST",
@@ -452,7 +455,6 @@
                              async: false,
                              data: { action: 'create' }
                            }).responseText;
-    console.log(protocolo);
                 $('#archetypes-fieldname-protocolo input').val(protocolo);
             });
     }

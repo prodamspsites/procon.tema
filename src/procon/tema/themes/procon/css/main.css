@@ -49,6 +49,12 @@ body{
   font-family:'Roboto', Arial;
   color: #424242;
 }
+body.site-Procon.section-procon div.position-0{
+  margin-left: -100.1% !important;
+}
+body.site-Procon.section-procon div.width-16{
+  width: 102.5% !important;
+}
 .wrap{
   width: 1004px;
   margin: 0 auto;
@@ -113,8 +119,12 @@ body.template-news_item_view .wrap{
   border:1px solid #868686;
   width: 215px;
   height: 28px;
+  float: left;
   padding: 3px 0 0 5px;
   font-family: 'Roboto', Arial;
+}
+#portal-searchbox form .LSBox{
+  width: 268px;
 }
 #portal-searchbox .searchButton{
   -webkit-border-radius: 3px;
@@ -122,11 +132,12 @@ body.template-news_item_view .wrap{
   border-radius: 3px;
   background: url('../img/icoBusca.png') no-repeat #710e0f 12px 8px;
   color: #fff;
-  padding: 0px 18px 0 23px;
+  padding: 0px 12px 0px 23px;
   border: none;
   height: 33px;
+  width: 40px;
   margin: 0 0 0 5px;
-  float: right;
+  float: left;
   font-family: 'Roboto', Arial;
   font-weight: 600;
   font-size: 1.2em;
@@ -994,6 +1005,7 @@ body.template-capa_noticias_view .documentFirstHeading{
   float: left;
   width: 476px;
   margin-top: 30px;
+  margin-bottom: 60px;
 }
 .blocoNoticias .noticiasColuna div{
   margin-top: 12px;
