@@ -254,7 +254,7 @@
 
 
     //OCULTA FORMULARIO CONSUMIDOR
-    if !($('body').hasClass('subsection-formularios'){
+    if (!($('body').hasClass('subsection-formularios')){
       $('#viewlet-below-content-title .form-group').remove();
     }
     if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('subsection-formularios')) {
