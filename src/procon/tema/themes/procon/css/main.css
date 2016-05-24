@@ -3117,7 +3117,7 @@ body.section-consumidor .divLoginDenuncia{
    ========================================================================== */
 
 /* Medium Devices, Desktops */
-@media only screen and (max-width : 900px) {
+@media only screen and (max-width : 1024px) {
   .wrap{
     width:100%;
   }
@@ -3400,7 +3400,7 @@ body.section-consumidor .divLoginDenuncia{
     width: 100%;
   }
   #portal-column-content{
-    margin-left: 0;
+    margin-left: 0 !important;
     left: 0;
   }
   .divRedireciona{
@@ -3449,9 +3449,6 @@ body.section-consumidor .divLoginDenuncia{
   }
   .width-2.estilo3{
     display: none;
-  }
-  #content .cell.estilo4{
-    margin: 
   }
   .row.estilo3{
     float:left;
