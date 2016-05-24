@@ -422,7 +422,7 @@
          window.location.replace(portal_url + '/@@register');
     }
 
-    if ($('body').hasClass('section-denuncia') {
+    if ($('body').hasClass('section-denuncia')) {
       insereInputFile();
     }
 
