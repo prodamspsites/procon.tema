@@ -1483,6 +1483,12 @@ body.subsection-adesao-ao-procon-paulistano .pfg-form .formid-adesao-ao-procon-p
     position: relative;
     z-index: 1;
 }
+#archetypes-fieldname-especificar-comprou, #archetypes-fieldname-especificar-produto-servicos, #archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-alimentos, #archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-assuntos-financeiros, #archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-fiscalizacao, #archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-habitacao, #archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-produtos, #archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-saude, #archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-servicos-essenciais, #archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-servicos-privados, #archetypes-fieldname-especificar-problema-apresentado{
+  display: none;
+}
+#assinale-o-tipo-de-problema-apresentado-alimentos, #assinale-o-tipo-de-problema-apresentado-assuntos-financeiros, #assinale-o-tipo-de-problema-apresentado-saude, #assinale-o-tipo-de-problema-apresentado-servicos-essenciais, #assinale-o-tipo-de-problema-apresentado-servicos-privados{
+  width: 95%;
+}
 .formid-adesao-ao-procon-paulistano input[type=submit] {
   margin-top: 20px;
   cursor: pointer;
