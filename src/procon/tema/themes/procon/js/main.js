@@ -266,7 +266,81 @@
               $('#content').append('<div class="pfg-form formid-formularios"><div class="facaReclamaLogin"><strong>Cadastre-se ou faça login para prosseguir:<br><a href="'+portal_url+'/@@register" class="irparalogin" title="IR PARA CADASTRO/LOGIN">IR PARA CADASTRO/LOGIN</a></div></div>');
             }
             $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
-             insereInputFile();
+            insereInputFile();
+            //FORMULARIOS AREA SELECIONADA
+            $('#archetypes-fieldname-especificar-comprou').hide();
+            function escondeItens(){
+              $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-alimentos').hide();
+              $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-assuntos-financeiros').hide();
+              $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-fiscalizacao').hide();
+              $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-habitacao').hide();
+              $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-produtos').hide();
+              $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-saude').hide();
+              $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-servicos-essenciais').hide();
+              $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-servicos-privados').hide();
+              $('#archetypes-fieldname-especificar-produto-servicos').hide();
+              $('#archetypes-fieldname-especificar-problema-apresentado').hide();
+            }
+            escondeItens();
+            $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-alimentos').show();
+
+            $('#assinale-o-tipo-de-problema-apresentado-alimentos, #assinale-o-tipo-de-problema-apresentado-assuntos-financeiros, #assinale-o-tipo-de-problema-apresentado-fiscalizacao, #assinale-o-tipo-de-problema-apresentado-habitacao, #assinale-o-tipo-de-problema-apresentado-produtos, #assinale-o-tipo-de-problema-apresentado-saude, #assinale-o-tipo-de-problema-apresentado-servicos-essenciais, #assinale-o-tipo-de-problema-apresentado-servicos-privados').change(function(){
+              if ($(this).val() == 'Outros'){
+                $('#archetypes-fieldname-especificar-problema-apresentado').show();
+              }
+              else{
+                $('#archetypes-fieldname-especificar-problema-apresentado').hide();
+              }
+            });
+
+            $('#como-voce-comprou-contratou').change(function(){
+              if ($(this).val() == 'Outros'){
+                $('#archetypes-fieldname-especificar-comprou').show();
+              }
+              else{
+                $('#archetypes-fieldname-especificar-comprou').hide();
+              }
+            });
+
+
+            $('#area-relativa-ao-produto-servico-reclamado').change(function(){
+              if ($(this).val() == 'Alimentos'){
+                escondeItens();
+                $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-alimentos').show();
+              }
+              else if ($(this).val() == 'Assuntos Financeiros'){
+                escondeItens();
+                $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-assuntos-financeiros').show();
+              }
+              else if ($(this).val() == 'Fiscalização'){
+                escondeItens();
+                $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-fiscalizacao').show();
+              }
+              else if ($(this).val() == 'Habitação'){
+                escondeItens();
+                $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-habitacao').show();
+              }
+              else if ($(this).val() == 'Produtos'){
+                escondeItens();
+                $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-produtos').show();
+              }
+              else if ($(this).val() == 'Saúde'){
+                escondeItens();
+                $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-saude').show();
+              }
+              else if ($(this).val() == 'Serviços Essenciais'){
+                escondeItens();
+                $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-servicos-essenciais').show();
+              }
+              else if ($(this).val() == 'Serviços Privados'){
+                escondeItens();
+                $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-servicos-privados').show();
+              }
+              else if ($(this).val() == 'Outros'){
+                escondeItens();
+                $('#archetypes-fieldname-especificar-produto-servicos').show();
+              }
+            });
 
         });
 
@@ -528,244 +602,166 @@
        }
     });
 
-    // Cria os Cookies
-        if ($.cookie('contraste1') === "true") {
-            $('body').addClass('contraste1');
-        }
+// Cria os Cookies
+    if ($.cookie('contraste1') === "true") {
+        $('body').addClass('contraste1');
+    }
 
-        if ($.cookie('contraste2') === "true") {
-            $('body').addClass('contraste2');
-        }
-        if ($.cookie('resetCookie') === "true") {
+    if ($.cookie('contraste2') === "true") {
+        $('body').addClass('contraste2');
+    }
+    if ($.cookie('resetCookie') === "true") {
+        $('body').removeClass('contraste1');
+        $('body').removeClass('contraste2');
+    }
+    if ($.cookie('librasCookie') === "ativo") {
+        $('a.btn-libras').attr('id','ativo');
+        $('.contEsq .divLibras').addClass('abrevideo');
+        $('a.btn-libras').addClass('ativo');
+    }else{
+        $('.contEsq .divLibras').removeClass('abrevideo');
+        $('a.btn-libras').removeClass('ativo');
+        $('a.btn-libras').attr('id','');
+    }
+
+    $(".fontResizer_add").click(function () {
+        maisFont();
+    });
+    $(".fontResizer_minus").click(function () {
+        menosFont();
+    });
+    $(".fontResizer_reset").click(function () {
+        resetFont();
+    });
+    (function(){
+        var tam = $.cookie('tamanhoLetra');
+        $('body').css("font-size",tam+"px");
+    })();
+
+    function maisFont(){
+        var tamanho = $('body').css("font-size");
+        var maisUm = parseInt(tamanho.substr(0, 2));
+        maisUm++;
+        $.cookie('tamanhoLetra', maisUm,{ path: '/' });
+        $('body').css("font-size",maisUm+"px");
+    }
+    function menosFont(){
+        var tamanho = $('body').css("font-size");
+        var maisUm = parseInt(tamanho.substr(0, 2));
+        maisUm--;
+        $.cookie('tamanhoLetra', maisUm,{ path: '/' });
+        $('body').css("font-size",maisUm+"px");
+    }
+    function resetFont(){
+        $('body').css("font-size","12px");
+
+        $.removeCookie('contraste2', { path: '/' });
+        $.removeCookie('contraste1', { path: '/' });
+
+        if (!($.cookie('resetCookie') === "true")) {
             $('body').removeClass('contraste1');
             $('body').removeClass('contraste2');
+            $.cookie('resetCookie','true',{path:'/'});
+
+            $('.fontSize').removeAttr('style');
+            $('.fontSize15').removeAttr('style');
+            $.removeCookie('tamanhoLetra', { path: '/' });
         }
-        if ($.cookie('librasCookie') === "ativo") {
-            $('a.btn-libras').attr('id','ativo');
-            $('.contEsq .divLibras').addClass('abrevideo');
-            $('a.btn-libras').addClass('ativo');
-        }else{
+        else {
+            $('.fontSize').removeAttr('style');
+            $('.fontSize15').removeAttr('style');
+            $.removeCookie('tamanhoLetra', { path: '/' });
+            $.cookie('resetCookie','false',{path:'/'});
+        }
+    }
+
+    // Acoes nos botoes de acessibilidade
+    $(".btn-contraste1").click(function () {
+        $.removeCookie('contraste2', { path: '/' });
+        $.removeCookie('resetCookie', { path: '/' });
+        if (!($.cookie('contraste1') === "true")) {
+            $('body').removeClass('contraste2');
+            $('body').addClass('contraste1');
+            $.cookie('contraste1','true',{path:'/'});
+        }
+        else {
+            $.cookie('contraste1','false',{path:'/'});
+        }
+        return false;
+    });
+    $(".btn-contraste2").click(function () {
+        $.removeCookie('contraste1', { path: '/' });
+        $.removeCookie('resetCookie', { path: '/' });
+        if (!($.cookie('contraste2') === "true")) {
+            $('body').removeClass('contraste1');
+            $('body').addClass('contraste2');
+            $.cookie('contraste2','true',{path:'/'});
+        }
+        else {
+            $.cookie('contraste2','false',{path:'/'});
+        }
+        return false;
+    });
+    $(".btn-libras").click(function () {
+        if($(this).attr('id')=='ativo'){
             $('.contEsq .divLibras').removeClass('abrevideo');
             $('a.btn-libras').removeClass('ativo');
             $('a.btn-libras').attr('id','');
+
+        }else{
+            $('a.btn-libras').attr('id','ativo');
+            $('.contEsq .divLibras').addClass('abrevideo');
+            $('a.btn-libras').addClass('ativo');
         }
+        $.cookie('librasCookie',$(this).attr('id'),{ path: '/' });
 
-        $(".fontResizer_add").click(function () {
-            maisFont();
-        });
-        $(".fontResizer_minus").click(function () {
-            menosFont();
-        });
-        $(".fontResizer_reset").click(function () {
-            resetFont();
-        });
-        (function(){
-            var tam = $.cookie('tamanhoLetra');
-            $('body').css("font-size",tam+"px");
-        })();
-
-        function maisFont(){
-            var tamanho = $('body').css("font-size");
-            var maisUm = parseInt(tamanho.substr(0, 2));
-            maisUm++;
-            $.cookie('tamanhoLetra', maisUm,{ path: '/' });
-            $('body').css("font-size",maisUm+"px");
-        }
-        function menosFont(){
-            var tamanho = $('body').css("font-size");
-            var maisUm = parseInt(tamanho.substr(0, 2));
-            maisUm--;
-            $.cookie('tamanhoLetra', maisUm,{ path: '/' });
-            $('body').css("font-size",maisUm+"px");
-        }
-        function resetFont(){
-            $('body').css("font-size","12px");
-
-            $.removeCookie('contraste2', { path: '/' });
-            $.removeCookie('contraste1', { path: '/' });
-
-            if (!($.cookie('resetCookie') === "true")) {
-                $('body').removeClass('contraste1');
-                $('body').removeClass('contraste2');
-                $.cookie('resetCookie','true',{path:'/'});
-
-                $('.fontSize').removeAttr('style');
-                $('.fontSize15').removeAttr('style');
-                $.removeCookie('tamanhoLetra', { path: '/' });
-            }
-            else {
-                $('.fontSize').removeAttr('style');
-                $('.fontSize15').removeAttr('style');
-                $.removeCookie('tamanhoLetra', { path: '/' });
-                $.cookie('resetCookie','false',{path:'/'});
-            }
-        }
-
-        // Acoes nos botoes de acessibilidade
-        $(".btn-contraste1").click(function () {
-            $.removeCookie('contraste2', { path: '/' });
-            $.removeCookie('resetCookie', { path: '/' });
-            if (!($.cookie('contraste1') === "true")) {
-                $('body').removeClass('contraste2');
-                $('body').addClass('contraste1');
-                $.cookie('contraste1','true',{path:'/'});
-            }
-            else {
-                $.cookie('contraste1','false',{path:'/'});
-            }
-            return false;
-        });
-        $(".btn-contraste2").click(function () {
-            $.removeCookie('contraste1', { path: '/' });
-            $.removeCookie('resetCookie', { path: '/' });
-            if (!($.cookie('contraste2') === "true")) {
-                $('body').removeClass('contraste1');
-                $('body').addClass('contraste2');
-                $.cookie('contraste2','true',{path:'/'});
-            }
-            else {
-                $.cookie('contraste2','false',{path:'/'});
-            }
-            return false;
-        });
-        $(".btn-libras").click(function () {
-            if($(this).attr('id')=='ativo'){
-                $('.contEsq .divLibras').removeClass('abrevideo');
-                $('a.btn-libras').removeClass('ativo');
-                $('a.btn-libras').attr('id','');
-
-            }else{
-                $('a.btn-libras').attr('id','ativo');
-                $('.contEsq .divLibras').addClass('abrevideo');
-                $('a.btn-libras').addClass('ativo');
-            }
-            $.cookie('librasCookie',$(this).attr('id'),{ path: '/' });
-
-        });
+    });
 
 
-        $("td").on('click',function(){
-          $(".teste").show();
-          $(".divReclamacoes").hide();
-          $this = $(this).attr("class");
-          var _id = $this.split('_')[0];
-          $(this).parent().addClass('ok');
-          var $observacao = $("."+_id+"_observacao").html();
-          var $categoria = $("."+_id+"_categoria").html();
-          var $data = $("."+_id+"_data").html();
-          var $usuario = $("."+_id+"_usuario").html();
-          var $pergunta = $("."+_id+"_pergunta").html();
-          var $resposta = $("."+_id+"_resposta").html();
-          var $mensagem = $("."+_id+"_mensagem").html();
-          var $assunto = $("."+_id+"_assunto").html();
-          var $id = $("."+_id+"_id").html();
-          var $lido = $("."+_id+"_lido").html();
+    $("td").on('click',function(){
+      $(".teste").show();
+      $(".divReclamacoes").hide();
+      $this = $(this).attr("class");
+      var _id = $this.split('_')[0];
+      $(this).parent().addClass('ok');
+      var $observacao = $("."+_id+"_observacao").html();
+      var $categoria = $("."+_id+"_categoria").html();
+      var $data = $("."+_id+"_data").html();
+      var $usuario = $("."+_id+"_usuario").html();
+      var $pergunta = $("."+_id+"_pergunta").html();
+      var $resposta = $("."+_id+"_resposta").html();
+      var $mensagem = $("."+_id+"_mensagem").html();
+      var $assunto = $("."+_id+"_assunto").html();
+      var $id = $("."+_id+"_id").html();
+      var $lido = $("."+_id+"_lido").html();
 
-          if($observacao !== ""){
-            $("#observacao").html($observacao).attr('disabled',true);
-          } else {
-            $("#observacao").html($observacao).attr('disabled',false);
-          }
-          console.log($lido);
-          if($lido == "True"){
-            $("#lido_check").attr('disabled',true).attr("checked",true);
-          } else{
-            $("#lido_check").attr('disabled',false).attr("checked",false);
-          }
+      if($observacao !== ""){
+        $("#observacao").html($observacao).attr('disabled',true);
+      } else {
+        $("#observacao").html($observacao).attr('disabled',false);
+      }
+      console.log($lido);
+      if($lido == "True"){
+        $("#lido_check").attr('disabled',true).attr("checked",true);
+      } else{
+        $("#lido_check").attr('disabled',false).attr("checked",false);
+      }
 
-          $("#tbl2").html($categoria);
-          $("#tbl1").html($data);
-          $("#tbl3").html($usuario);
-          $("#pergunta").html($pergunta);
-          $("#resposta").html($resposta);
-          $("#mensagem").html($mensagem);
-          $("#assunto").html($assunto);
-          $("#idObservacao").html(_id);
-        });
+      $("#tbl2").html($categoria);
+      $("#tbl1").html($data);
+      $("#tbl3").html($usuario);
+      $("#pergunta").html($pergunta);
+      $("#resposta").html($resposta);
+      $("#mensagem").html($mensagem);
+      $("#assunto").html($assunto);
+      $("#idObservacao").html(_id);
+    });
 
-        $("#voltar").on('click',function(){
-          $(".teste").hide();
-          $(".divReclamacoes").show();
-        });
+    $("#voltar").on('click',function(){
+      $(".teste").hide();
+      $(".divReclamacoes").show();
+    });
 
-        //FORMULARIOS AREA SELECIONADA
-        $('#archetypes-fieldname-especificar-comprou').hide();
-        function escondeItens(){
-          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-alimentos').hide();
-          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-assuntos-financeiros').hide();
-          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-fiscalizacao').hide();
-          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-habitacao').hide();
-          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-produtos').hide();
-          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-saude').hide();
-          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-servicos-essenciais').hide();
-          $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-servicos-privados').hide();
-          $('#archetypes-fieldname-especificar-produto-servicos').hide();
-          $('#archetypes-fieldname-especificar-problema-apresentado').hide();
-        }
-        escondeItens();
-        $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-alimentos').show();
-
-        $('#assinale-o-tipo-de-problema-apresentado-alimentos, #assinale-o-tipo-de-problema-apresentado-assuntos-financeiros, #assinale-o-tipo-de-problema-apresentado-fiscalizacao, #assinale-o-tipo-de-problema-apresentado-habitacao, #assinale-o-tipo-de-problema-apresentado-produtos, #assinale-o-tipo-de-problema-apresentado-saude, #assinale-o-tipo-de-problema-apresentado-servicos-essenciais, #assinale-o-tipo-de-problema-apresentado-servicos-privados').change(function(){
-          if ($(this).val() == 'Outros'){
-            $('#archetypes-fieldname-especificar-problema-apresentado').show();
-          }
-          else{
-            $('#archetypes-fieldname-especificar-problema-apresentado').hide();
-          }
-        });
-
-        $('#como-voce-comprou-contratou').change(function(){
-          if ($(this).val() == 'Outros'){
-            $('#archetypes-fieldname-especificar-comprou').show();
-          }
-          else{
-            $('#archetypes-fieldname-especificar-comprou').hide();
-          }
-        });
-
-
-        $('#area-relativa-ao-produto-servico-reclamado').change(function(){
-          if ($(this).val() == 'Alimentos'){
-            escondeItens();
-            $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-alimentos').show();
-          }
-          else if ($(this).val() == 'Assuntos Financeiros'){
-            escondeItens();
-            $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-assuntos-financeiros').show();
-          }
-          else if ($(this).val() == 'Fiscalização'){
-            escondeItens();
-            $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-fiscalizacao').show();
-          }
-          else if ($(this).val() == 'Habitação'){
-            escondeItens();
-            $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-habitacao').show();
-          }
-          else if ($(this).val() == 'Produtos'){
-            escondeItens();
-            $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-produtos').show();
-          }
-          else if ($(this).val() == 'Saúde'){
-            escondeItens();
-            $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-saude').show();
-          }
-          else if ($(this).val() == 'Serviços Essenciais'){
-            escondeItens();
-            $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-servicos-essenciais').show();
-          }
-          else if ($(this).val() == 'Serviços Privados'){
-            escondeItens();
-            $('#archetypes-fieldname-assinale-o-tipo-de-problema-apresentado-servicos-privados').show();
-          }
-          else if ($(this).val() == 'Outros'){
-            escondeItens();
-            $('#archetypes-fieldname-especificar-produto-servicos').show();
-          }
-        });
-        /*
-
-        #archetypes-fieldname-especificar-problema-apresentado
-        #archetypes-fieldname-especificar-produto-servicos*/
 
         // DUVIDAS PERGUNTA
         $(document).on('change','body.template-duvidas_view input[type=radio][class=duvida_util]',function(){
