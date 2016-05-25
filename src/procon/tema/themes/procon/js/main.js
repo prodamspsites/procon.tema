@@ -13,34 +13,7 @@
     $(document).on('click','.btnupload', function(){
         $(this).parent().parent().find('input').trigger('click');
     });
-    //COMPARA DATAS
-        var datainicial = document.getElementById('quando-voce-comprou-o-produto-ou-contratou-o-servico-1');
-        var datafinal = document.getElementById('quando-o-produto-ou-servico-apresentou-problema');
-        $("#quando-voce-comprou-o-produto-ou-contratou-o-servico-1").attr("onkeyup","formatar('##/##/####', this)");
-        $("#quando-o-produto-ou-servico-apresentou-problema").attr("onkeyup","formatar('##/##/####', this)");
 
-        function formatar(mascara, documento) {
-            var i = documento.value.length;
-            var saida = mascara.substring(0, 1);
-            var texto = mascara.substring(i);
-            if (texto.substring(0, 1) != saida) {
-                documento.value += texto.substring(0, 1);
-            }
-            verificar();
-        }
-
-        function gerarData(str) {
-            var partes = str.split("/");
-            return new Date(partes[2], partes[1] - 1, partes[0]);
-        }
-
-        function verificar() {
-            var inicio = datainicial.value;
-            var fim = datafinal.value;
-            if (inicio.length != 10 || fim.length != 10) return;
-
-            if (gerarData(fim) <= gerarData(inicio)) alert("A data inicial é maior que a data final");
-        }
 
     function insereInputFile() {
         //upload plone form gen
@@ -153,6 +126,7 @@
                    );
 
       $(document).on('click', '#form-widgets-tipo-0', function(){
+        mascarasForms();
         form.html($(pf).html()).show()
         $('#form-widgets-tipo-0').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
@@ -160,6 +134,7 @@
       });
 
       $(document).on('click', '#form-widgets-tipo-1', function(){
+        mascarasForms();
         form.html($(pj).html()).show()
         $('#form-widgets-tipo-1').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
@@ -169,6 +144,7 @@
       $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Faça seu login</h2><p>Faça seu login para realizar sua reclamação:</p><div class="field"><label for="__ac_name">Usuário :</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
 
       $(document).on('click', '#form-widgets-municipio-0', function(){
+        mascarasForms();
         form.html($(pf).html()).show()
         $('#form-widgets-municipio-0').prop('checked', true);
         $('#content-core .rowlike').find('.proconSPmessage').hide();
@@ -208,20 +184,23 @@
     });
 
     //MASCARA
-           $("#data-de-nascimento").mask("99/99/9999");
+           function mascarasForms(){
+           $("#data-de-nascimento, #form-widgets-data_nascimento").mask("99/99/9999");
            $("#data-de-compra-ou-assinatura-do-contrato").mask("99/99/9999");
            $("#quando-voce-comprou-o-produto-ou-contratou-o-servico-1").mask("99/99/9999");
            $("#qual-o-valor-total-do-produto-servico-clique-ou-toque-aqui-para-inserir-o-texto-1").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
            $("#valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
            $("#quando-o-produto-ou-servico-apresentou-problema").mask("99/99/9999");
            $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
-           $("#telefone").mask("(99) 9999-9999");
-           $("#cep").mask("99999-999");
-           $("#cpf").mask("999.999.999-99");
+           $("#telefone, #form-widgets-contato_telefone").mask("(99) 9999-9999");
+           $("#telefone, #form-widgets-contato_telefone, #form-widgets-contato_celular").mask("(99) 9999-9999");
+           $("#cep, #form-widgets-codigo_enderecamento_postal").mask("99999-999");
+           $("#cpf, #form-widgets-cpf").mask("999.999.999-99");
            $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
            $('#quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto').keyup(function () { 
               this.value = this.value.replace(/[^0-9\.]/g,'');
           });
+         }mascarasForms();
     //MENU HOVER
     if ($(window).width() >= 900){
              $(".menu .subMenu a").mouseenter(function () {
@@ -239,6 +218,19 @@
     $('.divAccordeon h3').click(function(){
         $(this).toggleClass('active');
         $(this).next().slideToggle();
+    });
+    //COMPARA DATAS
+    $( "#quando-o-produto-ou-servico-apresentou-problema" ).focusout(function() {
+        dataInicial = $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val();
+        dataFinal = $('#quando-o-produto-ou-servico-apresentou-problema').val();
+        compareDates(dataInicial,dataFinal);
+    });
+    $( "#quando-voce-comprou-o-produto-ou-contratou-o-servico-1" ).focusout(function() {
+      if($('#quando-o-produto-ou-servico-apresentou-problema').val() != ''){
+        alert('Este campo deve ser preenchido primeiro que a data do problema');
+        $('#quando-o-produto-ou-servico-apresentou-problema').val('');
+        $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
+      }
     });
     //TABLEADMIN ZEBRA
     $( ".tableReclamacoes table tr:odd" ).css( "background-color", "#f5f5f5" );
@@ -911,3 +903,12 @@
 
   })
 })(jQuery);
+function compareDates(date1, date2){
+        var int_date1 = parseInt(date1.split("/")[2].toString() + date1.split("/")[1].toString() + date1.split("/")[0].toString());
+        var int_date2 = parseInt(date2.split("/")[2].toString() + date2.split("/")[1].toString() + date2.split("/")[0].toString());
+        if (int_date1 > int_date2){
+            alert("Esta data precisa ser superior a data da compra/contrato do produto/serviço.");
+            $('#quando-o-produto-ou-servico-apresentou-problema').val('');
+        }
+        return false;
+    }
