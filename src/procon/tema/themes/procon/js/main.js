@@ -13,7 +13,34 @@
     $(document).on('click','.btnupload', function(){
         $(this).parent().parent().find('input').trigger('click');
     });
+    //COMPARA DATAS
+        var datainicial = document.getElementById('quando-voce-comprou-o-produto-ou-contratou-o-servico-1');
+        var datafinal = document.getElementById('quando-o-produto-ou-servico-apresentou-problema');
+        $("#quando-voce-comprou-o-produto-ou-contratou-o-servico-1").attr("onkeyup","formatar('##/##/####', this)");
+        $("#quando-o-produto-ou-servico-apresentou-problema").attr("onkeyup","formatar('##/##/####', this)");
 
+        function formatar(mascara, documento) {
+            var i = documento.value.length;
+            var saida = mascara.substring(0, 1);
+            var texto = mascara.substring(i);
+            if (texto.substring(0, 1) != saida) {
+                documento.value += texto.substring(0, 1);
+            }
+            verificar();
+        }
+
+        function gerarData(str) {
+            var partes = str.split("/");
+            return new Date(partes[2], partes[1] - 1, partes[0]);
+        }
+
+        function verificar() {
+            var inicio = datainicial.value;
+            var fim = datafinal.value;
+            if (inicio.length != 10 || fim.length != 10) return;
+
+            if (gerarData(fim) <= gerarData(inicio)) alert("A data inicial é maior que a data final");
+        }
 
     function insereInputFile() {
         //upload plone form gen
