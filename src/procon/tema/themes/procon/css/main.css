@@ -514,7 +514,7 @@ border-radius: 0px;
   background-color:#ffd7d7;
 }
 .blocoDuvidas .itensDuvidas li a{
-  color: #424342;
+  color: #424342 !important;
   float: left;
   padding: 0 0 0 0;
   text-align: center;
@@ -522,6 +522,9 @@ border-radius: 0px;
   position: relative;
   z-index: 1;
   border-bottom: none !important;
+}
+.blocoDuvidas .itensDuvidas li a:hover{
+  color: #424342 !important;
 }
 /*SIDE BAR NAVEGACAO*/
 #portal-column-one .navTree{
