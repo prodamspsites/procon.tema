@@ -1568,6 +1568,12 @@ body.section-denuncia #pfg-fieldwrapper{
 body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   margin: -62px 0 0 55px;
 }
+.fieldErrorBox .error{
+  border: 1px solid red;
+  padding: 3px;
+  color: red;
+  background: none;
+}
 .form-group{
     border-left: 101px solid #3f393b;
     margin: 20px 0 30px 0;
