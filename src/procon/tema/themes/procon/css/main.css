@@ -2690,7 +2690,9 @@ z-index: 1;
     display: none;
 }
 #content .divRedireciona p{
-  color: #414141
+  color: #414141;
+  text-align:justify;
+  padding: 0 16px 0 16px;
 }
 #content .divRedireciona p strong{
   font-weight: 600;
