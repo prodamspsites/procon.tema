@@ -1066,7 +1066,7 @@ body.subsection-duvidas .divAccordeon h3 span{
 }
 .divAccordeon h3 span p{
   color: #fff !important;
-  padding: 3px 0 0 0;
+  padding: 3px 30px 0 0;
   font-size: 1.3em !important;
 }
 .divAccordeon h3::after{
