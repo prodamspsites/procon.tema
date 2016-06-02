@@ -738,8 +738,11 @@
 
     });
 
+    $("td.reclamacao_buscar").on('click',function(){
+      $(".reclamacoes_interno").show();
+    });
 
-    $("td").on('click',function(){
+    $("td.duvida_buscar").on('click',function(){
       $(".teste").show();
       $(".divReclamacoes").hide();
       $this = $(this).attr("class");
