@@ -62,6 +62,37 @@ body.site-Procon.section-procon div.width-16{
 body.template-news_item_view .wrap{
   width: 725px;
 }
+#content table{
+  border: 1px solid #cecece;
+  margin: 20px 0 0 30px;
+  float: left;
+}
+#content table th.sorting_desc{
+  background: fd;
+}
+#content table th{
+  background: #da121d;
+  color: #fff;
+}
+#content table tr td{
+  color: #454545;
+  font-size: 1.2em;
+  font-family: 'Roboto', Arial;
+  border: 1px solid #cecece;
+}
+#content table tr:nth-child(even) {
+  background: #f5f5f5
+}
+#content table tr:nth-child(odd) {
+  background: #FFF
+}
+
+#content table tr td a, #content table tr td a:hover{
+  color: #da121d !important;
+  text-decoration: none !important;
+  font-size: 1.0em !important;
+  border-bottom: none !important;
+}
 .wrapAdmin{
   width: 942px;
   margin: 0 auto;
@@ -1832,7 +1863,7 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   padding:5px 5px 5px 5px;
   font-size: 1.2em;
 }
-.tableReclamacoes table tr th{
+#content .tableReclamacoes table tr th{
   background: #818181;
   color: #fff;
   font-family: 'Roboto';
