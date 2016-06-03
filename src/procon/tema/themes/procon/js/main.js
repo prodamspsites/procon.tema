@@ -23,7 +23,7 @@
 
         //Firefox requires the link to be in the body
         document.body.appendChild(link);
-        
+
         //simulate click
         link.click();
 
@@ -31,7 +31,7 @@
         document.body.removeChild(link);
         }
         return false;
-      }) 
+      })
 
 
 
@@ -58,7 +58,7 @@
                $("#"+file[value].id).parent().parent().hide();
             }
           });
-          $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com exteñções JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
+          $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com extensões JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
 
 
           $("input[type='file']").on('change',function(){
