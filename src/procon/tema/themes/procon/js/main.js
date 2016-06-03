@@ -24,8 +24,12 @@
     $(document).on('click','.btnupload', function(){
         $(this).parent().parent().find('input').trigger('click');
     });
+    $(document).on('click','.clearImage', function(){
+      contaUploads = contaUploads - 1;
+      $('.contadorUpload').val(contaUploads);
+    });
 
-
+    var contaUploads = '';
     function insereInputFile() {
         //upload plone form gen
           var file = $("input:file").css('display', 'none');
@@ -34,8 +38,7 @@
                $("#"+file[value].id).parent().parent().hide();
             }
           });
-          $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com exteñções JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
-
+          $("input:file").before('<input type="hidden" class="contadorUpload" value="0"><div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com exteñções JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
 
           $("input[type='file']").on('change',function(){
               var id  = $(this).attr('id');
@@ -44,6 +47,9 @@
               var nomeArquivo = this.files[0].name;
               var tamanhoArquivo = this.files[0].size;
               $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER ARQUIVO</a></div>');
+
+              contaUploads = $('.divDadosUpload .clearImage').length;
+              $('.contadorUpload').val(contaUploads);
           });
 
           //formata tamanho do arquivo upload
@@ -66,9 +72,10 @@
             return false;
           });
     }
-    $(document).on('click','.btnupload', function(){
-        $(this).parent().parent().find('input').trigger('click');
-    });
+    //$(document).on('click','.btnupload', function(){
+        //$(this).parent().parent().find('input').trigger('click');
+        //console.log($('.divDadosUpload .clearImage').length);
+    //});
 
     //AJUSTE NO TEMPLATE DE CADASTRO
     if ($('body').hasClass('template-register')) {
