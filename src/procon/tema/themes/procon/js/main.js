@@ -11,6 +11,30 @@
     }
 
 
+    $(document).on('click', '.fileDownload', function(e) {
+      e.preventDefault()
+      mimetype = $(this).data('mimetype');
+      binary = $(this).data('binary');
+      filename = $(this).text();
+      link = document.createElement('a');
+      if (typeof link.download === 'string') {
+        link.href = 'data:'+mimetype+';base64,'+binary;
+        link.download = filename;
+
+        //Firefox requires the link to be in the body
+        document.body.appendChild(link);
+        
+        //simulate click
+        link.click();
+
+        //remove the link when done
+        document.body.removeChild(link);
+        }
+        return false;
+      }) 
+
+
+
     var currentUser = $('.currentUser').text();
 
     //TEMPLATE BUSCAR_DUVIDAS
@@ -740,6 +764,8 @@
 
     $("td.reclamacao_buscar").on('click',function(){
       $(".reclamacoes_interno").show();
+      $(".filtrarPor").hide();
+      $("#table_id_reclamacoes").hide();
     });
 
     $("td.duvida_buscar").on('click',function(){
