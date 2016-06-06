@@ -309,6 +309,31 @@
       $('#pfg-fieldsetname-procurou-a-empresa-nao').show();
     });
 
+    //MASCARA CPF E CNPJ$(".inputAcesso.cpf").mask("999.999.999-99");
+     $("#cnpj-cpf").attr('onkeypress','mascaraMutuario(this,cpfCnpj)');
+     $("#cnpj-cpf").attr('onblur','clearTimeout()');
+
+    $("#cnpj-cpf").focus(function(){
+    try {
+        $("#cnpj-cpf").unmask();
+    } catch (e) {}
+    });
+
+   $("#cnpj-cpf").keydown(function(e){
+
+        if ((e.keyCode < 96 && e.keyCode > 105)) {
+            var tamanho = $("#cnpj-cpf").val().length;
+
+            if(tamanho < 11){
+                $("#cnpj-cpf").mask("999.999.999-99");
+            } else if(tamanho >= 11){
+                $("#cnpj-cpf").mask("99.999.999/9999-99");
+            }
+        }
+
+
+    });
+
     //LIGHTBOX
     function lightboxForm() {
           lightbox_url = portal_url + '/termo-de-uso/termo';
@@ -1017,3 +1042,35 @@ function compareDates(date1, date2){
         }
         return false;
     }
+//MASCARA CPF CNPJ
+function mascaraMutuario(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout('execmascara()',1)
+}
+function execmascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+function cpfCnpj(v){
+    //Remove tudo o que nÃ£o Ã© dÃ­gito
+    v=v.replace(/\D/g,"")
+    if (v.length <= 14) { //CPF
+        //Coloca um ponto entre o terceiro e o quarto dÃ­gitos
+        v=v.replace(/(\d{3})(\d)/,"$1.$2")
+        //Coloca um ponto entre o terceiro e o quarto dÃ­gitos
+        //de novo (para o segundo bloco de nÃºmeros)
+        v=v.replace(/(\d{3})(\d)/,"$1.$2")
+        //Coloca um hÃ­fen entre o terceiro e o quarto dÃ­gitos
+        v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+    } else { //CNPJ
+        //Coloca ponto entre o segundo e o terceiro dÃ­gitos
+        v=v.replace(/^(\d{2})(\d)/,"$1.$2")
+        //Coloca ponto entre o quinto e o sexto dÃ­gitos
+        v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3")
+        //Coloca uma barra entre o oitavo e o nono dÃ­gitos
+        v=v.replace(/\.(\d{3})(\d)/,".$1/$2")
+        //Coloca um hÃ­fen depois do bloco de quatro dÃ­gitos
+        v=v.replace(/(\d{4})(\d)/,"$1-$2")
+    }
+    return v
+}
