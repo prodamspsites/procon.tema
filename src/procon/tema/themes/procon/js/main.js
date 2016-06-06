@@ -771,9 +771,10 @@
 
     // #reclamacao_status
     $(document).on('change',"#reclamacao_status",function(){
-      var reclamacao_status = $("#reclamacao_status option:selected").text();
-      var protocolo = $("#protocolo").attr('rel');
-      console.log(reclamacao_status);
+      $this = $(this);
+      var reclamacao_status = $("option:selected", $this).text();
+      var protocolo = $this.attr('rel');
+
       var url = portal_url + '/@@atualizar_reclamacao';
       $.post( url,
       {
@@ -788,6 +789,7 @@
     // ABRE TELA INTERNA DA TABELA DE RECLAMAÇÕES 
     $(document).on('click',"td.reclamacao_buscar",function(){
       $this  = $(this);
+
       $tbody = $this.parent().parent();
       $this.parent().addClass('reclamacoes_abre_div_detalhes');
 
@@ -924,6 +926,34 @@
               });
             }
         })
+
+        $(".lido_reclamacoes").on('click',function(){
+          var r = confirm("Deseja mudar este registro para cadastrado?");
+          if (r == true) {
+            $(this).addClass('ok');
+            var identificacao =  $("._id",$('input[type=checkbox].ok').parent().parent() ).attr("rel");
+            if(identificacao != ""){
+              $.post( portal_url + '/@@reclamacoes_salvar',
+              {
+                  identificacao: identificacao,
+              }).done(function(){
+                $('input[type=checkbox].ok').attr('checked',true);
+                $('input[type=checkbox].ok').removeClass('ok').attr('disabled',true);
+              })              
+            }
+          //   if (identificacao == undefined || identificacao == ""){
+          //     identificacao = $("#idObservacao").html();
+          //   }
+          //   $.post( portal_url + '/@@duvidas_salvar',
+          //   {
+          //       identificacao: identificacao,
+          //   }).done(function(){
+          //     $('input[type=checkbox].ok').attr('checked',true);
+          //     $('input[type=checkbox].ok').removeClass('ok').attr('disabled',true);
+          //   })
+          }
+        });
+
 
         $(".lido").on('click',function(){
           var r = confirm("Deseja mudar este registro para lido?");
