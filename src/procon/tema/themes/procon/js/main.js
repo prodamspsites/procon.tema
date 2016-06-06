@@ -966,26 +966,16 @@
           var r = confirm("Deseja mudar este registro para cadastrado?");
           if (r == true) {
             $(this).addClass('ok');
-            var identificacao =  $("._id",$('input[type=checkbox].ok').parent().parent() ).attr("rel");
-            if(identificacao != ""){
+            var protocolo =  $("._id",$('input[type=checkbox].ok').parent().parent() ).attr("rel");
+            if(protocolo != ""){
               $.post( portal_url + '/@@reclamacoes_salvar',
               {
-                  identificacao: identificacao,
+                  protocolo: protocolo,
               }).done(function(){
                 $('input[type=checkbox].ok').attr('checked',true);
                 $('input[type=checkbox].ok').removeClass('ok').attr('disabled',true);
               })              
             }
-          //   if (identificacao == undefined || identificacao == ""){
-          //     identificacao = $("#idObservacao").html();
-          //   }
-          //   $.post( portal_url + '/@@duvidas_salvar',
-          //   {
-          //       identificacao: identificacao,
-          //   }).done(function(){
-          //     $('input[type=checkbox].ok').attr('checked',true);
-          //     $('input[type=checkbox].ok').removeClass('ok').attr('disabled',true);
-          //   })
           }
         });
 
