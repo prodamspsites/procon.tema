@@ -876,8 +876,9 @@
       $(".filtrarPor").hide();
     });
 
-    $("td.duvida_buscar").on('click',function(){
-      $(".teste").show();
+    $(document).on('click',"td.duvidas_buscar",function(){
+      
+      $(".DuvidaDivInterno").show();
       $(".divReclamacoes").hide();
       $this = $(this).attr("class");
       var _id = $this.split('_')[0];
@@ -890,6 +891,7 @@
       var $resposta = $("."+_id+"_resposta").html();
       var $mensagem = $("."+_id+"_mensagem").html();
       var $assunto = $("."+_id+"_assunto").html();
+      var $operador = $("."+_id+"_operador").html();
       var $id = $("."+_id+"_id").html();
       var $lido = $("."+_id+"_lido").html();
 
@@ -912,11 +914,12 @@
       $("#resposta").html($resposta);
       $("#mensagem").html($mensagem);
       $("#assunto").html($assunto);
+      $("#operador").val($operador);
       $("#idObservacao").html(_id);
     });
 
     $("#voltar").on('click',function(){
-      $(".teste").hide();
+      $(".DuvidaDivInterno").hide();
       $(".divReclamacoes").show();
     });
 
