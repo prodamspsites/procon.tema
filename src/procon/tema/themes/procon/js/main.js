@@ -193,7 +193,17 @@
         $('#form-widgets-municipio-1').prop('checked', true);
         $('#content-core .rowlike').append('<p class="proconSPmessage">O PROCON Paulistano tem como atribuição atender os consumidores domiciliados no Município de São Paulo.</strong><br><br>Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade.</p>')
       });
-
+      $("form.kssattr-formname-register").submit(function( event ) {
+        $(".kssattr-formname-register input:text").not('#form-widgets-data_nascimento, #form-widgets-contato_telefone, #form-widgets-contato_celular, #form-widgets-site, #form-widgets-nome_fantasia').each(function(){
+          if($(this).val() === ''){
+            $('.kssattr-formname-register input:text').removeClass('error');
+            $(this).addClass('error');
+            $('html,body').animate({ scrollTop: $('.error').offset().top - 40}, 'slow');
+            event.preventDefault();
+            return false;
+          }
+        });
+      });
       $(document).on('click', '#form-buttons-register', function() {
         newUrl = window.location.href + '?envio=True';
         window.history.pushState("", "", newUrl);
