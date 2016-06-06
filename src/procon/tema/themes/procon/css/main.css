@@ -2340,6 +2340,9 @@ body.template-register .select-widget.choice-field{
   float: left;
   clear: both;
 }
+#content .kssattr-formname-register input.error{
+  border:1px solid red;
+}
 #content .formDuvidas .btnTooltip{
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
