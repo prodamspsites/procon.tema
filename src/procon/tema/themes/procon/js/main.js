@@ -50,7 +50,7 @@
     });
     $(document).on('click','.clearImage', function(){
       contaUploads = contaUploads - 1;
-      $('.contadorUpload').val(contaUploads);
+      $('#archetypes-fieldname-filenumber input').val(contaUploads);
     });
 
     var contaUploads = '';
@@ -62,7 +62,7 @@
                $("#"+file[value].id).parent().parent().hide();
             }
           });
-          $("input:file").before('<input type="hidden" class="contadorUpload" value="0"><div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com exteñções JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
+          $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com exteñções JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
 
           $("input[type='file']").on('change',function(){
               var id  = $(this).attr('id');
@@ -73,7 +73,7 @@
               $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER ARQUIVO</a></div>');
 
               contaUploads = $('.divDadosUpload .clearImage').length;
-              $('.contadorUpload').val(contaUploads);
+              $('#archetypes-fieldname-filenumber input').val(contaUploads);
           });
 
           //formata tamanho do arquivo upload
@@ -130,11 +130,12 @@
       rg = $('.kssattr-fieldname-form\\.widgets\\.rg').clone();
       genero = $('.kssattr-fieldname-form\\.widgets\\.genero').clone();
       email = $('.kssattr-fieldname-form\\.widgets\\.email').clone();
+      email_confirmacao = $('.kssattr-fieldname-form\\.widgets\\.confirmacao').clone();
       senha = $('.kssattr-fieldname-form\\.widgets\\.password').clone();
       senha_confirmacao = $('.kssattr-fieldname-form\\.widgets\\.password_ctl').clone();
       razao_social = $('.kssattr-fieldname-form\\.widgets\\.razao_social').clone();
       nome_fantasia = $('.kssattr-fieldname-form\\.widgets\\.nome_fantasia').clone();
-      responsavel = $('.kssattr-fieldname-form\\.widgets\\.fullname').clone();
+      responsavel = $('.kssattr-fieldname-form\\.widgets\\.responsavel').clone();
       estado_civil = $('.kssattr-fieldname-form\\.widgets\\.estadocivil').clone();
       nascimento = $('.kssattr-fieldname-form\\.widgets\\.data_nascimento').clone();
       celular = $('.kssattr-fieldname-form\\.widgets\\.contato_celular').clone();
@@ -144,6 +145,7 @@
       pj = $(form).clone();
       $('div', pf).remove();
       $('div', pj).remove();
+      console.log($(cidade).html())
       form.html( $(pj).append($(municipio).html()).html()).show()
       pj = $(pf).clone();
       $(pf).prepend($(municipio).html() + $(tipo).html() + $(user).html() + $(cpf).html() + $(rg).html() + $(expeditor).html() +
@@ -152,28 +154,28 @@
                     'id="dados-de-contato-juridico_help"></span></div>' +
                     $(telefone).html() + $(celular).html() + $(cep).html() + 
                     $(logradouro).html() + $(complemento).html() + $(bairro).html() +
-                    $(cidade).html() + $(uf).html() + $(site).html() + $(email).html() +
+                    $(cidade).html() + $(uf).html() + $(email).html() + $(email_confirmacao).html() +
                     $(senha).html() + $(senha_confirmacao).html() + $(enviar).html() 
                    );
       $(municipio, pj).remove()
       $(cpf, pf).find('input').mask("999.999.999-99");
       $(pj).prepend($(municipio).html() + $(tipo).html() + $(user).html() + $(razao_social).html() + $(nome_fantasia).html() + 
-                    $(tipo_societario).html() + $(enquadramento).html() + $(nome).html() +
+                    $(tipo_societario).html() + $(enquadramento).html() + $(responsavel).html() +
                     $(cpf_pj).html() + $(rg_pj).html() + $(expeditor).html() +
                     '<div class="formQuestion label">Dados de contato<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
                     $(telefone).html() + $(cep).html() + $(logradouro).html() + 
                     $(complemento).html() + $(bairro).html() + $(cidade).html() +
-                    $(uf).html() + $(site).html() + $(email).html() +
+                    $(uf).html() + $(site).html() + $(email).html() + $(email_confirmacao).html() +
                     $(senha).html() + $(senha_confirmacao).html() + $(enviar).html()
                    );
-
       $(document).on('click', '#form-widgets-tipo-0', function(){
         form.html($(pf).html()).show()
         mascarasForms();
         $('#form-widgets-tipo-0').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-municipio-0').attr('checked', 'checked');
+        $('#form-widgets-cidade').val('São Paulo');
       });
 
       $(document).on('click', '#form-widgets-tipo-1', function(){
@@ -182,6 +184,8 @@
         $('#form-widgets-tipo-1').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-municipio-0').attr('checked', 'checked');
+        $('#form-widgets-cidade').val('São Paulo');
+
       });
 
       $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Faça seu login</h2><p>Faça seu login para realizar sua reclamação:</p><div class="field"><label for="__ac_name">Usuário :</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
@@ -193,6 +197,8 @@
         $('#content-core .rowlike').find('.proconSPmessage').hide();
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-tipo-0').attr('checked', 'checked');
+        $('#form-widgets-cidade').val('São Paulo');
+
       });
 
       $(document).on('click', '#form-widgets-municipio-1', function(){
@@ -334,6 +340,7 @@
         var itensForm = $(".formDuvidas .pfg-form").detach();
 
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
+
             lightboxForm();
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
@@ -433,6 +440,10 @@
     }
 
 
+    if ($('body').hasClass('userrole-reader') && ($('body').hasClass('template-login_success'))) {
+       window.location.replace(portal_url + '/@@buscar_reclamacoes');      
+    }
+
     if ($('body').hasClass('userrole-anonymous') && $('body').hasClass('subsection-formulario-de-denuncia')){
          window.location.replace(portal_url + '/@@register');
     }
@@ -516,6 +527,21 @@
     }
 
     if ($('body').hasClass('subsection-formularios') || $('body').hasClass('subsection-formulario-de-denuncia')){
+     //limpa textarea quando usuário clica
+      $(document).on('focus', 'textarea', function() {
+        if (this.value === this.defaultValue) {
+            this.value = '';
+        }
+      })
+
+      $(document).on('blur', 'textarea', function() {
+          if (this.value === '') {
+              this.value = this.defaultValue;
+          }
+      })
+
+
+
      $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
      lightboxForm();
     //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
@@ -566,6 +592,8 @@
       $('#pfg-fieldsetname-fisica').hide();
       $('#pfg-fieldsetname-juridica').show();
     });
+
+
 
     //categorias CONSUMIDOR.GOV
     $.ajax({
