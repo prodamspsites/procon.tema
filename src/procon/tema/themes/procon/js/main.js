@@ -48,8 +48,12 @@
     $(document).on('click','.btnupload', function(){
         $(this).parent().parent().find('input').trigger('click');
     });
+    $(document).on('click','.clearImage', function(){
+      contaUploads = contaUploads - 1;
+      $('#archetypes-fieldname-filenumber input').val(contaUploads);
+    });
 
-
+    var contaUploads = '';
     function insereInputFile() {
         //upload plone form gen
           var file = $("input:file").css('display', 'none');
@@ -60,7 +64,6 @@
           });
           $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com extensões JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
 
-
           $("input[type='file']").on('change',function(){
               var id  = $(this).attr('id');
               console.log(id);
@@ -68,6 +71,9 @@
               var nomeArquivo = this.files[0].name;
               var tamanhoArquivo = this.files[0].size;
               $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER ARQUIVO</a></div>');
+
+              contaUploads = $('.divDadosUpload .clearImage').length;
+              $('#archetypes-fieldname-filenumber input').val(contaUploads);
           });
 
           //formata tamanho do arquivo upload
@@ -90,9 +96,10 @@
             return false;
           });
     }
-    $(document).on('click','.btnupload', function(){
-        $(this).parent().parent().find('input').trigger('click');
-    });
+    //$(document).on('click','.btnupload', function(){
+        //$(this).parent().parent().find('input').trigger('click');
+        //console.log($('.divDadosUpload .clearImage').length);
+    //});
 
     //AJUSTE NO TEMPLATE DE CADASTRO
     if ($('body').hasClass('template-register')) {
@@ -769,6 +776,22 @@
             $('a.btn-libras').addClass('ativo');
         }
         $.cookie('librasCookie',$(this).attr('id'),{ path: '/' });
+
+    });
+
+    // #reclamacao_status
+    $(document).on('change',"#reclamacao_status",function(){
+      var reclamacao_status = $("#reclamacao_status option:selected").text();
+      var protocolo = $("#protocolo").attr('rel');
+      console.log(reclamacao_status);
+      var url = portal_url + '/@@atualizar_reclamacao';
+      $.post( url,
+      {
+          reclamacao_status:reclamacao_status,
+          protocolo:protocolo
+      }).done(function(){
+        console.log('ajax com sucesso');
+      });
 
     });
 
