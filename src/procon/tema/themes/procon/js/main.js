@@ -23,7 +23,7 @@
 
         //Firefox requires the link to be in the body
         document.body.appendChild(link);
-        
+
         //simulate click
         link.click();
 
@@ -31,7 +31,7 @@
         document.body.removeChild(link);
         }
         return false;
-      }) 
+      })
 
 
 
@@ -62,7 +62,7 @@
                $("#"+file[value].id).parent().parent().hide();
             }
           });
-          $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com exteñções JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
+          $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com extensões JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
 
           $("input[type='file']").on('change',function(){
               var id  = $(this).attr('id');
@@ -200,7 +200,17 @@
         $('#form-widgets-municipio-1').prop('checked', true);
         $('#content-core .rowlike').append('<p class="proconSPmessage">O PROCON Paulistano tem como atribuição atender os consumidores domiciliados no Município de São Paulo.</strong><br><br>Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade.</p>')
       });
-
+      $("form.kssattr-formname-register").submit(function( event ) {
+        $(".kssattr-formname-register input:text").not('#form-widgets-data_nascimento, #form-widgets-contato_celular, #form-widgets-site, #form-widgets-nome_fantasia').each(function(){
+          if($(this).val() === ''){
+            $('.kssattr-formname-register input:text').removeClass('error');
+            $(this).addClass('error');
+            $('html,body').animate({ scrollTop: $('.error').offset().top - 40}, 'slow');
+            event.preventDefault();
+            return false;
+          }
+        });
+      });
       $(document).on('click', '#form-buttons-register', function() {
         newUrl = window.location.href + '?envio=True';
         window.history.pushState("", "", newUrl);
@@ -297,6 +307,31 @@
     $('#voce-procurou-a-empresa-para-solucionar-o-problema_2').click(function(){
       $('#pfg-fieldsetname-procurou-a-empresa-sim').hide();
       $('#pfg-fieldsetname-procurou-a-empresa-nao').show();
+    });
+
+    //MASCARA CPF E CNPJ$(".inputAcesso.cpf").mask("999.999.999-99");
+     $("#cnpj-cpf").attr('onkeypress','mascaraMutuario(this,cpfCnpj)');
+     $("#cnpj-cpf").attr('onblur','clearTimeout()');
+
+    $("#cnpj-cpf").focus(function(){
+    try {
+        $("#cnpj-cpf").unmask();
+    } catch (e) {}
+    });
+
+   $("#cnpj-cpf").keydown(function(e){
+
+        if ((e.keyCode < 96 && e.keyCode > 105)) {
+            var tamanho = $("#cnpj-cpf").val().length;
+
+            if(tamanho < 11){
+                $("#cnpj-cpf").mask("999.999.999-99");
+            } else if(tamanho >= 11){
+                $("#cnpj-cpf").mask("99.999.999/9999-99");
+            }
+        }
+
+
     });
 
     //LIGHTBOX
@@ -1037,3 +1072,35 @@ function compareDates(date1, date2){
         }
         return false;
     }
+//MASCARA CPF CNPJ
+function mascaraMutuario(o,f){
+    v_obj=o
+    v_fun=f
+    setTimeout('execmascara()',1)
+}
+function execmascara(){
+    v_obj.value=v_fun(v_obj.value)
+}
+function cpfCnpj(v){
+    //Remove tudo o que nÃ£o Ã© dÃ­gito
+    v=v.replace(/\D/g,"")
+    if (v.length <= 14) { //CPF
+        //Coloca um ponto entre o terceiro e o quarto dÃ­gitos
+        v=v.replace(/(\d{3})(\d)/,"$1.$2")
+        //Coloca um ponto entre o terceiro e o quarto dÃ­gitos
+        //de novo (para o segundo bloco de nÃºmeros)
+        v=v.replace(/(\d{3})(\d)/,"$1.$2")
+        //Coloca um hÃ­fen entre o terceiro e o quarto dÃ­gitos
+        v=v.replace(/(\d{3})(\d{1,2})$/,"$1-$2")
+    } else { //CNPJ
+        //Coloca ponto entre o segundo e o terceiro dÃ­gitos
+        v=v.replace(/^(\d{2})(\d)/,"$1.$2")
+        //Coloca ponto entre o quinto e o sexto dÃ­gitos
+        v=v.replace(/^(\d{2})\.(\d{3})(\d)/,"$1.$2.$3")
+        //Coloca uma barra entre o oitavo e o nono dÃ­gitos
+        v=v.replace(/\.(\d{3})(\d)/,".$1/$2")
+        //Coloca um hÃ­fen depois do bloco de quatro dÃ­gitos
+        v=v.replace(/(\d{4})(\d)/,"$1-$2")
+    }
+    return v
+}
