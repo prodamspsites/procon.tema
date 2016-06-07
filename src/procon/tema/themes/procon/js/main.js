@@ -839,7 +839,7 @@
         $('body').css("font-size",maisUm+"px");
     }
     function resetFont(){
-        $('body').css("font-size","12px");
+        $('body').css("font-size","16px");
 
         $.removeCookie('contraste2', { path: '/' });
         $.removeCookie('contraste1', { path: '/' });

@@ -3568,9 +3568,15 @@ body.section-consumidor .divLoginDenuncia{
   .div.position-2{
     margin-left: 77.4%;
   }
-
+}
 /*CONTRASTE*/
 body.contraste1, body.contraste1 #footer, body.contraste1 #footer .footerBottom, body.contraste1 #footer .textoFooter{
   background: #000 !important;
   color: #fff !important;
+}
+body.contraste1 #content p, body.contraste1 #content .titPage, body.contraste1 #portal-breadcrumbs a, body.contraste1 #portal-breadcrumbs, body.contraste1 .acessibilidade ul li a, body.contraste1 #content .blocoNoticias .noticiasColuna h2 a{
+  color: #fff !important;
+}
+body.contraste1 .acessibilidade,body.contraste1  .listaHome{
+  background: #000;
 }
