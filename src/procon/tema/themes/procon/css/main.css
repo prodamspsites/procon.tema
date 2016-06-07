@@ -3010,6 +3010,12 @@ body.section-consumidor .divLoginDenuncia{
 #viewlet-social-like{
   display: none;
 }
+.formid-formularios form input.error{
+  border: 1px solid red;
+}
+.formid-formularios form .error{
+  border: 1px solid red;
+}
 
 /*FOOTER*/
 #footer{

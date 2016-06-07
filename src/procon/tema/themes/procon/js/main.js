@@ -426,6 +426,49 @@
               }
             });
 
+            //VALIDA FORM RECLAMACAO
+            $(".formid-formularios form").submit(function( event ) {
+              if(!$('.clearImage').size()){
+                $('.botaoUpload').css('border','1px solid red');
+                event.preventDefault();
+                return false;
+              }
+              else{
+                $('.botaoUpload').css('border','none');
+              }
+              $(".formid-formularios form input:text, .formid-formularios form textarea").not('#complemento').each(function(){
+                if($(this).val() === ''){
+                  $('.formid-formularios form input:text').removeClass('error');
+                  $(this).addClass('error');
+                  $('html,body').animate({ scrollTop: $('.error').offset().top - 40}, 'slow');
+                  event.preventDefault();
+                  return false;
+                }
+              });
+                if(!$('input[name="genero"]').is(':checked')){
+                  $('#genero').css('border','1px solid red');
+                  event.preventDefault();
+                  return false;
+                }
+                else{
+                  $('#genero').css('border','none');
+                }
+                if(!$('input[name="deseja-informar-a-empresa"]').is(':checked')){
+                  $('#deseja-informar-a-empresa').css('border','1px solid red');
+                  event.preventDefault();
+                  return false;
+                }
+                else{
+                 $('#deseja-informar-a-empresa').css('border','none');
+                }
+              if($('.contentLightbox input').prop('checked')==true) {
+                return;
+              }else{
+                $('.contentLightbox').css('border','1px solid red');
+                event.preventDefault();
+                return false;
+              }
+            });
 
             $('#area-relativa-ao-produto-servico-reclamado').change(function(){
               if ($(this).val() == 'Alimentos'){
