@@ -3007,7 +3007,9 @@ body.section-consumidor .divLoginDenuncia{
 .paginationReclamacoes .next a:hover{
   background: url(../img/setaPagNext.png) no-repeat 15px 12px #329fd7 !important;
 }
-
+#viewlet-social-like{
+  display: none;
+}
 
 /*FOOTER*/
 #footer{
