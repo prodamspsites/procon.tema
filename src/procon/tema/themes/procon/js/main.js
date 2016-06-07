@@ -944,6 +944,7 @@
           }
         });
       $('.detalhesDuvida').show();
+      $('td.td_interno').show().css('background-color','white');
       $(".filtrarPor").hide();
     });
 

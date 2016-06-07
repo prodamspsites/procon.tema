@@ -1369,6 +1369,24 @@ table.dataTable thead .sorting_asc{
 .detalhesDuvida{
   font-size: 1.2em;
 }
+
+.detalhesDuvida input[type=submit]{
+  margin-top: 20px;
+  cursor: pointer;
+  background: #710e0f;
+  color: #fff;
+  text-transform: uppercase;
+  padding: 5px 8px 5px 8px;
+  display: inline;
+  margin: 15px 0 0 5px;
+  border: none;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+border-radius: 2px;
+clear: both;
+float: left
+}
+
 .voltarReclamacoes{
   font-size: 1.0em;
   float: left;
@@ -3580,3 +3598,4 @@ body.contraste1 #content p, body.contraste1 #content .titPage, body.contraste1 #
 body.contraste1 .acessibilidade,body.contraste1  .listaHome{
   background: #000;
 }
+
