@@ -677,7 +677,7 @@
 
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
-      $('#content').html('<div class="form-group active" style="display:block"></div><div class="form-group2 active" style="display:block"></div><div class="form-group sucesso" style="display:block"><div class="sucessoReclamacao" style="display:block"><p>Prezado consumidor!</p><p>Sua denúncia foi registrada com sucesso.</p><p>O seu relato foi encaminhado à Divisão de Fiscalização para análise e adoção das providências cabíveis.</p><p>Agradecemos sua colaboração.</p><p>O número de seu atendimento é:</p><span class="numeroProtocolo">'+protocoloNumber+'</span><p>PROCON Paulistano</p></div></div>');
+      $('#content').html('<div class="sucessoReclamacao" style="display:block"><p>Prezado consumidor!</p><p>Sua denúncia foi registrada com sucesso.</p><p>O seu relato foi encaminhado à Divisão de Fiscalização para análise e adoção das providências cabíveis.</p><p>Agradecemos sua colaboração.</p><p>PROCON Paulistano</p></div>');
     }
 
 
@@ -686,7 +686,7 @@
 
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
-      $('#content').html('<div class="form-group active" style="display:block"></div><div class="form-group2 active" style="display:block"></div><div class="form-group sucesso" style="display:block"><div class="sucessoReclamacao" style="display:block"><p>Envio feito com sucesso!</p><p>Agradecemos sua colaboração.</p><p>PROCON Paulistano</p></div></div>');
+      $('#content').html('<div class="sucessoReclamacao" style="display:block"><p>Envio feito com sucesso!</p><p>Agradecemos sua colaboração.</p><p>PROCON Paulistano</p></div>');
     }
 
 
