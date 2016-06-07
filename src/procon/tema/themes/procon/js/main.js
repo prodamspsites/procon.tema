@@ -481,11 +481,15 @@
     }
 
 
-    if ($('body').hasClass('userrole-reader') && ($('body').hasClass('template-login_success'))) {
+    if ($('body').hasClass('userrole-reviewer') && ($('body').hasClass('template-login_success'))) {
        window.location.replace(portal_url + '/@@buscar_reclamacoes');      
     }
 
     if ($('body').hasClass('userrole-anonymous') && $('body').hasClass('subsection-formulario-de-denuncia')){
+         window.location.replace(portal_url + '/@@register');
+    }
+
+    if ($('body').hasClass('userrole-reviewer') && $('body').hasClass('subsection-adesao-ao-procon-paulistano')){
          window.location.replace(portal_url + '/@@register');
     }
 
