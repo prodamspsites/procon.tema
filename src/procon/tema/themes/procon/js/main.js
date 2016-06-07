@@ -437,7 +437,7 @@
               else{
                 $('.botaoUpload').css('border','none');
               }
-              $(".formid-formularios form input:text, .formid-formularios form textarea").not('#complemento').each(function(){
+              $(".formid-formularios form input:text, .formid-formularios form textarea").not('#complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1 ').each(function(){
                 if($(this).val() === ''){
                   $('.formid-formularios form input:text').removeClass('error');
                   $(this).addClass('error');
@@ -446,22 +446,22 @@
                   return false;
                 }
               });
-                if(!$('input[name="genero"]').is(':checked')){
-                  $('#genero').css('border','1px solid red');
-                  event.preventDefault();
-                  return false;
-                }
-                else{
-                  $('#genero').css('border','none');
-                }
-                if(!$('input[name="deseja-informar-a-empresa"]').is(':checked')){
-                  $('#deseja-informar-a-empresa').css('border','1px solid red');
-                  event.preventDefault();
-                  return false;
-                }
-                else{
-                 $('#deseja-informar-a-empresa').css('border','none');
-                }
+              if(!$('input[name="genero"]').is(':checked')){
+                $('#genero').css('border','1px solid red');
+                event.preventDefault();
+                return false;
+              }
+              else{
+                $('#genero').css('border','none');
+              }
+              if(!$('input[name="deseja-informar-a-empresa"]').is(':checked')){
+                $('#deseja-informar-a-empresa').css('border','1px solid red');
+                event.preventDefault();
+                return false;
+              }
+              else{
+               $('#deseja-informar-a-empresa').css('border','none');
+              }
               if($('.contentLightbox input').prop('checked')==true) {
                 return;
               }else{
