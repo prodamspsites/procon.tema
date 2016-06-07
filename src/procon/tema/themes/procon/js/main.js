@@ -62,8 +62,9 @@
                $("#"+file[value].id).parent().parent().hide();
             }
           });
-          $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com extensões JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
-
+          if(!$('.botaoUpload').size()){
+            $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Somente arquivos com extensões JPG, PNG ou PDF<br />Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
+          }
           $("input[type='file']").on('change',function(){
               var id  = $(this).attr('id');
               console.log(id);
@@ -349,7 +350,9 @@
                 lightbox_titulo = $(lightbox).find('.titPage').html();
                 lightbox_text = $(lightbox).find('.contentBody').html();
                 $('body').append("<div class='lightboxGeral'><div class='lightbox-div'><h2>"+lightbox_titulo+"</h2><div class='divScrollLight'>"+lightbox_text+"</div><a href='javascript:void(0);' class='fechaLightbox'>FECHAR</a></div></div>");
-                $('.usuario-ativo').before("<div class='contentLightbox'><input type='checkbox'>Concordo em disponibilizar as informações contidas em minha reclamação para que sejam divulgadas no site de acordo com os <a href='javascript:void(0);' class='linkLightbox'>Termos de Uso e Políticas de Privacidade.</a></div></div>");
+                if(!$('.contentLightbox').size()){
+                   $('.usuario-ativo').before("<div class='contentLightbox'><input type='checkbox'>Concordo em disponibilizar as informações contidas em minha reclamação para que sejam divulgadas no site de acordo com os <a href='javascript:void(0);' class='linkLightbox'>Termos de Uso e Políticas de Privacidade.</a></div></div>");
+                }
               }
           })
           $(document).on('click','.linkLightbox', function(){
@@ -384,7 +387,9 @@
             if ($('body').hasClass('userrole-anonymous')) {
               $('#content').append('<div class="pfg-form formid-formularios"><div class="facaReclamaLogin"><strong>Cadastre-se ou faça login para prosseguir:<br><a href="'+portal_url+'/@@register" class="irparalogin" title="IR PARA CADASTRO/LOGIN">IR PARA CADASTRO/LOGIN</a></div></div>');
             }
-            $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
+            if(!$('.usuario-ativo').size()){
+              $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
+            }
             insereInputFile();
             //FORMULARIOS AREA SELECIONADA
             $('#archetypes-fieldname-especificar-comprou').hide();
