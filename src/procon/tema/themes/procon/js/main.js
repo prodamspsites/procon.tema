@@ -264,10 +264,11 @@
            $("#valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
            $("#quando-o-produto-ou-servico-apresentou-problema").mask("99/99/9999");
            $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
-           $("#telefone, #form-widgets-contato_telefone").mask("(99) 9999-9999");
+           $("#telefone, #form-widgets-contato_telefone").mask("(99) 9999-99999");
            $("#telefone, #form-widgets-contato_telefone, #form-widgets-contato_celular").mask("(99) 9999-9999");
-           $("#cep, #form-widgets-codigo_enderecamento_postal").mask("99999-999");
+           $("#cep, #form-widgets-codigo_enderecamento_postal, #cep-juridico").mask("99999-999");
            $("#cpf, #form-widgets-cpf").mask("999.999.999-99");
+           $("#cnpj").mask("99.999.999/9999-99");
            $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
            $('#quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto').keyup(function () { 
               this.value = this.value.replace(/[^0-9\.]/g,'');
@@ -436,7 +437,7 @@
               else{
                 $('.botaoUpload').css('border','none');
               }
-              $(".formid-formularios form input:text, .formid-formularios form textarea").not('#complemento').each(function(){
+              $(".formid-formularios form input:text, .formid-formularios form textarea").not('#complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1 ').each(function(){
                 if($(this).val() === ''){
                   $('.formid-formularios form input:text').removeClass('error');
                   $(this).addClass('error');
@@ -445,22 +446,22 @@
                   return false;
                 }
               });
-                if(!$('input[name="genero"]').is(':checked')){
-                  $('#genero').css('border','1px solid red');
-                  event.preventDefault();
-                  return false;
-                }
-                else{
-                  $('#genero').css('border','none');
-                }
-                if(!$('input[name="deseja-informar-a-empresa"]').is(':checked')){
-                  $('#deseja-informar-a-empresa').css('border','1px solid red');
-                  event.preventDefault();
-                  return false;
-                }
-                else{
-                 $('#deseja-informar-a-empresa').css('border','none');
-                }
+              if(!$('input[name="genero"]').is(':checked')){
+                $('#genero').css('border','1px solid red');
+                event.preventDefault();
+                return false;
+              }
+              else{
+                $('#genero').css('border','none');
+              }
+              if(!$('input[name="deseja-informar-a-empresa"]').is(':checked')){
+                $('#deseja-informar-a-empresa').css('border','1px solid red');
+                event.preventDefault();
+                return false;
+              }
+              else{
+               $('#deseja-informar-a-empresa').css('border','none');
+              }
               if($('.contentLightbox input').prop('checked')==true) {
                 return;
               }else{
@@ -676,7 +677,7 @@
 
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
-      $('#content').html('<div class="form-group active" style="display:block"></div><div class="form-group2 active" style="display:block"></div><div class="form-group sucesso" style="display:block"><div class="sucessoReclamacao" style="display:block"><p>Prezado consumidor!</p><p>Sua denúncia foi registrada com sucesso.</p><p>O seu relato foi encaminhado à Divisão de Fiscalização para análise e adoção das providências cabíveis.</p><p>Agradecemos sua colaboração.</p><p>O número de seu atendimento é:</p><span class="numeroProtocolo">'+protocoloNumber+'</span><p>PROCON Paulistano</p></div></div>');
+      $('#content').html('<div class="sucessoReclamacao" style="display:block"><p>Prezado consumidor!</p><p>Sua denúncia foi registrada com sucesso.</p><p>O seu relato foi encaminhado à Divisão de Fiscalização para análise e adoção das providências cabíveis.</p><p>Agradecemos sua colaboração.</p><p>PROCON Paulistano</p></div>');
     }
 
 
@@ -685,7 +686,7 @@
 
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
-      $('#content').html('<div class="form-group active" style="display:block"></div><div class="form-group2 active" style="display:block"></div><div class="form-group sucesso" style="display:block"><div class="sucessoReclamacao" style="display:block"><p>Envio feito com sucesso!</p><p>Agradecemos sua colaboração.</p><p>PROCON Paulistano</p></div></div>');
+      $('#content').html('<div class="sucessoReclamacao" style="display:block"><p>Envio feito com sucesso!</p><p>Agradecemos sua colaboração.</p><p>PROCON Paulistano</p></div>');
     }
 
 
