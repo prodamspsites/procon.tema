@@ -41,7 +41,7 @@
     if ($('body').hasClass('template-buscar_duvidas') || $('body').hasClass('template-buscar_reclamacoes') || $('body').hasClass('template-buscar_denuncias') || $('body').hasClass('template-buscar_fornecedores')) {
       var currentUser = $('.currentUser').text();
       $('#portal-header nav.menu ul').html('<li><a href="'+portal_url+'/buscar_reclamacoes">Reclamações</a></li><li><a href="'+portal_url+'/buscar_duvidas">Dúvidas</a></li><li><a href="'+portal_url+'/buscar_denuncias">Denúncias</a></li><li><a href="'+portal_url+'/buscar_fornecedores">Fornecedores</a></li>')
-      $('#portal-header').append('<div class="wrap" style="position:relative"><div class="loginAdmin"><span class="nome">'+currentUser+'</span> <a href="#" title="sair" class="btnSair">Sair</a></div></div>');
+      $('#portal-header').append('<div class="wrap" style="position:relative"><div class="loginAdmin"><span class="nome">'+currentUser+'</span> <a href="'+portal_url+'/logout" title="sair" class="btnSair">Sair</a></div></div>');
       $('.wrap .loginAdmin').show();
     }
 
@@ -578,44 +578,62 @@
 
 
 
-     $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
-     lightboxForm();
-    //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
-     var protocolo = $.ajax({ type: "POST",
-                             url: portal_url + "/@@protocolo",
-                             async: false,
-                             data: { action: 'create' }
-                           }).responseText;
+      $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
+       lightboxForm();
+      //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
+       var protocolo = $.ajax({ type: "POST",
+                               url: portal_url + "/@@protocolo",
+                               async: false,
+                               data: { action: 'create' }
+                             }).responseText;
 
-    function updateProtocolo(protocolo) {
-      $.ajax({ type: "POST",
-               url: portal_url + "/@@protocolo",
-               async: false,
-               data: { action: 'update', protocolo: protocolo }
-             })
+      function updateProtocolo(protocolo) {
+        $.ajax({ type: "POST",
+                 url: portal_url + "/@@protocolo",
+                 async: false,
+                 data: { action: 'update', protocolo: protocolo }
+               })
+      }
+      $('#archetypes-fieldname-protocolo input').val(protocolo);
+
+      //var itensForm = $(".pfg-form.formid-formulario-de-denuncia").detach();
+      $('.form-group .btnBuscar').click(function(){
+          $('#content #content-core').append(itensForm);
+          $('.form-group').addClass('active');
+          $('.divRedireciona').slideUp();
+          var protocolo = $.ajax({ type: "POST",
+                       url: portal_url + "/@@protocolo",
+                       async: false,
+                       data: { action: 'create' }
+                     }).responseText;
+          $('#archetypes-fieldname-protocolo input').val(protocolo);
+        });
     }
-    $('#archetypes-fieldname-protocolo input').val(protocolo);
 
-        //var itensForm = $(".pfg-form.formid-formulario-de-denuncia").detach();
-            $('.form-group .btnBuscar').click(function(){
-                $('#content #content-core').append(itensForm);
-                $('.form-group').addClass('active');
-                $('.divRedireciona').slideUp();
-                var protocolo = $.ajax({ type: "POST",
-                             url: portal_url + "/@@protocolo",
-                             async: false,
-                             data: { action: 'create' }
-                           }).responseText;
-                $('#archetypes-fieldname-protocolo input').val(protocolo);
-            });
-    }
-
-    //CARREGA O NUMERO DE PROTOCOLO NA PAGINA DE OBRIGADO
-    if ($('body').hasClass('template-fg_thankspage_view_p3')){
+    //CARREGA O NUMERO DE PROTOCOLO NA PAGINA DE OBRIGADO DO FORMULÁRIO CONSUMIDOR
+    if ($('body').hasClass('template-fg_thankspage_view_p3') && $('body').hasClass('subsection-formularios')){
 
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
       $('#content').html('<div class="form-group active" style="display:block"></div><div class="form-group2 active" style="display:block"></div><div class="form-group sucesso" style="display:block"><div class="sucessoReclamacao" style="display:block"><p><strong>Sua reclamação foi enviada com sucesso!</strong></p><p>O número de seu atendimento é:</p><span class="numeroProtocolo">'+protocoloNumber+'</span><p>Aguarde o retorno de sua reclamação via e-mail e guarde o número de seu atendimento</p></div></div>');
+    }
+
+
+    //CARREGA O NUMERO DE PROTOCOLO NA PAGINA DE OBRIGADO DO FORMULÁRIO DENUNCIA
+    if ($('body').hasClass('template-fg_thankspage_view_p3') && $('body').hasClass('subsection-formulario-de-denuncia')){
+
+      var protocoloNumber = $( "dl dd:last-child" ).text();
+      //var itensObrigado = $("#content").detach();
+      $('#content').html('<div class="form-group active" style="display:block"></div><div class="form-group2 active" style="display:block"></div><div class="form-group sucesso" style="display:block"><div class="sucessoReclamacao" style="display:block"><p>Prezado consumidor!</p><p>Sua denúncia foi registrada com sucesso.</p><p>O seu relato foi encaminhado à Divisão de Fiscalização para análise e adoção das providências cabíveis.</p><p>Agradecemos sua colaboração.</p><p>O número de seu atendimento é:</p><span class="numeroProtocolo">'+protocoloNumber+'</span><p>PROCON Paulistano</p></div></div>');
+    }
+
+
+    //CARREGA MENSAGEM DE OBRIGADO DO FORMULÁRIO FORNECEDOR
+    if ($('body').hasClass('template-fg_thankspage_view_p3') && $('body').hasClass('subsection-adesao-ao-procon-paulistano')){
+
+      var protocoloNumber = $( "dl dd:last-child" ).text();
+      //var itensObrigado = $("#content").detach();
+      $('#content').html('<div class="form-group active" style="display:block"></div><div class="form-group2 active" style="display:block"></div><div class="form-group sucesso" style="display:block"><div class="sucessoReclamacao" style="display:block"><p>Envio feito com sucesso!</p><p>Agradecemos sua colaboração.</p><p>PROCON Paulistano</p></div></div>');
     }
 
 
