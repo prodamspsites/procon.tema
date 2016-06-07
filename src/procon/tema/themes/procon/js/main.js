@@ -264,10 +264,11 @@
            $("#valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
            $("#quando-o-produto-ou-servico-apresentou-problema").mask("99/99/9999");
            $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
-           $("#telefone, #form-widgets-contato_telefone").mask("(99) 9999-9999");
+           $("#telefone, #form-widgets-contato_telefone").mask("(99) 9999-99999");
            $("#telefone, #form-widgets-contato_telefone, #form-widgets-contato_celular").mask("(99) 9999-9999");
-           $("#cep, #form-widgets-codigo_enderecamento_postal").mask("99999-999");
+           $("#cep, #form-widgets-codigo_enderecamento_postal, #cep-juridico").mask("99999-999");
            $("#cpf, #form-widgets-cpf").mask("999.999.999-99");
+           $("#cnpj").mask("99.999.999/9999-99");
            $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
            $('#quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto').keyup(function () { 
               this.value = this.value.replace(/[^0-9\.]/g,'');
