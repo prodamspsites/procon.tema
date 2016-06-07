@@ -38,9 +38,9 @@
     var currentUser = $('.currentUser').text();
 
     //TEMPLATE BUSCAR_DUVIDAS
-    if ($('body').hasClass('template-buscar_duvidas')) {
+    if ($('body').hasClass('template-buscar_duvidas') || $('body').hasClass('template-buscar_reclamacoes') || $('body').hasClass('template-buscar_denuncias') || $('body').hasClass('template-buscar_fornecedores')) {
       var currentUser = $('.currentUser').text();
-      $('#portal-header nav.menu ul').html('<li><a href="#">Reclamações</a></li><li><a href="#">Dúvidas</a></li><li><a href="#">Denúncias</a></li><li><a href="#">Fornecedores</a></li>')
+      $('#portal-header nav.menu ul').html('<li><a href="'+portal_url+'/buscar_reclamacoes">Reclamações</a></li><li><a href="'+portal_url+'/buscar_duvidas">Dúvidas</a></li><li><a href="'+portal_url+'/buscar_denuncias">Denúncias</a></li><li><a href="'+portal_url+'/buscar_fornecedores">Fornecedores</a></li>')
       $('#portal-header').append('<div class="wrap" style="position:relative"><div class="loginAdmin"><span class="nome">'+currentUser+'</span> <a href="#" title="sair" class="btnSair">Sair</a></div></div>');
       $('.wrap .loginAdmin').show();
     }
@@ -176,6 +176,7 @@
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-municipio-0').attr('checked', 'checked');
         $('#form-widgets-cidade').val('São Paulo');
+        $('#form-widgets-unidade_federativa').val('SP');
       });
 
       $(document).on('click', '#form-widgets-tipo-1', function(){
@@ -185,7 +186,7 @@
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-municipio-0').attr('checked', 'checked');
         $('#form-widgets-cidade').val('São Paulo');
-
+        $('#form-widgets-unidade_federativa').val('SP');
       });
 
       $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Faça seu login</h2><p>Faça seu login para realizar sua reclamação:</p><div class="field"><label for="__ac_name">Usuário :</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
@@ -198,7 +199,7 @@
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-tipo-0').attr('checked', 'checked');
         $('#form-widgets-cidade').val('São Paulo');
-
+        $('#form-widgets-unidade_federativa').val('SP');
       });
 
       $(document).on('click', '#form-widgets-municipio-1', function(){
@@ -375,11 +376,11 @@
         var itensForm = $(".formDuvidas .pfg-form").detach();
 
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
-
             lightboxForm();
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
+            $('#nome-da-empresa-fornecedor').val($('#project').val());
             if ($('body').hasClass('userrole-anonymous')) {
               $('#content').append('<div class="pfg-form formid-formularios"><div class="facaReclamaLogin"><strong>Cadastre-se ou faça login para prosseguir:<br><a href="'+portal_url+'/@@register" class="irparalogin" title="IR PARA CADASTRO/LOGIN">IR PARA CADASTRO/LOGIN</a></div></div>');
             }
