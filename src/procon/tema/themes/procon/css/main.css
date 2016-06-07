@@ -3180,7 +3180,7 @@ body.section-consumidor .divLoginDenuncia{
    ========================================================================== */
 
 /* Medium Devices, Desktops */
-@media only screen and (max-width : 1024px) {
+@media only screen and (max-width : 1022px) {
   .wrap{
     width:100%;
   }
