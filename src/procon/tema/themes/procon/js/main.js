@@ -264,10 +264,11 @@
            $("#valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
            $("#quando-o-produto-ou-servico-apresentou-problema").mask("99/99/9999");
            $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
-           $("#telefone, #form-widgets-contato_telefone").mask("(99) 9999-9999");
+           $("#telefone, #form-widgets-contato_telefone").mask("(99) 9999-99999");
            $("#telefone, #form-widgets-contato_telefone, #form-widgets-contato_celular").mask("(99) 9999-9999");
-           $("#cep, #form-widgets-codigo_enderecamento_postal").mask("99999-999");
+           $("#cep, #form-widgets-codigo_enderecamento_postal, #cep-juridico").mask("99999-999");
            $("#cpf, #form-widgets-cpf").mask("999.999.999-99");
+           $("#cnpj").mask("99.999.999/9999-99");
            $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
            $('#quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto').keyup(function () { 
               this.value = this.value.replace(/[^0-9\.]/g,'');
@@ -426,6 +427,49 @@
               }
             });
 
+            //VALIDA FORM RECLAMACAO
+            $(".formid-formularios form").submit(function( event ) {
+              if(!$('.clearImage').size()){
+                $('.botaoUpload').css('border','1px solid red');
+                event.preventDefault();
+                return false;
+              }
+              else{
+                $('.botaoUpload').css('border','none');
+              }
+              $(".formid-formularios form input:text, .formid-formularios form textarea").not('#complemento').each(function(){
+                if($(this).val() === ''){
+                  $('.formid-formularios form input:text').removeClass('error');
+                  $(this).addClass('error');
+                  $('html,body').animate({ scrollTop: $('.error').offset().top - 40}, 'slow');
+                  event.preventDefault();
+                  return false;
+                }
+              });
+                if(!$('input[name="genero"]').is(':checked')){
+                  $('#genero').css('border','1px solid red');
+                  event.preventDefault();
+                  return false;
+                }
+                else{
+                  $('#genero').css('border','none');
+                }
+                if(!$('input[name="deseja-informar-a-empresa"]').is(':checked')){
+                  $('#deseja-informar-a-empresa').css('border','1px solid red');
+                  event.preventDefault();
+                  return false;
+                }
+                else{
+                 $('#deseja-informar-a-empresa').css('border','none');
+                }
+              if($('.contentLightbox input').prop('checked')==true) {
+                return;
+              }else{
+                $('.contentLightbox').css('border','1px solid red');
+                event.preventDefault();
+                return false;
+              }
+            });
 
             $('#area-relativa-ao-produto-servico-reclamado').change(function(){
               if ($(this).val() == 'Alimentos'){
@@ -796,7 +840,7 @@
         $('body').css("font-size",maisUm+"px");
     }
     function resetFont(){
-        $('body').css("font-size","12px");
+        $('body').css("font-size","16px");
 
         $.removeCookie('contraste2', { path: '/' });
         $.removeCookie('contraste1', { path: '/' });
