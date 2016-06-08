@@ -1067,7 +1067,7 @@
         })
 
         $(".lido_reclamacoes").on('click',function(){
-          var r = confirm("Deseja mudar este registro para cadastrado?");
+          var r = confirm("Você tem certeza que deseja mudar esse registro para LIDO? Já houve o envio de resposta para o e-mail do consumidor? Não será permitido desfazer essa operação.");
           if (r == true) {
             
             var protocolo =  $(this).attr('rel');
@@ -1086,7 +1086,7 @@
 
 
         $(".lido").on('click',function(){
-          var r = confirm("Deseja mudar este registro para lido?");
+          var r = confirm("Você tem certeza que deseja mudar esse registro para LIDO? Já houve o envio de resposta para o e-mail do consumidor? Não será permitido desfazer essa operação.");
           $(this).addClass('ok');
           if (r == true) {
             var identificacao =  $("._id",$('input[type=checkbox].ok').parent().parent() ).html();
