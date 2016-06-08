@@ -435,7 +435,7 @@
                 event.preventDefault();
                 return false;
               }
-              $(".formid-formulario-de-denuncia form input:text, .formid-formularios form input:text, .formid-formularios form textarea").not('#complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #g-recaptcha-response, #site, #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').each(function(){
+              $(".formid-formularios form input:text, .formid-formularios form textarea").not('#complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #g-recaptcha-response, #site, #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').each(function(){
                 if($(this).val() === ''){
                   $('.formid-formularios form input:text').removeClass('error');
                   console.log('entrou')
