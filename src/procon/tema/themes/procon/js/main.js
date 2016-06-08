@@ -959,7 +959,7 @@
       $(this).parent().addClass('ok');
       var $observacao = $("."+_id+"_observacao").html();
       var $categoria = $("."+_id+"_categoria").html();
-      var $data = $("."+_id+"_data").html();
+      var $data = $("."+_id+"_datas").html();
       var $usuario = $("."+_id+"_usuario").html();
       var $pergunta = $("."+_id+"_pergunta").html();
       var $resposta = $("."+_id+"_resposta").html();
@@ -990,6 +990,8 @@
       $("#assunto").html($assunto);
       $("#operador").val($operador);
       $("#idObservacao").html(_id);
+      
+      $("#data_atualizacao").val($data);
     });
 
     $("#voltar").on('click',function(){
