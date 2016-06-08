@@ -265,7 +265,7 @@
            $("#quando-o-produto-ou-servico-apresentou-problema").mask("99/99/9999");
            $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
            $("#telefone, #form-widgets-contato_telefone").mask("(99) 9999-99999");
-           $("#telefone, #form-widgets-contato_telefone, #form-widgets-contato_celular").mask("(99) 9999-9999");
+           $("#telefone, #form-widgets-contato_telefone, #form-widgets-contato_celular").mask("(99) 9999-99999");
            $("#cep, #form-widgets-codigo_enderecamento_postal, #cep-juridico").mask("99999-999");
            $("#cpf, #form-widgets-cpf").mask("999.999.999-99");
            $("#cnpj").mask("99.999.999/9999-99");
