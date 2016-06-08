@@ -952,6 +952,11 @@
       var $id = $("."+_id+"_id").html();
       var $lido = $("."+_id+"_lido").html(); 
       var $data_atualizacao = $("."+_id+"_data_atualizacao").html();
+      
+      var $cpf = $("."+_id+"_cpf").html();
+      var $municipio = $("."+_id+"_municipio").html();
+      var $uf = $("."+_id+"_uf").html();
+
       if($observacao !== ""){
         $("#observacao").html($observacao).attr('disabled',true);
       } else {
@@ -963,6 +968,10 @@
       } else{
         $("#lido_check").attr('disabled',false).attr("checked",false);
       }
+
+      $("#cpf").html($cpf);
+      $("#municipio").html($municipio);
+      $("#uf").html($uf);
 
       $("#tbl2").html($categoria);
       $("#tbl1").html($data);
