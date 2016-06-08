@@ -1069,15 +1069,16 @@
         $(".lido_reclamacoes").on('click',function(){
           var r = confirm("Deseja mudar este registro para cadastrado?");
           if (r == true) {
-            $(this).addClass('ok');
-            var protocolo =  $("._id",$('input[type=checkbox].ok').parent().parent() ).attr("rel");
+            
+            var protocolo =  $(this).attr('rel');
+
             if(protocolo != ""){
               $.post( portal_url + '/@@reclamacoes_salvar',
               {
                   protocolo: protocolo,
               }).done(function(){
-                $('input[type=checkbox].ok').attr('checked',true);
-                $('input[type=checkbox].ok').removeClass('ok').attr('disabled',true);
+                $('input[type=checkbox]').attr('checked',true);
+                $('input[type=checkbox]').attr('disabled',true);
               })              
             }
           }
