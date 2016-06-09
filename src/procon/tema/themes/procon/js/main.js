@@ -104,20 +104,20 @@
     //AJUSTE NO TEMPLATE DE CADASTRO
     if ($('body').hasClass('template-register')) {
       form = $('.kssattr-formname-register')
-      $('#form-widgets-tipo-0').prop('checked', true);
+      $('#form-widgets-cadastro-0').prop('checked', true);
       municipio = $('.kssattr-fieldname-form\\.widgets\\.municipio').clone();
-      tipo = $('.kssattr-fieldname-form\\.widgets\\.tipo').clone();
+      tipo = $('.kssattr-fieldname-form\\.widgets\\.cadastro').clone();
       nome = $('.kssattr-fieldname-form\\.widgets\\.fullname').clone();
       user = $('.kssattr-fieldname-form\\.widgets\\.username').clone();
       cpf = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
       cnpj = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
-      $('label', cnpj).text('CNPJ');
+      $('label', cnpj).text('CNPJ *');
       tipo_societario = $('.kssattr-fieldname-form\\.widgets\\.tipo_societario')
       enquadramento = $('.kssattr-fieldname-form\\.widgets\\.enquadramento')
       cpf_pj = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
-      $('label', cpf_pj).text('CPF do representante').clone();
+      $('label', cpf_pj).text('CPF do representante *').clone();
       rg_pj = $('.kssattr-fieldname-form\\.widgets\\.rg').clone();
-      $('label', rg_pj).text('RG do representante').clone();
+      $('label', rg_pj).text('RG do representante *').clone();
       site = $('.kssattr-fieldname-form\\.widgets\\.site').clone();
       uf = $('.kssattr-fieldname-form\\.widgets\\.unidade_federativa').clone();
       cidade = $('.kssattr-fieldname-form\\.widgets\\.cidade').clone();
@@ -168,20 +168,20 @@
                     $(uf).html() + $(site).html() + $(email).html() + $(email_confirmacao).html() +
                     $(senha).html() + $(senha_confirmacao).html() + $(enviar).html()
                    );
-      $(document).on('click', '#form-widgets-tipo-0', function(){
+      $(document).on('click', '#form-widgets-cadastro-0', function(){
         form.html($(pf).html()).show()
         mascarasForms();
-        $('#form-widgets-tipo-0').prop('checked', true);
+        $('#form-widgets-cadastro-0').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-municipio-0').attr('checked', 'checked');
         $('#form-widgets-cidade').val('São Paulo');
         $('#form-widgets-unidade_federativa').val('SP');
       });
 
-      $(document).on('click', '#form-widgets-tipo-1', function(){
+      $(document).on('click', '#form-widgets-cadastro-1', function(){
         form.html($(pj).html()).show()
         mascarasForms();
-        $('#form-widgets-tipo-1').prop('checked', true);
+        $('#form-widgets-cadastro-1').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-municipio-0').attr('checked', 'checked');
         $('#form-widgets-cidade').val('São Paulo');
@@ -196,7 +196,7 @@
         $('#form-widgets-municipio-0').prop('checked', true);
         $('#content-core .rowlike').find('.proconSPmessage').hide();
         $('#content .rowlike select').find('option:first-child').remove();
-        $('#form-widgets-tipo-0').attr('checked', 'checked');
+        $('#form-widgets-cadastro-0').attr('checked', 'checked');
         $('#form-widgets-cidade').val('São Paulo');
         $('#form-widgets-unidade_federativa').val('SP');
       });
@@ -508,11 +508,7 @@
        window.location.replace(portal_url + '/@@buscar_reclamacoes');      
     }
 
-    if ($('body').hasClass('userrole-anonymous') && $('body').hasClass('subsection-formulario-de-denuncia')){
-         window.location.replace(portal_url + '/@@register');
-    }
-
-    if ($('body').hasClass('userrole-reviewer') && $('body').hasClass('subsection-adesao-ao-procon-paulistano')){
+    if ($('body').hasClass('userrole-anonymous') && ($('body').hasClass('subsection-formulario-de-denuncia') || $('body').hasClass('subsection-adesao-ao-procon-paulistano'))){
          window.location.replace(portal_url + '/@@register');
     }
 
@@ -656,7 +652,7 @@
 
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
-      $('#content').html('<div class="sucessoReclamacao" style="display:block"><p>Prezado consumidor!</p><p>Sua denúncia foi registrada com sucesso.</p><p>O seu relato foi encaminhado à Divisão de Fiscalização para análise e adoção das providências cabíveis.</p><p>Agradecemos sua colaboração.</p><p>PROCON Paulistano</p></div>');
+      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Formulário de denúncia</h1><p>Prezado consumidor!</p><p>Sua denúncia foi registrada com sucesso.</p><p>O seu relato foi encaminhado à Divisão de Fiscalização para análise e adoção das providências cabíveis.</p><p><strong>Agradecemos sua colaboração.</strong></p><p>PROCON Paulistano</p></div>');
     }
 
 
@@ -665,7 +661,7 @@
 
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
-      $('#content').html('<div class="sucessoReclamacao" style="display:block"><p>Envio feito com sucesso!</p><p>Agradecemos sua colaboração.</p><p>PROCON Paulistano</p></div>');
+      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Adesão ao Procon Paulistano</h1><p>Envio feito com sucesso!</p><p><strong>Agradecemos sua colaboração.</strong></p><p>PROCON Paulistano</p></div>');
     }
 
 
