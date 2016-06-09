@@ -887,6 +887,12 @@ border-radius: 15px;
 .listaHome ul li a.item4{
   margin-left: 12px;
 }
+body.portaltype-collective-cover-content #content div.position-2{
+  margin-left: -89.375%;
+}
+body.portaltype-collective-cover-content #content .cover-embed-tile{
+  margin: 41px 0 0 0;
+}
 .destaqueHome{
   float:left;
   clear: both;
@@ -3533,6 +3539,10 @@ body.section-consumidor .divLoginDenuncia{
   }
   .row.estilo3{
     float:left;
+  }
+  body.portaltype-collective-cover-content #content div.position-10{
+    margin-left: -98.375%;
+    margin-top: 20px;
   }
 }
 
