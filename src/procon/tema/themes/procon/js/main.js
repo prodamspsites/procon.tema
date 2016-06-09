@@ -665,7 +665,7 @@
 
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
-      $('#content').html('<div class="sucessoReclamacao" style="display:block"><p>Envio feito com sucesso!</p><p>Agradecemos sua colaboração.</p><p>PROCON Paulistano</p></div>');
+      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Adesão ao Procon Paulistano</h1><p>Envio feito com sucesso!</p><p><strong>Agradecemos sua colaboração.</strong></p><p>PROCON Paulistano</p></div>');
     }
 
 
