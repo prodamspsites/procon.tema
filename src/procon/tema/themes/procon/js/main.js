@@ -946,8 +946,9 @@
       var $email = $("."+_id+"_email").html();
       var $fullname = $("."+_id+"_fullname").html();
       var $id = $("."+_id+"_id").html();
-      var $lido = $("."+_id+"_lido").html(); 
+      var $lido = $("."+_id+"_lido").html().trim(); 
       var $data_atualizacao = $("."+_id+"_data_atualizacao").html();
+
       
       var $cpf = $("."+_id+"_cpf").html();
       var $municipio = $("."+_id+"_municipio").html();
@@ -958,7 +959,7 @@
       } else {
         $("#observacao").html($observacao).attr('disabled',false);
       }
-
+     
       if($lido == "True"){
         $("#lido_check").attr('disabled',true).attr("checked",true);
       } else{
@@ -968,6 +969,8 @@
       $("#cpf").html($cpf);
       $("#municipio").html($municipio);
       $("#uf").html($uf);
+
+      $("#lido_check").attr('rel',_id);
 
       $("#tbl2").html($categoria);
       $("#tbl1").html($data);
@@ -1080,21 +1083,19 @@
 
         $(".lido").on('click',function(){
           var r = confirm("Você tem certeza que deseja mudar esse registro para LIDO? Já houve o envio de resposta para o e-mail do consumidor? Não será permitido desfazer essa operação.");
-          $(this).addClass('ok');
+
           if (r == true) {
-            var identificacao =  $("._id",$('input[type=checkbox].ok').parent().parent() ).html();
-            if (identificacao == undefined || identificacao == ""){
-              identificacao = $("#idObservacao").html();
-            }
+            var protocolo =  $(this).attr('rel');
+            
             $.post( portal_url + '/@@duvidas_salvar',
             {
-                identificacao: identificacao,
+                identificacao: protocolo,
             }).done(function(){
-              $('input[type=checkbox].ok').attr('checked',true);
-              $('input[type=checkbox].ok').removeClass('ok').attr('disabled',true);
+              $('input[type=checkbox]').attr('checked',true);
+              $('input[type=checkbox]').attr('disabled',true);
             })
           } else {
-            $('input[type=checkbox].ok').removeClass('ok').attr('checked',false);
+            $('input[type=checkbox].ok').attr('checked',false);
           }
         });
 
