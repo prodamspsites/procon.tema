@@ -656,7 +656,7 @@
 
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
-      $('#content').html('<div class="sucessoReclamacao" style="display:block"><p>Prezado consumidor!</p><p>Sua denúncia foi registrada com sucesso.</p><p>O seu relato foi encaminhado à Divisão de Fiscalização para análise e adoção das providências cabíveis.</p><p>Agradecemos sua colaboração.</p><p>PROCON Paulistano</p></div>');
+      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Formulário de denúncia</h1><p>Prezado consumidor!</p><p>Sua denúncia foi registrada com sucesso.</p><p>O seu relato foi encaminhado à Divisão de Fiscalização para análise e adoção das providências cabíveis.</p><p><strong>Agradecemos sua colaboração.</strong></p><p>PROCON Paulistano</p></div>');
     }
 
 
