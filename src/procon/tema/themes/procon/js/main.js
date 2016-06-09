@@ -899,6 +899,50 @@
 
     });
 
+
+    $(".template-buscar_fornecedores #enviarComentario, .template-buscar_denuncias #enviarComentario").on('click',function(){
+        if ($('body').hasClass('template-buscar_fornecedores')) {
+          area = 'fornecedores'
+        } else {
+          area = 'denuncias'
+        }
+        $.post( portal_url + '/@@atualiza_forms',
+        {
+            objId: $('.tableReclamacoes div').first().attr('rel'),
+            campo: 'observacao',
+            valor: $("#enviarObservacao").val(),
+            area: area
+        }).done(function(){
+          $('#enviarObservacao').attr('disabled',true);
+        })
+    });
+
+    $(".template-buscar_fornecedores #lido, .template-buscar_denuncias #lido").on('click',function(){
+      var r = confirm("Você tem certeza que deseja mudar esse registro para LIDO? Já houve o envio de resposta para o e-mail do consumidor? Não será permitido desfazer essa operação.");
+      if (r == true) {
+        if ($('body').hasClass('template-buscar_fornecedores')) {
+          area = 'fornecedores'
+        } else {
+          area = 'denuncias'
+        }
+        var objId = $('.tableReclamacoes div').first().attr('rel');
+        var campo = 'lido';
+        var value = 'True';
+        if(objId != ''){
+          $.post( portal_url + '/@@atualiza_forms',
+          {
+              objId: objId,
+              campo: campo,
+              valor: value,
+              area: area
+          }).done(function(){
+            $('input[type=checkbox]').attr('checked',true);
+            $('input[type=checkbox]').attr('disabled',true);
+          })              
+        }
+      }
+    });
+
     // ABRE TELA INTERNA DA TABELA DE RECLAMAÇÕES 
     $(document).on('click',"td.reclamacao_buscar",function(){
       $this  = $(this);
