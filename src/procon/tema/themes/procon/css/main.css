@@ -1745,6 +1745,9 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
     font-family: 'Roboto';
     font-weight: normal;
 }
+#content .sucessoReclamacao{
+  margin-bottom: 35px;
+}
 #content .sucessoReclamacao p{
   font-family: 'Roboto';
   font-size: 1.2em;
@@ -3212,7 +3215,14 @@ body.section-consumidor .divLoginDenuncia{
 /* ==========================================================================
    Adaptações responsivas
    ========================================================================== */
-
+@media screen and (min-width: 1024px) and (max-width: 1240px){
+  body.portaltype-collective-cover-content #content div.position-2{
+    margin-left: -99%;
+  }
+  body.portaltype-collective-cover-content #content .cover-embed-tile{
+    margin: 41px 0 0 18px;
+  }
+}
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 1022px) {
   .wrap{
