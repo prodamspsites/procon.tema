@@ -67,7 +67,6 @@
           }
           $("input[type='file']").on('change',function(){
               var id  = $(this).attr('id');
-              console.log(id);
               $("#"+id).parent().parent().next().show();
               var nomeArquivo = this.files[0].name;
               var tamanhoArquivo = this.files[0].size;
@@ -146,7 +145,6 @@
       pj = $(form).clone();
       $('div', pf).remove();
       $('div', pj).remove();
-      console.log($(cidade).html())
       form.html( $(pj).append($(municipio).html()).html()).show()
       pj = $(pf).clone();
       $(pf).prepend($(municipio).html() + $(tipo).html() + $(user).html() + $(cpf).html() + $(rg).html() + $(expeditor).html() +
@@ -438,7 +436,6 @@
               $(".formid-formularios form input:text, .formid-formularios form textarea").not('#complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #g-recaptcha-response, #site, #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').each(function(){
                 if($(this).val() === ''){
                   $('.formid-formularios form input:text').removeClass('error');
-                  console.log('entrou')
                   $(this).addClass('error');
                   $('html,body').animate({ scrollTop: $('.error').offset().top - 40}, 'slow');
                   event.preventDefault();
@@ -898,7 +895,6 @@
           reclamacao_status:reclamacao_status,
           protocolo:protocolo
       }).done(function(){
-        console.log('ajax com sucesso');
       });
 
     });
@@ -921,12 +917,12 @@
             var classes = ['reclamacao_buscar','categoria','pergunta','usuario'];
             for (var i = classes.length - 1; i >= 0; i--) {
               $this.find('.'+classes[i]).hide();
-              $('th').hide();
-              console.log(classes[i]);
+              $('td, th').hide();
             };
           }
         });
       $('.detalhesDuvida').show();
+      $('.detalhesDuvida').parent().show();
       $('td.td_interno').show().css('background-color','white');
       $(".filtrarPor").hide();
     });
@@ -950,8 +946,9 @@
       var $email = $("."+_id+"_email").html();
       var $fullname = $("."+_id+"_fullname").html();
       var $id = $("."+_id+"_id").html();
-      var $lido = $("."+_id+"_lido").html(); 
+      var $lido = $("."+_id+"_lido").html().trim(); 
       var $data_atualizacao = $("."+_id+"_data_atualizacao").html();
+
       
       var $cpf = $("."+_id+"_cpf").html();
       var $municipio = $("."+_id+"_municipio").html();
@@ -962,7 +959,7 @@
       } else {
         $("#observacao").html($observacao).attr('disabled',false);
       }
-
+     
       if($lido == "True"){
         $("#lido_check").attr('disabled',true).attr("checked",true);
       } else{
@@ -972,6 +969,8 @@
       $("#cpf").html($cpf);
       $("#municipio").html($municipio);
       $("#uf").html($uf);
+
+      $("#lido_check").attr('rel',_id);
 
       $("#tbl2").html($categoria);
       $("#tbl1").html($data);
@@ -1004,7 +1003,6 @@
             var parent_div = $(this).parent().parent().parent().parent().parent();
             var plone_id = $("h3",parent_div).data('id');
             var categoria = $("h3",parent_div).data('categoria');
-            console.log(categoria);
             var pergunta = $("h3",parent_div).text();
             var usuario = $("#form_usuario_duvida",parent_div).val()
             var resposta = $(".textoAccordeon span.resposta_duvida",parent_div).text();
@@ -1058,7 +1056,6 @@
                   $(".respostaUtil > fieldset").find('.current').removeClass('current');
                   $("#enviarDuvida").attr("disabled",false);
                   $(".replica").hide();
-                  console.log($(this));
                   $('.mensagem_enviada', $('input.ok').removeClass('ok').parent().parent()).append("<b>O Procon Paulistano agradece sua colaboração</b>");
                 })
               });
@@ -1086,21 +1083,19 @@
 
         $(".lido").on('click',function(){
           var r = confirm("Você tem certeza que deseja mudar esse registro para LIDO? Já houve o envio de resposta para o e-mail do consumidor? Não será permitido desfazer essa operação.");
-          $(this).addClass('ok');
+
           if (r == true) {
-            var identificacao =  $("._id",$('input[type=checkbox].ok').parent().parent() ).html();
-            if (identificacao == undefined || identificacao == ""){
-              identificacao = $("#idObservacao").html();
-            }
+            var protocolo =  $(this).attr('rel');
+            
             $.post( portal_url + '/@@duvidas_salvar',
             {
-                identificacao: identificacao,
+                identificacao: protocolo,
             }).done(function(){
-              $('input[type=checkbox].ok').attr('checked',true);
-              $('input[type=checkbox].ok').removeClass('ok').attr('disabled',true);
+              $('input[type=checkbox]').attr('checked',true);
+              $('input[type=checkbox]').attr('disabled',true);
             })
           } else {
-            $('input[type=checkbox].ok').removeClass('ok').attr('checked',false);
+            $('input[type=checkbox].ok').attr('checked',false);
           }
         });
 
