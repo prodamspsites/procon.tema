@@ -69,8 +69,18 @@ body.template-news_item_view .wrap{
 #content table th.sorting_desc{
   background: fd;
 }
-#content table th{
+#content table tr:first-child td{
   background: #da121d;
+  color: #fff;
+}
+#content table tr:first-child td p, #content table tr:first-child td span{
+  color: #fff;
+}
+#content table tr:first-child th{
+  background: #da121d;
+  color: #fff;
+}
+#content table tr:first-child th p, #content table tr:first-child th span{
   color: #fff;
 }
 #content table tr td{
