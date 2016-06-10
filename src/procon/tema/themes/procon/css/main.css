@@ -2654,6 +2654,7 @@ input#rfisica, input#rjuridica{
 #cnpj-cpf{
   clear: both;
   float: left;
+  margin-bottom: 20px;
 }
 .pfg-form.formid-formulario-de-denuncia input[type=submit]{
   margin-top: 20px;
