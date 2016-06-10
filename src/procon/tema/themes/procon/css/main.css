@@ -74,10 +74,11 @@ body.template-news_item_view .wrap{
   background: #da121d;
   color: #fff;
 }
-.template-buscar_reclamacoes #content table tr:first-child td{
+.template-buscar_reclamacoes #content table tr:first-child td, .template-buscar_duvidas #content table tr:first-child td, .template-buscar_denuncias #content table tr:first-child td, .template-buscar_fornecedores #content table tr:first-child td{
   background: none;
-  color: #424242;
+  color: #454545;
 }
+
 
 #content table tr:first-child td p, #content table tr:first-child td span{
   color: #fff;
