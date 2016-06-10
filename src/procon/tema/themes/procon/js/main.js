@@ -948,6 +948,9 @@
     // ABRE TELA INTERNA DA TABELA DE RECLAMAÇÕES 
     $(document).on('click',"td.reclamacao_buscar",function(){
       $this  = $(this);
+      thisParent = $(this).parent()
+      console.log(this)
+      console.log(thisParent)
 
       $tbody = $this.parent().parent();
       $this.parent().addClass('reclamacoes_abre_div_detalhes');
@@ -967,8 +970,9 @@
             };
           }
         });
-      $('.detalhesDuvida').show();
-      $('.detalhesDuvida').parent().show();
+      console.log($('.detalhesDuvida', thisParent))
+      $('.detalhesDuvida', thisParent).show();
+      $('.detalhesDuvida', thisParent).parent().show();
       $('td.td_interno').show().css('background-color','white');
       $(".filtrarPor").hide();
     });
