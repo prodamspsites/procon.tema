@@ -76,6 +76,7 @@ body.template-news_item_view .wrap{
 }
 .template-buscar_reclamacoes #content table tr:first-child td{
   background: none;
+  color: #424242;
 }
 
 #content table tr:first-child td p, #content table tr:first-child td span{
