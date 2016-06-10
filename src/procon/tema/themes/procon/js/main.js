@@ -908,11 +908,14 @@
         } else {
           area = 'denuncias'
         }
+        console.log($(this).parent().first().attr('rel'))
+        console.log($("#enviarObservacao", $(this).parent()))
+
         $.post( portal_url + '/@@atualiza_forms',
         {
             objId: $(this).parent().first().attr('rel'),
             campo: 'observacao',
-            valor: $("#enviarObservacao").val(),
+            valor: $("#enviarObservacao", $(this).parent()).val(),
             area: area
         }).done(function(){
           $('#enviarObservacao', $(this).parent()).attr('disabled',true)
