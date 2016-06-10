@@ -930,7 +930,7 @@
         }
         var thisParent = $(this).parent().parent().parent().parent();
         console.log(thisParent)
-        var objId = $('.tableReclamacoes div').first().attr('rel');
+        var objId = $(thisParent).attr('rel');
         var campo = 'lido';
         var value = 'True';
         if(objId != ''){
@@ -941,8 +941,8 @@
               valor: value,
               area: area
           }).done(function(){
-            $('input[type=checkbox]').attr('checked',true);
-            $('input[type=checkbox]').attr('disabled',true);
+            $('input[type=checkbox]', thisParent).attr('checked',true);
+            $('input[type=checkbox]', thisParent).attr('disabled',true);
           })              
         }
       }
