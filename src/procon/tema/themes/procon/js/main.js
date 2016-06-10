@@ -908,9 +908,6 @@
         } else {
           area = 'denuncias'
         }
-        console.log($(this).parent().first().attr('rel'))
-        console.log($("#enviarObservacao", $(this).parent()))
-
         $.post( portal_url + '/@@atualiza_forms',
         {
             objId: $(this).parent().first().attr('rel'),
@@ -924,7 +921,7 @@
     });
 
     $(".template-buscar_fornecedores #lido, .template-buscar_denuncias #lido").on('click',function(){
-      var r = confirm("Você tem certeza que deseja mudar esse registro para LIDO? Já houve o envio de resposta para o e-mail do consumidor? Não será permitido desfazer essa operação.");
+      var r = confirm("Você tem certeza? Não será permitido desfazer essa operação.");
       if (r == true) {
         if ($('body').hasClass('template-buscar_fornecedores')) {
           area = 'fornecedores'
