@@ -69,6 +69,11 @@ body.template-news_item_view .wrap{
 #content table th.sorting_desc{
   background: fd;
 }
+#table_id tr:first-child td{
+
+  background: none;
+  color:#454545;
+}
 #content table tr:first-child td{
   background: #da121d;
   color: #fff;
@@ -1349,11 +1354,20 @@ body.subsection-duvidas .divAccordeon h3 span{
   color: #424242;
   font-size: 1.2em;
 }
+ #content .tableReclamacoes tr:first-child td span{
+  color: #424242;
+  font-size: 0.8em;
+ }
+.tableReclamacoes table td{
+  color: #424242;
+}
 .tableReclamacoes .tituloConsumidor{
   font-weight: bold;
   float: left;
   width: 100%;
   padding: 20px 0 3px 0;
+  color: #424242;
+  font-size: 0.8em;
 }
 .tableReclamacoes .respostaConsumidor{
   background: #f5f5f5;
