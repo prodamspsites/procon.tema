@@ -910,12 +910,13 @@
         }
         $.post( portal_url + '/@@atualiza_forms',
         {
-            objId: $('.tableReclamacoes div').first().attr('rel'),
+            objId: $(this).parent().first().attr('rel'),
             campo: 'observacao',
             valor: $("#enviarObservacao").val(),
             area: area
         }).done(function(){
-          $('#enviarObservacao').attr('disabled',true);
+          $('#enviarObservacao', $(this).parent()).attr('disabled',true)
+          location.reload();
         })
     });
 
