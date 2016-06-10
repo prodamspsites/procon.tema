@@ -2638,6 +2638,24 @@ float: left
   float: left;
   clear: both;
 }
+input#rfisica, input#rjuridica{
+  clear: none;
+  float: left;
+  margin: 5px 0 0 0;
+}
+#archetypes-fieldname-cnpj-cpf label{
+  clear: both;
+  float: left;
+}
+.rpessoa{
+  float: left;
+  margin: 8px 17px 8px 8px;
+}
+#cnpj-cpf{
+  clear: both;
+  float: left;
+  margin-bottom: 20px;
+}
 .pfg-form.formid-formulario-de-denuncia input[type=submit]{
   margin-top: 20px;
   cursor: pointer;
