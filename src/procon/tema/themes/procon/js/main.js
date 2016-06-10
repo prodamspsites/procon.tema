@@ -108,7 +108,9 @@
       municipio = $('.kssattr-fieldname-form\\.widgets\\.municipio').clone();
       tipo = $('.kssattr-fieldname-form\\.widgets\\.cadastro').clone();
       nome = $('.kssattr-fieldname-form\\.widgets\\.fullname').clone();
+      $('label', nome).text('Nome completo *');
       user = $('.kssattr-fieldname-form\\.widgets\\.username').clone();
+      $('label', user).text('Usuário *');
       cpf = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
       cnpj = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
       $('label', cnpj).text('CNPJ *');
@@ -130,9 +132,13 @@
       rg = $('.kssattr-fieldname-form\\.widgets\\.rg').clone();
       genero = $('.kssattr-fieldname-form\\.widgets\\.genero').clone();
       email = $('.kssattr-fieldname-form\\.widgets\\.email').clone();
+      $('label', email).text('E-Mail *');
       email_confirmacao = $('.kssattr-fieldname-form\\.widgets\\.confirmacao').clone();
+      $('label', email_confirmacao).text('Confirmação de E-Mail *');
       senha = $('.kssattr-fieldname-form\\.widgets\\.password').clone();
+      $('label', senha).text('Senha *');
       senha_confirmacao = $('.kssattr-fieldname-form\\.widgets\\.password_ctl').clone();
+      $('label', senha_confirmacao).text('Confirmação de senha *');
       razao_social = $('.kssattr-fieldname-form\\.widgets\\.razao_social').clone();
       nome_fantasia = $('.kssattr-fieldname-form\\.widgets\\.nome_fantasia').clone();
       responsavel = $('.kssattr-fieldname-form\\.widgets\\.responsavel').clone();
