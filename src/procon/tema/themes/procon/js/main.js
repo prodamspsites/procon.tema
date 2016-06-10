@@ -910,7 +910,7 @@
         }
         $.post( portal_url + '/@@atualiza_forms',
         {
-            objId: $(this).parent().first().attr('rel'),
+            objId: $(this).parent().attr('rel'),
             campo: 'observacao',
             valor: $("#enviarObservacao", $(this).parent()).val(),
             area: area
@@ -928,6 +928,8 @@
         } else {
           area = 'denuncias'
         }
+        var thisParent = $(this).parent().parent().parent().parent();
+        console.log(thisParent)
         var objId = $('.tableReclamacoes div').first().attr('rel');
         var campo = 'lido';
         var value = 'True';
@@ -1133,7 +1135,7 @@
 
 
         $(".lido").on('click',function(){
-          var r = confirm("Você tem certeza que deseja mudar esse registro para LIDO? Já houve o envio de resposta para o e-mail do consumidor? Não será permitido desfazer essa operação.");
+          var r = confirm("Você tem certeza? Não será permitido desfazer essa operação.");
 
           if (r == true) {
             var protocolo =  $(this).attr('rel');
