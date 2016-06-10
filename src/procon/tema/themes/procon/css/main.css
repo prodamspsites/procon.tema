@@ -2643,6 +2643,10 @@ input#rfisica, input#rjuridica{
   float: left;
   margin: 5px 0 0 0;
 }
+#archetypes-fieldname-cnpj-cpf label{
+  clear: both;
+  float: left;
+}
 .rpessoa{
   float: left;
   margin: 8px 17px 8px 8px;
