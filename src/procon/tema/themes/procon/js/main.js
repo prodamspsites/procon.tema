@@ -899,24 +899,27 @@
         }
         $.post( portal_url + '/@@atualiza_forms',
         {
-            objId: $('.tableReclamacoes div').first().attr('rel'),
+            objId: $(this).parent().attr('rel'),
             campo: 'observacao',
-            valor: $("#enviarObservacao").val(),
+            valor: $("#enviarObservacao", $(this).parent()).val(),
             area: area
         }).done(function(){
-          $('#enviarObservacao').attr('disabled',true);
+          $('#enviarObservacao', $(this).parent()).attr('disabled',true)
+          location.reload();
         })
     });
 
     $(".template-buscar_fornecedores #lido, .template-buscar_denuncias #lido").on('click',function(){
-      var r = confirm("Você tem certeza que deseja mudar esse registro para LIDO? Já houve o envio de resposta para o e-mail do consumidor? Não será permitido desfazer essa operação.");
+      var r = confirm("Você tem certeza? Não será permitido desfazer essa operação.");
       if (r == true) {
         if ($('body').hasClass('template-buscar_fornecedores')) {
           area = 'fornecedores'
         } else {
           area = 'denuncias'
         }
-        var objId = $('.tableReclamacoes div').first().attr('rel');
+        var thisParent = $(this).parent().parent().parent().parent();
+        console.log(thisParent)
+        var objId = $(thisParent).attr('rel');
         var campo = 'lido';
         var value = 'True';
         if(objId != ''){
@@ -927,8 +930,8 @@
               valor: value,
               area: area
           }).done(function(){
-            $('input[type=checkbox]').attr('checked',true);
-            $('input[type=checkbox]').attr('disabled',true);
+            $('input[type=checkbox]', thisParent).attr('checked',true);
+            $('input[type=checkbox]', thisParent).attr('disabled',true);
           })              
         }
       }
@@ -937,6 +940,9 @@
     // ABRE TELA INTERNA DA TABELA DE RECLAMAÇÕES 
     $(document).on('click',"td.reclamacao_buscar",function(){
       $this  = $(this);
+      thisParent = $(this).parent()
+      console.log(this)
+      console.log(thisParent)
 
       $tbody = $this.parent().parent();
       $this.parent().addClass('reclamacoes_abre_div_detalhes');
@@ -956,8 +962,9 @@
             };
           }
         });
-      $('.detalhesDuvida').show();
-      $('.detalhesDuvida').parent().show();
+      console.log($('.detalhesDuvida', thisParent))
+      $('.detalhesDuvida', thisParent).show();
+      $('.detalhesDuvida', thisParent).parent().show();
       $('td.td_interno').show().css('background-color','white');
       $(".filtrarPor").hide();
     });
@@ -1117,7 +1124,7 @@
 
 
         $(".lido").on('click',function(){
-          var r = confirm("Você tem certeza que deseja mudar esse registro para LIDO? Já houve o envio de resposta para o e-mail do consumidor? Não será permitido desfazer essa operação.");
+          var r = confirm("Você tem certeza? Não será permitido desfazer essa operação.");
 
           if (r == true) {
             var protocolo =  $(this).attr('rel');
@@ -1148,6 +1155,7 @@
         "aoColumns": [
         null,
         { "sType": "date-uk" },
+        null,
         null,
         null,
         null,
