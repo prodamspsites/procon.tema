@@ -69,15 +69,15 @@ body.template-news_item_view .wrap{
 #content table th.sorting_desc{
   background: fd;
 }
-#table_id tr:first-child td{
 
-  background: none;
-  color:#454545;
-}
 #content table tr:first-child td{
   background: #da121d;
   color: #fff;
 }
+.template-buscar_reclamacoes #content table tr:first-child td{
+  background: none;
+}
+
 #content table tr:first-child td p, #content table tr:first-child td span{
   color: #fff;
 }
