@@ -466,6 +466,7 @@
                 event.preventDefault();
                 return false;
               }
+              $('input[type="submit"]').val("processando...");
               $(thisForm).submit();
             });
 
