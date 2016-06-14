@@ -154,12 +154,12 @@
       form.html( $(pj).append($(municipio).html()).html()).show()
       pj = $(pf).clone();
       $(pf).prepend($(municipio).html() + $(tipo).html() + $(user).html() + $(cpf).html() + $(rg).html() + $(expeditor).html() +
-                    $(nome).html() + $(genero).html() + $(estado_civil).html() + $(nascimento).html() +
+                    $(uf).html() + $(nome).html() + $(genero).html() + $(estado_civil).html() + $(nascimento).html() +
                     '<div class="formQuestion label">Dados de contato<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
-                    $(telefone).html() + $(celular).html() + $(cep).html() + 
-                    $(logradouro).html() + $(complemento).html() + $(bairro).html() +
-                    $(cidade).html() + $(uf).html() + $(email).html() + $(email_confirmacao).html() +
+                    $(telefone).html() + $(cep).html() + $(logradouro).html() +
+                    $(complemento).html() + $(bairro).html() +
+                    $(cidade).html() + $(email).html() + $(email_confirmacao).html() +
                     $(senha).html() + $(senha_confirmacao).html() + $(enviar).html() 
                    );
       $(municipio, pj).remove()
@@ -177,6 +177,7 @@
       $(document).on('click', '#form-widgets-cadastro-0', function(){
         form.html($(pf).html()).show()
         mascarasForms();
+        $('#form-widgets-data_nascimento').datepicker();
         $('#form-widgets-cadastro-0').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-municipio-0').attr('checked', 'checked');
@@ -199,6 +200,7 @@
       $(document).on('click', '#form-widgets-municipio-0', function(){
         form.html($(pf).html()).show()
         mascarasForms();
+        $('#form-widgets-data_nascimento').datepicker();
         $('#form-widgets-municipio-0').prop('checked', true);
         $('#content-core .rowlike').find('.proconSPmessage').hide();
         $('#content .rowlike select').find('option:first-child').remove();
@@ -210,7 +212,7 @@
       $(document).on('click', '#form-widgets-municipio-1', function(){
         form.html($(municipio).html()).show()
         $('#form-widgets-municipio-1').prop('checked', true);
-        $('#content-core .rowlike').append('<p class="proconSPmessage">O PROCON Paulistano tem como atribuição atender os consumidores domiciliados no Município de São Paulo.</strong><br><br>Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade.</p>')
+        $('#content-core .rowlike').append('<div class="proconSPmessage"><p><strong>O PROCON PAULISTANO DIGITAL tem como atribuição atender os consumidores domiciliados no Município de São Paulo.</strong></p><p>A proteção e defesa do consumidor constitui-se em um sistema nacional coordenado pela Secretaria Nacional do Consumidor e integrado por diversos órgãos de defesa - federais, estaduais e municipais.</p><p>Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade. <a href="http://www.procon.sp.gov.br/categoria.asp?id=209" target="_blank">Acesse aqui</a> a lista dos Procons Municipais. Caso a sua cidade não esteja na lista, entre em contato com a <a href="http://www.procon.sp.gov.br/categoria.asp?id=42" target="_blank"> FUNDAÇÃO PROCON.</a></p></div>')
       });
       $("form.kssattr-formname-register").submit(function( event ) {
         $(".kssattr-formname-register input:text").not('#form-widgets-data_nascimento, #form-widgets-contato_celular, #form-widgets-site, #form-widgets-nome_fantasia').each(function(){
@@ -1206,6 +1208,28 @@
 
   })
 })(jQuery);
+
+function TestaCPF(strCPF) {
+    var Soma;
+    var Resto;
+    Soma = 0;
+  if (strCPF == "00000000000") return false;
+    
+  for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
+  Resto = (Soma * 10) % 11;
+  
+    if ((Resto == 10) || (Resto == 11))  Resto = 0;
+    if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;
+  
+  Soma = 0;
+    for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
+    Resto = (Soma * 10) % 11;
+  
+    if ((Resto == 10) || (Resto == 11))  Resto = 0;
+    if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
+    return true;
+}
+
 function compareDates(date1, date2){
         var int_date1 = parseInt(date1.split("/")[2].toString() + date1.split("/")[1].toString() + date1.split("/")[0].toString());
         var int_date2 = parseInt(date2.split("/")[2].toString() + date2.split("/")[1].toString() + date2.split("/")[0].toString());
