@@ -270,11 +270,36 @@
            $("#valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
            $("#quando-o-produto-ou-servico-apresentou-problema").mask("99/99/9999");
            $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
-           $("#telefone, #form-widgets-contato_telefone").mask("(99) 9999-99999");
-           $("#telefone, #form-widgets-contato_telefone, #form-widgets-contato_celular").mask("(99) 9999-99999");
+           $("#telefone, #form-widgets-contato_telefone").mask("(99) 9999-9999?9")
+            .focusout(function (event) {  
+                var target, phone, element;  
+                target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
+                phone = target.value.replace(/\D/g, '');
+                element = $(target);  
+                element.unmask();  
+                if(phone.length > 10) {  
+                    element.mask("(99) 99999-999?9");  
+                } else {  
+                    element.mask("(99) 9999-9999?9");  
+                }  
+            });
+           $("#telefone, #form-widgets-contato_telefone, #form-widgets-contato_celular").mask("(99) 9999-9999?9")
+            .focusout(function (event) {  
+                var target, phone, element;  
+                target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
+                phone = target.value.replace(/\D/g, '');
+                element = $(target);  
+                element.unmask();  
+                if(phone.length > 10) {  
+                    element.mask("(99) 99999-999?9");  
+                } else {  
+                    element.mask("(99) 9999-9999?9");  
+                }  
+            });
            $("#cep, #form-widgets-codigo_enderecamento_postal, #cep-juridico").mask("99999-999");
            $("#cpf, #form-widgets-cpf").mask("999.999.999-99");
            $("#cnpj").mask("99.999.999/9999-99");
+           $("#cnpj-cpf").mask("99.999.999/9999-99");
            $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
            $('#quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto').keyup(function () { 
               this.value = this.value.replace(/[^0-9\.]/g,'');
@@ -297,6 +322,18 @@
     $('.divAccordeon h3').click(function(){
         $(this).toggleClass('active');
         $(this).next().slideToggle();
+    });
+
+    //MASCARA CPF CNPJ
+    $('#cnpj-cpf').parent().find('label').html('CNPJ:');
+    $('#cnpj-cpf').parent().prepend('<input type="radio" name="pessoa" value="juridica" id="rjuridica" checked /><span class="rpessoa">Pessoa Jurídica</span><input type="radio" name="pessoa" value="fisica" id="rfisica" /><span class="rpessoa">Pessoa Física</span>')
+    $(document).on('click','#rfisica', function(){
+        $('#cnpj-cpf').parent().find('label').html('CPF:');
+        $("#cnpj-cpf").mask("999.999.999-99");
+    });
+    $(document).on('click','#rjuridica', function(){
+        $('#cnpj-cpf').parent().find('label').html('CNPJ:');
+        $("#cnpj-cpf").mask("99.999.999/9999-99");
     });
     //COMPARA DATAS
     $( "#quando-o-produto-ou-servico-apresentou-problema" ).focusout(function() {
@@ -324,30 +361,6 @@
       $('#pfg-fieldsetname-procurou-a-empresa-nao').show();
     });
 
-    //MASCARA CPF E CNPJ$(".inputAcesso.cpf").mask("999.999.999-99");
-     $("#cnpj-cpf").attr('onkeypress','mascaraMutuario(this,cpfCnpj)');
-     $("#cnpj-cpf").attr('onblur','clearTimeout()');
-
-    $("#cnpj-cpf").focus(function(){
-    try {
-        $("#cnpj-cpf").unmask();
-    } catch (e) {}
-    });
-
-   $("#cnpj-cpf").keydown(function(e){
-
-        if ((e.keyCode < 96 && e.keyCode > 105)) {
-            var tamanho = $("#cnpj-cpf").val().length;
-
-            if(tamanho < 11){
-                $("#cnpj-cpf").mask("999.999.999-99");
-            } else if(tamanho >= 11){
-                $("#cnpj-cpf").mask("99.999.999/9999-99");
-            }
-        }
-
-
-    });
 
     //LIGHTBOX
     function lightboxForm() {
@@ -455,6 +468,7 @@
                 event.preventDefault();
                 return false;
               }
+              $('input[type="submit"]').val("processando...");
               $(thisForm).submit();
             });
 

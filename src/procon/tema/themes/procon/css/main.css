@@ -74,6 +74,17 @@ body.template-news_item_view .wrap{
   background: #da121d;
   color: #fff;
 }
+#content table td{
+  padding: 8px;
+}
+#content-core #listing-table tr th{
+  background: none;
+  color: #454545;
+}
+#content-core #listing-table tr td{
+  background: none;
+  color: #454545;
+}
 .template-buscar_reclamacoes #content table tr:first-child td, .template-buscar_duvidas #content table tr:first-child td, .template-buscar_denuncias #content table tr:first-child td, .template-buscar_fornecedores #content table tr:first-child td{
   background: none;
   color: #454545;
@@ -2637,6 +2648,24 @@ float: left
 .pfg-form.formid-formulario-de-denuncia input[type=radio]{
   float: left;
   clear: both;
+}
+input#rfisica, input#rjuridica{
+  clear: none;
+  float: left;
+  margin: 5px 0 0 0;
+}
+#archetypes-fieldname-cnpj-cpf label{
+  clear: both;
+  float: left;
+}
+.rpessoa{
+  float: left;
+  margin: 8px 17px 8px 8px;
+}
+#cnpj-cpf{
+  clear: both;
+  float: left;
+  margin-bottom: 20px;
 }
 .pfg-form.formid-formulario-de-denuncia input[type=submit]{
   margin-top: 20px;
