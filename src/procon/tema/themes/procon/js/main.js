@@ -346,9 +346,12 @@
         $(errorWrapper).text(message)
       }
       wrapper = $('#hasErrors')      
-      if (wrapper == 0) {
-        $('<span id="hasErrors">Por favor, corrija os campos em vermelho para enviar o formulário</span>').insertBefore($(btnSubmit));
+      btnSubmit = $("input[name='form_submit']");
+      if (wrapper !== 0) {
+        $('<span id="hasErrors">Por favor, corrija os campos em vermelho para enviar o formulário</span>').insertBefore($(btnSubmit))
+        $(btnSubmit).addClass('disabled').attr('disabled', true);
       }
+
     }
 
 
