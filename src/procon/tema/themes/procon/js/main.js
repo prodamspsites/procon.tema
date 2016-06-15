@@ -326,19 +326,29 @@
     $(document).on('blur', '.CPF', function() {
       CPF = $(this).val().replace(/\D/g,'');
       if (!(testaCPF(CPF))) {
-        AdicionaMensagemErro($(this), '<span class="ErrorMessage">O número digitado é inválido</span>')
+        AdicionaMensagemErro($(this), 'O número digitado é inválido')
       }
     })
     $(document).on('blur', '.CNPJ', function() {
       CNPJ = $(this).val().replace(/\D/g,'');
       if (!(testaCNPJ(CNPJ))) {
-        AdicionaMensagemErro($(this), '<span class="ErrorMessage">O número digitado é inválido</span>')
+        AdicionaMensagemErro($(this), 'O número digitado é inválido')
       }
     })
 
     function AdicionaMensagemErro(inputObject, message) {
-      $(inputObject).addClass('error')
-      $(message).insertBefore($(inputObject));
+      $(inputObject).addClass('error');
+      objParent = $(this).parent();
+      errorWrapper = $('ErrorMessage', parent); 
+      if (errorWrapper !== 0) {
+       $('<span class="ErrorMessage">' + message + '</span>').insertBefore($(inputObject));
+      } else {
+        $(errorWrapper).text(message)
+      }
+      wrapper = $('#hasErrors')      
+      if (wrapper == 0) {
+        $('<span id="hasErrors">Por favor, corrija os campos em vermelho para enviar o formulário</span>').insertBefore($(btnSubmit));
+      }
     }
 
 
