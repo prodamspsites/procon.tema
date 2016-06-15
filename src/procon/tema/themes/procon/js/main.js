@@ -338,7 +338,7 @@
 
     function AdicionaMensagemErro(inputObject, message) {
       $(inputObject).addClass('error')
-      $(message).insertBefore($(this));
+      $(message).insertBefore($(inputObject));
     }
 
 
