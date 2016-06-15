@@ -323,6 +323,7 @@
         $('#cnpj-cpf').parent().find('label').html('CNPJ:');
         $("#cnpj-cpf").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99");
     });
+    $('#rjuridica').click();
     $(document).on('blur', '.CPF', function() {
       CPF = $(this).val().replace(/\D/g,'');
       if (!(testaCPF(CPF))) {
@@ -336,6 +337,28 @@
       }
     })
 
+    $(document).on('blur', '#project input', function() {
+      if (!($(this).hasClass('CPF') && !($(this).hasClass('CNPJ')){
+        testaInput($(this));
+      }
+    })
+
+    function testaInput(inputObject) {
+      if ($(this).va() != '') {
+        $(this).removeClass('error');
+        thisParent = $(this).Parent();
+        $('.ErrorMessage', thisParent).remove();
+        if ($('input.error') !== 0) {
+          btnSubmit = $("input[name='form_submit']");
+          wrapper = $('#hasErrors');
+          if (wrapper !== 0) {
+            $(wrapper).remove()
+            $(btnSubmit).removeCLass('disabled').attr('disabled', false);
+          }
+        }
+      }
+    }
+
     function AdicionaMensagemErro(inputObject, message) {
       $(inputObject).addClass('error');
       objParent = $(this).parent();
@@ -345,7 +368,7 @@
       } else {
         $(errorWrapper).text(message)
       }
-      wrapper = $('#hasErrors')      
+      wrapper = $('#hasErrors');
       btnSubmit = $("input[name='form_submit']");
       if (wrapper !== 0) {
         $('<span id="hasErrors">Por favor, corrija os campos em vermelho para enviar o formulário</span>').insertBefore($(btnSubmit))
@@ -475,7 +498,7 @@
                 event.preventDefault();
                 return false;
               }
-              $(".formid-formularios form input:text, .formid-formularios form textarea").not('#complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #g-recaptcha-response, #site, #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').each(function(){
+              $(".formid-formularios form textarea").not('#complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #g-recaptcha-response, #site, #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').each(function(){
                 if($(this).val() === ''){
                   $('.formid-formularios form input:text').removeClass('error');
                   $(this).addClass('error');
