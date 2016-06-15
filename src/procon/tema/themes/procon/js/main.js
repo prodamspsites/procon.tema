@@ -10,7 +10,6 @@
         }
     }
 
-
     $(document).on('click', '.fileDownload', function(e) {
       e.preventDefault()
       mimetype = $(this).data('mimetype');
@@ -32,8 +31,6 @@
         }
         return false;
       })
-
-
 
     var currentUser = $('.currentUser').text();
 
@@ -225,16 +222,6 @@
           }
         });
       });
-      $(document).on('click', '#form-buttons-register', function() {
-        newUrl = window.location.href + '?envio=True';
-        window.history.pushState("", "", newUrl);
-      })
-      hasErrors = $('dl').hasClass('error');
-      if (hasErrors) {
-         $('dl.portalMessage.error').remove()
-         $("#form-widgets-municipio-0").trigger("click");
-         $('.fieldErrorBox .error').text('Preencha este campo corretamente.');
-      }
 
     }
 
@@ -325,16 +312,36 @@
     });
 
     //MASCARA CPF CNPJ
-    $('#cnpj-cpf').parent().find('label').html('CNPJ:');
+    // $('#cnpj-cpf').parent().find('label').html('CNPJ:');
     $('#cnpj-cpf').parent().prepend('<input type="radio" name="pessoa" value="juridica" id="rjuridica" checked /><span class="rpessoa">Pessoa Jurídica</span><input type="radio" name="pessoa" value="fisica" id="rfisica" /><span class="rpessoa">Pessoa Física</span>')
     $(document).on('click','#rfisica', function(){
         $('#cnpj-cpf').parent().find('label').html('CPF:');
-        $("#cnpj-cpf").mask("999.999.999-99");
+        $("#cnpj-cpf").removeClass('CNPJ').addClass('CPF').mask("999.999.999-99");
     });
+
     $(document).on('click','#rjuridica', function(){
         $('#cnpj-cpf').parent().find('label').html('CNPJ:');
-        $("#cnpj-cpf").mask("99.999.999/9999-99");
+        $("#cnpj-cpf").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99");
     });
+    $(document).on('blur', '.CPF', function() {
+      CPF = $(this).replace(/\D/g,'');
+      if (!(testaCPF(CPF))) {
+        AdicionaMensagemErro($(this), '<span class="ErrorMessage">O número digitado é inválido</span>')
+      }
+    })
+    $(document).on('blur', '.CNPJ', function() {
+      CNPJ = $(this).replace(/\D/g,'');
+      if (!(testaCNPJ(CNPJ))) {
+        AdicionaMensagemErro($(this), '<span class="ErrorMessage">O número digitado é inválido</span>')
+      }
+    })
+
+    function AdicionaMensagemErro(inputObject, message) {
+      $(inputObject).addClass('error').insertBefore(message);
+    }
+
+
+
     //COMPARA DATAS
     $( "#quando-o-produto-ou-servico-apresentou-problema" ).focusout(function() {
         dataInicial = $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val();
@@ -1222,6 +1229,55 @@
 
   })
 })(jQuery);
+
+function testaCNPJ(cnpj) {
+    if(cnpj == '') return false;
+
+    if (cnpj.length != 14)
+        return false;
+ 
+     if (cnpj == "00000000000000" || 
+        cnpj == "11111111111111" || 
+        cnpj == "22222222222222" || 
+        cnpj == "33333333333333" || 
+        cnpj == "44444444444444" || 
+        cnpj == "55555555555555" || 
+        cnpj == "66666666666666" || 
+        cnpj == "77777777777777" || 
+        cnpj == "88888888888888" || 
+        cnpj == "99999999999999")
+        return false;
+         
+    tamanho = cnpj.length - 2
+    numeros = cnpj.substring(0,tamanho);
+    digitos = cnpj.substring(tamanho);
+    soma = 0;
+    pos = tamanho - 7;
+    for (i = tamanho; i >= 1; i--) {
+      soma += numeros.charAt(tamanho - i) * pos--;
+      if (pos < 2)
+            pos = 9;
+    }
+    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+    if (resultado != digitos.charAt(0))
+        return false;
+         
+    tamanho = tamanho + 1;
+    numeros = cnpj.substring(0,tamanho);
+    soma = 0;
+    pos = tamanho - 7;
+    for (i = tamanho; i >= 1; i--) {
+      soma += numeros.charAt(tamanho - i) * pos--;
+      if (pos < 2)
+            pos = 9;
+    }
+    resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+    if (resultado != digitos.charAt(1))
+          return false;
+           
+    return true;
+    
+}
 
 function TestaCPF(strCPF) {
     var Soma;
