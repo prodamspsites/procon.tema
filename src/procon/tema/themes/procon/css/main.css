@@ -1844,6 +1844,10 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
 .divReclamacoes form.filterReclamacoes{
   border:none;
 }
+#content textarea{
+  text-align: justify;
+  padding:8px;
+}
 #content .divReclamacoes form.filterReclamacoes fieldset{
   border:none;
 }
