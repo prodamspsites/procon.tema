@@ -324,13 +324,13 @@
         $("#cnpj-cpf").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99");
     });
     $(document).on('blur', '.CPF', function() {
-      CPF = $(this).replace(/\D/g,'');
+      CPF = $(this).val().replace(/\D/g,'');
       if (!(testaCPF(CPF))) {
         AdicionaMensagemErro($(this), '<span class="ErrorMessage">O número digitado é inválido</span>')
       }
     })
     $(document).on('blur', '.CNPJ', function() {
-      CNPJ = $(this).replace(/\D/g,'');
+      CNPJ = $(this).val().replace(/\D/g,'');
       if (!(testaCNPJ(CNPJ))) {
         AdicionaMensagemErro($(this), '<span class="ErrorMessage">O número digitado é inválido</span>')
       }
