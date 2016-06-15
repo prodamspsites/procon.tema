@@ -338,7 +338,7 @@
     })
 
     $(document).on('blur', '#project input', function() {
-      if (!($(this).hasClass('CPF') && !($(this).hasClass('CNPJ')){
+      if (!($(this).hasClass('CPF')) && !($(this).hasClass('CNPJ'))) {
         testaInput($(this));
       }
     })
