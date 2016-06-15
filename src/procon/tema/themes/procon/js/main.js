@@ -337,7 +337,8 @@
     })
 
     function AdicionaMensagemErro(inputObject, message) {
-      $(inputObject).addClass('error').insertBefore(message);
+      $(inputObject).addClass('error')
+      $(message).insertBefore($(this));
     }
 
 
@@ -1279,7 +1280,7 @@ function testaCNPJ(cnpj) {
     
 }
 
-function TestaCPF(strCPF) {
+function testaCPF(strCPF) {
     var Soma;
     var Resto;
     Soma = 0;
