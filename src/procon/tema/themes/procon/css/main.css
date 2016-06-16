@@ -1850,10 +1850,10 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
 }
 .ErrorMessage{
   color: red;
-  float: left;
-  font-weight: bold;
-  font-size: 0.8em;
+  display: block;
   clear: both;
+  font-weight: bold;
+  font-size: 0.9em;
 }
 #hasErrors{
     color: red;
@@ -1864,6 +1864,11 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
     padding: 23px 0 0 0;
     margin: 0 0 0 -12px;
 }
+#content input.disable[type=submit]{
+  opacity: 0.5;
+  cursor: default;
+}
+
 #content .divReclamacoes form.filterReclamacoes fieldset{
   border:none;
 }
