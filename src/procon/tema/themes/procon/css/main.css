@@ -59,7 +59,7 @@ body.site-Procon.section-procon div.width-16{
   width: 1004px;
   margin: 0 auto;
 }
-body.template-news_item_view .wrap{
+body.template-news_item_view #content .wrap{
   width: 725px;
 }
 #content table{
