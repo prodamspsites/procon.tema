@@ -129,6 +129,7 @@
       $('label', user).text('Usuário *');
       idade = $('#formfield-form-widgets-adicional_um').clone();
       deficiencia = $('#formfield-form-widgets-adicional_tres').clone();
+      doenca_grave = $('#formfield-form-widgets-doenca_grave').clone();
       especificar = $('#formfield-form-widgets-deficiencia_especificar').clone()
       cpf = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
       cnpj = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
@@ -182,7 +183,7 @@
                     $(senha).html() + $(senha_confirmacao).html() +
                     '<div class="formQuestion label">Dados adicionais<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
-                    $(idade).html() + $(deficiencia).html() + $(especificar).html() + $(enviar).html()
+                    $(idade).html() + $(deficiencia).html() + $(doenca_grave).html() + $(especificar).html() + $(enviar).html()
                    );
 
       $(municipio, pj).remove()
