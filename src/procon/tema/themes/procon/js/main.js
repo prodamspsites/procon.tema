@@ -183,7 +183,7 @@
                     $(senha).html() + $(senha_confirmacao).html() +
                     '<div class="formQuestion label">Dados adicionais<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
-                    $(idade).html() + $(deficiencia).html() + $(doenca_grave).html() + $(especificar).html() + $(enviar).html()
+                    $(idade).html() + $(deficiencia).html() + $(especificar).html() + $(doenca_grave).html() + $(enviar).html()
                    );
 
       $(municipio, pj).remove()
@@ -242,6 +242,15 @@
       $(document).on('blur', '#form-widgets-codigo_enderecamento_postal', function() {
         CEP = $(this).val().replace(/\D/g,'');
         pesquisaCEP(CEP);
+      })
+      $('#form-widgets-deficiencia_especificar').hide()
+
+      $(document).on('click', '#form-widgets-adicional_tres-0', function() {
+        $('#form-widgets-deficiencia_especificar').show()
+      })
+
+      $(document).on('click', '#form-widgets-adicional_tres-1', function() {
+        $('#form-widgets-deficiencia_especificar').hide()
       })
 
       $("form.kssattr-formname-register").submit(function( event ) {
