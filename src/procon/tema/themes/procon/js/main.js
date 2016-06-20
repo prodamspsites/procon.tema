@@ -572,7 +572,7 @@
                 text = $(label).text() + ' *'
                 $(label).text(text)
               }
-            }
+            })
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
