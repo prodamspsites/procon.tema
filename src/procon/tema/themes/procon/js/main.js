@@ -10,6 +10,25 @@
         }
     }
 
+    $('.textoAccordeon').on('change', '#assunto_opcao', function() {
+      thisParent = $(this).parent().parent().parent().parent().parent()
+      if ($(this).val() === 'Não há resposta para minha pergunta') {
+          $('.labelComent span', thisParent).text('Deixe sua pergunta no campo abaixo:');
+          $('.agradece', thisParent).text('Em breve encaminharemos resposta para o e-mail cadastrado.')
+      } else {
+          $('.labelComent span', thisParent).text('Se desejar, envie comentários adicionais:')
+          $('.agradece').text('O Procon Paulistano agradece sua colaboração.')
+      }
+    })
+
+    $('.formid-formularios').on('change', '#qual-a-condicao-de-pagamento-do-produto-ou-servico-contratado-escolher-um-item', function() {
+      if ($(this).val() === 'Parcelado') {
+          $('#archetypes-fieldname-quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #archetypes-fieldname-valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').show()
+      } else {
+          $('#archetypes-fieldname-quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #archetypes-fieldname-valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').hide()
+      }
+    })
+
     $(document).on('click', '.fileDownload', function(e) {
       e.preventDefault()
       mimetype = $(this).data('mimetype');
@@ -108,6 +127,9 @@
       $('label', nome).text('Nome completo *');
       user = $('.kssattr-fieldname-form\\.widgets\\.username').clone();
       $('label', user).text('Usuário *');
+      idade = $('#formfield-form-widgets-adicional_um').clone();
+      deficiencia = $('#formfield-form-widgets-adicional_tres').clone();
+      especificar = $('#formfield-form-widgets-deficiencia_especificar').clone()
       cpf = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
       cnpj = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
       $('label', cnpj).text('CNPJ *');
@@ -156,9 +178,13 @@
                     'id="dados-de-contato-juridico_help"></span></div>' +
                     $(telefone).html() + $(cep).html() + $(logradouro).html() +
                     $(complemento).html() + $(bairro).html() +
-                    $(cidade).html() + $(email).html() + $(email_confirmacao).html() +
-                    $(senha).html() + $(senha_confirmacao).html() + $(enviar).html() 
+                    $(cidade).html() + $(uf).html() + $(email).html() + $(email_confirmacao).html() +
+                    $(senha).html() + $(senha_confirmacao).html() +
+                    '<div class="formQuestion label">Dados adicionais<span class="formHelp"' +
+                    'id="dados-de-contato-juridico_help"></span></div>' +
+                    $(idade).html() + $(deficiencia).html() + $(especificar).html() + $(enviar).html()
                    );
+
       $(municipio, pj).remove()
       $(cpf, pf).find('input').mask("999.999.999-99");
       $(pj).prepend($(municipio).html() + $(tipo).html() + $(user).html() + $(razao_social).html() + $(nome_fantasia).html() + 
@@ -211,6 +237,12 @@
         $('#form-widgets-municipio-1').prop('checked', true);
         $('#content-core .rowlike').append('<div class="proconSPmessage"><p><strong>O PROCON PAULISTANO DIGITAL tem como atribuição atender os consumidores domiciliados no Município de São Paulo.</strong></p><p>A proteção e defesa do consumidor constitui-se em um sistema nacional coordenado pela Secretaria Nacional do Consumidor e integrado por diversos órgãos de defesa - federais, estaduais e municipais.</p><p>Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade. <a href="http://www.procon.sp.gov.br/categoria.asp?id=209" target="_blank">Acesse aqui</a> a lista dos Procons Municipais. Caso a sua cidade não esteja na lista, entre em contato com a <a href="http://www.procon.sp.gov.br/categoria.asp?id=42" target="_blank"> FUNDAÇÃO PROCON.</a></p></div>')
       });
+
+      $(document).on('blur', '#form-widgets-codigo_enderecamento_postal', function() {
+        CEP = $(this).val().replace(/\D/g,'');
+        pesquisaCEP(CEP);
+      })
+
       $("form.kssattr-formname-register").submit(function( event ) {
         $(".kssattr-formname-register input:text").not('#form-widgets-data_nascimento, #form-widgets-contato_celular, #form-widgets-site, #form-widgets-nome_fantasia').each(function(){
           if($(this).val() === ''){
@@ -324,60 +356,140 @@
         $("#cnpj-cpf").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99");
     });
     $('#rjuridica').click();
+
     $(document).on('blur', '.CPF', function() {
       CPF = $(this).val().replace(/\D/g,'');
+      inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, #uf')
       if (!(testaCPF(CPF))) {
-        AdicionaMensagemErro($(this), 'O número digitado é inválido')
+        $(inputs).addClass('inputObrigatorio').each(function() {
+          thisParent = $(this).parent();
+          label = $('label', thisParent)
+          if ($(label).text().indexOf('*') == -1) {
+            text = $(label).text() + ' *'
+            $(label).text(text)
+          }
+        });
+      } else {
+        $(inputs).removeClass('inputObrigatorio').each(function() {
+          thisParent = $(this).parent();
+          label = $('label', thisParent)
+          if (label.text().indexOf('*') != -1) {
+            $(label).text(label.text().slice(0, -2))
+          }
+        });
       }
     })
+
     $(document).on('blur', '.CNPJ', function() {
       CNPJ = $(this).val().replace(/\D/g,'');
+      inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, #uf')
       if (!(testaCNPJ(CNPJ))) {
-        AdicionaMensagemErro($(this), 'O número digitado é inválido')
+        $(inputs).addClass('inputObrigatorio').each(function() {
+          thisParent = $(this).parent();
+          label = $('label', thisParent)
+          if ($(label).text().indexOf('*') == -1) {
+            text = $(label).text() + ' *'
+            $(label).text(text)
+          }
+        });
+
+      } else {
+        $(inputs).removeClass('inputObrigatorio').each(function() {
+          thisParent = $(this).parent();
+          label = $('label', thisParent)
+          if (label.text().indexOf('*') != -1) {
+            $(label).text(label.text().slice(0, -2))
+          }
+        });
       }
     })
 
-    $(document).on('blur', '#project input', function() {
+    $(document).on('blur', '.formid-formularios .inputObrigatorio', function() {
+      testaInput($(this));
+    })
+
+
+
+    $(document).on('blur', '.formid-formularios input:text', function() {
       if (!($(this).hasClass('CPF')) && !($(this).hasClass('CNPJ'))) {
-        testaInput($(this));
+        testaOtherInput($(this));
       }
     })
+
+    $(document).on('blur', '.formid-formularios textarea', function() {
+      testaTextarea($(this), this.value, this.defaultValue);
+    })
+
+    function testaTextarea(inputObject, current, defaultValue) {
+      if ((current !== '') && (current != defaultValue)) {
+        removeError(inputObject);
+      } else {
+        addError(inputObject);
+      }
+
+    }
+
+    function testaOtherInput(inputObject) {
+      if ($(inputObject).val() != '') {
+        removeError(inputObject);
+      } else {
+        addOtherError(inputObject);
+      }
+    }
 
     function testaInput(inputObject) {
-      if ($(this).va() != '') {
-        $(this).removeClass('error');
-        thisParent = $(this).Parent();
-        $('.ErrorMessage', thisParent).remove();
-        if ($('input.error') !== 0) {
-          btnSubmit = $("input[name='form_submit']");
-          wrapper = $('#hasErrors');
-          if (wrapper !== 0) {
-            $(wrapper).remove()
-            $(btnSubmit).removeCLass('disabled').attr('disabled', false);
-          }
+      if ($(inputObject).val() != '') {
+        removeError(inputObject);
+      } else {
+        addError(inputObject);
+      }
+    }
+
+    function removeError(inputObject) {
+      thisParent = $(inputObject).parent();
+      $(inputObject).removeClass('error');
+      $('.ErrorMessage', thisParent).remove();
+      if ($('input.error') !== 0) {
+        btnSubmit = $("input[name='form_submit']");
+        wrapper = $('#hasErrors');
+        if (wrapper !== 0) {
+          $(wrapper).remove()
+          $(btnSubmit).removeClass('disabled').attr('disabled', false);
         }
+      }
+    }
+
+    function addOtherError(inputObject) {
+      thisParent = $(inputObject).parent();
+      label = $('label', thisParent).text();
+      AdicionaMensagemErro(inputObject, 'Por favor, preencha o campo abaixo')
+    }
+
+    function addError(inputObject) {
+      thisParent = $(inputObject).parent();
+      label = $('label', thisParent).text();
+      if (label.indexOf('*') != -1) {
+        AdicionaMensagemErro(inputObject, 'Por favor, preencha o campo abaixo')
       }
     }
 
     function AdicionaMensagemErro(inputObject, message) {
       $(inputObject).addClass('error');
-      objParent = $(this).parent();
-      errorWrapper = $('ErrorMessage', parent); 
-      if (errorWrapper !== 0) {
+      objParent = $(inputObject).parent();
+      errorWrapper = $('.ErrorMessage', objParent);
+      if (errorWrapper.length == 0) {
        $('<span class="ErrorMessage">' + message + '</span>').insertBefore($(inputObject));
       } else {
         $(errorWrapper).text(message)
       }
       wrapper = $('#hasErrors');
       btnSubmit = $("input[name='form_submit']");
-      if (wrapper !== 0) {
+      if (wrapper.length == 0) {
         $('<span id="hasErrors">Por favor, corrija os campos em vermelho para enviar o formulário</span>').insertBefore($(btnSubmit))
         $(btnSubmit).addClass('disabled').attr('disabled', true);
       }
 
     }
-
-
 
     //COMPARA DATAS
     $( "#quando-o-produto-ou-servico-apresentou-problema" ).focusout(function() {
@@ -403,6 +515,14 @@
     $('#voce-procurou-a-empresa-para-solucionar-o-problema_2').click(function(){
       $('#pfg-fieldsetname-procurou-a-empresa-sim').hide();
       $('#pfg-fieldsetname-procurou-a-empresa-nao').show();
+    });
+
+    $('#o-produto-ou-servico-foi-pago-por-voce-no-seu-cpf_1').click(function(){
+      $('#archetypes-fieldname-cpf').hide();
+    });
+
+    $('#o-produto-ou-servico-foi-pago-por-voce-no-seu-cpf_2').click(function(){
+      $('#archetypes-fieldname-cpf').show();
     });
 
 
@@ -434,7 +554,6 @@
       }
 
 
-
     //OCULTA FORMULARIO CONSUMIDOR
     if (!($('body').hasClass('subsection-formularios'))){
       $('#viewlet-below-content-title .form-group').remove();
@@ -447,6 +566,9 @@
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
+            $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1, #quando-o-produto-ou-servico-apresentou-problema').datepicker();
+            $('#archetypes-fieldname-cpf').hide();
+            $('#archetypes-fieldname-quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #archetypes-fieldname-valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').hide()
             $('#nome-da-empresa-fornecedor').val($('#project').val());
             if ($('body').hasClass('userrole-anonymous')) {
               $('#content').append('<div class="pfg-form formid-formularios"><div class="facaReclamaLogin"><strong>Cadastre-se ou faça login para prosseguir:<br><a href="'+portal_url+'/@@register" class="irparalogin" title="IR PARA CADASTRO/LOGIN">IR PARA CADASTRO/LOGIN</a></div></div>');
@@ -675,7 +797,7 @@
       $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
        lightboxForm();
       //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
-       var protocolo = $.ajax({ type: "POST",
+      var protocolo = $.ajax({ type: "POST",
                                url: portal_url + "/@@protocolo",
                                async: false,
                                data: { action: 'create' }
@@ -702,6 +824,19 @@
                      }).responseText;
           $('#archetypes-fieldname-protocolo input').val(protocolo);
         });
+
+      $('.btnProsseguir').click(function(){
+          $('#content #content-core').append(itensForm);
+          $('.form-group').addClass('active');
+          $('.divRedireciona').slideUp();
+          var protocolo = $.ajax({ type: "POST",
+                       url: portal_url + "/@@protocolo",
+                       async: false,
+                       data: { action: 'create' }
+                     }).responseText;
+          $('#archetypes-fieldname-protocolo input').val(protocolo);
+        });
+
     }
 
     //CARREGA O NUMERO DE PROTOCOLO NA PAGINA DE OBRIGADO DO FORMULÁRIO CONSUMIDOR
@@ -961,7 +1096,6 @@
 
     });
 
-
     $(".template-buscar_fornecedores #enviarComentario, .template-buscar_denuncias #enviarComentario").on('click',function(){
         if ($('body').hasClass('template-buscar_fornecedores')) {
           area = 'fornecedores'
@@ -989,7 +1123,6 @@
           area = 'denuncias'
         }
         var thisParent = $(this).parent().parent().parent().parent();
-        console.log(thisParent)
         var objId = $(thisParent).attr('rel');
         var campo = 'lido';
         var value = 'True';
@@ -1012,8 +1145,6 @@
     $(document).on('click',"td.reclamacao_buscar",function(){
       $this  = $(this);
       thisParent = $(this).parent()
-      console.log(this)
-      console.log(thisParent)
 
       $tbody = $this.parent().parent();
       $this.parent().addClass('reclamacoes_abre_div_detalhes');
@@ -1033,7 +1164,6 @@
             };
           }
         });
-      console.log($('.detalhesDuvida', thisParent))
       $('.detalhesDuvida', thisParent).show();
       $('.detalhesDuvida', thisParent).parent().show();
       $('td.td_interno').show().css('background-color','white');
@@ -1139,7 +1269,7 @@
                   categoria:categoria
               }).done(function(){
                 $('.mensagem_enviada', $('input.flashMessage').removeClass('flashMessage').parent().parent()).html("");
-                $('.mensagem_enviada', $('input.ok').removeClass('ok').addClass('flashMessage').parent().parent()).append("<b>O Procon Paulistano agradece sua colaboração</b>");
+                $('.mensagem_enviada', $('input.ok').removeClass('ok').addClass('flashMessage').parent().parent()).append("<b>"+ $('.agradece', parent_div).text() +"</b>");
               });
             }
             else if (this.value == 'nao') {
@@ -1169,14 +1299,14 @@
                   $(".respostaUtil > fieldset").find('.current').removeClass('current');
                   $("#enviarDuvida").attr("disabled",false);
                   $(".replica").hide();
-                  $('.mensagem_enviada', $('input.ok').removeClass('ok').parent().parent()).append("<b>O Procon Paulistano agradece sua colaboração</b>");
+                  $('.mensagem_enviada', $('input.ok').removeClass('ok').parent().parent()).append("<b>"+ $('.agradece', parent_div).text() +"</b>");
                 })
               });
             }
         })
 
         $(".lido_reclamacoes").on('click',function(){
-          var r = confirm("Você tem certeza que deseja mudar esse registro para LIDO? Já houve o envio de resposta para o e-mail do consumidor? Não será permitido desfazer essa operação.");
+          var r = confirm("Você tem certeza? Não será permitido desfazer essa operação.");
           if (r == true) {
             
             var protocolo =  $(this).attr('rel');
@@ -1193,6 +1323,21 @@
           }
         });
 
+        $(".FA_reclamacoes").on('blur',function(){
+          if ($(this).val() != "") {            
+            var protocolo =  $(this).attr('rel');
+            var FA = $(this).val();
+            if(protocolo != ""){
+              $.post( portal_url + '/@@atualizar_reclamacao',
+              {
+                  protocolo: protocolo,
+                  FA: FA,
+              }).done(function(){
+                $(this).attr('disabled',true);
+              })              
+            }
+          }
+        });
 
         $(".lido").on('click',function(){
           var r = confirm("Você tem certeza? Não será permitido desfazer essa operação.");
@@ -1263,6 +1408,9 @@
             return ((a < b) ? 1 : ((a > b) ? -1 : 0));
         }
         } );
+
+
+
 
   })
 })(jQuery);
@@ -1355,6 +1503,44 @@ function mascaraMutuario(o,f){
 function execmascara(){
     v_obj.value=v_fun(v_obj.value)
 }
+
+function limpaCEPInputs() {
+    $('#form-widgets-logradouro').val("");
+    $('#form-widgets-bairro').val("");
+}
+
+function CEPCallback(conteudo) {
+  if (!("erro" in conteudo)) {
+    $('#form-widgets-logradouro').val(conteudo.logradouro);
+    $('#form-widgets-bairro').val(conteudo.bairro);
+  }
+  else {
+    limpaCEPInputs();
+    alert("CEP não encontrado.");
+  }
+}
+    
+function pesquisaCEP(cep) {
+  if ((cep != "") && (01000000 < CEP && 05999999 > CEP ))  {
+    var validacep = /^[0-9]{8}$/;
+    if(validacep.test(cep)) {
+      $('#form-widgets-logradouro').val("...");
+      $('#form-widgets-bairro').val("...");
+      var script = document.createElement('script');
+      script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=CEPCallback';
+      document.body.appendChild(script);
+    }
+    else {
+      limpaCEPInputs();
+      alert("Formato de CEP inválido.");
+    }
+  }
+  else {
+    limpaCEPInputs();
+    alert('CEP inválido')
+  }
+};
+
 function cpfCnpj(v){
     //Remove tudo o que nÃ£o Ã© dÃ­gito
     v=v.replace(/\D/g,"")
