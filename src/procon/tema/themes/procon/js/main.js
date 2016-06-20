@@ -372,6 +372,7 @@
         });
       } else {
         $(inputs).removeClass('inputObrigatorio').each(function() {
+          removeError($(this));
           thisParent = $(this).parent();
           label = $('label', thisParent)
           if (label.text().indexOf('*') != -1) {
@@ -396,6 +397,7 @@
 
       } else {
         $(inputs).removeClass('inputObrigatorio').each(function() {
+          removeError($(this));
           thisParent = $(this).parent();
           label = $('label', thisParent)
           if (label.text().indexOf('*') != -1) {
