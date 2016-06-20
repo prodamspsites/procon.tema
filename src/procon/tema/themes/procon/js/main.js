@@ -564,16 +564,6 @@
 
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
             lightboxForm();
-
-            inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, #uf')
-            $(inputs).addClass('inputObrigatorio').each(function() {
-              thisParent = $(this).parent();
-              label = $('label', thisParent)
-              if ($(label).text().indexOf('*') == -1) {
-                text = $(label).text() + ' *'
-                $(label).text(text)
-              }
-            })
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
@@ -587,6 +577,17 @@
             if(!$('.usuario-ativo').size()){
               $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
             }
+
+            inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, #uf')
+            $(inputs).addClass('inputObrigatorio').each(function() {
+              thisParent = $(this).parent();
+              label = $('label', thisParent)
+              if ($(label).text().indexOf('*') == -1) {
+                text = $(label).text() + ' *'
+                $(label).text(text)
+              }
+            })
+
             insereInputFile();
             //FORMULARIOS AREA SELECIONADA
             $('#archetypes-fieldname-especificar-comprou').hide();
