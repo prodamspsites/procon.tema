@@ -405,14 +405,14 @@
     })
 
     $(document).on('blur', '.formid-formularios .inputObrigatorio', function() {
-      testaInput($(this));
+        testaOtherInput($(this));
     })
 
 
 
     $(document).on('blur', '.formid-formularios input:text', function() {
       if (!($(this).hasClass('CPF')) && !($(this).hasClass('CNPJ'))) {
-        testaOtherInput($(this));
+        testaInput($(this));
       }
     })
 
