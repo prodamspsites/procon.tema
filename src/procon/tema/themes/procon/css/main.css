@@ -168,7 +168,7 @@ body.template-news_item_view #content .wrap{
 }
 #portal-header .divBusca{
   float:left;
-  padding: 0 0 0 119px;
+  padding: 0 0 0 27px;
 }
 #portal-header .wrap{
   width:943px;
@@ -183,6 +183,7 @@ body.template-news_item_view #content .wrap{
 }
 #portal-searchbox form .LSBox{
   width: 268px;
+  margin: 4px 0 0 0;
 }
 #portal-searchbox .searchButton{
   -webkit-border-radius: 3px;
@@ -203,10 +204,10 @@ body.template-news_item_view #content .wrap{
   text-indent: -9999px;
 }
 #portal-header .social{
-  width: 144px;
+  width: 292px;
   height: 50px;
   float: left;
-  margin-left: 90px;
+  margin-left: 37px;
   margin-top: 15px;
 }
 #portal-header .social li{
@@ -217,20 +218,28 @@ body.template-news_item_view #content .wrap{
   width: 39px;
   height: 39px;
   float: left;
+  margin:5px 0 0 0;
 }
 #portal-header .twitterSocial a{
   background: url('../img/icoTwitter.png') no-repeat;
   width: 39px;
   height: 39px;
   float: left;
-  margin-left: 5px;
+  margin: 5px 0 0 5px;
 }
 #portal-header .youtubeSocial a{
   background: url('../img/icoYoutube.png') no-repeat;
   width: 39px;
   height: 39px;
   float: left;
-  margin-left: 5px;
+  margin: 5px 0 0 5px;
+}
+#portal-header .libras a{
+  background: url('../img/logoLibras.jpg') no-repeat;
+  width: 139px;
+  height: 39px;
+  float: left;
+  margin: -4px 0 0 5px;
 }
 #portal-header .logoNegocios{
   float:right;
