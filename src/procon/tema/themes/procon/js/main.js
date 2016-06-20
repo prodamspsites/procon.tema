@@ -243,15 +243,6 @@
         CEP = $(this).val().replace(/\D/g,'');
         pesquisaCEP(CEP);
       })
-      $('#form-widgets-deficiencia_especificar').hide()
-
-      $(document).on('click', '#form-widgets-adicional_tres-0', function() {
-        $('#form-widgets-deficiencia_especificar').show()
-      })
-
-      $(document).on('click', '#form-widgets-adicional_tres-1', function() {
-        $('#form-widgets-deficiencia_especificar').hide()
-      })
 
       $("form.kssattr-formname-register").submit(function( event ) {
         $(".kssattr-formname-register input:text").not('#form-widgets-data_nascimento, #form-widgets-contato_celular, #form-widgets-site, #form-widgets-nome_fantasia').each(function(){
