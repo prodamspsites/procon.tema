@@ -563,6 +563,7 @@
 
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
             lightboxForm();
+
             inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, #uf')
             $(inputs).addClass('inputObrigatorio').each(function() {
               thisParent = $(this).parent();
@@ -571,6 +572,7 @@
                 text = $(label).text() + ' *'
                 $(label).text(text)
               }
+            }
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
