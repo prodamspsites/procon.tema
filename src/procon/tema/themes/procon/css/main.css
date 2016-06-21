@@ -2392,6 +2392,11 @@ body.template-register .select-widget.choice-field{
   text-align: left;
 }
 
+.PFG-RichLabel, .PFG-RichLabel h3 strong {
+  font-size: 20px;
+  font-weight: bold;
+}
+
 .lightbox-div .fechaLightbox{
   margin-top: 20px;
     cursor: pointer;
