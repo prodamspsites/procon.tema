@@ -2261,8 +2261,13 @@ body.template-register #content .rowlike{
   width: 380px;
   border: none;
 }
+body.template-register .portalMessage.error {
+  display: none;
+}
+
 #content .rowlike .proconSPmessage{
   clear: both;
+  text-align: justify;
   float: left;
   padding: 10px 0 0 0;
 }

@@ -142,6 +142,7 @@
       $('label', rg_pj).text('RG do representante *').clone();
       site = $('.kssattr-fieldname-form\\.widgets\\.site').clone();
       uf = $('.kssattr-fieldname-form\\.widgets\\.unidade_federativa').clone();
+      uf_expedidor = $('.kssattr-fieldname-form\\.widgets\\.uf_expedidor').clone();
       cidade = $('.kssattr-fieldname-form\\.widgets\\.cidade').clone();
       bairro = $('.kssattr-fieldname-form\\.widgets\\.bairro').clone();
       complemento = $('.kssattr-fieldname-form\\.widgets\\.complemento').clone();
@@ -174,7 +175,7 @@
       form.html( $(pj).append($(municipio).html()).html()).show()
       pj = $(pf).clone();
       $(pf).prepend($(municipio).html() + $(tipo).html() + $(user).html() + $(cpf).html() + $(rg).html() + $(expeditor).html() +
-                    $(uf).html() + $(nome).html() + $(genero).html() + $(estado_civil).html() + $(nascimento).html() +
+                    $(uf_expedidor).html() + $(nome).html() + $(genero).html() + $(estado_civil).html() + $(nascimento).html() +
                     '<div class="formQuestion label">Dados de contato<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
                     $(telefone).html() + $(cep).html() + $(logradouro).html() +
@@ -201,7 +202,7 @@
       $(document).on('click', '#form-widgets-cadastro-0', function(){
         form.html($(pf).html()).show()
         mascarasForms();
-        $('#form-widgets-data_nascimento').datepicker();
+        $('#form-widgets-data_nascimento').datepicker({ dateFormat: 'dd/mm/yy' });
         $('#form-widgets-cadastro-0').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-municipio-0').attr('checked', 'checked');
@@ -224,7 +225,7 @@
       $(document).on('click', '#form-widgets-municipio-0', function(){
         form.html($(pf).html()).show()
         mascarasForms();
-        $('#form-widgets-data_nascimento').datepicker();
+        $('#form-widgets-data_nascimento').datepicker({ dateFormat: 'dd/mm/yy' });
         $('#form-widgets-municipio-0').prop('checked', true);
         $('#content-core .rowlike').find('.proconSPmessage').hide();
         $('#content .rowlike select').find('option:first-child').remove();
@@ -241,11 +242,24 @@
 
       $(document).on('blur', '#form-widgets-codigo_enderecamento_postal', function() {
         CEP = $(this).val().replace(/\D/g,'');
-        pesquisaCEP(CEP);
+        returnCEP = pesquisaCEP(CEP);
+        if (!(returnCEP)) {
+          $(this).val('');
+        }
+      })
+
+      $(document).on('blur', '#form-widgets-cpf', function() {
+        CPF = $(this).val().replace(/\D/g,'');
+        returnCPF = testaCPF(CPF);
+        if (!(returnCPF)) {
+          AdicionaMensagemErro($(this), 'CPF inválido')
+        } else {
+          removeError($(this));
+        }
       })
 
       $("form.kssattr-formname-register").submit(function( event ) {
-        $(".kssattr-formname-register input:text").not('#form-widgets-data_nascimento, #form-widgets-contato_celular, #form-widgets-site, #form-widgets-nome_fantasia').each(function(){
+        $(".kssattr-formname-register input:text").not('#form-widgets-data_nascimento, #form-widgets-deficiencia_especificar, #form-widgets-contato_celular, #form-widgets-site, #form-widgets-nome_fantasia').each(function(){
           if($(this).val() === ''){
             $('.kssattr-formname-register input:text').removeClass('error');
             $(this).addClass('error');
@@ -569,7 +583,7 @@
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
-            $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1, #quando-o-produto-ou-servico-apresentou-problema').datepicker();
+            $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1, #quando-o-produto-ou-servico-apresentou-problema').datepicker({ dateFormat: 'dd/mm/yy' });
             $('#archetypes-fieldname-cpf').hide();
             $('#archetypes-fieldname-quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #archetypes-fieldname-valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').hide()
             $('#nome-da-empresa-fornecedor').val($('#project').val());
@@ -1543,6 +1557,7 @@ function pesquisaCEP(cep) {
       var script = document.createElement('script');
       script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=CEPCallback';
       document.body.appendChild(script);
+      return true
     }
     else {
       limpaCEPInputs();
@@ -1552,6 +1567,7 @@ function pesquisaCEP(cep) {
   else {
     limpaCEPInputs();
     alert('CEP inválido')
+    return false;
   }
 };
 
