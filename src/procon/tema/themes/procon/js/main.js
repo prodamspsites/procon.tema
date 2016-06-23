@@ -730,6 +730,7 @@
 
     if ($('body').hasClass('subsection-formulario-de-denuncia')) {
       insereInputFile();
+      $('.infoUpload').html('Até 5 arquivos, com até 20 MB de tamanho.');
       //FORMULARIOS AREA SELECIONADA
       $('#archetypes-fieldname-especificar-comprou').hide();
       function escondeItens(){
