@@ -1329,6 +1329,7 @@ body.subsection-duvidas .divAccordeon h3 span{
   border-bottom: 1px solid #ccc;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
+  padding-right: 14px;
 }
 .divAccordeon .textoAccordeon .agradece{
   display: none;
