@@ -1782,7 +1782,8 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
     font-weight: normal;
 }
 #content .sucessoReclamacao{
-  margin-bottom: 35px;
+  margin-bottom: 55px;
+  float: left;
 }
 #content .sucessoReclamacao p{
   font-family: 'Roboto';
