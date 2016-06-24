@@ -62,6 +62,12 @@ body.site-Procon.section-procon div.width-16{
 body.template-news_item_view #content .wrap{
   width: 725px;
 }
+#content .richTextWidget table tr:first-child td{
+  background: none;
+  color: #454545;
+  border:none;
+  padding:0;
+}
 #content table{
   border: 1px solid #cecece;
   margin: 20px 0 0 30px;
@@ -175,7 +181,7 @@ body.template-news_item_view #content .wrap{
 }
 #portal-searchbox .searchField{
   border:1px solid #868686;
-  width: 215px;
+  width: 202px;
   height: 28px;
   float: left;
   padding: 3px 0 0 5px;
@@ -1329,6 +1335,7 @@ body.subsection-duvidas .divAccordeon h3 span{
   border-bottom: 1px solid #ccc;
   border-left: 1px solid #ccc;
   border-right: 1px solid #ccc;
+  padding-right: 14px;
 }
 .divAccordeon .textoAccordeon .agradece{
   display: none;
@@ -1782,7 +1789,8 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
     font-weight: normal;
 }
 #content .sucessoReclamacao{
-  margin-bottom: 35px;
+  margin-bottom: 55px;
+  float: left;
 }
 #content .sucessoReclamacao p{
   font-family: 'Roboto';
@@ -2376,6 +2384,7 @@ body.template-register .select-widget.choice-field{
   padding:20px 20px 50px 20px;
   color: #424242;
   font-size: 1.1em;
+  top: 10%;
 }
 .divScrollLight{
   height: 450px;
@@ -3235,7 +3244,7 @@ body.section-consumidor .divLoginDenuncia{
   float:left;
 }
 #footer .menuFooter > ul > li{
-  width:19.5%;
+  width:21.6%;
   display: inline;
   float:left;
   padding: 10px 0 0 0;

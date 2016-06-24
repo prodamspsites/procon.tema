@@ -304,7 +304,7 @@
            $("#valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
            $("#quando-o-produto-ou-servico-apresentou-problema").mask("99/99/9999");
            $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
-           $("#telefone, #form-widgets-contato_telefone").mask("(99) 9999-9999?9")
+           $("#telefone, #form-widgets-contato_telefone, #telefone-1").mask("(99) 9999-9999?9")
             .focusout(function (event) {  
                 var target, phone, element;  
                 target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
@@ -732,6 +732,7 @@
 
     if ($('body').hasClass('subsection-formulario-de-denuncia')) {
       insereInputFile();
+      $('.infoUpload').html('Até 5 arquivos, com até 20 MB de tamanho.');
       //FORMULARIOS AREA SELECIONADA
       $('#archetypes-fieldname-especificar-comprou').hide();
       function escondeItens(){
