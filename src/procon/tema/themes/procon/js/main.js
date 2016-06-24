@@ -726,7 +726,7 @@
        window.location.replace(portal_url + '/@@buscar_reclamacoes');      
     }
 
-    if ($('body').hasClass('userrole-anonymous') && ($('body').hasClass('subsection-formulario-de-denuncia') || $('body').hasClass('subsection-adesao-ao-procon-paulistano'))){
+    if ($('body').hasClass('userrole-anonymous') && ($('body').hasClass('subsection-formulario-de-denuncia'))){
          window.location.replace(portal_url + '/@@register');
     }
 
