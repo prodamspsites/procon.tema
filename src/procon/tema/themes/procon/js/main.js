@@ -726,6 +726,10 @@
        window.location.replace(portal_url + '/@@buscar_reclamacoes');      
     }
 
+    if ($('body').hasClass('userrole-anonymous') && ($('body').hasClass('subsection-formulario-de-denuncia') || $('body').hasClass('subsection-adesao-ao-procon-paulistano'))){
+         window.location.replace(portal_url + '/@@register');
+    }
+
     if ($('body').hasClass('subsection-formulario-de-denuncia')) {
       insereInputFile();
       $('.infoUpload').html('Até 5 arquivos, com até 20 MB de tamanho.');
