@@ -2378,6 +2378,7 @@ body.template-register .select-widget.choice-field{
   padding:20px 20px 50px 20px;
   color: #424242;
   font-size: 1.1em;
+  top: 10%;
 }
 .divScrollLight{
   height: 450px;
