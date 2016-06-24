@@ -358,6 +358,13 @@
         $(this).next().slideToggle();
     });
 
+    $(document).on('keyup', '#project', function() {
+        if ((this.value !== '') && !($(this).hasClass('disabled')) && $(this).hasClass('loading')) {
+          $('.form-group .btnBuscar').attr('disabled', false).removeClass('disabled')
+        }
+    })
+
+
     //MASCARA CPF CNPJ
     // $('#cnpj-cpf').parent().find('label').html('CNPJ:');
     $('#cnpj-cpf').parent().prepend('<input type="radio" name="pessoa" value="juridica" id="rjuridica" checked /><span class="rpessoa">Pessoa Jurídica</span><input type="radio" name="pessoa" value="fisica" id="rfisica" /><span class="rpessoa">Pessoa Física</span>')
@@ -577,7 +584,7 @@
     }
     if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('subsection-formularios')) {
         var itensForm = $(".formDuvidas .pfg-form").detach();
-
+        $('.form-group #project').addClass('loading')
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
             lightboxForm();
             $('#content #content-core').append(itensForm);
@@ -821,7 +828,6 @@
       })
 
 
-
       $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
        lightboxForm();
       //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
@@ -974,6 +980,7 @@
               },
               open: function(event, ui){
                 $('.form-group .btnBuscar').addClass('disabled');
+                $('.form-group #project').removeClass('loading');
                 $('.form-group .btnBuscar').attr('disabled', true);
                 $('.form-group .btnBuscar').show();
               }
