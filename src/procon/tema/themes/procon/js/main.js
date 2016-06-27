@@ -142,7 +142,7 @@
       $('label', rg_pj).text('RG do representante *').clone();
       site = $('.kssattr-fieldname-form\\.widgets\\.site').clone();
       uf = $('.kssattr-fieldname-form\\.widgets\\.unidade_federativa').clone();
-      uf_expedidor = $('.kssattr-fieldname-form\\.widgets\\.uf_expedidor').clone();
+      uf_expedidor = $('.kssattr-fieldname-form\\.widgets\\.uf_estados').clone();
       cidade = $('.kssattr-fieldname-form\\.widgets\\.cidade').clone();
       bairro = $('.kssattr-fieldname-form\\.widgets\\.bairro').clone();
       complemento = $('.kssattr-fieldname-form\\.widgets\\.complemento').clone();
@@ -176,13 +176,13 @@
       pj = $(pf).clone();
       $(pf).prepend($(municipio).html() + $(tipo).html() + $(user).html() + $(cpf).html() + $(rg).html() + $(expeditor).html() +
                     $(uf_expedidor).html() + $(nome).html() + $(genero).html() + $(estado_civil).html() + $(nascimento).html() +
-                    '<div class="formQuestion label">Dados de contato<span class="formHelp"' +
+                    '<div class="formQuestion label fonteMaior">Dados de contato<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
                     $(telefone).html() + $(cep).html() + $(logradouro).html() +
                     $(complemento).html() + $(bairro).html() +
                     $(cidade).html() + $(uf).html() + $(email).html() + $(email_confirmacao).html() +
                     $(senha).html() + $(senha_confirmacao).html() +
-                    '<div class="formQuestion label">Dados adicionais<span class="formHelp"' +
+                    '<div class="formQuestion label fonteMaior">Dados adicionais<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
                     $(idade).html() + $(deficiencia).html() + $(especificar).html() + $(doenca_grave).html() + $(enviar).html()
                    );
@@ -191,8 +191,8 @@
       $(cpf, pf).find('input').mask("999.999.999-99");
       $(pj).prepend($(municipio).html() + $(tipo).html() + $(user).html() + $(razao_social).html() + $(nome_fantasia).html() + 
                     $(tipo_societario).html() + $(enquadramento).html() + $(responsavel).html() +
-                    $(cpf_pj).html() + $(rg_pj).html() + $(expeditor).html() +
-                    '<div class="formQuestion label">Dados de contato<span class="formHelp"' +
+                    $(cpf_pj).html() + $(rg_pj).html() + $(expeditor).html() + $(uf_expedidor).html() +
+                    '<div class="formQuestion label fonteMaior">Dados de contato<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
                     $(telefone).html() + $(cep).html() + $(logradouro).html() + 
                     $(complemento).html() + $(bairro).html() + $(cidade).html() +
@@ -206,8 +206,8 @@
         $('#form-widgets-cadastro-0').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-municipio-0').attr('checked', 'checked');
-        $('#form-widgets-cidade').val('São Paulo');
-        $('#form-widgets-unidade_federativa').val('SP');
+        $('#form-widgets-cidade').val('São Paulo').attr('disabled', true);
+        $('#form-widgets-unidade_federativa').val('SP').attr('disabled', true);
       });
 
       $(document).on('click', '#form-widgets-cadastro-1', function(){
@@ -216,8 +216,8 @@
         $('#form-widgets-cadastro-1').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-municipio-0').attr('checked', 'checked');
-        $('#form-widgets-cidade').val('São Paulo');
-        $('#form-widgets-unidade_federativa').val('SP');
+        $('#form-widgets-cidade').val('São Paulo').attr('disabled', true);
+        $('#form-widgets-unidade_federativa').val('SP').attr('disabled', true);
       });
 
       $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Faça seu login</h2><p>Faça seu login para realizar sua reclamação:</p><div class="field"><label for="__ac_name">Usuário :</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
@@ -230,8 +230,8 @@
         $('#content-core .rowlike').find('.proconSPmessage').hide();
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-cadastro-0').attr('checked', 'checked');
-        $('#form-widgets-cidade').val('São Paulo');
-        $('#form-widgets-unidade_federativa').val('SP');
+        $('#form-widgets-cidade').val('São Paulo').attr('disabled', true);
+        $('#form-widgets-unidade_federativa').val('SP').attr('disabled', true);
       });
 
       $(document).on('click', '#form-widgets-municipio-1', function(){
