@@ -192,7 +192,7 @@
       $(pj).prepend($(municipio).html() + $(tipo).html() + $(user).html() + $(razao_social).html() + $(nome_fantasia).html() + 
                     $(tipo_societario).html() + $(enquadramento).html() + $(responsavel).html() +
                     $(cpf_pj).html() + $(rg_pj).html() + $(expeditor).html() + $(uf_expedidor).html() +
-                    '<div class="formQuestion label fonteMaior">Dados de contato<span class="formHelp"' +
+                    '<div class="formQuestion label fonteMaiorJuridico">Dados de contato<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
                     $(telefone).html() + $(cep).html() + $(logradouro).html() + 
                     $(complemento).html() + $(bairro).html() + $(cidade).html() +
