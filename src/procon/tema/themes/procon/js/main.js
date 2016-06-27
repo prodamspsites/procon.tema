@@ -600,6 +600,11 @@
             if(!$('.usuario-ativo').size()){
               $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
             }
+            //REMOVER FORM RECLAMACAO CASO USUARIO ESTIVER DESLOGADO
+            if ( $('body').hasClass('subsection-formularios') && $('body').hasClass('userrole-anonymous')) {
+              $('#content-core .formid-formularios').hide();
+              $('#content-core .formid-formularios #fg-base-edit').remove();
+            }
 
             inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, #uf')
             $(inputs).addClass('inputObrigatorio').each(function() {
