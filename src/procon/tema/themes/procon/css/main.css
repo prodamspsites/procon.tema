@@ -3151,6 +3151,11 @@ body.section-consumidor .divLoginDenuncia{
 .formid-formularios form .error{
   border: 1px solid red;
 }
+#folderlisting-main-table input[type="submit"]{
+  padding:3px;
+  margin: 0 0 0 5px;
+  cursor: pointer;
+}
 
 /*FOOTER*/
 #footer{
