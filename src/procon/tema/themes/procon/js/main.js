@@ -886,7 +886,7 @@
 
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
-      $('#content').html('<div class="form-group active" style="display:block"></div><div class="form-group2 active" style="display:block"></div><div class="form-group sucesso" style="display:block"><div class="sucessoReclamacao" style="display:block"><p><strong>Sua reclamação foi enviada com sucesso!</strong></p><p>O número de seu atendimento é:</p><span class="numeroProtocolo">'+protocoloNumber+'</span><p>Aguarde o retorno de sua reclamação via e-mail e guarde o número de seu atendimento</p></div></div>');
+      $('#content').html('<div class="form-group active" style="display:block"></div><div class="form-group2 active" style="display:block"></div><div class="form-group sucesso" style="display:block"><div class="sucessoReclamacao" style="display:block"><p><strong>Sua reclamação foi enviada com sucesso!</strong></p><p>O número de seu atendimento é:</p><span class="numeroProtocolo">'+protocoloNumber+'</span><p>Guarde o número de seu protocolo. Ele é a garantia do registro de sua reclamação</p><p>Esclarecemos que a cada andamento de sua reclamação, comunicaremos você por e-mail.</p></div></div>');
     }
 
 
