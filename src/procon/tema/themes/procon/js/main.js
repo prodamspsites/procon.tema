@@ -56,8 +56,8 @@
     //TEMPLATE BUSCAR_DUVIDAS
     if ($('body').hasClass('userrole-authenticated')) {
       var currentUser = $('.currentUser').text();
-      $('#portal-header').append('<div class="wrap" style="position:relative"><div class="loginAdmin"><span class="nome">'+currentUser+'</span> <a href="'+portal_url+'/logout" title="sair" class="btnSair">Sair</a></div></div>');
-      $('.wrap .loginAdmin').show();
+      // $('#portal-header').append('<div class="wrap" style="position:relative"><div class="loginAdmin"><span class="nome">'+currentUser+'</span> <a href="'+portal_url+'/logout" title="sair" class="btnSair">Sair</a></div></div>');
+      // $('.wrap .loginAdmin').show();
     }
 
     //TEMPLATE BUSCAR_DUVIDAS
@@ -386,9 +386,6 @@
     });
     $('#rjuridica').click();
 
-
-cpf
-
     $(document).on('blur', '.CPF, #cpf', function() {
       CPF = $(this).val().replace(/\D/g,'');
       inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, #uf')
@@ -617,18 +614,18 @@ cpf
       }
 
     //MENU LOGIN
-    $(document).on('click','.loginAdmin .setaLogin', function(){
-      $('.menuLogin').toggle();
-      return false;
-    });
-    //MENU LOGIN MOBILE
-    if ($(window).width() <= 1020){
-               $(document).on('click','.loginAdmin', function(){
-                $('.menuLogin').toggle();
-                $('.loginAdmin a').toggle();
-                return false;
-              });
-        }
+    // $(document).on('click','.loginAdmin .setaLogin', function(){
+    //   $('.menuLogin').toggle();
+    //   return false;
+    // });
+    // //MENU LOGIN MOBILE
+    // if ($(window).width() <= 1020){
+    //            $(document).on('click','.loginAdmin', function(){
+    //             $('.menuLogin').toggle();
+    //             $('.loginAdmin a').toggle();
+    //             return false;
+    //           });
+    //     }
 
 
     //Altera label do input da tela esqueci minha senha
@@ -931,9 +928,12 @@ cpf
         });
 
       $('.btnProsseguir').click(function(){
+          var protocoloConsumidor = $('.divProtocolo .inputProtocolo').val();
           $('#content #content-core').append(itensForm);
+          console.log(protocoloConsumidor)
           $('.form-group').addClass('active');
           $('.divRedireciona').slideUp();
+          $('#archetypes-fieldname-protocoloconsumidor input').val(protocoloConsumidor)
           var protocolo = $.ajax({ type: "POST",
                        url: portal_url + "/@@protocolo",
                        async: false,
