@@ -572,7 +572,7 @@ cpf
                 lightbox_text = $(lightbox).find('.contentBody').html();
                 $('body').append("<div class='lightboxGeral'><div class='lightbox-div'><h2>"+lightbox_titulo+"</h2><div class='divScrollLight'>"+lightbox_text+"</div><a href='javascript:void(0);' class='fechaLightbox'>FECHAR</a></div></div>");
                 if(!$('.contentLightbox').size()){
-                   $('.usuario-ativo').before("<div class='contentLightbox'><input type='checkbox'>Concordo em disponibilizar as informações contidas em minha reclamação para que sejam divulgadas no site de acordo com os <a href='javascript:void(0);' class='linkLightbox'>Termos de Uso</a> e <a href='javascript:void(0);' class='linkLightboxPolitica'>Políticas de Privacidade.</a></div></div>");
+                   $("input[name='form_submit']").before("<div class='contentLightbox'><input type='checkbox'>Concordo em disponibilizar as informações contidas em minha reclamação para que sejam divulgadas no site de acordo com os <a href='javascript:void(0);' class='linkLightbox'>Termos de Uso</a> e <a href='javascript:void(0);' class='linkLightboxPolitica'>Políticas de Privacidade.</a></div></div>");
                 }
               }
           })
@@ -652,10 +652,12 @@ cpf
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
 
+            // $("input[name='form_submit']").after('<div class="campos_exclusivos"><div>')
+            // $('.campos_exclusivos').append( $('#archetypes-fieldname-campos-de-uso-exclusivo-para-conveniados-e-acoes-estrategicas').remove().html() +
+            //                                 $('#archetypes-fieldname-matricula-codigo').remove().html() )
+
             $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker({dateFormat: 'dd/mm/yy', onSelect: function(date){
-                var selectedDate = new Date(date);
-                console.log(selectedDate)
-                console.log($('#quando-o-produto-ou-servico-apresentou-problema'))
+                selectedDate = new Date($.datepicker.formatDate('yy-mm-dd', $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker('getDate')));
                 $('#quando-o-produto-ou-servico-apresentou-problema').first().datepicker({dateFormat: 'dd/mm/yy', minDate: selectedDate});
               }
             })
