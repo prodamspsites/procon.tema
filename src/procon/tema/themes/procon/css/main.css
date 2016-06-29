@@ -2463,6 +2463,10 @@ body.template-register .select-widget.choice-field{
   text-align: left;
 }
 
+.mensagemPJ {
+  margin-top: 65px;
+}
+
 .label.fonteMaior {
   font-size: 18px;
   margin: 35px 0 5px;

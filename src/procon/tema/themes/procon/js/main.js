@@ -126,19 +126,23 @@
 
     //AJUSTE NO TEMPLATE DE CADASTRO
     if ($('body').hasClass('template-register')) {
+      document.title = 'Formulário de Registro - Procon Paulistano';
       form = $('.kssattr-formname-register')
       $('#form-widgets-cadastro-0').prop('checked', true);
-      municipio = $('.kssattr-fieldname-form\\.widgets\\.municipio').clone();
+      municipio = '<div class="proconSPmessage"><p><strong>O PROCON PAULISTANO DIGITAL tem como atribuição atender os consumidores domiciliados no Município de São Paulo.</strong></p><p>A proteção e defesa do consumidor constitui-se em um sistema nacional coordenado pela Secretaria Nacional do Consumidor e integrado por diversos órgãos de defesa - federais, estaduais e municipais.</p><p>Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade. <a href="http://www.procon.sp.gov.br/categoria.asp?id=209" target="_blank">Acesse aqui</a> a lista dos Procons Municipais. Caso a sua cidade não esteja na lista, entre em contato com a <a href="http://www.procon.sp.gov.br/categoria.asp?id=42" target="_blank"> FUNDAÇÃO PROCON.</a></p></div>';
       tipo = $('.kssattr-fieldname-form\\.widgets\\.cadastro').clone();
       nome = $('.kssattr-fieldname-form\\.widgets\\.fullname').clone();
       $('label', nome).text('Nome completo *');
-      user = $('.kssattr-fieldname-form\\.widgets\\.username').clone();
-      $('label', user).text('Usuário *');
+      user_CPF = $('.kssattr-fieldname-form\\.widgets\\.username').clone();
+      $('label', user_CPF).text('CPF *');
+      $('input', user_CPF).addClass('CPF');
+      user_CNPJ = $('.kssattr-fieldname-form\\.widgets\\.username').clone();
+      $('label', user_CNPJ).text('CNPJ *');
+      $('input', user_CNPJ).addClass('CNPJ');
       idade = $('#formfield-form-widgets-adicional_um').clone();
       deficiencia = $('#formfield-form-widgets-adicional_tres').clone();
       doenca_grave = $('#formfield-form-widgets-doenca_grave').clone();
       especificar = $('#formfield-form-widgets-deficiencia_especificar').clone()
-      cpf = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
       cnpj = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
       $('label', cnpj).text('CNPJ *');
       tipo_societario = $('.kssattr-fieldname-form\\.widgets\\.tipo_societario')
@@ -179,9 +183,9 @@
       pj = $(form).clone();
       $('div', pf).remove();
       $('div', pj).remove();
-      form.html( $(pj).append($(municipio).html()).html()).show()
+      form.html( $(pj).append($(municipio).html() + $(tipo).html()).html()).show()
       pj = $(pf).clone();
-      $(pf).prepend($(municipio).html() + $(tipo).html() + $(user).html() + $(cpf).html() + $(rg).html() + $(expeditor).html() +
+      $(pf).prepend($(municipio).html() + $(tipo).html() + $(user_CPF).html() + $(rg).html() + $(expeditor).html() +
                     $(uf_expedidor).html() + $(nome).html() + $(genero).html() + $(estado_civil).html() + $(nascimento).html() +
                     '<div class="formQuestion label fonteMaior">Dados de contato<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
@@ -191,12 +195,12 @@
                     $(senha).html() + $(senha_confirmacao).html() +
                     '<div class="formQuestion label fonteMaior">Dados adicionais<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
-                    $(idade).html() + $(deficiencia).html() + $(especificar).html() + $(doenca_grave).html() + $(enviar).html()
+                    $(idade).html() + $(deficiencia).html() + $(doenca_grave).html() + $(enviar).html()
                    );
 
       $(municipio, pj).remove()
-      $(cpf, pf).find('input').mask("999.999.999-99");
-      $(pj).prepend($(municipio).html() + $(tipo).html() + $(user).html() + $(razao_social).html() + $(nome_fantasia).html() + 
+      $(pj).prepend($(municipio).html() + $(tipo).html() + '<br /><p class="mensagemPJ">O PROCON PAULISTANO DIGITAL pode atender pessoas jurídicas na condição de consumidoras. Cumpre esclarecer que a pessoa jurídica pode ser considerada consumidora quando adquire produto ou serviço como destinatária final, isto é, quando utiliza o produto ou serviço para satisfazer sua própria necessidade e não a de seus clientes.</p>' +
+                    $(user_CNPJ).html() + $(razao_social).html() + $(nome_fantasia).html() + 
                     $(tipo_societario).html() + $(enquadramento).html() + $(responsavel).html() +
                     $(cpf_pj).html() + $(rg_pj).html() + $(expeditor).html() + $(uf_expedidor).html() +
                     '<div class="formQuestion label fonteMaiorJuridico">Dados de contato<span class="formHelp"' +
@@ -206,6 +210,7 @@
                     $(uf).html() + $(site).html() + $(email).html() + $(email_confirmacao).html() +
                     $(senha).html() + $(senha_confirmacao).html() + $(enviar).html()
                    );
+      $(user_CNPJ, pf).find('input').mask("999.999.999-99");
       $(document).on('click', '#form-widgets-cadastro-0', function(){
         form.html($(pf).html()).show()
         mascarasForms();
@@ -228,24 +233,6 @@
       });
 
       $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Faça seu login</h2><p>Faça seu login para realizar sua reclamação:</p><div class="field"><label for="__ac_name">Usuário :</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
-
-      $(document).on('click', '#form-widgets-municipio-0', function(){
-        form.html($(pf).html()).show()
-        mascarasForms();
-        $('#form-widgets-data_nascimento').datepicker({ dateFormat: 'dd/mm/yy' });
-        $('#form-widgets-municipio-0').prop('checked', true);
-        $('#content-core .rowlike').find('.proconSPmessage').hide();
-        $('#content .rowlike select').find('option:first-child').remove();
-        $('#form-widgets-cadastro-0').attr('checked', 'checked');
-        $('#form-widgets-cidade').val('São Paulo').attr('disabled', true);
-        $('#form-widgets-unidade_federativa').val('SP').attr('disabled', true);
-      });
-
-      $(document).on('click', '#form-widgets-municipio-1', function(){
-        form.html($(municipio).html()).show()
-        $('#form-widgets-municipio-1').prop('checked', true);
-        $('#content-core .rowlike').append('<div class="proconSPmessage"><p><strong>O PROCON PAULISTANO DIGITAL tem como atribuição atender os consumidores domiciliados no Município de São Paulo.</strong></p><p>A proteção e defesa do consumidor constitui-se em um sistema nacional coordenado pela Secretaria Nacional do Consumidor e integrado por diversos órgãos de defesa - federais, estaduais e municipais.</p><p>Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade. <a href="http://www.procon.sp.gov.br/categoria.asp?id=209" target="_blank">Acesse aqui</a> a lista dos Procons Municipais. Caso a sua cidade não esteja na lista, entre em contato com a <a href="http://www.procon.sp.gov.br/categoria.asp?id=42" target="_blank"> FUNDAÇÃO PROCON.</a></p></div>')
-      });
 
       $(document).on('blur', '#form-widgets-codigo_enderecamento_postal', function() {
         CEP = $(this).val().replace(/\D/g,'');
@@ -302,6 +289,19 @@
         }
     });
 
+
+           function preparaForm() {
+            form.html($(pf).html()).show()
+            mascarasForms();
+            $('#form-widgets-data_nascimento').datepicker({ dateFormat: 'dd/mm/yy' });
+            $('#form-widgets-municipio-0').prop('checked', true);
+            $('#content-core .rowlike').find('.proconSPmessage').hide();
+            $('#content .rowlike select').find('option:first-child').remove();
+            $('#form-widgets-cadastro-0').attr('checked', 'checked');
+            $('#form-widgets-cidade').val('São Paulo').attr('disabled', true);
+            $('#form-widgets-unidade_federativa').val('SP').attr('disabled', true);
+           } 
+
     //MASCARA
            function mascarasForms(){
            $("#data-de-nascimento, #form-widgets-data_nascimento").mask("99/99/9999");
@@ -337,8 +337,8 @@
                     element.mask("(99) 9999-9999?9");  
                 }  
             });
-           $("#cep, #form-widgets-codigo_enderecamento_postal, #cep-juridico").mask("99999-999");
-           $("#cpf, #form-widgets-cpf").mask("999.999.999-99");
+           $("#cep, #form-widgets-codigo_enderecamento_postal, #cep-juridico, .CNPJ").mask("99999-999");
+           $("#cpf, #form-widgets-cpf, .CPF").mask("999.999.999-99");
            $("#cnpj").mask("99.999.999/9999-99");
            $("#cnpj-cpf").mask("99.999.999/9999-99");
            $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
