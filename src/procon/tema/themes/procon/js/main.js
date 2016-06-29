@@ -374,7 +374,7 @@
 
     //MASCARA CPF CNPJ
     // $('#cnpj-cpf').parent().find('label').html('CNPJ:');
-    $('#cnpj-cpf').parent().prepend('<input type="radio" name="pessoa" value="juridica" id="rjuridica" checked /><span class="rpessoa">Pessoa Jurídica</span><input type="radio" name="pessoa" value="fisica" id="rfisica" /><span class="rpessoa">Pessoa Física</span>')
+    $('#cnpj-cpf').parent().prepend('<div class="field PFG-RichLabel" id="archetypes-fieldname-dados-do-fornecedor-reclamado"><h4 class="fonteMenor"><strong>Preencha com um CNPJ / CPF válido ou informe o endereço completo do fornecedor.</strong></h3></div><input type="radio" name="pessoa" value="juridica" id="rjuridica" checked /><span class="rpessoa">Pessoa Jurídica</span><input type="radio" name="pessoa" value="fisica" id="rfisica" /><span class="rpessoa">Pessoa Física</span>')
     $(document).on('click','#rfisica', function(){
         $('#cnpj-cpf').parent().find('label').html('CPF:');
         $("#cnpj-cpf").removeClass('CNPJ').addClass('CPF').mask("999.999.999-99");
@@ -386,12 +386,13 @@
     });
     $('#rjuridica').click();
 
-    $(document).on('blur', '.CPF', function() {
-      console.log('entrou')
+
+cpf
+
+    $(document).on('blur', '.CPF, #cpf', function() {
       CPF = $(this).val().replace(/\D/g,'');
       inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, #uf')
       if (!(testaCPF(CPF))) {
-        console.log('entrou')
         $(inputs).addClass('inputObrigatorio').each(function() {
           thisParent = $(this).parent();
           label = $('label', thisParent)
@@ -650,15 +651,21 @@
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
-            $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1, #quando-o-produto-ou-servico-apresentou-problema').datepicker({ dateFormat: 'dd/mm/yy' });
+
+            $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker({dateFormat: 'dd/mm/yy', onSelect: function(date){
+                var selectedDate = new Date(date);
+                console.log(selectedDate)
+                console.log($('#quando-o-produto-ou-servico-apresentou-problema'))
+                $('#quando-o-produto-ou-servico-apresentou-problema').first().datepicker({dateFormat: 'dd/mm/yy', minDate: selectedDate});
+              }
+            })
+
+            // $('#quando-o-produto-ou-servico-apresentou-problema').datepicker({ dateFormat: 'dd/mm/yy', onSele });
             $('#archetypes-fieldname-cpf').hide();
             $('#archetypes-fieldname-quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #archetypes-fieldname-valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').hide()
             $('#nome-da-empresa-fornecedor').val($('#project').val());
             if ($('body').hasClass('userrole-anonymous')) {
               $('#content').append('<div class="pfg-form formid-formularios"><div class="facaReclamaLogin"><strong>Cadastre-se ou faça login para prosseguir:<br><a href="'+portal_url+'/@@register" class="irparalogin" title="IR PARA CADASTRO/LOGIN">IR PARA CADASTRO/LOGIN</a></div></div>');
-            }
-            if(!$('.usuario-ativo').size()){
-              $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
             }
             //REMOVER FORM RECLAMACAO CASO USUARIO ESTIVER DESLOGADO
             if ( $('body').hasClass('subsection-formularios') && $('body').hasClass('userrole-anonymous')) {

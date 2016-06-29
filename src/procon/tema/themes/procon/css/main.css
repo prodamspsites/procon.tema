@@ -2473,6 +2473,12 @@ body.template-register .select-widget.choice-field{
   display: block;
 }
 
+h4.fonteMenor {
+  font-size: 16px;
+  margin: 35px 0 5px;
+  display: block;
+}
+
 .label.fonteMaiorJuridico {
   font-size: 18px;
   margin: 100px 0 5px;
