@@ -397,6 +397,8 @@
             text = $(label).text() + ' *'
             $(label).text(text)
           }
+        alert('CPF inválido')
+        $(this).val('')
         });
       } else {
         $(inputs).removeClass('inputObrigatorio').each(function() {
@@ -421,6 +423,8 @@
             text = $(label).text() + ' *'
             $(label).text(text)
           }
+        alert('CNPJ inválido')
+        $(this).val('')
         });
 
       } else {
