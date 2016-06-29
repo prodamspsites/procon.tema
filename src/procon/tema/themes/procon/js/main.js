@@ -630,6 +630,12 @@
         }
 
 
+    //Altera label do input da tela esqueci minha senha
+
+    if ($('body').hasClass('template-mail_password_form')){
+      $('#mail_password .field label').text('O meu CPF/CNPJ é:')
+    }
+
 
     //OCULTA FORMULARIO CONSUMIDOR
     if (!($('body').hasClass('subsection-formularios'))){
