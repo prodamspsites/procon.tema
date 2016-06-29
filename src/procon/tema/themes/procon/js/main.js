@@ -387,9 +387,11 @@
     $('#rjuridica').click();
 
     $(document).on('blur', '.CPF', function() {
+      console.log('entrou')
       CPF = $(this).val().replace(/\D/g,'');
       inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, #uf')
       if (!(testaCPF(CPF))) {
+        console.log('entrou')
         $(inputs).addClass('inputObrigatorio').each(function() {
           thisParent = $(this).parent();
           label = $('label', thisParent)
@@ -397,9 +399,9 @@
             text = $(label).text() + ' *'
             $(label).text(text)
           }
-        alert('CPF inválido')
-        $(this).val('')
         });
+        $(this).val('')
+        confirm("CPF inválido")
       } else {
         $(inputs).removeClass('inputObrigatorio').each(function() {
           removeError($(this));
@@ -423,10 +425,9 @@
             text = $(label).text() + ' *'
             $(label).text(text)
           }
+        });
         alert('CNPJ inválido')
         $(this).val('')
-        });
-
       } else {
         $(inputs).removeClass('inputObrigatorio').each(function() {
           removeError($(this));
@@ -1555,6 +1556,19 @@ function testaCNPJ(cnpj) {
 }
 
 function testaCPF(strCPF) {
+
+  if (strCPF.length != 11 || 
+          cpf == "00000000000" || 
+          cpf == "11111111111" || 
+          cpf == "22222222222" || 
+          cpf == "33333333333" || 
+          cpf == "44444444444" || 
+          cpf == "55555555555" || 
+          cpf == "66666666666" || 
+          cpf == "77777777777" || 
+          cpf == "88888888888" || 
+          cpf == "99999999999")
+              return false;
     var Soma;
     var Resto;
     Soma = 0;
