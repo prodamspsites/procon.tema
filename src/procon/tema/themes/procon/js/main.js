@@ -570,23 +570,64 @@
                 lightbox_text = $(lightbox).find('.contentBody').html();
                 $('body').append("<div class='lightboxGeral'><div class='lightbox-div'><h2>"+lightbox_titulo+"</h2><div class='divScrollLight'>"+lightbox_text+"</div><a href='javascript:void(0);' class='fechaLightbox'>FECHAR</a></div></div>");
                 if(!$('.contentLightbox').size()){
-                   $('.usuario-ativo').before("<div class='contentLightbox'><input type='checkbox'>Concordo em disponibilizar as informações contidas em minha reclamação para que sejam divulgadas no site de acordo com os <a href='javascript:void(0);' class='linkLightbox'>Termos de Uso e Políticas de Privacidade.</a></div></div>");
+                   $('.usuario-ativo').before("<div class='contentLightbox'><input type='checkbox'>Concordo em disponibilizar as informações contidas em minha reclamação para que sejam divulgadas no site de acordo com os <a href='javascript:void(0);' class='linkLightbox'>Termos de Uso</a> e <a href='javascript:void(0);' class='linkLightboxPolitica'>Políticas de Privacidade.</a></div></div>");
                 }
               }
           })
           $(document).on('click','.linkLightbox', function(){
+              lightboxForm();
               $('.lightboxGeral').show();
+              $('.lightboxGeralP').hide();
           });
            $(document).on('click','.btnTooltip', function(){
               $('.tooltip-area').toggle();
           });
           $(document).on('click','.fechaLightbox', 'body',function(){
               $('.lightboxGeral').hide();
+              $('.lightboxGeralP').hide();
           });
           $(document).on('click','.fechaTooltip', function(){
               $('.tooltip-area').hide();
           });
       }
+
+      function lightboxFormPolitica() {
+          lightbox_urlP = portal_url + '/politica-de-privacidade/politica';
+          $.ajax({
+              url: lightbox_urlP, success: function(lightboxP) {
+                lightbox_tituloP = $(lightboxP).find('.titPage').html();
+                lightbox_textP = $(lightboxP).find('.contentBody').html();
+                $('body').append("<div class='lightboxGeralP'><div class='lightbox-div'><h2>"+lightbox_tituloP+"</h2><div class='divScrollLight'>"+lightbox_textP+"</div><a href='javascript:void(0);' class='fechaLightbox'>FECHAR</a></div></div>");
+                if(!$('.contentLightbox').size()){
+                   $('.usuario-ativo').before("<div class='contentLightbox'><input type='checkbox'>Concordo em disponibilizar as informações contidas em minha reclamação para que sejam divulgadas no site de acordo com os <a href='javascript:void(0);' class='linkLightbox'>Termos de Uso</a> e <a href='javascript:void(0);' class='linkLightboxPolitica'>Políticas de Privacidade.</a></div></div>");
+                }
+              }
+          })
+          $(document).on('click','.linkLightboxPolitica', function(){
+              lightboxFormPolitica();
+              $('.lightboxGeral').hide();
+              $('.lightboxGeralP').show();
+          });
+          $(document).on('click','.fechaLightbox', 'body',function(){
+              $('.lightboxGeral').hide();
+              $('.lightboxGeralP').hide();
+          });
+      }
+
+    //MENU LOGIN
+    $(document).on('click','.loginAdmin .setaLogin', function(){
+      $('.menuLogin').toggle();
+      return false;
+    });
+    //MENU LOGIN MOBILE
+    if ($(window).width() <= 1020){
+               $(document).on('click','.loginAdmin', function(){
+                $('.menuLogin').toggle();
+                $('.loginAdmin a').toggle();
+                return false;
+              });
+        }
+
 
 
     //OCULTA FORMULARIO CONSUMIDOR
@@ -598,6 +639,7 @@
         $('.form-group #project').addClass('loading')
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
             lightboxForm();
+            lightboxFormPolitica();
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
@@ -739,7 +781,7 @@
 
 
     if ($('body').hasClass('userrole-reviewer') && ($('body').hasClass('template-login_success'))) {
-       window.location.replace(portal_url + '/@@buscar_reclamacoes');      
+       window.location.replace(portal_url + '/@@buscar_reclamacoes');
     }
 
     if ($('body').hasClass('userrole-anonymous') && ($('body').hasClass('subsection-formulario-de-denuncia'))){
@@ -842,6 +884,7 @@
 
       $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
        lightboxForm();
+       lightboxFormPolitica();
       //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
       var protocolo = $.ajax({ type: "POST",
                                url: portal_url + "/@@protocolo",

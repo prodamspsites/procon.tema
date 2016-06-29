@@ -139,16 +139,28 @@ body.template-news_item_view #content .wrap{
   position: relative;
 }
 .loginAdmin{
-    position: absolute;
-    right: -25px;
-    top: 167px;
-    background: url(../img/icoLogin.png) no-repeat;
-    width: 241px;
-    height: 21px;
+    background: url(../img/icoLogin.png) no-repeat 6px 12px;
     text-align: left;
     color: #fff;
-    padding: 4px 0 0 31px;
-    display: none;
+    padding: 7px 7px 0 29px;
+    border: 1px solid #fff;
+}
+.loginAdmin.logout{
+  background: none;
+  padding: 7px 7px 0 10px;
+}
+.loginAdmin .setaLogin{
+    background: url(../img/setaLogin.png) no-repeat right -4px;
+    color: #fff;
+    padding: 4px 27px 0 0;
+}
+.loginAdmin .cadastro{
+    color: #fff;
+    padding: 8px 0 13px 0;
+    display: block;
+    font-size: 0.8em;
+    text-align: center;
+    width: 100%;
 }
 .loginAdmin span.nome{
   font-size: 0.9em;
@@ -159,6 +171,44 @@ body.template-news_item_view #content .wrap{
   padding: 6px 12px 6px 12px;
   margin: 0 0 0 10px;
   font-size: 0.9em;
+}
+.divMenuLogin{
+  float: left;
+  position: absolute;
+  right: 35px;
+  top: 161px;
+}
+.menuLogin{
+    background: #f5f5f5;
+    border: 1px solid #cbcbcb;
+    float: left;
+    width: 100%;
+    display: none;
+}
+.menuLogin li{
+  border-bottom: 1px solid #e4e4e4;
+  display: block;
+  margin: 0;
+  float: left;
+  clear: both;
+  width: 100%;
+}
+.menuLogin li a{
+  color: #413b3d;
+  width: 100%;
+  float: left;
+  height: 24px;
+  font-size: 0.8em;
+  padding: 8px 40px 0px 8px;
+}
+.menuLogin li:hover{
+  background: #3f393b;
+}
+.menuLogin li a:hover{
+  color: #fff;
+}
+.menuLogin li:last-child{
+  border-bottom: none;
 }
 #portal-header #logoProcon{
   float:left;
@@ -178,6 +228,7 @@ body.template-news_item_view #content .wrap{
 }
 #portal-header .wrap{
   width:943px;
+  position: relative;
 }
 #portal-searchbox .searchField{
   border:1px solid #868686;
@@ -271,7 +322,7 @@ body.template-news_item_view #content .wrap{
 #portal-header nav.menu{
   float: left;
   width: 100%;
-  height: 48px;
+  height: 53px;
   background: #3f393b;
 }
 #portal-header nav.menu ul{
@@ -403,7 +454,7 @@ border-radius: 0px;
   border-top: 5px solid #f21c30;
 }
 .btnMenuResp{
-  background: url(../img/icoMenuResp.png) no-repeat center 20px #f21c30;
+  background: url(../img/icoMenuResp.png) no-repeat center 20px #3f393b;
   width:64px;
   height: 64px;
   float: left;
@@ -411,7 +462,7 @@ border-radius: 0px;
   display: none;
 }
 .btnMenuResp.active{
-  background: url(../img/icoMenuResp-on.png) no-repeat center 20px #f21c30;
+  background: url(../img/icoMenuResp-on.png) no-repeat center 20px #3f393b;
 }
 /*SOCIAL SHARE INTERNAS*/
 #content .socialShare{
@@ -2375,6 +2426,17 @@ body.template-register .select-widget.choice-field{
   background: rgba(0,0,0,0.8);
   display: none;
 }
+.lightboxGeralP{
+  position: fixed;
+  z-index: 998;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.8);
+  display: none;
+}
 .lightbox-div{
   z-index: 999;
   position: relative;
@@ -2453,6 +2515,16 @@ body.template-register .select-widget.choice-field{
   border-bottom: none !important;
 }
 #content a.linkLightbox:hover{
+  text-decoration: underline;
+  color: red !important;
+}
+#content a.linkLightboxPolitica{
+  font-weight: 500;
+  color: red !important;
+  text-decoration: none;
+  border-bottom: none !important;
+}
+#content a.linkLightboxPolitica:hover{
   text-decoration: underline;
   color: red !important;
 }
@@ -3163,6 +3235,11 @@ body.section-consumidor .divLoginDenuncia{
 .formid-formularios form .error{
   border: 1px solid red;
 }
+#folderlisting-main-table input[type="submit"]{
+  padding:3px;
+  margin: 0 0 0 5px;
+  cursor: pointer;
+}
 
 /*FOOTER*/
 #footer{
@@ -3476,6 +3553,58 @@ body.section-consumidor .divLoginDenuncia{
   .portaltype-collective-cover-content div.position-8{
     margin-left: -98%;
     clear: both;
+  }
+  .divMenuLogin{
+    top:0;
+    right: 0;
+  }
+  #portal-header .wrap{
+    width: auto;
+  }
+  .menuLogin{
+    background: #f5f5f5;
+    border: 1px solid #cbcbcb;
+    float: left;
+    width: 131px;
+    top: 100px;
+    position: absolute;
+    right: 1px;
+  }
+  .loginAdmin.logout{
+    background: url(../img/setaLoginMobile.png) no-repeat 6px 12px #3f393b;
+    text-align: -9999px;
+    position: relative;
+    width: 48px;
+    height: 45px;
+    cursor: pointer;
+  }
+  .loginAdmin{
+    background: url(../img/setaLoginMobile.png) no-repeat 6px 12px #3f393b;
+    text-align: -9999px;
+    position: relative;
+    width: 48px;
+    height: 45px;
+    cursor: pointer;
+  }
+  .loginAdmin .setaLogin{
+    color: #202020;
+    padding: 8px;
+    background: #f5f5f5;
+  }
+  .loginAdmin .cadastro{
+    display: none;
+  }
+  .loginAdmin a{
+    background: #f5f5f5;
+    border: 1px solid #cbcbcb;
+    position: absolute;
+    top: 52px;
+    color: #202020;
+    font-size: 0.8em;
+    padding: 8px;
+    right: 0;
+    width: 115px;
+    display: none;
   }
   #footer .menuFooter{
     display:none;
