@@ -2423,6 +2423,8 @@ body.template-register .select-widget.choice-field{
     cursor: pointer;
     text-transform: uppercase;
     width: auto;
+    float: left;
+    clear: both;
 }
 #content .rowlike .option{
     display: inline;
