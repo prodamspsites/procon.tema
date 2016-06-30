@@ -232,7 +232,7 @@
         $('#form-widgets-unidade_federativa').val('SP').attr('disabled', true);
       });
 
-      $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Faça seu login</h2><p>Faça seu login para realizar sua reclamação:</p><div class="field"><label for="__ac_name">Usuário :</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
+      $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Faça seu login</h2><p>Faça seu login para realizar sua reclamação:</p><div class="field"><label for="__ac_name">CPF/CNPJ:</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
 
       $(document).on('blur', '#form-widgets-codigo_enderecamento_postal', function() {
         CEP = $(this).val().replace(/\D/g,'');
@@ -337,9 +337,9 @@
                     element.mask("(99) 9999-9999?9");  
                 }  
             });
-           $("#cep, #form-widgets-codigo_enderecamento_postal, #cep-juridico, .CNPJ").mask("99999-999");
+           $("#cep, #form-widgets-codigo_enderecamento_postal, #cep-juridico").mask("99999-999");
            $("#cpf, #form-widgets-cpf, .CPF").mask("999.999.999-99");
-           $("#cnpj").mask("99.999.999/9999-99");
+           $("#cnpj, .CNPJ").mask("99.999.999/9999-99");
            $("#cnpj-cpf").mask("99.999.999/9999-99");
            $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
            $('#quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto').keyup(function () { 
@@ -905,7 +905,7 @@
       })
 
 
-      $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
+      // $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
        lightboxForm();
        lightboxFormPolitica();
       //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
@@ -1592,16 +1592,16 @@ function testaCNPJ(cnpj) {
 function testaCPF(strCPF) {
 
   if (strCPF.length != 11 || 
-          cpf == "00000000000" || 
-          cpf == "11111111111" || 
-          cpf == "22222222222" || 
-          cpf == "33333333333" || 
-          cpf == "44444444444" || 
-          cpf == "55555555555" || 
-          cpf == "66666666666" || 
-          cpf == "77777777777" || 
-          cpf == "88888888888" || 
-          cpf == "99999999999")
+          strCPF == "00000000000" || 
+          strCPF == "11111111111" || 
+          strCPF == "22222222222" || 
+          strCPF == "33333333333" || 
+          strCPF == "44444444444" || 
+          strCPF == "55555555555" || 
+          strCPF == "66666666666" || 
+          strCPF == "77777777777" || 
+          strCPF == "88888888888" || 
+          strCPF == "99999999999")
               return false;
     var Soma;
     var Resto;
