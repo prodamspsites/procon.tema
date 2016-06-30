@@ -57,7 +57,7 @@
     if ($('body').hasClass('userrole-authenticated')) {
       var currentUser = $('.currentUser').text();
       // $('#portal-header').append('<div class="wrap" style="position:relative"><div class="loginAdmin"><span class="nome">'+currentUser+'</span> <a href="'+portal_url+'/logout" title="sair" class="btnSair">Sair</a></div></div>');
-      // $('.wrap .loginAdmin').show();
+      $('.wrap .loginAdmin').show();
     }
 
     //TEMPLATE BUSCAR_DUVIDAS
@@ -65,7 +65,7 @@
       var currentUser = $('.currentUser').text();
       $('#portal-header nav.menu ul').html('<li><a href="'+portal_url+'/buscar_reclamacoes">Reclamações</a></li><li><a href="'+portal_url+'/buscar_duvidas">Dúvidas</a></li><li><a href="'+portal_url+'/buscar_denuncias">Denúncias</a></li><li><a href="'+portal_url+'/buscar_fornecedores">Fornecedores</a></li>')
       // $('#portal-header').append('<div class="wrap" style="position:relative"><div class="loginAdmin"><span class="nome">'+currentUser+'</span> <a href="'+portal_url+'/logout" title="sair" class="btnSair">Sair</a></div></div>');
-      // $('.wrap .loginAdmin').show();
+      $('.wrap .loginAdmin').show();
     }
 
     $(document).on('click','.btnupload', function(){
@@ -377,12 +377,12 @@
     $('#cnpj-cpf').parent().prepend('<div class="field PFG-RichLabel" id="archetypes-fieldname-dados-do-fornecedor-reclamado"><h4 class="fonteMenor"><strong>Preencha com um CNPJ / CPF válido ou informe o endereço completo do fornecedor.</strong></h3></div><input type="radio" name="pessoa" value="juridica" id="rjuridica" checked /><span class="rpessoa">Pessoa Jurídica</span><input type="radio" name="pessoa" value="fisica" id="rfisica" /><span class="rpessoa">Pessoa Física</span>')
     $(document).on('click','#rfisica', function(){
         $('#cnpj-cpf').parent().find('label').html('CPF:');
-        $("#cnpj-cpf").removeClass('CNPJ').addClass('CPF').mask("999.999.999-99");
+        $("#cnpj-cpf").removeClass('CNPJ').addClass('CPF').mask("999.999.999-99",{placeholder:""});
     });
 
     $(document).on('click','#rjuridica', function(){
         $('#cnpj-cpf').parent().find('label').html('CNPJ:');
-        $("#cnpj-cpf").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99");
+        $("#cnpj-cpf").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99",{placeholder:""});
     });
     $('#rjuridica').click();
 
@@ -613,19 +613,19 @@
           });
       }
 
-    //MENU LOGIN
-    // $(document).on('click','.loginAdmin .setaLogin', function(){
-    //   $('.menuLogin').toggle();
-    //   return false;
-    // });
-    // //MENU LOGIN MOBILE
-    // if ($(window).width() <= 1020){
-    //            $(document).on('click','.loginAdmin', function(){
-    //             $('.menuLogin').toggle();
-    //             $('.loginAdmin a').toggle();
-    //             return false;
-    //           });
-    //     }
+    // MENU LOGIN
+    $(document).on('click','.loginAdmin .setaLogin', function(){
+      $('.menuLogin').toggle();
+      return false;
+    });
+    //MENU LOGIN MOBILE
+    if ($(window).width() <= 1020){
+               $(document).on('click','.loginAdmin', function(){
+                $('.menuLogin').toggle();
+                $('.loginAdmin a').toggle();
+                return false;
+              });
+        }
 
 
     //Altera label do input da tela esqueci minha senha
@@ -648,13 +648,16 @@
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
-
-            $("input[name='form_submit']").before('<div class="campos_exclusivos"><div>')
-            $('.campos_exclusivos').append( $('#archetypes-fieldname-campos-de-uso-exclusivo-para-conveniados-e-acoes-estrategicas').remove().html() + $('#archetypes-fieldname-matricula-codigo').remove().html() )
-
+            wrapper_exclusivos = $('.campos_exclusivos')
+            campo_exclusivo1 = $('#archetypes-fieldname-campos-de-uso-exclusivo-para-conveniados-e-acoes-estrategicas');
+            campo_exclusivo2 = $('#archetypes-fieldname-matricula-codigo');
+            if ((wrapper_exclusivos.length == 0) && (campo_exclusivo1.length != 0) && (campo_exclusivo2.length != 0)) {
+              $("input[name='form_submit']").before('<div class="campos_exclusivos"><div>')
+              $('.campos_exclusivos').append( $(campo_exclusivo1).remove().html() + $(campo_exclusivo2).remove().html() )
+            }
             $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker({dateFormat: 'dd/mm/yy', onSelect: function(date){
                 selectedDate = new Date($.datepicker.formatDate('yy-mm-dd', $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker('getDate')));
-                $('#quando-o-produto-ou-servico-apresentou-problema').first().datepicker({dateFormat: 'dd/mm/yy', minDate: selectedDate});
+                $('#quando-o-produto-ou-servico-apresentou-problema').datepicker({dateFormat: 'dd/mm/yy', minDate: selectedDate});
               }
             })
 
