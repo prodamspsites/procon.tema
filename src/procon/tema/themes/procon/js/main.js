@@ -377,12 +377,12 @@
     $('#cnpj-cpf').parent().prepend('<div class="field PFG-RichLabel" id="archetypes-fieldname-dados-do-fornecedor-reclamado"><h4 class="fonteMenor"><strong>Preencha com um CNPJ / CPF válido ou informe o endereço completo do fornecedor.</strong></h3></div><input type="radio" name="pessoa" value="juridica" id="rjuridica" checked /><span class="rpessoa">Pessoa Jurídica</span><input type="radio" name="pessoa" value="fisica" id="rfisica" /><span class="rpessoa">Pessoa Física</span>')
     $(document).on('click','#rfisica', function(){
         $('#cnpj-cpf').parent().find('label').html('CPF:');
-        $("#cnpj-cpf").removeClass('CNPJ').addClass('CPF').mask("999.999.999-99");
+        $("#cnpj-cpf").removeClass('CNPJ').addClass('CPF').mask("999.999.999-99",{placeholder:""});
     });
 
     $(document).on('click','#rjuridica', function(){
         $('#cnpj-cpf').parent().find('label').html('CNPJ:');
-        $("#cnpj-cpf").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99");
+        $("#cnpj-cpf").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99",{placeholder:""});
     });
     $('#rjuridica').click();
 
@@ -657,7 +657,7 @@
             }
             $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker({dateFormat: 'dd/mm/yy', onSelect: function(date){
                 selectedDate = new Date($.datepicker.formatDate('yy-mm-dd', $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker('getDate')));
-                $('#quando-o-produto-ou-servico-apresentou-problema').first().datepicker({dateFormat: 'dd/mm/yy', minDate: selectedDate});
+                $('#quando-o-produto-ou-servico-apresentou-problema').datepicker({dateFormat: 'dd/mm/yy', minDate: selectedDate});
               }
             })
 
