@@ -648,10 +648,13 @@
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
-
-            $("input[name='form_submit']").before('<div class="campos_exclusivos"><div>')
-            $('.campos_exclusivos').append( $('#archetypes-fieldname-campos-de-uso-exclusivo-para-conveniados-e-acoes-estrategicas').remove().html() + $('#archetypes-fieldname-matricula-codigo').remove().html() )
-
+            wrapper_exclusivos = $('.campos_exclusivos')
+            campo_exclusivo1 = $('#archetypes-fieldname-campos-de-uso-exclusivo-para-conveniados-e-acoes-estrategicas');
+            campo_exclusivo2 = $('#archetypes-fieldname-matricula-codigo');
+            if ((wrapper_exclusivos.length == 0) && (campo_exclusivo1.length != 0) && (campo_exclusivo2.length != 0)) {
+              $("input[name='form_submit']").before('<div class="campos_exclusivos"><div>')
+              $('.campos_exclusivos').append( $(campo_exclusivo1).remove().html() + $(campo_exclusivo2).remove().html() )
+            }
             $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker({dateFormat: 'dd/mm/yy', onSelect: function(date){
                 selectedDate = new Date($.datepicker.formatDate('yy-mm-dd', $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker('getDate')));
                 $('#quando-o-produto-ou-servico-apresentou-problema').first().datepicker({dateFormat: 'dd/mm/yy', minDate: selectedDate});
