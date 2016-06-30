@@ -440,7 +440,7 @@ border-radius: 0px;
   border-right: 5px solid transparent;
   border-bottom: 5px solid #fff;
 }
-#portal-header nav.menu li.subMenu.active a::after{
+#portal-header nav.menu li.subMenu:hover a::after{
   content: "";
   display: inline-block;
   vertical-align: middle;
@@ -451,7 +451,7 @@ border-radius: 0px;
 
   border-left: 5px solid transparent;
   border-right: 5px solid transparent;
-  border-top: 5px solid #f21c30;
+  border-top: 5px solid #3f393b;
 }
 .btnMenuResp{
   background: url(../img/icoMenuResp.png) no-repeat center 20px #3f393b;
@@ -1244,6 +1244,8 @@ body.subsection-duvidas .divAccordeon h3 span{
   float: left;
   clear: both;
   margin: 0 0 0 -15px;
+  background: #eee;
+  padding: 4px 20px 21px 16px;
 }
 .campos_exclusivos label{
   float: left;
@@ -3536,6 +3538,10 @@ body.section-consumidor .divLoginDenuncia{
   }
   #portal-header .divBusca{
     display: none;
+    background: #cdcdcd;
+    width: 99%;
+    margin: -12px 0 0 0;
+    padding: 14px;
   }
   #portal-header #logoProcon{
     margin: 0;
@@ -3688,6 +3694,20 @@ body.section-consumidor .divLoginDenuncia{
     color:white;
   }
   #portal-header nav.menu li.subMenu.active a::after{
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 0;
+    height: 0;
+
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid #fff !important;
+    border-top: none !important;
+    margin-top: -1px;
+  }
+  #portal-header nav.menu li.subMenu a::after{
     content: "";
     display: inline-block;
     vertical-align: middle;
