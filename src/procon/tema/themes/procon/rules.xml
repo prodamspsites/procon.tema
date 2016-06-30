@@ -19,6 +19,7 @@
         <replace css:theme="#content" css:content="#content" />
         <replace css:theme="#portal-breadcrumbs" css:content="#portal-breadcrumbs" />
         <drop css:theme="#portal-breadcrumbs" css:if-content=".portaltype-collective-cover-content" />
+        <replace css:theme=".divMenuLogin" css:content=".divMenuLogin" css:if-content=".divMenuLogin" />
         <replace css:theme="#logoProcon" css:content="#logoProcon" />
         <replace css:theme=".social" css:content=".social" />
         <!-- <replace css:theme=".modoAdmin" css:content=".modoAdmin" /> -->
