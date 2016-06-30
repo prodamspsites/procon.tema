@@ -955,6 +955,15 @@
     }
 
 
+    //VALIDA FORM DENUNCIA
+    $(".formid-formulario-de-denuncia form").submit(function( event ) {
+      if($('.contentLightbox input').prop('checked')==false) {
+        $('.contentLightbox').css('border','1px solid red');
+          event.preventDefault();
+          return false;
+      }
+    });
+
     //CARREGA O NUMERO DE PROTOCOLO NA PAGINA DE OBRIGADO DO FORMULÁRIO DENUNCIA
     if ($('body').hasClass('template-fg_thankspage_view_p3') && $('body').hasClass('subsection-formulario-de-denuncia')){
 
