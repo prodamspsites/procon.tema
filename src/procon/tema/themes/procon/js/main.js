@@ -57,7 +57,7 @@
     if ($('body').hasClass('userrole-authenticated')) {
       var currentUser = $('.currentUser').text();
       // $('#portal-header').append('<div class="wrap" style="position:relative"><div class="loginAdmin"><span class="nome">'+currentUser+'</span> <a href="'+portal_url+'/logout" title="sair" class="btnSair">Sair</a></div></div>');
-      // $('.wrap .loginAdmin').show();
+      $('.wrap .loginAdmin').show();
     }
 
     //TEMPLATE BUSCAR_DUVIDAS
@@ -65,7 +65,7 @@
       var currentUser = $('.currentUser').text();
       $('#portal-header nav.menu ul').html('<li><a href="'+portal_url+'/buscar_reclamacoes">Reclamações</a></li><li><a href="'+portal_url+'/buscar_duvidas">Dúvidas</a></li><li><a href="'+portal_url+'/buscar_denuncias">Denúncias</a></li><li><a href="'+portal_url+'/buscar_fornecedores">Fornecedores</a></li>')
       // $('#portal-header').append('<div class="wrap" style="position:relative"><div class="loginAdmin"><span class="nome">'+currentUser+'</span> <a href="'+portal_url+'/logout" title="sair" class="btnSair">Sair</a></div></div>');
-      // $('.wrap .loginAdmin').show();
+      $('.wrap .loginAdmin').show();
     }
 
     $(document).on('click','.btnupload', function(){
@@ -613,7 +613,7 @@
           });
       }
 
-    MENU LOGIN
+    // MENU LOGIN
     $(document).on('click','.loginAdmin .setaLogin', function(){
       $('.menuLogin').toggle();
       return false;
