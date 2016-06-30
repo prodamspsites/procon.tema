@@ -963,6 +963,12 @@
     }
 
 
+    $('.kssattr-formname-register').submit(function( e ) {
+      e.preventDefault();
+      $('.CNPJ').val( $('.CNPJ').val().replace(/\D/g,"") )
+      $('.kssattr-formname-register').submit();
+    })
+
     //VALIDA FORM DENUNCIA
     $(".formid-formulario-de-denuncia form").submit(function( event ) {
       if($('.contentLightbox input').prop('checked')==false) {
