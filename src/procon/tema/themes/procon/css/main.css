@@ -1244,6 +1244,8 @@ body.subsection-duvidas .divAccordeon h3 span{
   float: left;
   clear: both;
   margin: 0 0 0 -15px;
+  background: #eee;
+  padding: 4px 20px 21px 16px;
 }
 .campos_exclusivos label{
   float: left;
