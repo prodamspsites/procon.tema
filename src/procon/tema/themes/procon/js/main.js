@@ -339,7 +339,7 @@
             });
            $("#cep, #form-widgets-codigo_enderecamento_postal, #cep-juridico").mask("99999-999");
            $("#cpf, #form-widgets-cpf, .CPF").mask("999.999.999-99");
-           $("#cnpj, .CNPJ").mask("99.999.999/9999-99");
+           $("#cnpj, .CNPJ").mask("99.999.999.9999-99");
            $("#cnpj-cpf").mask("99.999.999/9999-99");
            $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
            $('#quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto').keyup(function () { 
@@ -961,13 +961,6 @@
       //var itensObrigado = $("#content").detach();
       $('#content').html('<div class="form-group active" style="display:block"></div><div class="form-group2 active" style="display:block"></div><div class="form-group sucesso" style="display:block"><div class="sucessoReclamacao" style="display:block"><p><strong>Sua reclamação foi enviada com sucesso!</strong></p><p>O número de seu atendimento é:</p><span class="numeroProtocolo">'+protocoloNumber+'</span><p>Guarde o número de seu protocolo. Ele é a garantia do registro de sua reclamação</p><p>Esclarecemos que a cada andamento de sua reclamação, comunicaremos você por e-mail.</p></div></div>');
     }
-
-
-    $('.kssattr-formname-register').submit(function( e ) {
-      e.preventDefault();
-      $('.CNPJ').val( $('.CNPJ').val().replace(/\D/g,"") )
-      $('.kssattr-formname-register').submit();
-    })
 
     //VALIDA FORM DENUNCIA
     $(".formid-formulario-de-denuncia form").submit(function( event ) {
