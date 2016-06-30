@@ -649,9 +649,8 @@
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
 
-            // $("input[name='form_submit']").after('<div class="campos_exclusivos"><div>')
-            // $('.campos_exclusivos').append( $('#archetypes-fieldname-campos-de-uso-exclusivo-para-conveniados-e-acoes-estrategicas').remove().html() +
-            //                                 $('#archetypes-fieldname-matricula-codigo').remove().html() )
+            $("input[name='form_submit']").before('<div class="campos_exclusivos"><div>')
+            $('.campos_exclusivos').append( $('#archetypes-fieldname-campos-de-uso-exclusivo-para-conveniados-e-acoes-estrategicas').remove().html() + $('#archetypes-fieldname-matricula-codigo').remove().html() )
 
             $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker({dateFormat: 'dd/mm/yy', onSelect: function(date){
                 selectedDate = new Date($.datepicker.formatDate('yy-mm-dd', $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker('getDate')));

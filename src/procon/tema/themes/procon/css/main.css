@@ -1240,6 +1240,26 @@ body.subsection-duvidas .divAccordeon h3 span{
 .divAccordeon p a{
   color: #f21c30;
 }
+.campos_exclusivos{
+  float: left;
+  clear: both;
+  margin: 0 0 0 -15px;
+}
+.campos_exclusivos label{
+  float: left;
+  clear: both;
+  margin: 15px 0 0 0;
+}
+.campos_exclusivos select{
+  float: left;
+  clear: both;
+  margin: 8px 0 0 0;
+}
+.campos_exclusivos input{
+  float: left;
+  clear: both;
+  margin: 8px 0 0 0;
+}
 /*BUSCA*/
 .blocoBusca{
   border-top: 1px solid #e8e8e8;
