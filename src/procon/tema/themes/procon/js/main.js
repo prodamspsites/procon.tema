@@ -905,7 +905,7 @@
       })
 
 
-      $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
+      // $('<div class="usuario-ativo"><span>logado como: <strong>'+currentUser+'</strong> | <a href="'+portal_url+'/logout">sair</a></span></div>').insertBefore($("input[name='form_submit']"));
        lightboxForm();
        lightboxFormPolitica();
       //CARREGA O PROTOCOLO NA VARIAVEL E COLOCA DENTRO DO INPUT
