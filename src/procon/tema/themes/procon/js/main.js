@@ -438,6 +438,14 @@
       }
     })
 
+    $(document).on('blur', '#cnpj', function() {
+      CNPJ = $(this).val().replace(/\D/g,'');
+      if (!(testaCNPJ(CNPJ))) {
+        alert('CNPJ inválido')
+        $(this).val('')
+      }
+    })
+
     $(document).on('blur', '.formid-formularios .inputObrigatorio', function() {
         testaOtherInput($(this));
     })
