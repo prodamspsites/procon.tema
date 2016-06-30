@@ -613,19 +613,19 @@
           });
       }
 
-    //MENU LOGIN
-    // $(document).on('click','.loginAdmin .setaLogin', function(){
-    //   $('.menuLogin').toggle();
-    //   return false;
-    // });
-    // //MENU LOGIN MOBILE
-    // if ($(window).width() <= 1020){
-    //            $(document).on('click','.loginAdmin', function(){
-    //             $('.menuLogin').toggle();
-    //             $('.loginAdmin a').toggle();
-    //             return false;
-    //           });
-    //     }
+    MENU LOGIN
+    $(document).on('click','.loginAdmin .setaLogin', function(){
+      $('.menuLogin').toggle();
+      return false;
+    });
+    //MENU LOGIN MOBILE
+    if ($(window).width() <= 1020){
+               $(document).on('click','.loginAdmin', function(){
+                $('.menuLogin').toggle();
+                $('.loginAdmin a').toggle();
+                return false;
+              });
+        }
 
 
     //Altera label do input da tela esqueci minha senha
