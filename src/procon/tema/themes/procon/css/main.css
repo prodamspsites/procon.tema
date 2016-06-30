@@ -2577,6 +2577,14 @@ h4.fonteMenor {
 #content .kssattr-formname-register input.error{
   border:1px solid red;
 }
+#content .kssattr-formname-register select{
+  float: left;
+  color: #424242;
+  margin:0 0 0 8px;
+  height: 32px;
+  border:1px solid #ccc;
+  background: white;
+}
 #content .formDuvidas .btnTooltip{
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
