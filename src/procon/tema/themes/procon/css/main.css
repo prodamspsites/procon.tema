@@ -2724,6 +2724,51 @@ h4.fonteMenor {
     width: auto;
     font-size: 1em;
 }
+#pwreset_action input[type=submit] {
+    margin-top: 20px;
+    cursor: pointer;
+    background: #710e0f;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 5px 8px 5px 8px;
+    display: inline;
+    margin: 15px 0 25px 0;
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    clear: both;
+    float: left;
+    width: auto;
+    font-size: 1em;
+}
+#pwreset_action label{
+    color: #424242;
+    font-family: 'Roboto';
+    font-weight: normal;
+    font-size: 1.2em;
+    float: left;
+    padding: 3px 0 0 8px;
+    margin: 15px 0 0 0;
+}
+#pwreset_action input[type=submit] {
+    margin-top: 20px;
+    cursor: pointer;
+    background: #710e0f;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 5px 8px 5px 8px;
+    display: inline;
+    margin: 15px 0 25px 0;
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    clear: both;
+    float: left;
+    width: auto;
+    font-size: 1em;
+}
 .kssattr-formname-change-password input{
   border: 1px solid #ccc;
   height: 32px;
