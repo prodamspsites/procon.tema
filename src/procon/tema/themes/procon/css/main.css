@@ -539,6 +539,13 @@ border-radius: 0px;
   letter-spacing: 0.005em;
   font-weight: 500;
 }
+.template-change-password #content h1.documentFirstHeading{
+  color: #424242;
+  font-family: 'Roboto', Arial;
+  margin: 10px 0 0 0;
+  letter-spacing: 0.005em;
+  font-weight: 500;
+}
 #content p{
   font-size: 1.2em;
   color: #333;
@@ -2770,14 +2777,20 @@ h4.fonteMenor {
     width: auto;
     font-size: 1em;
 }
+.template-change-password .discreet{
+  display: none;
+}
+.template-change-password #edit-bar{
+  display: none;
+}
 .kssattr-formname-change-password input{
   border: 1px solid #ccc;
-  height: 32px;
-  padding: 3px 0 0 5px;
+  height: 28px;
+  padding: 3px 0 0 0;
   width: 50%;
   float: left;
   clear: both;
-  margin: 12px 0 0 0;
+  margin: 0 0 0 0;
   font-size: 1.3em;
   font-family: 'Roboto';
 }
@@ -2787,7 +2800,7 @@ h4.fonteMenor {
     font-weight: normal;
     font-size: 1.2em;
     float: left;
-    padding: 3px 0 0 8px;
+    padding: 3px 0 0 0;
     margin: 15px 0 0 0;
 }
 .kssattr-formname-change-password .fieldErrorBox .error{
