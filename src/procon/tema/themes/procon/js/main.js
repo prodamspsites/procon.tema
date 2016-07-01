@@ -1013,6 +1013,12 @@ var jq = jQuery.noConflict();
     }
 
 
+    //CARREGA MENSAGEM DE OBRIGADO DO FORMULÁRIO FORNECEDOR
+    if ($('body').hasClass('template-fg_thankspage_view_p3') && $('body').hasClass('section-contato')){
+      //var itensObrigado = $("#content").detach();
+      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Problemas no site?</h1><p>Sua mensagem foi recebida e será respondida em breve.</p><p>PROCON Paulistano.</p></div>');
+    }
+
     //CADASTRO PESSOA FISICA OU JURIDICA
     $('.formid-cadastro-de-pessoa-fisica-e-juridica #tipo-de-consumidor_1').click(function(){
       $('#pfg-fieldsetname-juridica').hide();
