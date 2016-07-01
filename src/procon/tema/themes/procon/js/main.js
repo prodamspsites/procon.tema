@@ -1,5 +1,11 @@
+var jq = jQuery.noConflict();
+
 (function($) {
   $(document).ready(function() {
+    if ($('body').hasClass('section-contato')) {
+      $('#pfg-fieldwrapper').removeAttr('id');
+    }
+
     $.urlParam = function(name){
         var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
         if (results==null){
@@ -385,6 +391,24 @@
         $("#cnpj-cpf").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99",{placeholder:""});
     });
     $('#rjuridica').click();
+
+
+
+    $(document).on('blur', '.divProtocolo .inputProtocolo', function() {
+      testaProcotoloConsumidor($(this))
+    })
+
+
+    function testaProcotoloConsumidor(inputObject) {
+      protocolo = $(inputObject).val().replace(/\D/g,'')
+      validador_str = protocolo.substring(0, 4);
+      if ((protocolo != '') && (2014 < parseInt(validador_str)) && (parseInt(validador_str) < 2030)) {
+        $('.btnProsseguir').removeClass('disabled').attr('disabled', false)
+      } else {
+        alert('Protocolo inválido');
+      }
+    }
+
 
     $(document).on('blur', '.CPF, #cpf', function() {
       CPF = $(this).val().replace(/\D/g,'');
@@ -1532,8 +1556,6 @@
             return ((a < b) ? 1 : ((a > b) ? -1 : 0));
         }
         } );
-
-
 
 
   })
