@@ -2687,6 +2687,90 @@ h4.fonteMenor {
   font-size: 1.2em;
   font-family: 'Roboto';
 }
+#mail_password input{
+  border: 1px solid #ccc;
+  height: 32px;
+  padding: 3px 0 0 5px;
+  width: 50%;
+  float: left;
+  clear: both;
+  margin: 12px 0 0 0;
+  font-size: 1.3em;
+  font-family: 'Roboto';
+}
+#mail_password label{
+    color: #424242;
+    font-family: 'Roboto';
+    font-weight: normal;
+    font-size: 1.2em;
+    float: left;
+    padding: 3px 0 0 8px;
+    margin: 15px 0 0 0;
+}
+#mail_password input[type=submit] {
+    margin-top: 20px;
+    cursor: pointer;
+    background: #710e0f;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 5px 8px 5px 8px;
+    display: inline;
+    margin: 15px 0 25px 0;
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    clear: both;
+    float: left;
+    width: auto;
+    font-size: 1em;
+}
+.kssattr-formname-change-password input{
+  border: 1px solid #ccc;
+  height: 32px;
+  padding: 3px 0 0 5px;
+  width: 50%;
+  float: left;
+  clear: both;
+  margin: 12px 0 0 0;
+  font-size: 1.3em;
+  font-family: 'Roboto';
+}
+.kssattr-formname-change-password label{
+    color: #424242;
+    font-family: 'Roboto';
+    font-weight: normal;
+    font-size: 1.2em;
+    float: left;
+    padding: 3px 0 0 8px;
+    margin: 15px 0 0 0;
+}
+.kssattr-formname-change-password .fieldErrorBox .error{
+  border: none;
+  font-size: 1.4em;
+}
+.kssattr-formname-change-password input[type=submit] {
+    margin-top: 20px;
+    cursor: pointer;
+    background: #710e0f;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 5px 8px 5px 8px;
+    display: inline;
+    margin: 15px 0 25px -15px;
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    clear: both;
+    float: left;
+    width: auto;
+    font-size: 1em;
+}
+.kssattr-formname-change-password div.field.error{
+  float: left;
+  width: 80%;
+}
 .form-group input{
   border: 1px solid #ccc;
   height: 32px;
