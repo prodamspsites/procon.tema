@@ -2353,6 +2353,14 @@ body.template-register .portalMessage.error {
   display: none;
 }
 
+.template-register #form-widgets-fullname {
+  clear: both;
+}
+
+.template-register .kssattr-formname-register select {
+  padding: 0;
+}
+
 #content .rowlike .proconSPmessage{
   clear: both;
   text-align: justify;
