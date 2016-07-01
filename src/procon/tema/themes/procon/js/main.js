@@ -2,6 +2,10 @@ var jq = jQuery.noConflict();
 
 (function($) {
   $(document).ready(function() {
+    if ($('body').hasClass('section-contato')) {
+      $('#pfg-fieldwrapper').removeAttr('id');
+    }
+
     $.urlParam = function(name){
         var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
         if (results==null){
@@ -1552,8 +1556,6 @@ var jq = jQuery.noConflict();
             return ((a < b) ? 1 : ((a > b) ? -1 : 0));
         }
         } );
-
-
 
 
   })
