@@ -1,3 +1,5 @@
+var jq = jQuery.noConflict();
+
 (function($) {
   $(document).ready(function() {
     $.urlParam = function(name){
