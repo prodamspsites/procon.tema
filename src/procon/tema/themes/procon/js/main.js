@@ -386,6 +386,24 @@
     });
     $('#rjuridica').click();
 
+
+
+    $(document).on('blur', '.divProtocolo .inputProtocolo', function() {
+      testaProcotoloConsumidor($(this))
+    })
+
+
+    function testaProcotoloConsumidor(inputObject) {
+      protocolo = $(inputObject).val().replace(/\D/g,'')
+      validador_str = protocolo.substring(0, 4);
+      if ((protocolo != '') && (2014 < parseInt(validador_str)) && (parseInt(validador_str) < 2030)) {
+        $('.btnProsseguir').removeClass('disabled').attr('disabled', false)
+      } else {
+        alert('Protocolo inválido');
+      }
+    }
+
+
     $(document).on('blur', '.CPF, #cpf', function() {
       CPF = $(this).val().replace(/\D/g,'');
       inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, #uf')

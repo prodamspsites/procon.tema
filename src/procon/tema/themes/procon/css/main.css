@@ -2604,7 +2604,8 @@ h4.fonteMenor {
 #content .formDuvidas .btnTooltip:hover{
   color: white !important;
 }
-.form-group .btnBuscar.disabled{
+.form-group .btnBuscar.disabled,
+.btnProsseguir.disabled {
   opacity: 0.5;
   cursor: auto;
 }
