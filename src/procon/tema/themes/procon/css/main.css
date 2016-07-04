@@ -1075,7 +1075,7 @@ body.portaltype-collective-cover-content #content .cover-embed-tile{
   height: 89px;
   margin: 100px 0 20px 0;
 }
-.divNoticias h1{
+#main-content .divNoticias h1{
     text-align: center;
     color: #fff;
     font-size: 1.7em;

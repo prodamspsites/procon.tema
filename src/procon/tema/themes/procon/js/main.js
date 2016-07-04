@@ -83,6 +83,7 @@ var jq = jQuery.noConflict();
     if ($('body').hasClass('template-change-password')) {
       $('html head').find('title').text("Trocar Senha");
       $('#content .documentFirstHeading').html('Trocar Senha');
+      $('#breadcrumbs-current')html('Trocar Senha');
     }
 
      if ($('body').hasClass('template-pwreset_finish')) {
