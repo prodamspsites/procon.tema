@@ -1356,6 +1356,60 @@ body.subsection-duvidas .divAccordeon h3 span{
   padding: 0 10px 0 0;
   font-size: 0.9em !important;
 }
+.resposta_duvida ul li{
+  font-size: 1.2em;
+  color: #424242;
+}
+#feedback_form input[type=submit] {
+    margin-top: 20px;
+    cursor: pointer;
+    background: #710e0f;
+    color: #fff;
+    text-transform: uppercase;
+    padding: 5px 8px 5px 8px;
+    display: inline;
+    margin: 15px 0 25px 0;
+    border: none;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    clear: both;
+    float: left;
+    width: auto;
+    font-size: 1em;
+}
+#feedback_form .formHelp{
+    clear: both;
+    margin: 0 0 0 0;
+}
+#feedback_form .fieldRequired{
+      margin: 12px 0 0 4px;
+    float: left;
+}
+#feedback_form input{
+  height: 31px;
+  border: 1px solid #ccc;
+  float: left;
+  clear: both;
+  color: #727272;
+  font-family: 'Roboto';
+  padding: 0 0 0 10px;
+  margin-top: 5px;
+}
+#feedback_form label{
+  font-weight: normal;
+  font-size: 1.1em;
+  font-family: 'Roboto';
+  margin:15px 0 0 0;
+  float: left;
+  clear: both;
+}
+#feedback_form textarea{
+  border:1px solid #ccc;
+  width: 413px;
+  height: 119px;
+  background: white;
+}
 .divAccordeon .respostaUtil{
   border: none;
   background: url(../img/img-dot.gif) repeat-x top;
