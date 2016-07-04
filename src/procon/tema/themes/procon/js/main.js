@@ -67,7 +67,10 @@ var jq = jQuery.noConflict();
     }
 
     //BREADCRUMB ESQUECI SENHA
-    $('#portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Redefinir Senha</span></span>')
+    $('.template-mail_password_form #portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Redefinir Senha</span></span>')
+
+    //LOGIN
+    $('.template-register #breadcrumbs-current').html('Login');
 
     //TEMPLATE BUSCAR_DUVIDAS
     if ($('body').hasClass('template-buscar_duvidas') || $('body').hasClass('template-buscar_reclamacoes') || $('body').hasClass('template-buscar_denuncias') || $('body').hasClass('template-buscar_fornecedores')) {

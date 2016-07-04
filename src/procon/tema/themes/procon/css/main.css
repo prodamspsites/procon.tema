@@ -2702,6 +2702,20 @@ h4.fonteMenor {
   font-size: 1.2em;
   font-family: 'Roboto';
 }
+#main-content h1{
+  color: #424242;
+  font-family: 'Roboto', Arial;
+  margin: 10px 0 0 0;
+  letter-spacing: 0.005em;
+  font-weight: 500;
+}
+#content .documentDescription{
+  font: 1.1em "Roboto" !important;
+  color: #555 !important;
+  margin: 20px 0 0.2em 0;
+  display: block;
+  font-weight: normal !important;
+}
 #mail_password input{
   border: 1px solid #ccc;
   height: 32px;
@@ -2712,6 +2726,9 @@ h4.fonteMenor {
   margin: 12px 0 0 0;
   font-size: 1.3em;
   font-family: 'Roboto';
+}
+#mail_password legend{
+  display: none;
 }
 #mail_password label{
     color: #424242;
