@@ -66,8 +66,48 @@ var jq = jQuery.noConflict();
       $('.wrap .loginAdmin').show();
     }
 
-    //BREADCRUMB ESQUECI SENHA
-    $('.template-mail_password_form #portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Redefinir Senha</span></span>')
+    //PAGINA ESQUECI SENHA/LOGIN/TROCAR SENHA/RESET
+    $('.template-logged_out #portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Login</span></span>');
+    $('#content #mail_password input[type="submit"]').val('Enviar');
+
+    $('.template-registered #content .documentFirstHeading').html('Sucesso');
+    $('.template-login_success #content .documentFirstHeading').html('Bem vindo');
+
+    if ($('body').hasClass('template-mail_password_form')) {
+      $('html head').find('title').text("Esqueci Minha Senha");
+      $('#content .documentFirstHeading').html('Esqueci Minha Senha');
+      $('#mail_password .field label').text('O meu CPF/CNPJ é:');
+      $('.template-mail_password_form #portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Esqueci minha senha</span></span>');
+    }
+
+    if ($('body').hasClass('template-change-password')) {
+      $('html head').find('title').text("Trocar Senha");
+      $('#content .documentFirstHeading').html('Trocar Senha');
+    }
+
+     if ($('body').hasClass('template-pwreset_finish')) {
+      $('html head').find('title').text("Senha Definida");
+      $('#content .documentFirstHeading').html('Senha Definida');
+      $('#content .documentDescription').html('Sua senha foi definida com sucesso. Clique aqui para acessar o <a href="/@@register" style="color:#f21c30">site</a>');
+      $('#portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Senha Definida</span></span>');
+    }
+    if ($('body').hasClass('template-mail_password_response')) {
+      $('html head').find('title').text("Esqueci Minha Senha");
+      $('#content .documentFirstHeading').html('Esqueci Minha Senha');
+      $('#portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Esqueci minha senha</span></span>');
+      $('.documentDescription').html('Sua solicitação foi enviada. Você receberá uma mensagem no e-mail cadastrado. Clique no link informado na mensagem para efetuar a mudança da senha.');
+    }
+    if ($('body').hasClass('template-pwreset_form')) {
+      $('#content .documentFirstHeading').html('Esqueci Minha Senha');
+      $('label[for="userid"]').html('CPF / CNPJ:');
+      $('label[for="userid"]').parent().find('.formHelp').html('Informe seu CPF / CNPJ para verificação.');
+      $('label[for="password"]').parent().find('.formHelp').html('Informe a sua nova senha. Ela deve ter no mínimo 5 caracteres.');
+      $('input[type="submit"]').val('Enviar');
+    }
+    if ($('body').hasClass('template-pwreset_finish')) {
+      $('#breadcrumbs-current').html('Senha Definida');
+      $('#content .documentDescription').html('Sua senha foi definida com sucesso. Clique aqui para acessar o <a href="/@@register" style="color:#f21c30">site</a>');
+    }
 
     //LOGIN
     $('.template-register #breadcrumbs-current').html('Login');
@@ -664,13 +704,6 @@ var jq = jQuery.noConflict();
                 return false;
               });
         }
-
-
-    //Altera label do input da tela esqueci minha senha
-
-    if ($('body').hasClass('template-mail_password_form')){
-      $('#mail_password .field label').text('O meu CPF/CNPJ é:')
-    }
 
 
     //OCULTA FORMULARIO CONSUMIDOR

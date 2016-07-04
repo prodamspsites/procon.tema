@@ -2716,21 +2716,35 @@ h4.fonteMenor {
   display: block;
   font-weight: normal !important;
 }
-#mail_password input{
+#pwreset_action .formHelp {
+    /* display: none; */
+    clear: both;
+    margin: 0 0 0 9px;
+}
+#mail_password input, #pwreset_action input{
   border: 1px solid #ccc;
   height: 32px;
   padding: 3px 0 0 5px;
   width: 50%;
   float: left;
   clear: both;
-  margin: 12px 0 0 0;
+  margin: 7px 0 0 0;
   font-size: 1.3em;
   font-family: 'Roboto';
 }
-#mail_password legend{
+#mail_password legend, #pwreset_action legend{
   display: none;
 }
-#mail_password label{
+#content #pwreset_action fieldset{
+  border: none;
+}
+#content #mail_password fieldset{
+  border: none;
+}
+.template-logged_out .documentFirstHeading, .template-logged_out #content .documentDescription{
+  display:none;
+}
+#mail_password label, #pwreset_action label{
     color: #424242;
     font-family: 'Roboto';
     font-weight: normal;
