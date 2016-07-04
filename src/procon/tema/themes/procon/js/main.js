@@ -83,7 +83,7 @@ var jq = jQuery.noConflict();
     if ($('body').hasClass('template-change-password')) {
       $('html head').find('title').text("Trocar Senha");
       $('#content .documentFirstHeading').html('Trocar Senha');
-      $('#breadcrumbs-current')html('Trocar Senha');
+      $('#breadcrumbs-current').html('Trocar Senha');
     }
 
      if ($('body').hasClass('template-pwreset_finish')) {
@@ -182,7 +182,7 @@ var jq = jQuery.noConflict();
       document.title = 'Formulário de Registro - Procon Paulistano';
       form = $('.kssattr-formname-register')
       $('#form-widgets-cadastro-0').prop('checked', true);
-      municipio = '<div class="proconSPmessage"><p><strong>O PROCON PAULISTANO DIGITAL tem como atribuição atender os consumidores domiciliados no Município de São Paulo.</strong></p><p>A proteção e defesa do consumidor constitui-se em um sistema nacional coordenado pela Secretaria Nacional do Consumidor e integrado por diversos órgãos de defesa - federais, estaduais e municipais.</p><p>Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade. <a href="http://www.procon.sp.gov.br/categoria.asp?id=209" target="_blank">Acesse aqui</a> a lista dos Procons Municipais. Caso a sua cidade não esteja na lista, entre em contato com a <a href="http://www.procon.sp.gov.br/categoria.asp?id=42" target="_blank"> FUNDAÇÃO PROCON.</a></p></div>';
+      municipio = '<div class="proconSPmessage"><p class="proconSPmessage"><strong>O PROCON PAULISTANO DIGITAL tem como atribuição atender os consumidores domiciliados no Município de São Paulo.</strong></p><p class="proconSPmessage">A proteção e defesa do consumidor constitui-se em um sistema nacional coordenado pela Secretaria Nacional do Consumidor e integrado por diversos órgãos de defesa - federais, estaduais e municipais.</p><p class="proconSPmessage">Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade. <a href="http://www.procon.sp.gov.br/categoria.asp?id=209" target="_blank">Acesse aqui</a> a lista dos Procons Municipais. Caso a sua cidade não esteja na lista, entre em contato com a <a href="http://www.procon.sp.gov.br/categoria.asp?id=42" target="_blank"> FUNDAÇÃO PROCON.</a></p></div>';
       tipo = $('.kssattr-fieldname-form\\.widgets\\.cadastro').clone();
       nome = $('.kssattr-fieldname-form\\.widgets\\.fullname').clone();
       $('label', nome).text('Nome completo *');
@@ -252,7 +252,7 @@ var jq = jQuery.noConflict();
                    );
 
       $(municipio, pj).remove()
-      $(pj).prepend($(municipio).html() + $(tipo).html() + '<br /><p class="mensagemPJ">O PROCON PAULISTANO DIGITAL pode atender pessoas jurídicas na condição de consumidoras. Cumpre esclarecer que a pessoa jurídica pode ser considerada consumidora quando adquire produto ou serviço como destinatária final, isto é, quando utiliza o produto ou serviço para satisfazer sua própria necessidade e não a de seus clientes.</p>' +
+      $(pj).prepend($(municipio).html() + $(tipo).html() + '<br /><p class="proconSPmessage">O PROCON PAULISTANO DIGITAL pode atender pessoas jurídicas na condição de consumidoras. Cumpre esclarecer que a pessoa jurídica pode ser considerada consumidora quando adquire produto ou serviço como destinatária final, isto é, quando utiliza o produto ou serviço para satisfazer sua própria necessidade e não a de seus clientes.</p>' +
                     $(user_CNPJ).html() + $(razao_social).html() + $(nome_fantasia).html() + 
                     $(tipo_societario).html() + $(enquadramento).html() + $(responsavel).html() +
                     $(cpf_pj).html() + $(rg_pj).html() + $(expeditor).html() + $(uf_expedidor).html() +
