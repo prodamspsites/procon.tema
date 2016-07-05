@@ -71,8 +71,11 @@ var jq = jQuery.noConflict();
     $('#content #mail_password input[type="submit"]').val('Enviar');
 
     $('.template-registered #content .documentFirstHeading').html('Sucesso');
-    $('.template-login_success #content .documentFirstHeading').html('Bem vindo');
 
+    if ($('body').hasClass('template-login_success')) {
+      $('.template-login_success #content .documentFirstHeading').html('Você agora está autenticado');
+      $('#content-core div p').html('Note que a barra superior direita foi modificada.<br />Ela agora contém uma área com seu CPF/CNPJ. Clique na seta ao lado do seu CPF/CNPJ para sair com segurança ou alterar sua senha.<br /><br />Atenção! Se você não permanacer autenticado após deixa esta página configure o seu navegador para habilitar o uso de cookies.')
+    }
     if ($('body').hasClass('template-mail_password_form')) {
       $('html head').find('title').text("Esqueci Minha Senha");
       $('#content .documentFirstHeading').html('Esqueci Minha Senha');
@@ -737,7 +740,7 @@ var jq = jQuery.noConflict();
             $('#archetypes-fieldname-cpf').hide();
             $('#archetypes-fieldname-quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #archetypes-fieldname-valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').hide()
             $('#nome-da-empresa-fornecedor').val($('#project').val());
-            if ($('body').hasClass('userrole-anonymous')) {
+            if ($('body').hasClass('userrole-anonymous') && $('.irparalogin').length ==0) {
               $('#content').append('<div class="pfg-form formid-formularios"><div class="facaReclamaLogin"><strong>Cadastre-se ou faça login para prosseguir:<br><a href="'+portal_url+'/@@register" class="irparalogin" title="IR PARA CADASTRO/LOGIN">IR PARA CADASTRO/LOGIN</a></div></div>');
             }
             //REMOVER FORM RECLAMACAO CASO USUARIO ESTIVER DESLOGADO
@@ -1056,7 +1059,7 @@ var jq = jQuery.noConflict();
     //CARREGA MENSAGEM DE OBRIGADO DO FORMULÁRIO FORNECEDOR
     if ($('body').hasClass('template-fg_thankspage_view_p3') && $('body').hasClass('section-contato')){
       //var itensObrigado = $("#content").detach();
-      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Problemas no site?</h1><p>Sua mensagem foi recebida e será respondida em breve.</p><p>PROCON Paulistano.</p></div>');
+      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Obrigado</h1><p>Sua mensagem foi enviada com sucesso para a Administração do site.</p><p>Em breve, entraremos em contato.</p></div>');
     }
 
     //CADASTRO PESSOA FISICA OU JURIDICA
@@ -1129,7 +1132,7 @@ var jq = jQuery.noConflict();
 
                 $('.linkRedireciona').attr('href', urlEmpresa);
                 $('.divRedireciona').slideUp();
-                $('.pfg-form.formid-formularios').hide();
+                $('.pfg-form.formid-formularios').remove();
                 $('.divRedireciona').slideDown();
                 $('.form-group .btnBuscar').hide();
 
