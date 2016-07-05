@@ -2481,6 +2481,9 @@ body.template-register .portalMessage.error {
   float: left;
   padding: 10px 0 0 0;
 }
+#content .rowlike .proconSPmessage a{
+  color: #f21c30;
+}
 body.template-register #content .rowlike {
   padding: 60px 18px 18px 18px;
   border: 1px solid #eee;
