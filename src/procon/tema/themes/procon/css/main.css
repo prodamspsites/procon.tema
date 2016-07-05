@@ -2706,6 +2706,9 @@ h4.fonteMenor {
 #content .kssattr-formname-register input.error{
   border:1px solid red;
 }
+#content .kssattr-formname-register p{
+  text-align: justify;
+}
 #content .kssattr-formname-register select{
   float: left;
   color: #424242;

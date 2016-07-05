@@ -183,6 +183,7 @@ var jq = jQuery.noConflict();
     //AJUSTE NO TEMPLATE DE CADASTRO
     if ($('body').hasClass('template-register')) {
       document.title = 'Formulário de Registro - Procon Paulistano';
+       $('#portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Formulário de registro</span></span>');
       form = $('.kssattr-formname-register')
       $('#form-widgets-cadastro-0').prop('checked', true);
       municipio = '<div class="proconSPmessage"><p><strong>O PROCON PAULISTANO DIGITAL tem como atribuição atender os consumidores domiciliados no Município de São Paulo.</strong></p><p>A proteção e defesa do consumidor constitui-se em um sistema nacional coordenado pela Secretaria Nacional do Consumidor e integrado por diversos órgãos de defesa - federais, estaduais e municipais.</p><p>Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade. <a href="http://www.procon.sp.gov.br/categoria.asp?id=209" target="_blank">Acesse aqui</a> a lista dos Procons Municipais. Caso a sua cidade não esteja na lista, entre em contato com a <a href="http://www.procon.sp.gov.br/categoria.asp?id=42" target="_blank"> FUNDAÇÃO PROCON.</a></p></div>';
