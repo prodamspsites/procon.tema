@@ -2481,7 +2481,7 @@ body.template-register .portalMessage.error {
   float: left;
   padding: 10px 0 0 0;
 }
-.kssattr-formname-register p a{
+#content .kssattr-formname-register p a{
   color: #f21c30;
 }
 
