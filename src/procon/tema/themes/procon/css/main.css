@@ -2483,6 +2483,7 @@ body.template-register .portalMessage.error {
 }
 #content .kssattr-formname-register p a{
   color: #f21c30;
+  border-bottom: none;
 }
 
 body.template-register #content .rowlike {
