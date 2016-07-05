@@ -83,7 +83,7 @@ var jq = jQuery.noConflict();
       $('.template-mail_password_form #portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Esqueci minha senha</span></span>');
     }
 
-    if ($('body').hasClass('template-change-password')) {
+    if ($('body').hasClass('template-trocar-senha')) {
       $('html head').find('title').text("Trocar Senha");
       $('#content .documentFirstHeading').html('Trocar Senha');
       $('#portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Trocar Senha</span></span>');

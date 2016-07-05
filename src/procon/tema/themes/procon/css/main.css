@@ -539,7 +539,7 @@ border-radius: 0px;
   letter-spacing: 0.005em;
   font-weight: 500;
 }
-.template-change-password #content h1.documentFirstHeading{
+.template-trocar-senha #content h1.documentFirstHeading{
   color: #424242;
   font-family: 'Roboto', Arial;
   margin: 10px 0 0 0;
@@ -2937,10 +2937,10 @@ h4.fonteMenor {
     width: auto;
     font-size: 1em;
 }
-.template-change-password .discreet{
+.template-trocar-senha .discreet{
   display: none;
 }
-.template-change-password #edit-bar{
+.template-trocar-senha #edit-bar{
   display: none;
 }
 #login-new-user strong{
@@ -2960,7 +2960,7 @@ h4.fonteMenor {
     font-weight: 500;
     text-decoration: none;
 }
-.kssattr-formname-change-password input{
+.kssattr-formname-trocar-senha input{
   border: 1px solid #ccc;
   height: 28px;
   padding: 3px 0 0 0;
@@ -2971,7 +2971,7 @@ h4.fonteMenor {
   font-size: 1.3em;
   font-family: 'Roboto';
 }
-.kssattr-formname-change-password label{
+.kssattr-formname-trocar-senha label{
     color: #424242;
     font-family: 'Roboto';
     font-weight: normal;
@@ -2980,11 +2980,11 @@ h4.fonteMenor {
     padding: 3px 0 0 0;
     margin: 15px 0 0 0;
 }
-.kssattr-formname-change-password .fieldErrorBox .error{
+.kssattr-formname-trocar-senha .fieldErrorBox .error{
   border: none;
   font-size: 1.4em;
 }
-.kssattr-formname-change-password input[type=submit] {
+.kssattr-formname-trocar-senha input[type=submit] {
     margin-top: 20px;
     cursor: pointer;
     background: #710e0f;
@@ -3002,7 +3002,7 @@ h4.fonteMenor {
     width: auto;
     font-size: 1em;
 }
-.kssattr-formname-change-password div.field.error{
+.kssattr-formname-trocar-senha div.field.error{
   float: left;
   width: 80%;
 }
