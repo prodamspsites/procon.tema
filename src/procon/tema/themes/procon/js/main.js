@@ -94,9 +94,9 @@ var jq = jQuery.noConflict();
     }
     if ($('body').hasClass('template-mail_password_response')) {
       $('html head').find('title').text("Esqueci Minha Senha");
-      $('#content .documentFirstHeading').html('Esqueci Minha Senha');
-      $('#portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Esqueci minha senha</span></span>');
-      $('.documentDescription').html('Sua solicitação foi enviada. Você receberá uma mensagem no e-mail cadastrado. Clique no link informado na mensagem para efetuar a mudança da senha.');
+      $('#content .documentFirstHeading').html('A mensagem para redefinição de sua senha foi enviada com sucesso.');
+      $('#portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Redefinir Senha</span></span>');
+      $('.documentDescription').html('Verifique sua caixa de e-mail.<br />Atenção! Caso seu e-mail possua sistema anti-spam, será necessário o recebimento de e-mails de naoresponder@prefeitura.sp.gov.br');
     }
     if ($('body').hasClass('template-pwreset_form')) {
       $('#content .documentFirstHeading').html('Esqueci Minha Senha');
@@ -182,7 +182,7 @@ var jq = jQuery.noConflict();
       document.title = 'Formulário de Registro - Procon Paulistano';
       form = $('.kssattr-formname-register')
       $('#form-widgets-cadastro-0').prop('checked', true);
-      municipio = '<div class="proconSPmessage"><p class="proconSPmessage"><strong>O PROCON PAULISTANO DIGITAL tem como atribuição atender os consumidores domiciliados no Município de São Paulo.</strong></p><p class="proconSPmessage">A proteção e defesa do consumidor constitui-se em um sistema nacional coordenado pela Secretaria Nacional do Consumidor e integrado por diversos órgãos de defesa - federais, estaduais e municipais.</p><p class="proconSPmessage">Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade. <a href="http://www.procon.sp.gov.br/categoria.asp?id=209" target="_blank">Acesse aqui</a> a lista dos Procons Municipais. Caso a sua cidade não esteja na lista, entre em contato com a <a href="http://www.procon.sp.gov.br/categoria.asp?id=42" target="_blank"> FUNDAÇÃO PROCON.</a></p></div>';
+      municipio = '<div class="proconSPmessage"><p><strong>O PROCON PAULISTANO DIGITAL tem como atribuição atender os consumidores domiciliados no Município de São Paulo.</strong></p><p>A proteção e defesa do consumidor constitui-se em um sistema nacional coordenado pela Secretaria Nacional do Consumidor e integrado por diversos órgãos de defesa - federais, estaduais e municipais.</p><p>Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade. <a href="http://www.procon.sp.gov.br/categoria.asp?id=209" target="_blank">Acesse aqui</a> a lista dos Procons Municipais. Caso a sua cidade não esteja na lista, entre em contato com a <a href="http://www.procon.sp.gov.br/categoria.asp?id=42" target="_blank"> FUNDAÇÃO PROCON.</a></p></div>';
       tipo = $('.kssattr-fieldname-form\\.widgets\\.cadastro').clone();
       nome = $('.kssattr-fieldname-form\\.widgets\\.fullname').clone();
       $('label', nome).text('Nome completo *');
@@ -252,7 +252,7 @@ var jq = jQuery.noConflict();
                    );
 
       $(municipio, pj).remove()
-      $(pj).prepend($(municipio).html() + $(tipo).html() + '<br /><p class="proconSPmessage">O PROCON PAULISTANO DIGITAL pode atender pessoas jurídicas na condição de consumidoras. Cumpre esclarecer que a pessoa jurídica pode ser considerada consumidora quando adquire produto ou serviço como destinatária final, isto é, quando utiliza o produto ou serviço para satisfazer sua própria necessidade e não a de seus clientes.</p>' +
+      $(pj).prepend($(municipio).html() + $(tipo).html() + '<br /><p class="mensagemPJ">O PROCON PAULISTANO DIGITAL pode atender pessoas jurídicas na condição de consumidoras. Cumpre esclarecer que a pessoa jurídica pode ser considerada consumidora quando adquire produto ou serviço como destinatária final, isto é, quando utiliza o produto ou serviço para satisfazer sua própria necessidade e não a de seus clientes.</p>' +
                     $(user_CNPJ).html() + $(razao_social).html() + $(nome_fantasia).html() + 
                     $(tipo_societario).html() + $(enquadramento).html() + $(responsavel).html() +
                     $(cpf_pj).html() + $(rg_pj).html() + $(expeditor).html() + $(uf_expedidor).html() +
@@ -284,8 +284,8 @@ var jq = jQuery.noConflict();
         $('#form-widgets-cidade').val('São Paulo').attr('disabled', true);
         $('#form-widgets-unidade_federativa').val('SP').attr('disabled', true);
       });
-      $('.documentFirstHeading').text('Primeira vez? Cadastre-se!')
-      $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Já sou cadastrado</h2><p>Faça seu login:</p><div class="field"><label for="__ac_name">CPF/CNPJ:</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
+
+      $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Faça seu login</h2><p>Faça seu login para realizar sua reclamação:</p><div class="field"><label for="__ac_name">CPF/CNPJ:</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
 
       $(document).on('blur', '#form-widgets-codigo_enderecamento_postal', function() {
         CEP = $(this).val().replace(/\D/g,'');
