@@ -948,6 +948,7 @@ var jq = jQuery.noConflict();
     if ($('body').hasClass('subsection-adesao-ao-procon-paulistano')) {
       labelFile = $('#archetypes-fieldname-anexe-arquivos-como-contrato-social-ou-outros-documentos-de-empresa label');
       labelFile.html( '<div class="justificado">' + $(labelFile).text() + '</div>' );
+      insereInputFile();
     }
 
     if ($('body').hasClass('subsection-formulario-de-denuncia')) {
