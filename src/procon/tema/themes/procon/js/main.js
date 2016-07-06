@@ -77,7 +77,7 @@ var jq = jQuery.noConflict();
           $('#userid').parent().find('label').html('CNPJ:');
           $("#userid").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99",{placeholder:""});
       });
-      $('#rfisica_login').click();
+      $('#rfisica_senha').click();
     }
 
     //PAGINA ESQUECI SENHA/LOGIN/TROCAR SENHA/RESET
