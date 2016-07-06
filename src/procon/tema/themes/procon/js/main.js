@@ -6,6 +6,14 @@ var jq = jQuery.noConflict();
       $('#pfg-fieldwrapper').removeAttr('id');
     }
 
+    $(document).on('submit', '.formCadastre, #login_form', function(e) {
+      $('#__ac_name').val($('#__ac_name').val().replace(/\D/g,''))
+    })
+
+    $(document).on('submit', '#mail_password', function(e) {
+      $('#userid').val($('#userid').val().replace(/\D/g,''))
+    })
+
     $('.textoAccordeon').on('change', '#assunto_opcao', function() {
       thisParent = $(this).parent().parent().parent().parent().parent()
       if ($(this).val() === 'Não há resposta para minha pergunta') {
@@ -72,7 +80,7 @@ var jq = jQuery.noConflict();
           $('#userid').parent().find('label').html('CNPJ:');
           $("#userid").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99",{placeholder:""});
       });
-      $('#rfisica_login').click();
+      $('#rfisica_senha').click();
     }
 
     //PAGINA ESQUECI SENHA/LOGIN/TROCAR SENHA/RESET
@@ -424,7 +432,7 @@ var jq = jQuery.noConflict();
             });
            $("#cep, #form-widgets-codigo_enderecamento_postal, #cep-juridico").mask("99999-999");
            $("#cpf, #form-widgets-cpf, .CPF").mask("999.999.999-99");
-           $("#cnpj, .CNPJ").mask("99.999.999.9999-99");
+           $("#cnpj, .CNPJ").mask("99.999.999/9999-99");
            $("#cnpj-cpf").mask("99.999.999/9999-99");
            $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
            $('#quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto').keyup(function () { 
@@ -838,7 +846,6 @@ var jq = jQuery.noConflict();
               if($('.contentLightbox input').prop('checked')==false) {
                 $('.contentLightbox').css('border','1px solid red');
                 event.preventDefault();
-                AdicionaMensagemErro($('.contentLightbox input'), 'Você deve ler os termos de uso e a política de privacidade do site e assinalar a caixa de seleção.')
                 return false;
               }
               $('input[type="submit"]').val("processando...");
