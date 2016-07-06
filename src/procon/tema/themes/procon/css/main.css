@@ -66,6 +66,9 @@ body.template-news_item_view #content .wrap{
   text-align: justify;
   padding-right: 10px;
 }
+.negrito {
+  font-weight: bold !important;
+}
 #content .richTextWidget table tr:first-child td{
   background: none;
   color: #454545;
