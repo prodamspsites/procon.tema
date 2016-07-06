@@ -808,7 +808,7 @@ var jq = jQuery.noConflict();
                 $(label).text(text)
               }
             })
-            labelFile = $('#archetypes-fieldname-para-auxiliar-na-analise-da-sua-reclamacao-voce-deve-anexar-documentos-comprobatorios-da-compra-do-produto-contratacao-do-servico-reclamado');
+            labelFile = $('#archetypes-fieldname-para-auxiliar-na-analise-da-sua-reclamacao-voce-deve-anexar-documentos-comprobatorios-da-compra-do-produto-contratacao-do-servico-reclamado label');
             labelFile.html( '<div class="justificado">' + $(labelFile).text() + '</div>' );
             insereInputFile();
             //FORMULARIOS AREA SELECIONADA
@@ -942,6 +942,12 @@ var jq = jQuery.noConflict();
 
     if ($('body').hasClass('userrole-anonymous') && ($('body').hasClass('subsection-formulario-de-denuncia'))){
          window.location.replace(portal_url + '/@@register');
+    }
+
+
+    if ($('body').hasClass('subsection-adesao-ao-procon-paulistano')) {
+      labelFile = $('#archetypes-fieldname-anexe-arquivos-como-contrato-social-ou-outros-documentos-de-empresa label');
+      labelFile.html( '<div class="justificado">' + $(labelFile).text() + '</div>' );
     }
 
     if ($('body').hasClass('subsection-formulario-de-denuncia')) {
