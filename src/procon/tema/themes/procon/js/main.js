@@ -771,6 +771,7 @@ var jq = jQuery.noConflict();
               $('.campos_exclusivos').append( $(campo_exclusivo1).remove().html() + $(campo_exclusivo2).remove().html() )
             }
             $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker({dateFormat: 'dd/mm/yy', onSelect: function(date){
+                $('#quando-o-produto-ou-servico-apresentou-problema').datepicker('destroy');
                 selectedDate = new Date($.datepicker.formatDate('yy-mm-dd', $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker('getDate')));
                 $('#quando-o-produto-ou-servico-apresentou-problema').datepicker({dateFormat: 'dd/mm/yy', minDate: selectedDate});
               }
