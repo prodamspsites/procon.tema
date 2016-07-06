@@ -62,6 +62,10 @@ body.site-Procon.section-procon div.width-16{
 body.template-news_item_view #content .wrap{
   width: 725px;
 }
+.justificado {
+  text-align: justify;
+  padding-right: 10px;
+}
 #content .richTextWidget table tr:first-child td{
   background: none;
   color: #454545;

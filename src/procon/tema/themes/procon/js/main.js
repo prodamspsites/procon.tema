@@ -167,6 +167,7 @@ var jq = jQuery.noConflict();
               $("#"+id).parent().parent().next().show();
               var nomeArquivo = this.files[0].name;
               var tamanhoArquivo = this.files[0].size;
+
               $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER ARQUIVO</a></div>');
 
               contaUploads = $('.divDadosUpload .clearImage').length;
@@ -808,7 +809,8 @@ var jq = jQuery.noConflict();
                 $(label).text(text)
               }
             })
-
+            labelFile = $('#archetypes-fieldname-para-auxiliar-na-analise-da-sua-reclamacao-voce-deve-anexar-documentos-comprobatorios-da-compra-do-produto-contratacao-do-servico-reclamado');
+            labelFile.html( '<div class="justificado">' + $(labelFile).text() + '</div>' )
             insereInputFile();
             //FORMULARIOS AREA SELECIONADA
             $('#archetypes-fieldname-especificar-comprou').hide();
