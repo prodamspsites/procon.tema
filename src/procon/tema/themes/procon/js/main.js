@@ -780,12 +780,12 @@ var jq = jQuery.noConflict();
               $('.campos_exclusivos').append( $(campo_exclusivo1).remove().html() + $(campo_exclusivo2).remove().html() )
             }
             $('label[for="campos-de-uso-exclusivo-para-conveniados-e-acoes-estrategicas"], .campos_exclusivoss').addClass('negrito')
-            $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker({dateFormat: 'dd/mm/yy', onSelect: function(iDate){
-                $('#quando-o-produto-ou-servico-apresentou-problema').datepicker('destroy');
-                selectedDate = new Date($.datepicker.formatDate('yy-mm-dd', $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker('getDate')));
-                $('#quando-o-produto-ou-servico-apresentou-problema').datepicker({dateFormat: 'dd/mm/yy', minDate: new Date(selectedDate)});
-              }
-            })
+            // $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker({dateFormat: 'dd/mm/yy', onSelect: function(iDate){
+            //     $('#quando-o-produto-ou-servico-apresentou-problema').datepicker('destroy');
+            //     selectedDate = new Date($.datepicker.formatDate('yy-mm-dd', $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker('getDate')));
+            //     $('#quando-o-produto-ou-servico-apresentou-problema').datepicker({dateFormat: 'dd/mm/yy', minDate: new Date(selectedDate)});
+            //   }
+            // })
             // $('#quando-o-produto-ou-servico-apresentou-problema').datepicker({ dateFormat: 'dd/mm/yy', onSele });
             $('#archetypes-fieldname-cpf').hide();
             $('#archetypes-fieldname-quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #archetypes-fieldname-valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').hide()
