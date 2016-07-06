@@ -4086,14 +4086,15 @@ body.section-consumidor .divLoginDenuncia{
       margin-left: 0;
       left: 0;
       padding:15px 0 30px 12px;
+      position: relative;
   }
   .form-group:before{
     content: 'Etapa 1';
     position: absolute;
-    left: 5%;
-    top: -30px;
-    font-size: 1.8em;
-    color: #fff;
+    left: 2% !important;
+    top: -32px !important;
+    font-size: 1.3em !important;
+    color: #fff !important;
     font-family: 'Roboto';
     font-weight: normal;
     width: 100%;
@@ -4102,6 +4103,10 @@ body.section-consumidor .divLoginDenuncia{
   }
   .form-group.active{
      border-top: 40px solid #3f393b;
+     border-left: none;
+  }
+  .form-group.active:before{
+    top: -54px !important;
   }
   .active .form-group:before{
     content: 'Etapa 2';
@@ -4129,7 +4134,7 @@ body.section-consumidor .divLoginDenuncia{
     position: absolute;
     left: 2%;
     top: -30px;
-    font-size: 1.8em;
+    font-size: 1.4em;
     color: #fff;
     font-family: 'Roboto';
     font-weight: normal;
@@ -4156,8 +4161,25 @@ body.section-consumidor .divLoginDenuncia{
     left: 0;
   }
   .divRedireciona{
+    border-top: 40px solid #3f393b;
+    border-left: none;
+    left: 0;
+    width: 90%;
+    padding: 0;
+    margin: 0;
+  }
+  .divRedireciona:before{
+    content: 'Etapa 2';
+    position: absolute;
+    left: 3% !important;
+    top: -30px !important;
+    font-size: 1.3em !important;
+    color: #fff !important;
+    font-family: 'Roboto';
+    font-weight: normal;
     width: 100%;
-    padding-left: 10px;
+    float: left;
+    z-index: 5;
   }
   .divRedireciona .linkRedireciona{
     margin:0;
@@ -4169,8 +4191,8 @@ body.section-consumidor .divLoginDenuncia{
     margin: 0;
   }
   #content .divRedireciona p{
-    width: 300px;
-    padding: 0 0 0 20px;
+    width: 80%;
+    padding: 0 0 0 16px;
   }
   .divAccordeon h3{
     font-size: 0.8em;
