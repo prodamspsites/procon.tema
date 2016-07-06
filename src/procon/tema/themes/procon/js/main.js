@@ -6,6 +6,11 @@ var jq = jQuery.noConflict();
       $('#pfg-fieldwrapper').removeAttr('id');
     }
 
+    $(document).on('submit', '.formCadastre, #login_form', function(e) {
+      $('#__ac_name').val($('#__ac_name').val().replace(/\D/g,''))
+    })
+
+
     $('.textoAccordeon').on('change', '#assunto_opcao', function() {
       thisParent = $(this).parent().parent().parent().parent().parent()
       if ($(this).val() === 'Não há resposta para minha pergunta') {
@@ -838,7 +843,6 @@ var jq = jQuery.noConflict();
               if($('.contentLightbox input').prop('checked')==false) {
                 $('.contentLightbox').css('border','1px solid red');
                 event.preventDefault();
-                AdicionaMensagemErro($('.contentLightbox input'), 'Você deve ler os termos de uso e a política de privacidade do site e assinalar a caixa de seleção.')
                 return false;
               }
               $('input[type="submit"]').val("processando...");
