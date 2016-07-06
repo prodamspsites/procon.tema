@@ -2508,11 +2508,6 @@ body.template-register #content .rowlike label.horizontal{
   float: left;
   margin: 18px 0 6px 0;
 }
-#content .divLoginCadastre .field label{
-    font-family: 'Roboto';
-   font-weight: normal !important;
-   font-size: 1.2em;
-}
 body.template-register #content .rowlike .formHelp{
   display: none;
 }
@@ -2540,6 +2535,24 @@ body.template-register .select-widget.choice-field{
   background: #f5f5f5;
   margin: 0 0 0 70px;
   padding: 18px;
+}
+#content .divLoginCadastre .field label{
+    font-family: 'Roboto';
+   font-weight: normal !important;
+   font-size: 1.2em;
+}
+#rjuridica_login, #rfisica_login{
+  float: left;
+  margin-top: 10px;
+}
+form#mail_password #rjuridica_senha, form#mail_password  #rfisica_senha{
+  height: auto;
+  width:auto;
+  clear: none;
+  margin:11px 3px 0 5px;
+}
+form#mail_password label{
+  clear: both;
 }
 #content #login-form .divLoginCadastre h2{
   margin-top: 0;
@@ -3165,7 +3178,7 @@ input#rfisica, input#rjuridica{
 }
 .rpessoa{
   float: left;
-  margin: 8px 17px 8px 8px;
+  margin: 8px 17px 8px 3px;
 }
 #cnpj-cpf{
   clear: both;
