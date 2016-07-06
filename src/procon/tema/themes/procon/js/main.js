@@ -6,16 +6,6 @@ var jq = jQuery.noConflict();
       $('#pfg-fieldwrapper').removeAttr('id');
     }
 
-    $.urlParam = function(name){
-        var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
-        if (results==null){
-           return null;
-        }
-        else{
-           return results[1] || 0;
-        }
-    }
-
     $('.textoAccordeon').on('change', '#assunto_opcao', function() {
       thisParent = $(this).parent().parent().parent().parent().parent()
       if ($(this).val() === 'Não há resposta para minha pergunta') {
@@ -66,6 +56,25 @@ var jq = jQuery.noConflict();
       $('.wrap .loginAdmin').show();
     }
 
+
+
+
+    if ($('body').hasClass('template-mail_password_form')) {
+      //MASCARA CPF CNPJ NO LOGIN
+      // $('#cnpj-cpf').parent().find('label').html('CNPJ:');
+      $('#userid').parent().prepend('<input type="radio" name="pessoa" value="juridica" id="rjuridica_senha" checked /><span class="rpessoa">Pessoa Jurídica</span><input type="radio" name="pessoa" value="fisica" id="rfisica_senha" /><span class="rpessoa">Pessoa Física</span>')
+      $(document).on('click','#rfisica_senha', function(){
+          $('#userid').parent().find('label').html('CPF:');
+          $("#userid").removeClass('CNPJ').addClass('CPF').mask("999.999.999-99",{placeholder:""});
+      });
+
+      $(document).on('click','#rjuridica_senha', function(){
+          $('#userid').parent().find('label').html('CNPJ:');
+          $("#userid").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99",{placeholder:""});
+      });
+      $('#rfisica_login').click();
+    }
+
     //PAGINA ESQUECI SENHA/LOGIN/TROCAR SENHA/RESET
     $('.template-logged_out #portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Login</span></span>');
     $('#content #mail_password input[type="submit"]').val('Enviar');
@@ -84,8 +93,8 @@ var jq = jQuery.noConflict();
     }
 
     if ($('body').hasClass('template-trocar-senha')) {
-      $('html head').find('title').text("Trocar Senha");
-      $('#content .documentFirstHeading').html('Trocar Senha');
+      $('html head').find('title').text("ALTERE SUA SENHA");
+      $('#content .documentFirstHeading').html('ALTERE SUA SENHA');
       $('#portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Trocar Senha</span></span>');
     }
 
@@ -183,7 +192,8 @@ var jq = jQuery.noConflict();
     //AJUSTE NO TEMPLATE DE CADASTRO
     if ($('body').hasClass('template-register')) {
       document.title = 'Formulário de Registro - Procon Paulistano';
-       $('#portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Formulário de registro</span></span>');
+      $('.documentFirstHeading').text('Primeira vez? Cadastre-se!')
+      $('#portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Formulário de registro</span></span>');
       form = $('.kssattr-formname-register')
       $('#form-widgets-cadastro-0').prop('checked', true);
       municipio = '<div class="proconSPmessage"><p><strong>O PROCON PAULISTANO DIGITAL tem como atribuição atender os consumidores domiciliados no Município de São Paulo.</strong></p><p>A proteção e defesa do consumidor constitui-se em um sistema nacional coordenado pela Secretaria Nacional do Consumidor e integrado por diversos órgãos de defesa - federais, estaduais e municipais.</p><p>Se você possui domicílio em outra cidade, procure o órgão de proteção e defesa do consumidor de sua localidade. <a href="http://www.procon.sp.gov.br/categoria.asp?id=209" target="_blank">Acesse aqui</a> a lista dos Procons Municipais. Caso a sua cidade não esteja na lista, entre em contato com a <a href="http://www.procon.sp.gov.br/categoria.asp?id=42" target="_blank"> FUNDAÇÃO PROCON.</a></p></div>';
@@ -289,7 +299,21 @@ var jq = jQuery.noConflict();
         $('#form-widgets-unidade_federativa').val('SP').attr('disabled', true);
       });
 
-      $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Faça seu login</h2><p>Faça seu login para realizar sua reclamação:</p><div class="field"><label for="__ac_name">CPF/CNPJ:</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
+      $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Já sou cadastrado</h2><p>Faça seu login para realizar sua reclamação:</p><div class="field"><label for="__ac_name">CPF/CNPJ:</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
+
+      //MASCARA CPF CNPJ NO LOGIN
+      // $('#cnpj-cpf').parent().find('label').html('CNPJ:');
+      $('#__ac_name').parent().prepend('<input type="radio" name="pessoa" value="juridica" id="rjuridica_login" checked /><span class="rpessoa">Pessoa Jurídica</span><input type="radio" name="pessoa" value="fisica" id="rfisica_login" /><span class="rpessoa">Pessoa Física</span>')
+      $(document).on('click','#rfisica_login', function(){
+          $('#__ac_name').parent().find('label').html('CPF:');
+          $("#__ac_name").removeClass('CNPJ').addClass('CPF').mask("999.999.999-99",{placeholder:""});
+      });
+
+      $(document).on('click','#rjuridica_login', function(){
+          $('#__ac_name').parent().find('label').html('CNPJ:');
+          $("#__ac_name").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99",{placeholder:""});
+      });
+      $('#rfisica_login').click();
 
       $(document).on('blur', '#form-widgets-codigo_enderecamento_postal', function() {
         CEP = $(this).val().replace(/\D/g,'');
@@ -317,6 +341,9 @@ var jq = jQuery.noConflict();
             $('html,body').animate({ scrollTop: $('.error').offset().top - 40}, 'slow');
             event.preventDefault();
             return false;
+          }
+          else {
+            $('#form-widgets-username').val($('#form-widgets-username').val().replace(/\D/g,''))
           }
         });
       });
@@ -442,7 +469,6 @@ var jq = jQuery.noConflict();
         $("#cnpj-cpf").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99",{placeholder:""});
     });
     $('#rjuridica').click();
-
 
 
     $(document).on('blur', '.divProtocolo .inputProtocolo', function() {
@@ -811,6 +837,7 @@ var jq = jQuery.noConflict();
               if($('.contentLightbox input').prop('checked')==false) {
                 $('.contentLightbox').css('border','1px solid red');
                 event.preventDefault();
+                AdicionaMensagemErro($('.contentLightbox input'), 'Você deve ler os termos de uso e a política de privacidade do site e assinalar a caixa de seleção.')
                 return false;
               }
               $('input[type="submit"]').val("processando...");
@@ -868,6 +895,21 @@ var jq = jQuery.noConflict();
                 $('input', empresa, data_compra, produto, area).prop('required',false);
             }
         })
+    }
+    if ($('body').hasClass('template-login_form')) {
+      //MASCARA CPF CNPJ NO LOGIN
+      // $('#cnpj-cpf').parent().find('label').html('CNPJ:');
+      $('#__ac_name').parent().prepend('<input type="radio" name="pessoa" value="juridica" id="rjuridica_login" checked /><span class="rpessoa">Pessoa Jurídica</span><input type="radio" name="pessoa" value="fisica" id="rfisica_login" /><span class="rpessoa">Pessoa Física</span>')
+      $(document).on('click','#rfisica_login', function(){
+          $('#__ac_name').parent().find('label').html('CPF:');
+          $("#__ac_name").removeClass('CNPJ').addClass('CPF').mask("999.999.999-99",{placeholder:""});
+      });
+
+      $(document).on('click','#rjuridica_login', function(){
+          $('#__ac_name').parent().find('label').html('CNPJ:');
+          $("#__ac_name").removeClass('CPF').addClass('CNPJ').mask("99.999.999/9999-99",{placeholder:""});
+      });
+      $('#rfisica_login').click();
     }
 
 

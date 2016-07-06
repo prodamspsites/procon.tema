@@ -532,12 +532,17 @@ border-radius: 0px;
   float: right;
   width: 830px;
 }
+
 #portal-columns #contentInterna h1{
   color: #424242;
   font-family: 'Roboto', Arial;
   margin: 10px 0 0 0;
   letter-spacing: 0.005em;
   font-weight: 500;
+}
+
+.template-trocar-senha div.fieldErrorBox {
+  display: none;
 }
 .template-trocar-senha #content h1.documentFirstHeading{
   color: #424242;
