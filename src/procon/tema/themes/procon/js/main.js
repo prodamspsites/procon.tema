@@ -1099,6 +1099,7 @@ var jq = jQuery.noConflict();
     $(".formid-formulario-de-denuncia form").submit(function( event ) {
       if($('.contentLightbox input').prop('checked')==false) {
         $('.contentLightbox').css('border','1px solid red');
+          AdicionaMensagemErro($('.contentLightbox input'), 'Você deve ler os termos de uso e a política de privacidade do site e assinalar a caixa de seleção.')
           event.preventDefault();
           return false;
       }
