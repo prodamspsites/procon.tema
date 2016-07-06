@@ -433,7 +433,7 @@ var jq = jQuery.noConflict();
             });
            $("#cep, #form-widgets-codigo_enderecamento_postal, #cep-juridico").mask("99999-999");
            $("#cpf, #form-widgets-cpf, .CPF").mask("999.999.999-99");
-           $("#cnpj, .CNPJ").mask("99.999.999/9999-99");
+           $("#cnpj, .CNPJ").mask("99.999.999/9999-99",{placeholder:""});
            $("#cnpj-cpf").mask("99.999.999/9999-99");
            $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
            $('#quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto').keyup(function () { 
@@ -1098,9 +1098,9 @@ var jq = jQuery.noConflict();
     //VALIDA FORM DENUNCIA
     $(".formid-formulario-de-denuncia form").submit(function( event ) {
       if($('.contentLightbox input').prop('checked')==false) {
+        event.preventDefault();
         $('.contentLightbox').css('border','1px solid red');
           AdicionaMensagemErro($('.contentLightbox input'), 'Você deve ler os termos de uso e a política de privacidade do site e assinalar a caixa de seleção.')
-          event.preventDefault();
           return false;
       }
     });
@@ -1119,7 +1119,7 @@ var jq = jQuery.noConflict();
 
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
-      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Adesão ao Procon Paulistano</h1><p>Envio feito com sucesso!</p><p><strong>Agradecemos sua colaboração.</strong></p><p>PROCON Paulistano</p></div>');
+      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Adesão ao Procon Paulistano</h1><h2>O formulário de adesão e respectivos documentos foram enviados com sucesso.</h2><p>Após a recepção e análise da documentação, o PROCON Paulistano encaminhará, através do e-mail <a href="mailto:cid.procon@prefeitura.sp.gov.br">cid.procon@prefeitura.sp.gov.br</a>, o usuário e senha para acesso ao sistema, bem como o manual para a sua utilização.</p><p>Ficamos à disposição, no e-mail <a href="mailto:cid.procon@prefeitura.sp.gov.br">cid.procon@prefeitura.sp.gov.br</a>, para esclarecer eventuais dúvidas.</p></div>');
     }
 
 
