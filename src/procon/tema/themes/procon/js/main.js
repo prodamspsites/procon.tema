@@ -10,6 +10,9 @@ var jq = jQuery.noConflict();
       $('#__ac_name').val($('#__ac_name').val().replace(/\D/g,''))
     })
 
+    $(document).on('submit', '#mail_password', function(e) {
+      $('#userid').val($('#userid').val().replace(/\D/g,''))
+    })
 
     $('.textoAccordeon').on('change', '#assunto_opcao', function() {
       thisParent = $(this).parent().parent().parent().parent().parent()
