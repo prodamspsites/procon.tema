@@ -552,6 +552,14 @@ var jq = jQuery.noConflict();
       }
     })
 
+    $(document).on('change', '.contentLightbox input.error', function() {
+      if(this.checked) {
+        $('.contentLightbox').css('border','0px');
+        removeError($(this));
+      }
+    })
+
+
     $(document).on('blur', '#cnpj', function() {
       CNPJ = $(this).val().replace(/\D/g,'');
       if (!(testaCNPJ(CNPJ))) {
@@ -770,7 +778,8 @@ var jq = jQuery.noConflict();
               $("input[name='form_submit']").before('<div class="campos_exclusivos"><div>')
               $('.campos_exclusivos').append( $(campo_exclusivo1).remove().html() + $(campo_exclusivo2).remove().html() )
             }
-            $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker({dateFormat: 'dd/mm/yy', onSelect: function(date){
+            $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker({dateFormat: 'dd/mm/yy', onSelect: function(iDate){
+                console.log(iDate)
                 $('#quando-o-produto-ou-servico-apresentou-problema').datepicker('destroy');
                 selectedDate = new Date($.datepicker.formatDate('yy-mm-dd', $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').datepicker('getDate')));
                 $('#quando-o-produto-ou-servico-apresentou-problema').datepicker({dateFormat: 'dd/mm/yy', minDate: new Date(selectedDate)});
@@ -850,6 +859,7 @@ var jq = jQuery.noConflict();
               });
               if($('.contentLightbox input').prop('checked')==false) {
                 $('.contentLightbox').css('border','1px solid red');
+                AdicionaMensagemErro($('.contentLightbox input'), 'Você deve ler os termos de uso e a política de privacidade do site e assinalar a caixa de seleção.')
                 event.preventDefault();
                 return false;
               }
