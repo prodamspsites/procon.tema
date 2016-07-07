@@ -91,7 +91,7 @@ var jq = jQuery.noConflict();
 
     if ($('body').hasClass('template-login_success')) {
       $('.template-login_success #content .documentFirstHeading').html('Você agora está autenticado');
-      $('#content-core div p').html('Note que a barra superior direita foi modificada.<br />Ela agora contém uma área com seu CPF/CNPJ. Clique na seta ao lado do seu CPF/CNPJ para sair com segurança ou alterar sua senha.<br /><br />Atenção! Se você não permanacer autenticado após deixa esta página configure o seu navegador para habilitar o uso de cookies.')
+      $('#content-core div p').html('Note que a barra superior direita foi modificada.<br />Ela agora contém uma área com seu CPF/CNPJ. Clique na seta ao lado do seu CPF/CNPJ para sair com segurança ou alterar sua senha.<br /><br />Atenção! Se você não permanecer autenticado após deixar esta página, configure o seu navegador para habilitar o uso de cookies.')
     }
     if ($('body').hasClass('template-mail_password_form')) {
       $('html head').find('title').text("Esqueci Minha Senha");
