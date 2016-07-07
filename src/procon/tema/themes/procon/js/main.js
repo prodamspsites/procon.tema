@@ -348,6 +348,16 @@ var jq = jQuery.noConflict();
 
       $(document).on('blur', '#form-widgets-email', function() {
         email = $(this).val();
+        var emailReg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+         var emailaddress = $("#form-widgets-email").val();
+         if(!emailReg.test(emailaddress)) {
+            $('#form-widgets-email').addClass('error');
+            alert('E-mail inválido!');
+          }
+         else{
+            $('#e-mail').removeClass('error');
+          }
+
         confirmacao = $('#form-widgets-confirmacao').val();
         if ((email != '') &&  (confirmacao != '') && (email != confirmacao)) {
           AdicionaMensagemErro($(this), 'O e-mail digitado não confere')
