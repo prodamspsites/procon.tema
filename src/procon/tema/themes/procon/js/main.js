@@ -130,6 +130,11 @@ var jq = jQuery.noConflict();
       $('#breadcrumbs-current').html('Senha Definida');
       $('#content .documentDescription').html('Sua senha foi definida com sucesso. Clique aqui para acessar o <a href="/@@register" style="color:#f21c30">site</a>');
     }
+    if ($('body').hasClass('section-contato')) {
+      $('.field.error').find('input, textarea').css('border','1px solid red');
+      $('.fieldErrorBox').hide();
+      $('.field.error').removeClass('error');
+    }
 
     //LOGIN
     $('.template-register #breadcrumbs-current').html('Login');
@@ -309,6 +314,14 @@ var jq = jQuery.noConflict();
         $('#form-widgets-unidade_federativa').val('SP').attr('disabled', true);
       });
 
+      if ($('#form-widgets-username') != '') {
+        if ($('#form-widgets-razao_social') != '') {
+          $('#form-widgets-cadastro-1').click();
+        } else {
+          $('#form-widgets-cadastro-0').click();
+        }
+      }
+
       $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Já sou cadastrado</h2><p>Faça seu login:</p><div class="field"><label for="__ac_name">CPF/CNPJ:</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
 
       //MASCARA CPF CNPJ NO LOGIN
@@ -330,6 +343,39 @@ var jq = jQuery.noConflict();
         returnCEP = pesquisaCEP(CEP);
         if (!(returnCEP)) {
           $(this).val('');
+        }
+      })
+
+      $(document).on('blur', '#form-widgets-email', function() {
+        email = $(this).val();
+        var emailReg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+         var emailaddress = $("#form-widgets-email").val();
+         if(!emailReg.test(emailaddress)) {
+            $('#form-widgets-email').addClass('error');
+            alert('E-mail inválido!');
+             $('#form-widgets-email').val('');
+          }
+         else{
+            $('#e-mail').removeClass('error');
+          }
+
+        confirmacao = $('#form-widgets-confirmacao').val();
+        if ((email != '') &&  (confirmacao != '') && (email != confirmacao)) {
+          AdicionaMensagemErro($(this), 'O e-mail digitado não confere')
+        } else {
+          removeError($(this))
+          removeError($('#form-widgets-confirmacao'));
+        }
+      })
+
+      $(document).on('blur', '#form-widgets-confirmacao', function() {
+        email = $('#form-widgets-email').val();
+        confirmacao = $(this).val();
+        if ((email != '') &&  (confirmacao != '') && (email != confirmacao)) {
+          AdicionaMensagemErro($(this), 'O e-mail digitado não confere')
+        } else {
+          removeError($(this));
+          removeError($('#form-widgets-email'))
         }
       })
 
@@ -721,6 +767,21 @@ var jq = jQuery.noConflict();
           });
       }
 
+      //VALIDACAO E-MAIL
+      function validaEmailReclamacao(){
+        $(document).on('blur', '#e-mail', function() {
+          var emailReg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+           var emailaddress = $("#e-mail").val();
+           if(!emailReg.test(emailaddress)) {
+              $('#e-mail').addClass('error');
+              alert('E-mail inválido!');
+            }
+           else{
+              $('#e-mail').removeClass('error');
+            }
+        })
+      }
+
       function lightboxFormPolitica() {
           lightbox_urlP = portal_url + '/politica-de-privacidade/politica';
           $.ajax({
@@ -769,6 +830,7 @@ var jq = jQuery.noConflict();
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
             lightboxForm();
             lightboxFormPolitica();
+            validaEmailReclamacao();
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
@@ -1080,7 +1142,6 @@ var jq = jQuery.noConflict();
       $('.btnProsseguir').click(function(){
           var protocoloConsumidor = $('.divProtocolo .inputProtocolo').val();
           $('#content #content-core').append(itensForm);
-          console.log(protocoloConsumidor)
           $('.form-group').addClass('active');
           $('.divRedireciona').slideUp();
           $('#archetypes-fieldname-protocoloconsumidor input').val(protocoloConsumidor)
@@ -1126,7 +1187,7 @@ var jq = jQuery.noConflict();
 
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
-      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Adesão ao Procon Paulistano</h1><h2>O formulário de adesão e respectivos documentos foram enviados com sucesso.</h2><p>Após a recepção e análise da documentação, o PROCON Paulistano encaminhará, através do e-mail <a href="mailto:cip.procon@prefeitura.sp.gov.br">cip.procon@prefeitura.sp.gov.br</a>, o usuário e senha para acesso ao sistema, bem como o manual para a sua utilização.</p><p>Ficamos à disposição, no e-mail <a href="mailto:cip.procon@prefeitura.sp.gov.br">cip.procon@prefeitura.sp.gov.br</a>, para esclarecer eventuais dúvidas.</p></div>');
+      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Adesão ao Procon Paulistano</h1><h2>O formulário de adesão e respectivos documentos foram enviados com sucesso.</h2><p>Após a recepção e análise da documentação, o PROCON Paulistano encaminhará, através do e-mail <a href="mailto:cid.procon@prefeitura.sp.gov.br">cid.procon@prefeitura.sp.gov.br</a>, o usuário e senha para acesso ao sistema, bem como o manual para a sua utilização.</p><p>Ficamos à disposição, no e-mail <a href="mailto:cid.procon@prefeitura.sp.gov.br">cid.procon@prefeitura.sp.gov.br</a>, para esclarecer eventuais dúvidas.</p></div>');
     }
 
 
