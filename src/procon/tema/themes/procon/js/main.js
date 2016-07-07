@@ -333,6 +333,34 @@ var jq = jQuery.noConflict();
         }
       })
 
+      $(document).on('blur', '#form-widgets-email', function() {
+        email = $(this).val();
+        confirmacao = $('#form-widgets-confirmacao').val();
+        console.log(email)
+        console.log(confirmacao)
+        console.log(email == confirmacao)
+        if ((email != '') &&  (confirmacao != '') && (email != confirmacao)) {
+          AdicionaMensagemErro($(this), 'O e-mail digitado não confere')
+        } else {
+          removeError($(this))
+          removeError($('#form-widgets-confirmacao'));
+        }
+      })
+
+      $(document).on('blur', '#form-widgets-confirmacao', function() {
+        email = $('#form-widgets-email').val();
+        confirmacao = $(this).val();
+        console.log(email)
+        console.log(confirmacao)
+        console.log(email == confirmacao)
+        if ((email != '') &&  (confirmacao != '') && (email != confirmacao)) {
+          AdicionaMensagemErro($(this), 'O e-mail digitado não confere')
+        } else {
+          removeError($(this));
+          removeError($('#form-widgets-email'))
+        }
+      })
+
       $(document).on('blur', '#form-widgets-cpf', function() {
         CPF = $(this).val().replace(/\D/g,'');
         returnCPF = testaCPF(CPF);
