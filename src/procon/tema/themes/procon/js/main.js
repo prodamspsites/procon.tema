@@ -201,6 +201,8 @@ var jq = jQuery.noConflict();
 
     //AJUSTE NO TEMPLATE DE CADASTRO
     if ($('body').hasClass('template-register')) {
+      checkUsername = $('#form-widgets-username').val();
+      checkRazaoSocial = $('#form-widgets-razao_social').val();
       document.title = 'Formulário de Registro - Procon Paulistano';
       $('.documentFirstHeading').text('Primeira vez? Cadastre-se!')
       $('#portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Formulário de registro</span></span>');
@@ -309,8 +311,9 @@ var jq = jQuery.noConflict();
         $('#form-widgets-unidade_federativa').val('SP').attr('disabled', true);
       });
 
-      if ($('#form-widgets-username') != '') {
-        if ($('#form-widgets-razao_social') != '') {
+      if (checkUsername != '') {
+        console.log( checkUsername )
+        if (checkRazaoSocial != '') {
           $('#form-widgets-cadastro-1').click();
         } else {
           $('#form-widgets-cadastro-0').click();
