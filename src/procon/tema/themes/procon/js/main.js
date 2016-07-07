@@ -130,6 +130,11 @@ var jq = jQuery.noConflict();
       $('#breadcrumbs-current').html('Senha Definida');
       $('#content .documentDescription').html('Sua senha foi definida com sucesso. Clique aqui para acessar o <a href="/@@register" style="color:#f21c30">site</a>');
     }
+    if ($('body').hasClass('section-contato')) {
+      $('.fieldErrorBox').next().css('border','1px solid red');
+      $('.fieldErrorBox').hide();
+      $('.field.error').removeClass('error');
+    }
 
     //LOGIN
     $('.template-register #breadcrumbs-current').html('Login');
@@ -743,6 +748,21 @@ var jq = jQuery.noConflict();
           });
       }
 
+      //VALIDACAO E-MAIL
+      function validaEmailReclamacao(){
+        $(document).on('blur', '#e-mail', function() {
+          var emailReg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+           var emailaddress = $("#e-mail").val();
+           if(!emailReg.test(emailaddress)) {
+              $('#e-mail').addClass('error');
+              alert('E-mail inválido!');
+            }
+           else{
+              $('#e-mail').removeClass('error');
+            }
+        })
+      }
+
       function lightboxFormPolitica() {
           lightbox_urlP = portal_url + '/politica-de-privacidade/politica';
           $.ajax({
@@ -791,6 +811,7 @@ var jq = jQuery.noConflict();
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
             lightboxForm();
             lightboxFormPolitica();
+            validaEmailReclamacao();
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
