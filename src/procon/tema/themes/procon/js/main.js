@@ -131,7 +131,7 @@ var jq = jQuery.noConflict();
       $('#content .documentDescription').html('Sua senha foi definida com sucesso. Clique aqui para acessar o <a href="/@@register" style="color:#f21c30">site</a>');
     }
     if ($('body').hasClass('section-contato')) {
-      $('.field.error').find('input').css('border','1px solid red');
+      $('.field.error').find('input, textarea').css('border','1px solid red');
       $('.fieldErrorBox').hide();
       $('.field.error').removeClass('error');
     }
