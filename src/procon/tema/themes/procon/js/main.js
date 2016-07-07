@@ -336,9 +336,6 @@ var jq = jQuery.noConflict();
       $(document).on('blur', '#form-widgets-email', function() {
         email = $(this).val();
         confirmacao = $('#form-widgets-confirmacao').val();
-        console.log(email)
-        console.log(confirmacao)
-        console.log(email == confirmacao)
         if ((email != '') &&  (confirmacao != '') && (email != confirmacao)) {
           AdicionaMensagemErro($(this), 'O e-mail digitado não confere')
         } else {
@@ -350,9 +347,6 @@ var jq = jQuery.noConflict();
       $(document).on('blur', '#form-widgets-confirmacao', function() {
         email = $('#form-widgets-email').val();
         confirmacao = $(this).val();
-        console.log(email)
-        console.log(confirmacao)
-        console.log(email == confirmacao)
         if ((email != '') &&  (confirmacao != '') && (email != confirmacao)) {
           AdicionaMensagemErro($(this), 'O e-mail digitado não confere')
         } else {
@@ -1108,7 +1102,6 @@ var jq = jQuery.noConflict();
       $('.btnProsseguir').click(function(){
           var protocoloConsumidor = $('.divProtocolo .inputProtocolo').val();
           $('#content #content-core').append(itensForm);
-          console.log(protocoloConsumidor)
           $('.form-group').addClass('active');
           $('.divRedireciona').slideUp();
           $('#archetypes-fieldname-protocoloconsumidor input').val(protocoloConsumidor)
@@ -1154,7 +1147,7 @@ var jq = jQuery.noConflict();
 
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
-      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Adesão ao Procon Paulistano</h1><h2>O formulário de adesão e respectivos documentos foram enviados com sucesso.</h2><p>Após a recepção e análise da documentação, o PROCON Paulistano encaminhará, através do e-mail <a href="mailto:cip.procon@prefeitura.sp.gov.br">cip.procon@prefeitura.sp.gov.br</a>, o usuário e senha para acesso ao sistema, bem como o manual para a sua utilização.</p><p>Ficamos à disposição, no e-mail <a href="mailto:cip.procon@prefeitura.sp.gov.br">cip.procon@prefeitura.sp.gov.br</a>, para esclarecer eventuais dúvidas.</p></div>');
+      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Adesão ao Procon Paulistano</h1><h2>O formulário de adesão e respectivos documentos foram enviados com sucesso.</h2><p>Após a recepção e análise da documentação, o PROCON Paulistano encaminhará, através do e-mail <a href="mailto:cid.procon@prefeitura.sp.gov.br">cid.procon@prefeitura.sp.gov.br</a>, o usuário e senha para acesso ao sistema, bem como o manual para a sua utilização.</p><p>Ficamos à disposição, no e-mail <a href="mailto:cid.procon@prefeitura.sp.gov.br">cid.procon@prefeitura.sp.gov.br</a>, para esclarecer eventuais dúvidas.</p></div>');
     }
 
 
