@@ -828,6 +828,9 @@ var jq = jQuery.noConflict();
         var itensForm = $(".formDuvidas .pfg-form").detach();
         $('.form-group #project').addClass('loading')
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
+            $(document).on('blur', '#quando-voce-comprou-o-produto-ou-contratou-o-servico-1', function() {
+              checaMaiorQAmanha($(this).val());
+            });
             lightboxForm();
             lightboxFormPolitica();
             validaEmailReclamacao();
@@ -1908,4 +1911,55 @@ function cpfCnpj(v){
         v=v.replace(/(\d{4})(\d)/,"$1-$2")
     }
     return v
+}
+//COMPARA DATAS
+function checaMaiorQAmanha(data) {
+
+ //data para checar    
+    var str = data.split("/"); 
+
+    var diacheck = str[0];
+    var mescheck = str[1];
+    var anocheck = str[2];
+
+    var diaparachecar = Date.parse(mescheck+" "+diacheck+", "+anocheck);
+
+  if(isNaN(Date.parse(mescheck+"/"+diacheck+"/"+anocheck))){
+    alert("Data Inválida!");
+    $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
+    return;
+  }
+
+    //recupera o valor de hj
+    var hj = new Date();
+    var hjdia = hj.getDate();
+    var hjmes = hj.getMonth();
+    var hjano = hj.getFullYear();
+
+    //hj em miliseconds desde Jan 1 1970
+    //parse(mes/dia/ano)
+    var hjemmili = Date.parse((hjmes + 1)+" "+ hjdia+", "+hjano);
+
+    
+    //console.log((hjmes + 1)+" "+ hjdia+", "+hjano);
+
+    //amanha
+    var amanha = new Date(hjemmili + (86400000 * 1));
+    
+    var amanhamili =  amanha.getTime();
+    
+   
+
+    
+
+   
+    //se a data for amanha ou outro dia depois de manha, não permita
+    if(amanhamili > diaparachecar){
+        console.log("Data ok");
+    }else{
+       $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
+       alert("Não é possivel inserir esta data");
+    }
+
+
 }
