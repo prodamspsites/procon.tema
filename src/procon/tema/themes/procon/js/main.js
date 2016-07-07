@@ -353,6 +353,7 @@ var jq = jQuery.noConflict();
          if(!emailReg.test(emailaddress)) {
             $('#form-widgets-email').addClass('error');
             alert('E-mail inválido!');
+             $('#form-widgets-email').val('');
           }
          else{
             $('#e-mail').removeClass('error');
