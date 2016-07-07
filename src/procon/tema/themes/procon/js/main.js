@@ -130,6 +130,11 @@ var jq = jQuery.noConflict();
       $('#breadcrumbs-current').html('Senha Definida');
       $('#content .documentDescription').html('Sua senha foi definida com sucesso. Clique aqui para acessar o <a href="/@@register" style="color:#f21c30">site</a>');
     }
+    if ($('body').hasClass('section-contato')) {
+      $('.field.error').find('input, textarea').css('border','1px solid red');
+      $('.fieldErrorBox').hide();
+      $('.field.error').removeClass('error');
+    }
 
     //LOGIN
     $('.template-register #breadcrumbs-current').html('Login');
@@ -279,12 +284,12 @@ var jq = jQuery.noConflict();
 
       $(municipio, pj).remove()
       $(pj).prepend($(municipio).html() + $(tipo).html() + '<br /><p class="mensagemPJ">O PROCON PAULISTANO DIGITAL pode atender pessoas jurídicas na condição de consumidoras. Cumpre esclarecer que a pessoa jurídica pode ser considerada consumidora quando adquire produto ou serviço como destinatária final, isto é, quando utiliza o produto ou serviço para satisfazer sua própria necessidade e não a de seus clientes.</p>' +
-                    $(user_CNPJ).html() + $(razao_social).html() + $(nome_fantasia).html() + 
+                    $(user_CNPJ).html() + $(razao_social).html() + $(nome_fantasia).html() +
                     $(tipo_societario).html() + $(enquadramento).html() + $(responsavel).html() +
                     $(cpf_pj).html() + $(rg_pj).html() + $(expeditor).html() + $(uf_expedidor).html() +
                     '<div class="formQuestion label fonteMaiorJuridico">Dados de contato<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
-                    $(telefone).html() + $(cep).html() + $(logradouro).html() + 
+                    $(telefone).html() + $(cep).html() + $(logradouro).html() +
                     $(complemento).html() + $(bairro).html() + $(cidade).html() +
                     $(uf).html() + $(site).html() + $(email).html() + $(email_confirmacao).html() +
                     $(senha).html() + $(senha_confirmacao).html() + $(enviar).html()
@@ -346,6 +351,17 @@ var jq = jQuery.noConflict();
 
       $(document).on('blur', '#form-widgets-email', function() {
         email = $(this).val();
+        var emailReg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+         var emailaddress = $("#form-widgets-email").val();
+         if(!emailReg.test(emailaddress)) {
+            $('#form-widgets-email').addClass('error');
+            alert('E-mail inválido!');
+             $('#form-widgets-email').val('');
+          }
+         else{
+            $('#e-mail').removeClass('error');
+          }
+
         confirmacao = $('#form-widgets-confirmacao').val();
         if ((email != '') &&  (confirmacao != '') && (email != confirmacao)) {
           AdicionaMensagemErro($(this), 'O e-mail digitado não confere')
@@ -427,7 +443,7 @@ var jq = jQuery.noConflict();
             $('#form-widgets-cadastro-0').attr('checked', 'checked');
             $('#form-widgets-cidade').val('São Paulo').attr('disabled', true);
             $('#form-widgets-unidade_federativa').val('SP').attr('disabled', true);
-           } 
+           }
 
     //MASCARA
            function mascarasForms(){
@@ -439,37 +455,37 @@ var jq = jQuery.noConflict();
            $("#quando-o-produto-ou-servico-apresentou-problema").mask("99/99/9999");
            $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
            $("#telefone, #form-widgets-contato_telefone, #telefone-1").mask("(99) 9999-9999?9")
-            .focusout(function (event) {  
-                var target, phone, element;  
-                target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
+            .focusout(function (event) {
+                var target, phone, element;
+                target = (event.currentTarget) ? event.currentTarget : event.srcElement;
                 phone = target.value.replace(/\D/g, '');
-                element = $(target);  
-                element.unmask();  
-                if(phone.length > 10) {  
-                    element.mask("(99) 99999-999?9");  
-                } else {  
-                    element.mask("(99) 9999-9999?9");  
-                }  
+                element = $(target);
+                element.unmask();
+                if(phone.length > 10) {
+                    element.mask("(99) 99999-999?9");
+                } else {
+                    element.mask("(99) 9999-9999?9");
+                }
             });
            $("#telefone, #form-widgets-contato_telefone, #form-widgets-contato_celular").mask("(99) 9999-9999?9")
-            .focusout(function (event) {  
-                var target, phone, element;  
-                target = (event.currentTarget) ? event.currentTarget : event.srcElement;  
+            .focusout(function (event) {
+                var target, phone, element;
+                target = (event.currentTarget) ? event.currentTarget : event.srcElement;
                 phone = target.value.replace(/\D/g, '');
-                element = $(target);  
-                element.unmask();  
-                if(phone.length > 10) {  
-                    element.mask("(99) 99999-999?9");  
-                } else {  
-                    element.mask("(99) 9999-9999?9");  
-                }  
+                element = $(target);
+                element.unmask();
+                if(phone.length > 10) {
+                    element.mask("(99) 99999-999?9");
+                } else {
+                    element.mask("(99) 9999-9999?9");
+                }
             });
            $("#cep, #form-widgets-codigo_enderecamento_postal, #cep-juridico").mask("99999-999");
            $("#cpf, #form-widgets-cpf, .CPF").mask("999.999.999-99");
            $("#cnpj, .CNPJ").mask("99.999.999/9999-99",{placeholder:""});
            $("#cnpj-cpf").mask("99.999.999/9999-99");
            $('.divRedireciona .inputProtocolo').mask("9999.99/99999999999");
-           $('#quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto').keyup(function () { 
+           $('#quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto').keyup(function () {
               this.value = this.value.replace(/[^0-9\.]/g,'');
           });
          }mascarasForms();
@@ -754,6 +770,21 @@ var jq = jQuery.noConflict();
           });
       }
 
+      //VALIDACAO E-MAIL
+      function validaEmailReclamacao(){
+        $(document).on('blur', '#e-mail', function() {
+          var emailReg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+           var emailaddress = $("#e-mail").val();
+           if(!emailReg.test(emailaddress)) {
+              $('#e-mail').addClass('error');
+              alert('E-mail inválido!');
+            }
+           else{
+              $('#e-mail').removeClass('error');
+            }
+        })
+      }
+
       function lightboxFormPolitica() {
           lightbox_urlP = portal_url + '/politica-de-privacidade/politica';
           $.ajax({
@@ -800,8 +831,12 @@ var jq = jQuery.noConflict();
         var itensForm = $(".formDuvidas .pfg-form").detach();
         $('.form-group #project').addClass('loading')
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
+            $(document).on('blur', '#quando-voce-comprou-o-produto-ou-contratou-o-servico-1', function() {
+              checaMaiorQAmanha($(this).val());
+            });
             lightboxForm();
             lightboxFormPolitica();
+            validaEmailReclamacao();
             $('#content #content-core').append(itensForm);
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
@@ -1439,12 +1474,12 @@ var jq = jQuery.noConflict();
           }).done(function(){
             $('input[type=checkbox]', thisParent).attr('checked',true);
             $('input[type=checkbox]', thisParent).attr('disabled',true);
-          })              
+          })
         }
       }
     });
 
-    // ABRE TELA INTERNA DA TABELA DE RECLAMAÇÕES 
+    // ABRE TELA INTERNA DA TABELA DE RECLAMAÇÕES
     $(document).on('click',"td.reclamacao_buscar",function(){
       $this  = $(this);
       thisParent = $(this).parent()
@@ -1456,8 +1491,8 @@ var jq = jQuery.noConflict();
         $.each($tbody.children(),function(){
           $this  = $(this);
           if(!$this.hasClass('reclamacoes_abre_div_detalhes')){
-            $this.hide() 
-          } 
+            $this.hide()
+          }
           else
           {
             var classes = ['reclamacao_buscar','categoria','pergunta','usuario'];
@@ -1474,7 +1509,7 @@ var jq = jQuery.noConflict();
     });
 
     $(document).on('click',"td.duvidas_buscar",function(){
-      
+
       $(".DuvidaDivInterno").show();
       $(".divReclamacoes").hide();
       $this = $(this).attr("class");
@@ -1492,10 +1527,11 @@ var jq = jQuery.noConflict();
       var $email = $("."+_id+"_email").html();
       var $fullname = $("."+_id+"_fullname").html();
       var $id = $("."+_id+"_id").html();
-      var $lido = $("."+_id+"_lido").html().trim(); 
+      var $lido = $("."+_id+"_lido").html().trim();
       var $data_atualizacao = $("."+_id+"_data_atualizacao").html();
+      var $status = $("."+_id+"_status").html().trim();
 
-      
+
       var $cpf = $("."+_id+"_cpf").html();
       var $municipio = $("."+_id+"_municipio").html();
       var $uf = $("."+_id+"_uf").html();
@@ -1505,16 +1541,20 @@ var jq = jQuery.noConflict();
       } else {
         $("#observacao").html($observacao).attr('disabled',false);
       }
-     
+      // /console.log($status)
+      $('#duvidas_status option[value="'+$status+'"]').attr('selected','selected');
+
       if($lido == "True"){
         $("#lido_check").attr('disabled',true).attr("checked",true);
+        $("#texto").html('Concluído');
       } else{
         $("#lido_check").attr('disabled',false).attr("checked",false);
+        $("#texto").html('Marcar como concluído');
       }
-
       $("#cpf").html($cpf);
       $("#municipio").html($municipio);
       $("#uf").html($uf);
+      $("#status").html($status);
 
       $("#lido_check").attr('rel',_id);
 
@@ -1529,7 +1569,7 @@ var jq = jQuery.noConflict();
       $("#email").html($email);
       $("#fullname").html($usuario);
       $("#operador").html($fullname);
-      $("#data_atualizacao").html($data_atualizacao);        
+      $("#data_atualizacao").html($data_atualizacao);
       if ($operador == "False") {
         $('.atualizacao').remove()
       }
@@ -1611,7 +1651,7 @@ var jq = jQuery.noConflict();
         $(".lido_reclamacoes").on('click',function(){
           var r = confirm("Você tem certeza? Não será permitido desfazer essa operação.");
           if (r == true) {
-            
+
             var protocolo =  $(this).attr('rel');
 
             if(protocolo != ""){
@@ -1621,13 +1661,13 @@ var jq = jQuery.noConflict();
               }).done(function(){
                 $('input[type=checkbox]').attr('checked',true);
                 $('input[type=checkbox]').attr('disabled',true);
-              })              
+              })
             }
           }
         });
 
         $(".FA_reclamacoes").on('blur',function(){
-          if ($(this).val() != "") {            
+          if ($(this).val() != "") {
             var protocolo =  $(this).attr('rel');
             var FA = $(this).val();
             if(protocolo != ""){
@@ -1637,7 +1677,7 @@ var jq = jQuery.noConflict();
                   FA: FA,
               }).done(function(){
                 $(this).attr('disabled',true);
-              })              
+              })
             }
           }
         });
@@ -1647,13 +1687,14 @@ var jq = jQuery.noConflict();
 
           if (r == true) {
             var protocolo =  $(this).attr('rel');
-            
+
             $.post( portal_url + '/@@duvidas_salvar',
             {
                 identificacao: protocolo,
             }).done(function(){
               $('input[type=checkbox]').attr('checked',true);
               $('input[type=checkbox]').attr('disabled',true);
+
             })
           } else {
             $('input[type=checkbox].ok').attr('checked',false);
@@ -1661,12 +1702,14 @@ var jq = jQuery.noConflict();
         });
 
         $("#enviarComentario").on('click',function(){
+            console.log($("#duvidas_status").val());
             $.post( portal_url + '/@@duvidas_salvar',
             {
                 identificacao: $("#idObservacao").html(),
-                observacao: $("#observacao").val()
+                observacao: $("#observacao").val() ,
+                status: $("#duvidas_status").val()
             }).done(function(){
-              $('#observacao').attr('disabled',true);
+              //$('#observacao').attr('disabled',true);
             })
         });
 
@@ -1674,6 +1717,9 @@ var jq = jQuery.noConflict();
         "aoColumns": [
         null,
         { "sType": "date-uk" },
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -1721,19 +1767,19 @@ function testaCNPJ(cnpj) {
 
     if (cnpj.length != 14)
         return false;
- 
-     if (cnpj == "00000000000000" || 
-        cnpj == "11111111111111" || 
-        cnpj == "22222222222222" || 
-        cnpj == "33333333333333" || 
-        cnpj == "44444444444444" || 
-        cnpj == "55555555555555" || 
-        cnpj == "66666666666666" || 
-        cnpj == "77777777777777" || 
-        cnpj == "88888888888888" || 
+
+     if (cnpj == "00000000000000" ||
+        cnpj == "11111111111111" ||
+        cnpj == "22222222222222" ||
+        cnpj == "33333333333333" ||
+        cnpj == "44444444444444" ||
+        cnpj == "55555555555555" ||
+        cnpj == "66666666666666" ||
+        cnpj == "77777777777777" ||
+        cnpj == "88888888888888" ||
         cnpj == "99999999999999")
         return false;
-         
+
     tamanho = cnpj.length - 2
     numeros = cnpj.substring(0,tamanho);
     digitos = cnpj.substring(tamanho);
@@ -1747,7 +1793,7 @@ function testaCNPJ(cnpj) {
     resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
     if (resultado != digitos.charAt(0))
         return false;
-         
+
     tamanho = tamanho + 1;
     numeros = cnpj.substring(0,tamanho);
     soma = 0;
@@ -1760,40 +1806,40 @@ function testaCNPJ(cnpj) {
     resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
     if (resultado != digitos.charAt(1))
           return false;
-           
+
     return true;
-    
+
 }
 
 function testaCPF(strCPF) {
 
-  if (strCPF.length != 11 || 
-          strCPF == "00000000000" || 
-          strCPF == "11111111111" || 
-          strCPF == "22222222222" || 
-          strCPF == "33333333333" || 
-          strCPF == "44444444444" || 
-          strCPF == "55555555555" || 
-          strCPF == "66666666666" || 
-          strCPF == "77777777777" || 
-          strCPF == "88888888888" || 
+  if (strCPF.length != 11 ||
+          strCPF == "00000000000" ||
+          strCPF == "11111111111" ||
+          strCPF == "22222222222" ||
+          strCPF == "33333333333" ||
+          strCPF == "44444444444" ||
+          strCPF == "55555555555" ||
+          strCPF == "66666666666" ||
+          strCPF == "77777777777" ||
+          strCPF == "88888888888" ||
           strCPF == "99999999999")
               return false;
     var Soma;
     var Resto;
     Soma = 0;
   if (strCPF == "00000000000") return false;
-    
+
   for (i=1; i<=9; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (11 - i);
   Resto = (Soma * 10) % 11;
-  
+
     if ((Resto == 10) || (Resto == 11))  Resto = 0;
     if (Resto != parseInt(strCPF.substring(9, 10)) ) return false;
-  
+
   Soma = 0;
     for (i = 1; i <= 10; i++) Soma = Soma + parseInt(strCPF.substring(i-1, i)) * (12 - i);
     Resto = (Soma * 10) % 11;
-  
+
     if ((Resto == 10) || (Resto == 11))  Resto = 0;
     if (Resto != parseInt(strCPF.substring(10, 11) ) ) return false;
     return true;
@@ -1833,7 +1879,7 @@ function CEPCallback(conteudo) {
     alert("CEP não encontrado.");
   }
 }
-    
+
 function pesquisaCEP(cep) {
   if ((cep != "") && (01000000 < CEP && 05999999 > CEP ))  {
     var validacep = /^[0-9]{8}$/;
@@ -1879,4 +1925,55 @@ function cpfCnpj(v){
         v=v.replace(/(\d{4})(\d)/,"$1-$2")
     }
     return v
+}
+//COMPARA DATAS
+function checaMaiorQAmanha(data) {
+
+ //data para checar    
+    var str = data.split("/"); 
+
+    var diacheck = str[0];
+    var mescheck = str[1];
+    var anocheck = str[2];
+
+    var diaparachecar = Date.parse(mescheck+" "+diacheck+", "+anocheck);
+
+  if(isNaN(Date.parse(mescheck+"/"+diacheck+"/"+anocheck))){
+    alert("Data Inválida!");
+    $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
+    return;
+  }
+
+    //recupera o valor de hj
+    var hj = new Date();
+    var hjdia = hj.getDate();
+    var hjmes = hj.getMonth();
+    var hjano = hj.getFullYear();
+
+    //hj em miliseconds desde Jan 1 1970
+    //parse(mes/dia/ano)
+    var hjemmili = Date.parse((hjmes + 1)+" "+ hjdia+", "+hjano);
+
+    
+    //console.log((hjmes + 1)+" "+ hjdia+", "+hjano);
+
+    //amanha
+    var amanha = new Date(hjemmili + (86400000 * 1));
+    
+    var amanhamili =  amanha.getTime();
+    
+   
+
+    
+
+   
+    //se a data for amanha ou outro dia depois de manha, não permita
+    if(amanhamili > diaparachecar){
+        console.log("Data ok");
+    }else{
+       $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
+       alert("Não é possivel inserir esta data");
+    }
+
+
 }
