@@ -4015,11 +4015,11 @@ body.section-consumidor .divLoginDenuncia{
     border: 1px solid #cbcbcb;
     position: absolute;
     top: 52px;
-    color: #202020;
+    color: #202020 !important;
     font-size: 0.8em;
     padding: 8px;
     right: 0;
-    width: 115px;
+    width: 115px !important;
     display: none;
   }
   #footer .menuFooter{

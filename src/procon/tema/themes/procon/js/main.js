@@ -924,13 +924,21 @@ var jq = jQuery.noConflict();
             });
 
             //VALIDA FORM RECLAMACAO
+
             $(".formid-formularios form").submit(function( event ) {
+              $('.pfg-form.formid-formularios input[type="submit"]').css('opacity','0.4').prop( "disabled", true );
+              setTimeout( function(){
+                $('.pfg-form.formid-formularios input[type="submit"]').css('opacity','1').prop( "disabled", false );
+              }  , 2000 );
               thisForm = this;
-              $(".formid-formularios form textarea").not('#complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #g-recaptcha-response, #site, #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').each(function(){
+              $(".formid-formularios form textarea:visible, .formid-formularios form input:visible").not('#complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #g-recaptcha-response, #site, #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').each(function(){
                 if($(this).val() === ''){
                   $('.formid-formularios form input:text').removeClass('error');
                   $(this).addClass('error');
-                  $('html,body').animate({ scrollTop: $('.error').offset().top - 40}, 'slow');
+                  //$('html,body').animate({ scrollTop: $('.error').offset().top - 40}, 'slow');
+                  if (!$('#hasErrors').length) {
+                      $('<span id="hasErrors">Por favor, corrija os campos em vermelho para enviar o formulário</span>').insertBefore($('.pfg-form.formid-formularios input[type="submit"]')).effect("pulsate", { times:2 }, 2000);
+                  }
                   event.preventDefault();
                   return false;
                 }
@@ -941,7 +949,6 @@ var jq = jQuery.noConflict();
                 event.preventDefault();
                 return false;
               }
-              $('input[type="submit"]').val("processando...");
               $(thisForm).submit();
             });
 
