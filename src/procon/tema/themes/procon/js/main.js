@@ -939,13 +939,21 @@ var jq = jQuery.noConflict();
             });
 
             //VALIDA FORM RECLAMACAO
+
             $(".formid-formularios form").submit(function( event ) {
+              $('.pfg-form.formid-formularios input[type="submit"]').css('opacity','0.4').prop( "disabled", true );
+              setTimeout( function(){
+                $('.pfg-form.formid-formularios input[type="submit"]').css('opacity','1').prop( "disabled", false );
+              }  , 2000 );
               thisForm = this;
-              $(".formid-formularios form textarea").not('#complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #g-recaptcha-response, #site, #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').each(function(){
+              $(".formid-formularios form textarea:visible, .formid-formularios form input:visible").not('#complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #g-recaptcha-response, #site, #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').each(function(){
                 if($(this).val() === ''){
                   $('.formid-formularios form input:text').removeClass('error');
                   $(this).addClass('error');
-                  $('html,body').animate({ scrollTop: $('.error').offset().top - 40}, 'slow');
+                  //$('html,body').animate({ scrollTop: $('.error').offset().top - 40}, 'slow');
+                  if (!$('#hasErrors').length) {
+                      $('<span id="hasErrors">Por favor, corrija os campos em vermelho para enviar o formulário</span>').insertBefore($('.pfg-form.formid-formularios input[type="submit"]')).effect("pulsate", { times:2 }, 2000);
+                  }
                   event.preventDefault();
                   return false;
                 }
@@ -956,7 +964,6 @@ var jq = jQuery.noConflict();
                 event.preventDefault();
                 return false;
               }
-              $('input[type="submit"]').val("processando...");
               $(thisForm).submit();
             });
 
@@ -1041,6 +1048,37 @@ var jq = jQuery.noConflict();
       labelFile = $('#archetypes-fieldname-anexe-arquivos-como-contrato-social-ou-outros-documentos-de-empresa label');
       labelFile.html( '<div class="justificado">' + $(labelFile).text() + '</div>' );
       insereInputFile();
+      $('.infoUpload').append('<span class="required" title="Obrigatório">&nbsp;</span>');
+      
+      $(document).on('blur', '.formid-adesao-ao-procon-paulistano form', function() {
+        var emailReg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+           var emailaddress = $("#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente").val();
+           if(!emailReg.test(emailaddress)) {
+              $('#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente').addClass('error');
+              alert('E-mail inválido!');
+            }
+           else{
+              $('#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente').removeClass('error');
+            }
+
+            var emailaddressj = $("#email--juridico").val();
+           if(!emailReg.test(emailaddressj)) {
+              $('#email--juridico').addClass('error');
+              alert('E-mail inválido!');
+            }
+           else{
+              $('#email--juridico').removeClass('error');
+            }
+
+            var emailaddressr = $("#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail").val();
+           if(!emailReg.test(emailaddressr)) {
+              $('#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').addClass('error');
+              alert('E-mail inválido!');
+            }
+           else{
+              $('#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').removeClass('error');
+            }
+      })
     }
 
     if ($('body').hasClass('subsection-formulario-de-denuncia')) {
