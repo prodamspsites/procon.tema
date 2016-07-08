@@ -2650,6 +2650,12 @@ form#mail_password label{
   margin-top: 65px;
 }
 
+#g-recaptcha {
+  float: left;
+  clear: both;
+  margin: 25px 0 0;
+}
+
 .label.fonteMaior {
   font-size: 18px;
   margin: 35px 0 5px;
@@ -2767,7 +2773,8 @@ h4.fonteMenor {
   color: white !important;
 }
 .form-group .btnBuscar.disabled,
-.btnProsseguir.disabled {
+.btnProsseguir.disabled,
+.disabled {
   opacity: 0.5;
   cursor: auto;
 }
