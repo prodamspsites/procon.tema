@@ -737,7 +737,7 @@ var jq = jQuery.noConflict();
           $('#quando-o-produto-ou-servico-apresentou-problema').val('');
           alert('Não é possivel inserir esta data');
         }
-        
+
     });
     $( "#quando-voce-comprou-o-produto-ou-contratou-o-servico-1" ).focusout(function() {
       if($('#quando-o-produto-ou-servico-apresentou-problema').val() != ''){
@@ -874,7 +874,7 @@ var jq = jQuery.noConflict();
                 $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
                 alert('Não é possivel inserir esta data!')
               }
-            
+
             });
             lightboxForm();
             lightboxFormPolitica();
@@ -2016,16 +2016,10 @@ function compareDates(date1, date2){
       return false;
   }
 
-<<<<<<< HEAD
- //data para checar
-    var str = data.split("/");
-
-=======
 function checaMaiorQAmanha(data) {
 console.log('chama func');
- //data para checar    
+ //data para checar
     var str = data.split("/"); 
->>>>>>> 5243bf5e51a8cbc67e9579f83335bc820af0c718
     var diacheck = str[0];
     var mescheck = str[1];
     var anocheck = str[2];
