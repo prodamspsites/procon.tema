@@ -739,7 +739,7 @@ var jq = jQuery.noConflict();
           $('#quando-o-produto-ou-servico-apresentou-problema').val('');
           alert('Não é possivel inserir esta data');
         }
-        
+
     });
     $( "#quando-voce-comprou-o-produto-ou-contratou-o-servico-1" ).focusout(function() {
       if($('#quando-o-produto-ou-servico-apresentou-problema').val() != ''){
@@ -876,7 +876,7 @@ var jq = jQuery.noConflict();
                 $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
                 alert('Não é possivel inserir esta data!')
               }
-            
+
             });
             lightboxForm();
             lightboxFormPolitica();
@@ -1069,7 +1069,7 @@ var jq = jQuery.noConflict();
       labelFile.html( '<div class="justificado">' + $(labelFile).text() + '</div>' );
       insereInputFile();
       $('.infoUpload').append('<span class="required" title="Obrigatório">&nbsp;</span>');
-      
+
       $(document).on('blur', '.formid-adesao-ao-procon-paulistano form', function() {
         var emailReg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
            var emailaddress = $("#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente").val();
@@ -1647,7 +1647,7 @@ var jq = jQuery.noConflict();
       $("#assunto").html($assunto);
       $("#idObservacao").html(_id);
       $("#email").html($email);
-      $("#fullname").html($usuario+" ("+$prioridade+")");
+      $("#fullname").html($usuario);
       $("#prioridade").html($prioridade);
       $("#operador").html($fullname);
       $("#data_atualizacao").html($data_atualizacao);
@@ -1683,18 +1683,19 @@ var jq = jQuery.noConflict();
               $(".replica", $(this).parent().parent()).hide();
               $(this).addClass('ok');
 
-              $.post( url,
-              {
-                  util: util,
-                  plone_id: plone_id,
-                  pergunta: pergunta,
-                  resposta: resposta,
-                  usuario:usuario,
-                  categoria:categoria
-              }).done(function(){
+              // te
+              // $.post( url,
+              // {
+              //     util: util,
+              //     plone_id: plone_id,
+              //     pergunta: pergunta,
+              //     resposta: resposta,
+              //     usuario:usuario,
+              //     categoria:categoria
+              // }).done(function(){
                 $('.mensagem_enviada', $('input.flashMessage').removeClass('flashMessage').parent().parent()).html("");
                 $('.mensagem_enviada', $('input.ok').removeClass('ok').addClass('flashMessage').parent().parent()).append("<b>"+ $('.agradece', parent_div).text() +"</b>");
-              });
+              // });
             }
             else if (this.value == 'nao') {
               if ($('body').hasClass('userrole-anonymous')) {
@@ -2020,8 +2021,8 @@ function compareDates(date1, date2){
 
 function checaMaiorQAmanha(data) {
 console.log('chama func');
- //data para checar    
-    var str = data.split("/"); 
+ //data para checar
+    var str = data.split("/");
     var diacheck = str[0];
     var mescheck = str[1];
     var anocheck = str[2];
@@ -2045,19 +2046,19 @@ console.log('chama func');
     //parse(mes/dia/ano)
     var hjemmili = Date.parse((hjmes + 1)+" "+ hjdia+", "+hjano);
 
-    
+
     //console.log((hjmes + 1)+" "+ hjdia+", "+hjano);
 
     //amanha
     var amanha = new Date(hjemmili + (86400000 * 1));
-    
+
     var amanhamili =  amanha.getTime();
-    
-   
 
-    
 
-   
+
+
+
+
     //se a data for amanha ou outro dia depois de manha, não permita
      if(amanhamili > diaparachecar){
         console.log("Data ok");
