@@ -1033,6 +1033,37 @@ var jq = jQuery.noConflict();
       labelFile = $('#archetypes-fieldname-anexe-arquivos-como-contrato-social-ou-outros-documentos-de-empresa label');
       labelFile.html( '<div class="justificado">' + $(labelFile).text() + '</div>' );
       insereInputFile();
+      $('.infoUpload').append('<span class="required" title="Obrigatório">&nbsp;</span>');
+      
+      $(document).on('blur', '.formid-adesao-ao-procon-paulistano form', function() {
+        var emailReg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+           var emailaddress = $("#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente").val();
+           if(!emailReg.test(emailaddress)) {
+              $('#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente').addClass('error');
+              alert('E-mail inválido!');
+            }
+           else{
+              $('#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente').removeClass('error');
+            }
+
+            var emailaddressj = $("#email--juridico").val();
+           if(!emailReg.test(emailaddressj)) {
+              $('#email--juridico').addClass('error');
+              alert('E-mail inválido!');
+            }
+           else{
+              $('#email--juridico').removeClass('error');
+            }
+
+            var emailaddressr = $("#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail").val();
+           if(!emailReg.test(emailaddressr)) {
+              $('#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').addClass('error');
+              alert('E-mail inválido!');
+            }
+           else{
+              $('#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').removeClass('error');
+            }
+      })
     }
 
     if ($('body').hasClass('subsection-formulario-de-denuncia')) {
