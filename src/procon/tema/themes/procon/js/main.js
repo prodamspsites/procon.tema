@@ -729,7 +729,15 @@ var jq = jQuery.noConflict();
     $( "#quando-o-produto-ou-servico-apresentou-problema" ).focusout(function() {
         dataInicial = $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val();
         dataFinal = $('#quando-o-produto-ou-servico-apresentou-problema').val();
-        compareDates(dataInicial,dataFinal);
+        if(checaMaiorQAmanha(dataFinal)){
+          //data valida
+          compareDates(dataInicial,dataFinal);
+        }else{
+          //data nao valida
+          $('#quando-o-produto-ou-servico-apresentou-problema').val('');
+          alert('Não é possivel inserir esta data');
+        }
+        
     });
     $( "#quando-voce-comprou-o-produto-ou-contratou-o-servico-1" ).focusout(function() {
       if($('#quando-o-produto-ou-servico-apresentou-problema').val() != ''){
@@ -861,7 +869,11 @@ var jq = jQuery.noConflict();
         $('.form-group #project').addClass('loading')
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
             $(document).on('blur', '#quando-voce-comprou-o-produto-ou-contratou-o-servico-1', function() {
-              checaMaiorQAmanha($(this).val());
+              //checa se uma data é valida
+              if(!checaMaiorQAmanha($(this).val()) ){
+                alert('Não é possivel inserir esta data!')
+              }
+            
             });
             lightboxForm();
             lightboxFormPolitica();
@@ -1991,10 +2003,10 @@ function compareDates(date1, date2){
       var int_date1 = parseInt(date1.split("/")[2].toString() + date1.split("/")[1].toString() + date1.split("/")[0].toString());
       var int_date2 = parseInt(date2.split("/")[2].toString() + date2.split("/")[1].toString() + date2.split("/")[0].toString());
 
-      if(!checaMaiorQAmanha(date2)){
+      //if(!checaMaiorQAmanha(date2)){
         //$('#quando-o-produto-ou-servico-apresentou-problema').val('');
-        return false;
-      }
+        //return false;
+      //}
 
       if (int_date1 > int_date2){
           //$('#quando-o-produto-ou-servico-apresentou-problema').val('');
@@ -2050,7 +2062,7 @@ console.log('chama func');
 
     }else{
       //console.log('entrouuuu.')
-      $('#quando-o-produto-ou-servico-apresentou-problema').val('');
+      //$('#quando-o-produto-ou-servico-apresentou-problema').val('');
       //alert("Não é possivel inserir esta data");
       return false;
 
