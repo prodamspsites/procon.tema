@@ -1894,6 +1894,9 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   color: red;
   background: none;
 }
+.formid-adesao-ao-procon-paulistano form .error{
+  border: 1px solid red !important;
+}
 .form-group{
     border-left: 101px solid #3f393b;
     margin: 20px 0 30px 0;
@@ -2650,6 +2653,12 @@ form#mail_password label{
   margin-top: 65px;
 }
 
+#g-recaptcha {
+  float: left;
+  clear: both;
+  margin: 25px 0 0;
+}
+
 .label.fonteMaior {
   font-size: 18px;
   margin: 35px 0 5px;
@@ -2767,7 +2776,8 @@ h4.fonteMenor {
   color: white !important;
 }
 .form-group .btnBuscar.disabled,
-.btnProsseguir.disabled {
+.btnProsseguir.disabled,
+.disabled {
   opacity: 0.5;
   cursor: auto;
 }
@@ -4015,11 +4025,11 @@ body.section-consumidor .divLoginDenuncia{
     border: 1px solid #cbcbcb;
     position: absolute;
     top: 52px;
-    color: #202020;
+    color: #202020 !important;
     font-size: 0.8em;
     padding: 8px;
     right: 0;
-    width: 115px;
+    width: 115px !important;
     display: none;
   }
   #footer .menuFooter{

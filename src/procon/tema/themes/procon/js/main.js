@@ -91,7 +91,7 @@ var jq = jQuery.noConflict();
 
     if ($('body').hasClass('template-login_success')) {
       $('.template-login_success #content .documentFirstHeading').html('Você agora está autenticado');
-      $('#content-core div p').html('Note que a barra superior direita foi modificada.<br />Ela agora contém uma área com seu CPF/CNPJ. Clique na seta ao lado do seu CPF/CNPJ para sair com segurança ou alterar sua senha.<br /><br />Atenção! Se você não permanacer autenticado após deixa esta página configure o seu navegador para habilitar o uso de cookies.')
+      $('#content-core div p').html('Note que a barra superior direita foi modificada.<br />Ela agora contém uma área com seu CPF/CNPJ. Clique na seta ao lado do seu CPF/CNPJ para sair com segurança ou alterar sua senha.<br /><br />Atenção! Se você não permanecer autenticado após deixar esta página, configure o seu navegador para habilitar o uso de cookies.')
     }
     if ($('body').hasClass('template-mail_password_form')) {
       $('html head').find('title').text("Esqueci Minha Senha");
@@ -206,6 +206,8 @@ var jq = jQuery.noConflict();
 
     //AJUSTE NO TEMPLATE DE CADASTRO
     if ($('body').hasClass('template-register')) {
+      checkUsername = $('#form-widgets-username').val();
+      checkRazaoSocial = $('#form-widgets-razao_social').val();
       document.title = 'Formulário de Registro - Procon Paulistano';
       $('.documentFirstHeading').text('Primeira vez? Cadastre-se!')
       $('#portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Formulário de registro</span></span>');
@@ -259,7 +261,13 @@ var jq = jQuery.noConflict();
       estado_civil = $('.kssattr-fieldname-form\\.widgets\\.estadocivil').clone();
       nascimento = $('.kssattr-fieldname-form\\.widgets\\.data_nascimento').clone();
       celular = $('.kssattr-fieldname-form\\.widgets\\.contato_celular').clone();
+      captcha = '<div id="g-recaptcha"></div>';
+      $('#form-buttons-register').addClass('disabled').attr('disabled', true);
       enviar = $('.formControls').clone();
+
+      var verifyCallback = function(response) {
+        $('#form-buttons-register').removeClass('disabled').attr('disabled', false);
+      };
 
       pf = $(form).clone();
       pj = $(form).clone();
@@ -277,7 +285,7 @@ var jq = jQuery.noConflict();
                     $(senha).html() + $(senha_confirmacao).html() +
                     '<div class="formQuestion label fonteMaior">Dados adicionais<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
-                    $(idade).html() + $(deficiencia).html() + $(doenca_grave).html() + $(enviar).html()
+                    $(idade).html() + $(deficiencia).html() + $(doenca_grave).html() + captcha + $(enviar).html()
                    );
 
       $(municipio, pj).remove()
@@ -290,12 +298,17 @@ var jq = jQuery.noConflict();
                     $(telefone).html() + $(cep).html() + $(logradouro).html() +
                     $(complemento).html() + $(bairro).html() + $(cidade).html() +
                     $(uf).html() + $(site).html() + $(email).html() + $(email_confirmacao).html() +
-                    $(senha).html() + $(senha_confirmacao).html() + $(enviar).html()
+                    $(senha).html() + $(senha_confirmacao).html() + captcha + $(enviar).html()
                    );
       $(user_CNPJ, pf).find('input').mask("999.999.999-99");
       $(document).on('click', '#form-widgets-cadastro-0', function(){
         form.html($(pf).html()).show()
         mascarasForms();
+        grecaptcha.render('g-recaptcha', {
+          'sitekey' : '6LdeTyATAAAAALjEG3QbmRh0hWAiZRM6jTx3mdtg',
+          'callback' : verifyCallback
+        });
+
         $('#form-widgets-data_nascimento').datepicker({ dateFormat: 'dd/mm/yy' });
         $('#form-widgets-cadastro-0').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
@@ -307,6 +320,10 @@ var jq = jQuery.noConflict();
       $(document).on('click', '#form-widgets-cadastro-1', function(){
         form.html($(pj).html()).show()
         mascarasForms();
+        grecaptcha.render('g-recaptcha', {
+          'sitekey' : '6LdeTyATAAAAALjEG3QbmRh0hWAiZRM6jTx3mdtg',
+          'callback' : verifyCallback,
+        });
         $('#form-widgets-cadastro-1').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-municipio-0').attr('checked', 'checked');
@@ -314,15 +331,16 @@ var jq = jQuery.noConflict();
         $('#form-widgets-unidade_federativa').val('SP').attr('disabled', true);
       });
 
-      if ($('#form-widgets-username') != '') {
-        if ($('#form-widgets-razao_social') != '') {
+      if (checkUsername != '') {
+        console.log( checkUsername )
+        if (checkRazaoSocial != '') {
           $('#form-widgets-cadastro-1').click();
         } else {
           $('#form-widgets-cadastro-0').click();
         }
       }
 
-      $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Já sou cadastrado</h2><p>Faça seu login:</p><div class="field"><label for="__ac_name">CPF/CNPJ:</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
+      $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form#register"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Já sou cadastrado</h2><p>Faça seu login:</p><div class="field"><label for="__ac_name">CPF/CNPJ:</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
 
       //MASCARA CPF CNPJ NO LOGIN
       // $('#cnpj-cpf').parent().find('label').html('CNPJ:');
@@ -820,6 +838,15 @@ var jq = jQuery.noConflict();
         }
 
 
+    if ($('body').hasClass('template-login_form')) {
+      if((window.location.hash) && ($("#__ac_name").length)) {
+        $('<div class="ErrorMessage">Por favor, verifique se o CPF/CNPJ e a senha estão corretos</div>').insertBefore($('div.field').first())
+      }
+    }
+
+
+
+
     //OCULTA FORMULARIO CONSUMIDOR
     if (!($('body').hasClass('subsection-formularios'))){
       $('#viewlet-below-content-title .form-group').remove();
@@ -828,6 +855,9 @@ var jq = jQuery.noConflict();
         var itensForm = $(".formDuvidas .pfg-form").detach();
         $('.form-group #project').addClass('loading')
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
+            $(document).on('blur', '#quando-voce-comprou-o-produto-ou-contratou-o-servico-1', function() {
+              checaMaiorQAmanha($(this).val());
+            });
             lightboxForm();
             lightboxFormPolitica();
             validaEmailReclamacao();
@@ -909,13 +939,21 @@ var jq = jQuery.noConflict();
             });
 
             //VALIDA FORM RECLAMACAO
+
             $(".formid-formularios form").submit(function( event ) {
+              $('.pfg-form.formid-formularios input[type="submit"]').css('opacity','0.4').prop( "disabled", true );
+              setTimeout( function(){
+                $('.pfg-form.formid-formularios input[type="submit"]').css('opacity','1').prop( "disabled", false );
+              }  , 2000 );
               thisForm = this;
-              $(".formid-formularios form textarea").not('#complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #g-recaptcha-response, #site, #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').each(function(){
+              $(".formid-formularios form textarea:visible, .formid-formularios form input:visible").not('#complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #g-recaptcha-response, #site, #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').each(function(){
                 if($(this).val() === ''){
                   $('.formid-formularios form input:text').removeClass('error');
                   $(this).addClass('error');
-                  $('html,body').animate({ scrollTop: $('.error').offset().top - 40}, 'slow');
+                  //$('html,body').animate({ scrollTop: $('.error').offset().top - 40}, 'slow');
+                  if (!$('#hasErrors').length) {
+                      $('<span id="hasErrors">Por favor, corrija os campos em vermelho para enviar o formulário</span>').insertBefore($('.pfg-form.formid-formularios input[type="submit"]')).effect("pulsate", { times:2 }, 2000);
+                  }
                   event.preventDefault();
                   return false;
                 }
@@ -926,7 +964,6 @@ var jq = jQuery.noConflict();
                 event.preventDefault();
                 return false;
               }
-              $('input[type="submit"]').val("processando...");
               $(thisForm).submit();
             });
 
@@ -1011,6 +1048,37 @@ var jq = jQuery.noConflict();
       labelFile = $('#archetypes-fieldname-anexe-arquivos-como-contrato-social-ou-outros-documentos-de-empresa label');
       labelFile.html( '<div class="justificado">' + $(labelFile).text() + '</div>' );
       insereInputFile();
+      $('.infoUpload').append('<span class="required" title="Obrigatório">&nbsp;</span>');
+      
+      $(document).on('blur', '.formid-adesao-ao-procon-paulistano form', function() {
+        var emailReg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+           var emailaddress = $("#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente").val();
+           if(!emailReg.test(emailaddress)) {
+              $('#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente').addClass('error');
+              alert('E-mail inválido!');
+            }
+           else{
+              $('#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente').removeClass('error');
+            }
+
+            var emailaddressj = $("#email--juridico").val();
+           if(!emailReg.test(emailaddressj)) {
+              $('#email--juridico').addClass('error');
+              alert('E-mail inválido!');
+            }
+           else{
+              $('#email--juridico').removeClass('error');
+            }
+
+            var emailaddressr = $("#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail").val();
+           if(!emailReg.test(emailaddressr)) {
+              $('#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').addClass('error');
+              alert('E-mail inválido!');
+            }
+           else{
+              $('#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').removeClass('error');
+            }
+      })
     }
 
     if ($('body').hasClass('subsection-formulario-de-denuncia')) {
@@ -1289,7 +1357,7 @@ var jq = jQuery.noConflict();
         };
         $.ui.autocomplete.filter = function (array, term) {
           term = tirarAcentos(term);
-          var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+          var matcher = new RegExp( $.ui.autocomplete.escapeRegex(term), "i");
           return $.grep(data_filtered, function (value) {
             return matcher.test(value.label || value.value || value);
           });
@@ -1921,4 +1989,55 @@ function cpfCnpj(v){
         v=v.replace(/(\d{4})(\d)/,"$1-$2")
     }
     return v
+}
+//COMPARA DATAS
+function checaMaiorQAmanha(data) {
+
+ //data para checar    
+    var str = data.split("/"); 
+
+    var diacheck = str[0];
+    var mescheck = str[1];
+    var anocheck = str[2];
+
+    var diaparachecar = Date.parse(mescheck+" "+diacheck+", "+anocheck);
+
+  if(isNaN(Date.parse(mescheck+"/"+diacheck+"/"+anocheck))){
+    alert("Data Inválida!");
+    $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
+    return;
+  }
+
+    //recupera o valor de hj
+    var hj = new Date();
+    var hjdia = hj.getDate();
+    var hjmes = hj.getMonth();
+    var hjano = hj.getFullYear();
+
+    //hj em miliseconds desde Jan 1 1970
+    //parse(mes/dia/ano)
+    var hjemmili = Date.parse((hjmes + 1)+" "+ hjdia+", "+hjano);
+
+    
+    //console.log((hjmes + 1)+" "+ hjdia+", "+hjano);
+
+    //amanha
+    var amanha = new Date(hjemmili + (86400000 * 1));
+    
+    var amanhamili =  amanha.getTime();
+    
+   
+
+    
+
+   
+    //se a data for amanha ou outro dia depois de manha, não permita
+    if(amanhamili > diaparachecar){
+        console.log("Data ok");
+    }else{
+       $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
+       alert("Não é possivel inserir esta data");
+    }
+
+
 }
