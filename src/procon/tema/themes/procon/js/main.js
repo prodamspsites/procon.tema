@@ -865,7 +865,7 @@ var jq = jQuery.noConflict();
 
     // }
 
-    if ($('body').hasClass('template-login_form')) {
+    if ($('body').hasClass('template-register')) {
       $('#login_form div.formControls input').addClass('disabled').attr('disabled', true);
       var verifyCallbackRegister = function(response) {
         $('#login_form div.formControls input').removeClass('disabled').attr('disabled', false);
