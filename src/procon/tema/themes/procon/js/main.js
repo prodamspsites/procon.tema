@@ -1038,7 +1038,7 @@ var jq = jQuery.noConflict();
             }
         })
     }
-    if ($('body').hasClass('template-login_form')) {
+    if ($('body').hasClass('template-login_form') || $('body').hasClass('template-logged_out')) {
       //MASCARA CPF CNPJ NO LOGIN
       // $('#cnpj-cpf').parent().find('label').html('CNPJ:');
       $('#__ac_name').parent().prepend('<input type="radio" name="pessoa" value="juridica" id="rjuridica_login" checked /><span class="rpessoa">Pessoa Jurídica</span><input type="radio" name="pessoa" value="fisica" id="rfisica_login" /><span class="rpessoa">Pessoa Física</span>')
