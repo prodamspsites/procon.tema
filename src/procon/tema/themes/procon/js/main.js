@@ -871,6 +871,7 @@ var jq = jQuery.noConflict();
             $(document).on('blur', '#quando-voce-comprou-o-produto-ou-contratou-o-servico-1', function() {
               //checa se uma data é valida
               if(!checaMaiorQAmanha($(this).val()) ){
+                $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
                 alert('Não é possivel inserir esta data!')
               }
             
