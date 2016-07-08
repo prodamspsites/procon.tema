@@ -1520,6 +1520,7 @@ var jq = jQuery.noConflict();
       var $operador = $("."+_id+"_operador").html().trim();
       var $email = $("."+_id+"_email").html();
       var $fullname = $("."+_id+"_fullname").html();
+      var $prioridade = $("."+_id+"_prioridade").html();
       var $id = $("."+_id+"_id").html();
       var $lido = $("."+_id+"_lido").html().trim();
       var $data_atualizacao = $("."+_id+"_data_atualizacao").html();
@@ -1561,7 +1562,8 @@ var jq = jQuery.noConflict();
       $("#assunto").html($assunto);
       $("#idObservacao").html(_id);
       $("#email").html($email);
-      $("#fullname").html($usuario);
+      $("#fullname").html($usuario+" ("+$prioridade+")");
+      $("#prioridade").html($prioridade);
       $("#operador").html($fullname);
       $("#data_atualizacao").html($data_atualizacao);
       if ($operador == "False") {
