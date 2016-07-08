@@ -931,7 +931,7 @@ var jq = jQuery.noConflict();
                 $('.pfg-form.formid-formularios input[type="submit"]').css('opacity','1').prop( "disabled", false );
               }  , 2000 );
               thisForm = this;
-              $(".formid-formularios form textarea:visible, .formid-formularios form input:visible").not('#complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #g-recaptcha-response, #site, #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').each(function(){
+              $(".formid-formularios form textarea:visible, .formid-formularios form input:visible").not('#cnpj-cpf, #complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #g-recaptcha-response, #site, #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').each(function(){
                 if($(this).val() === ''){
                   $('.formid-formularios form input:text').removeClass('error');
                   $(this).addClass('error');
@@ -1040,7 +1040,6 @@ var jq = jQuery.noConflict();
            var emailaddress = $("#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente").val();
            if(!emailReg.test(emailaddress)) {
               $('#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente').addClass('error');
-              alert('E-mail inválido!');
             }
            else{
               $('#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente').removeClass('error');
@@ -1049,7 +1048,6 @@ var jq = jQuery.noConflict();
             var emailaddressj = $("#email--juridico").val();
            if(!emailReg.test(emailaddressj)) {
               $('#email--juridico').addClass('error');
-              alert('E-mail inválido!');
             }
            else{
               $('#email--juridico').removeClass('error');
@@ -1058,7 +1056,6 @@ var jq = jQuery.noConflict();
             var emailaddressr = $("#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail").val();
            if(!emailReg.test(emailaddressr)) {
               $('#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').addClass('error');
-              alert('E-mail inválido!');
             }
            else{
               $('#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').removeClass('error');
@@ -1892,15 +1889,6 @@ function testaCPF(strCPF) {
     return true;
 }
 
-function compareDates(date1, date2){
-        var int_date1 = parseInt(date1.split("/")[2].toString() + date1.split("/")[1].toString() + date1.split("/")[0].toString());
-        var int_date2 = parseInt(date2.split("/")[2].toString() + date2.split("/")[1].toString() + date2.split("/")[0].toString());
-        if (int_date1 > int_date2){
-            alert("Esta data precisa ser superior a data da compra/contrato do produto/serviço.");
-            $('#quando-o-produto-ou-servico-apresentou-problema').val('');
-        }
-        return false;
-    }
 //MASCARA CPF CNPJ
 function mascaraMutuario(o,f){
     v_obj=o
@@ -1974,11 +1962,29 @@ function cpfCnpj(v){
     return v
 }
 //COMPARA DATAS
-function checaMaiorQAmanha(data) {
+function compareDates(date1, date2){
+      console.log('antes');
+      //checaMaiorQAmanha(date2);
+      console.log('dtes');
+      var int_date1 = parseInt(date1.split("/")[2].toString() + date1.split("/")[1].toString() + date1.split("/")[0].toString());
+      var int_date2 = parseInt(date2.split("/")[2].toString() + date2.split("/")[1].toString() + date2.split("/")[0].toString());
 
+      if(!checaMaiorQAmanha(date2)){
+        //$('#quando-o-produto-ou-servico-apresentou-problema').val('');
+        return false;
+      }
+
+      if (int_date1 > int_date2){
+          //$('#quando-o-produto-ou-servico-apresentou-problema').val('');
+          alert("Esta data precisa ser superior a data da compra/contrato do produto/serviço.");
+      }
+      return false;
+  }
+
+function checaMaiorQAmanha(data) {
+console.log('chama func');
  //data para checar    
     var str = data.split("/"); 
-
     var diacheck = str[0];
     var mescheck = str[1];
     var anocheck = str[2];
@@ -1987,6 +1993,7 @@ function checaMaiorQAmanha(data) {
 
   if(isNaN(Date.parse(mescheck+"/"+diacheck+"/"+anocheck))){
     alert("Data Inválida!");
+    $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
     $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
     return;
   }
@@ -2015,11 +2022,16 @@ function checaMaiorQAmanha(data) {
 
    
     //se a data for amanha ou outro dia depois de manha, não permita
-    if(amanhamili > diaparachecar){
+     if(amanhamili > diaparachecar){
         console.log("Data ok");
+        return true;
+
     }else{
-       $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
-       alert("Não é possivel inserir esta data");
+      //console.log('entrouuuu.')
+      $('#quando-o-produto-ou-servico-apresentou-problema').val('');
+      //alert("Não é possivel inserir esta data");
+      return false;
+
     }
 
 
