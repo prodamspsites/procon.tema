@@ -2106,7 +2106,7 @@ console.log('chama func');
 
     //hj em miliseconds desde Jan 1 1970
     //parse(mes/dia/ano)
-    var hjemmili = Date.parse((hjmes + 1)+" "+ hjdia+", "+hjano);
+    var hjemmili = Date.parse((hjmes + 1) + "/" + hjdia + "/" + hjano);
 
 
     //console.log((hjmes + 1)+" "+ hjdia+", "+hjano);
