@@ -853,7 +853,7 @@ var jq = jQuery.noConflict();
         }
 
 
-    if ($('body').hasClass('template-login_form') || $('body').hasClass('template-logout')) {
+    if ($('body').hasClass('template-login_form') || $('body').hasClass('template-logged_out')) {
       if((window.location.hash) && ($("#__ac_name").length)) {
         $('<div class="ErrorMessage">Por favor, verifique se o CPF/CNPJ e a senha estão corretos</div>').insertBefore($('div.field').first())
       }
