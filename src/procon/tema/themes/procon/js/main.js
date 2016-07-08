@@ -2010,7 +2010,7 @@ function compareDates(date1, date2){
       //}
 
       if (int_date1 > int_date2){
-          //$('#quando-o-produto-ou-servico-apresentou-problema').val('');
+          $('#quando-o-produto-ou-servico-apresentou-problema').val('');
           alert("Esta data precisa ser superior a data da compra/contrato do produto/serviço.");
       }
       return false;
