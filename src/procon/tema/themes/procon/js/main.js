@@ -1627,6 +1627,10 @@ var jq = jQuery.noConflict();
       var $data_atualizacao = $("."+_id+"_data_atualizacao").html();
       var $status = $("."+_id+"_status").html().trim();
 
+
+      console.log($("."+_id+"_pr1").html());
+      console.log($("."+_id+"_pr2").html());
+      console.log($("."+_id+"_pr3").html());
       // tela interna
       $("#nome").html($("."+_id+"_nome").html().trim());
       $("#email").html($("."+_id+"_email").html().trim());
