@@ -2079,7 +2079,7 @@ console.log('chama func');
     var mescheck = str[1];
     var anocheck = str[2];
 
-    var diaparachecar = Date.parse(mescheck+" "+diacheck+", "+anocheck);
+    var diaparachecar = Date.parse(mescheck + "/" + diacheck + "/" + anocheck);
 
   // if(isNaN(Date.parse(mescheck+"/"+diacheck+"/"+anocheck))){
   //   alert("Data Inválida!");
