@@ -135,7 +135,9 @@ var jq = jQuery.noConflict();
       $('.fieldErrorBox').hide();
       $('.field.error').removeClass('error');
     }
-
+    if ($('body').hasClass('template-pwreset_invalid')) {
+      $('#content-core p').text('Por favor, certifique-se que você copiou a URL exatamente como ela aparece no e-mail e que você digitou seu CPF/CNPJ corretamente.');
+    }
     //LOGIN
     $('.template-register #breadcrumbs-current').html('Login');
 
