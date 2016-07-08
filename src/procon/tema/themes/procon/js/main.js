@@ -548,6 +548,11 @@ var jq = jQuery.noConflict();
       $('.btnProsseguir').removeClass('disabled').attr('disabled', false)
     })
 
+    $(document).on('keydown', '#bairro, #cidade', function() {
+      $(this).val( $(this).val().replace(/\d+/g, '') )
+    })
+
+
     $(document).on('blur', '.divProtocolo .inputProtocolo', function() {
       testaProcotoloConsumidor($(this))
     })
