@@ -1357,7 +1357,7 @@ var jq = jQuery.noConflict();
         };
         $.ui.autocomplete.filter = function (array, term) {
           term = tirarAcentos(term);
-          var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+          var matcher = new RegExp( $.ui.autocomplete.escapeRegex(term), "i");
           return $.grep(data_filtered, function (value) {
             return matcher.test(value.label || value.value || value);
           });
