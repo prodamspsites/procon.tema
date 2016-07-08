@@ -1681,6 +1681,7 @@ var jq = jQuery.noConflict();
               $(".replica", $(this).parent().parent()).hide();
               $(this).addClass('ok');
 
+              // te
               // $.post( url,
               // {
               //     util: util,
@@ -2019,7 +2020,7 @@ function compareDates(date1, date2){
 function checaMaiorQAmanha(data) {
 console.log('chama func');
  //data para checar
-    var str = data.split("/"); 
+    var str = data.split("/");
     var diacheck = str[0];
     var mescheck = str[1];
     var anocheck = str[2];
