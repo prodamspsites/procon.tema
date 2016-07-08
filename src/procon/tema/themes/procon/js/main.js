@@ -261,7 +261,13 @@ var jq = jQuery.noConflict();
       estado_civil = $('.kssattr-fieldname-form\\.widgets\\.estadocivil').clone();
       nascimento = $('.kssattr-fieldname-form\\.widgets\\.data_nascimento').clone();
       celular = $('.kssattr-fieldname-form\\.widgets\\.contato_celular').clone();
+      captcha = '<div id="g-recaptcha"></div>';
+      $('#form-buttons-register').addClass('disabled').attr('disabled', true);
       enviar = $('.formControls').clone();
+
+      var verifyCallback = function(response) {
+        $('#form-buttons-register').removeClass('disabled').attr('disabled', false);
+      };
 
       pf = $(form).clone();
       pj = $(form).clone();
@@ -279,7 +285,7 @@ var jq = jQuery.noConflict();
                     $(senha).html() + $(senha_confirmacao).html() +
                     '<div class="formQuestion label fonteMaior">Dados adicionais<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
-                    $(idade).html() + $(deficiencia).html() + $(doenca_grave).html() + $(enviar).html()
+                    $(idade).html() + $(deficiencia).html() + $(doenca_grave).html() + captcha + $(enviar).html()
                    );
 
       $(municipio, pj).remove()
@@ -292,12 +298,17 @@ var jq = jQuery.noConflict();
                     $(telefone).html() + $(cep).html() + $(logradouro).html() +
                     $(complemento).html() + $(bairro).html() + $(cidade).html() +
                     $(uf).html() + $(site).html() + $(email).html() + $(email_confirmacao).html() +
-                    $(senha).html() + $(senha_confirmacao).html() + $(enviar).html()
+                    $(senha).html() + $(senha_confirmacao).html() + captcha + $(enviar).html()
                    );
       $(user_CNPJ, pf).find('input').mask("999.999.999-99");
       $(document).on('click', '#form-widgets-cadastro-0', function(){
         form.html($(pf).html()).show()
         mascarasForms();
+        grecaptcha.render('g-recaptcha', {
+          'sitekey' : '6LdeTyATAAAAALjEG3QbmRh0hWAiZRM6jTx3mdtg',
+          'callback' : verifyCallback
+        });
+
         $('#form-widgets-data_nascimento').datepicker({ dateFormat: 'dd/mm/yy' });
         $('#form-widgets-cadastro-0').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
@@ -309,6 +320,10 @@ var jq = jQuery.noConflict();
       $(document).on('click', '#form-widgets-cadastro-1', function(){
         form.html($(pj).html()).show()
         mascarasForms();
+        grecaptcha.render('g-recaptcha', {
+          'sitekey' : '6LdeTyATAAAAALjEG3QbmRh0hWAiZRM6jTx3mdtg',
+          'callback' : verifyCallback,
+        });
         $('#form-widgets-cadastro-1').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-municipio-0').attr('checked', 'checked');
@@ -532,6 +547,11 @@ var jq = jQuery.noConflict();
     $(document).on('keydown', '.divProtocolo .inputProtocolo', function() {
       $('.btnProsseguir').removeClass('disabled').attr('disabled', false)
     })
+
+    $(document).on('keydown', '#bairro, #cidade', function() {
+      $(this).val( $(this).val().replace(/\d+/g, '') )
+    })
+
 
     $(document).on('blur', '.divProtocolo .inputProtocolo', function() {
       testaProcotoloConsumidor($(this))
@@ -1339,7 +1359,7 @@ var jq = jQuery.noConflict();
         };
         $.ui.autocomplete.filter = function (array, term) {
           term = tirarAcentos(term);
-          var matcher = new RegExp("^" + $.ui.autocomplete.escapeRegex(term), "i");
+          var matcher = new RegExp( $.ui.autocomplete.escapeRegex(term), "i");
           return $.grep(data_filtered, function (value) {
             return matcher.test(value.label || value.value || value);
           });
@@ -1570,6 +1590,7 @@ var jq = jQuery.noConflict();
       var $operador = $("."+_id+"_operador").html().trim();
       var $email = $("."+_id+"_email").html();
       var $fullname = $("."+_id+"_fullname").html();
+      var $prioridade = $("."+_id+"_prioridade").html();
       var $id = $("."+_id+"_id").html();
       var $lido = $("."+_id+"_lido").html().trim();
       var $data_atualizacao = $("."+_id+"_data_atualizacao").html();
@@ -1611,7 +1632,8 @@ var jq = jQuery.noConflict();
       $("#assunto").html($assunto);
       $("#idObservacao").html(_id);
       $("#email").html($email);
-      $("#fullname").html($usuario);
+      $("#fullname").html($usuario+" ("+$prioridade+")");
+      $("#prioridade").html($prioridade);
       $("#operador").html($fullname);
       $("#data_atualizacao").html($data_atualizacao);
       if ($operador == "False") {
