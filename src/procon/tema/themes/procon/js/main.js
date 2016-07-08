@@ -563,7 +563,7 @@ var jq = jQuery.noConflict();
     function testaProcotoloConsumidor(inputObject) {
       protocolo = $(inputObject).val().replace(/\D/g,'')
       validador_str = protocolo.substring(0, 4);
-      if ((protocolo != '') && (2014 < parseInt(validador_str)) && (parseInt(validador_str) < 2030)) {
+      if ((protocolo != '') && $('.inputProtocolo').val().length && (2014 < parseInt(validador_str)) && (parseInt(validador_str) < 2030)) {
         $('.btnProsseguir').removeClass('disabled').attr('disabled', false)
       } else {
         $('.btnProsseguir').addClass('disabled').attr('disabled', true)
