@@ -846,7 +846,7 @@ var jq = jQuery.noConflict();
                $(document).on('click','.loginAdmin', function(){
                 $('.menuLogin').toggle();
                 $('.loginAdmin a').toggle();
-                return false;
+                //return false;
               });
         }
 
