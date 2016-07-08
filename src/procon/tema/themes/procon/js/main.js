@@ -1596,14 +1596,13 @@ var jq = jQuery.noConflict();
       $(this).parent().addClass('ok');
       var $observacao = $("."+_id+"_observacao").html().trim();
       var $categoria = $("."+_id+"_categoria").html();
-      var $data = $("."+_id+"_datas").html();
+      var $data = $("."+_id+"_data").html();
       var $usuario = $("."+_id+"_usuario").html();
       var $pergunta = $("."+_id+"_pergunta").html();
       var $resposta = $("."+_id+"_resposta").html();
       var $mensagem = $("."+_id+"_mensagem").html();
       var $assunto = $("."+_id+"_assunto").html();
       var $operador = $("."+_id+"_operador").html().trim();
-      var $email = $("."+_id+"_email").html();
       var $fullname = $("."+_id+"_fullname").html();
       var $prioridade = $("."+_id+"_prioridade").html();
       var $id = $("."+_id+"_id").html();
@@ -1611,6 +1610,13 @@ var jq = jQuery.noConflict();
       var $data_atualizacao = $("."+_id+"_data_atualizacao").html();
       var $status = $("."+_id+"_status").html().trim();
 
+      // tela interna
+      $("#nome").html($("."+_id+"_nome").html().trim());
+      $("#email").html($("."+_id+"_email").html().trim());
+      $("#cpf").html($("."+_id+"_cpf").html().trim());
+      $("#pr1").html($("."+_id+"_pr1").html().trim());
+      $("#pr2").html($("."+_id+"_pr2").html().trim());
+      $("#pr3").html($("."+_id+"_pr3").html().trim());
 
       var $cpf = $("."+_id+"_cpf").html();
       var $municipio = $("."+_id+"_municipio").html();
@@ -1799,6 +1805,8 @@ var jq = jQuery.noConflict();
         "aoColumns": [
         null,
         { "sType": "date-uk" },
+        null,
+        null,
         null,
         null,
         null,
