@@ -229,8 +229,8 @@ var jq = jQuery.noConflict();
       especificar = $('#formfield-form-widgets-deficiencia_especificar').clone()
       cnpj = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
       $('label', cnpj).text('CNPJ *');
-      tipo_societario = $('.kssattr-fieldname-form\\.widgets\\.tipo_societario')
-      enquadramento = $('.kssattr-fieldname-form\\.widgets\\.enquadramento')
+      tipo_societario = $('.kssattr-fieldname-form\\.widgets\\.tipo_societario').clone();
+      enquadramento = $('.kssattr-fieldname-form\\.widgets\\.enquadramento').clone();
       cpf_pj = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
       $('label', cpf_pj).text('CPF do representante *').clone();
       rg_pj = $('.kssattr-fieldname-form\\.widgets\\.rg').clone();
