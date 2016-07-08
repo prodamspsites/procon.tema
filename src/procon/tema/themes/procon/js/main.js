@@ -563,7 +563,7 @@ var jq = jQuery.noConflict();
     function testaProcotoloConsumidor(inputObject) {
       protocolo = $(inputObject).val().replace(/\D/g,'')
       validador_str = protocolo.substring(0, 4);
-      if ((protocolo != '') && ($('.inputProtocolo').val().length == 19) && (2014 < parseInt(validador_str)) && (parseInt(validador_str) < 2030)) {
+      if ((protocolo != '') && ($('.inputProtocolo').val().replace(/[^0-9]/g, '').length == 17) && (2014 < parseInt(validador_str)) && (parseInt(validador_str) < 2030)) {
         $('.btnProsseguir').removeClass('disabled').attr('disabled', false)
       } else {
         $('.btnProsseguir').addClass('disabled').attr('disabled', true)
@@ -853,7 +853,7 @@ var jq = jQuery.noConflict();
         }
 
 
-    if ($('body').hasClass('template-login_form')) {
+    if ($('body').hasClass('template-login_form') || $('body').hasClass('template-logout')) {
       if((window.location.hash) && ($("#__ac_name").length)) {
         $('<div class="ErrorMessage">Por favor, verifique se o CPF/CNPJ e a senha estão corretos</div>').insertBefore($('div.field').first())
       }
@@ -1999,6 +1999,58 @@ function cpfCnpj(v){
     }
     return v
 }
+
+function validatedate(txt) {
+    var dateformat = /^(0?[1-9]|1[012])[\/\-](0?[1-9]|[12][0-9]|3[01])[\/\-]\d{4}$/;
+    // Match the date format through regular expression
+    if (txt.match(dateformat)) {
+
+        //Test which seperator is used '/' or '-'
+        var opera1 = txt.split('/');
+        var opera2 = txt.split('-');
+        lopera1 = opera1.length;
+        lopera2 = opera2.length;
+        // Extract the string into month, date and year
+        if (lopera1 > 1) {
+            var pdate = txt.split('/');
+        } else if (lopera2 > 1) {
+            var pdate = txt.split('-');
+        }
+        var mm = parseInt(pdate[0]);
+        var dd = parseInt(pdate[1]);
+        var yy = parseInt(pdate[2]);
+        // Create list of days of a month [assume there is no leap year by default]
+        var ListofDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        if (mm == 1 || mm > 2) {
+            if (dd > ListofDays[mm - 1]) {
+               // alert('Data Invalida!');
+                return false;
+            }
+        }
+        if (mm == 2) {
+            var lyear = false;
+            if ((!(yy % 4) && yy % 100) || !(yy % 400)) {
+                lyear = true;
+            }
+
+            if ((lyear == false) && (dd >= 29)) {
+                //alert('Data Invalida!');
+                return false;
+            }
+
+            if ((lyear == true) && (dd > 29)) {
+                //alert('Data Invalida!');
+                return false;
+            }
+        }
+
+    } else {
+        //alert('Data Invalida!');
+
+        return false;
+    }
+}
+
 //COMPARA DATAS
 function compareDates(date1, date2){
       console.log('antes');
@@ -2029,12 +2081,22 @@ console.log('chama func');
 
     var diaparachecar = Date.parse(mescheck+" "+diacheck+", "+anocheck);
 
-  if(isNaN(Date.parse(mescheck+"/"+diacheck+"/"+anocheck))){
-    alert("Data Inválida!");
-    $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
-    $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
-    return;
-  }
+  // if(isNaN(Date.parse(mescheck+"/"+diacheck+"/"+anocheck))){
+  //   alert("Data Inválida!");
+  //   $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
+  //   $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
+  //   return;
+  // }
+
+    if(validatedate(data)===false){
+        console.log("DATA INVALIDA!!");
+        alert("Data Inválida!");
+        $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
+        $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
+        return;
+    }else{
+        console.log("DATA VALIDA!!");
+    }
 
     //recupera o valor de hj
     var hj = new Date();
