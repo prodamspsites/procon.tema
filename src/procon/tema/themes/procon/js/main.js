@@ -1821,8 +1821,6 @@ var jq = jQuery.noConflict();
         null,
         null,
         null,
-        null,
-        null,
         { "orderDataType": "dom-checkbox", targets: 0 }
 
         ],
