@@ -595,7 +595,7 @@ var jq = jQuery.noConflict();
         $(this).val('')
         confirm("CPF inválido")
       } else {
-        $(inputs).removeClass('inputObrigatorio').each(function() {
+        $(inputs).removeClass('inputObrigatorio validar').each(function() {
           removeError($(this));
           thisParent = $(this).parent();
           label = $('label', thisParent)
@@ -907,6 +907,7 @@ var jq = jQuery.noConflict();
             lightboxFormPolitica();
             validaEmailReclamacao();
             $('#content #content-core').append(itensForm);
+
             $('.form-group').addClass('active');
             $('.divRedireciona').slideUp();
             wrapper_exclusivos = $('.campos_exclusivos')
@@ -945,6 +946,14 @@ var jq = jQuery.noConflict();
                 $(label).text(text)
               }
             })
+
+            $('div.field label').each( function() {
+              thisParent = $(this).parent()
+              if($(this).text().indexOf('*') != -1) {
+                $('input', thisParent).addClass('validar')
+              }
+            })
+
             labelFile = $('#archetypes-fieldname-para-auxiliar-na-analise-da-sua-reclamacao-voce-deve-anexar-documentos-comprobatorios-da-compra-do-produto-contratacao-do-servico-reclamado label');
             labelFile.html( '<div class="justificado">' + $(labelFile).text() + '</div>' );
             insereInputFile();
@@ -991,7 +1000,7 @@ var jq = jQuery.noConflict();
                 $('.pfg-form.formid-formularios input[type="submit"]').css('opacity','1').prop( "disabled", false );
               }  , 2000 );
               thisForm = this;
-              $(".formid-formularios form textarea:visible, .formid-formularios form input:visible").not('#cnpj-cpf, #complemento, #inscricao-estadual, #matricula-codigo, #especificar-comprou, #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1,#informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #g-recaptcha-response, #site, #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #quantidade-de-parcelas-clique-ou-toque-aqui-para-inserir-o-texto, #valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto').each(function(){
+              $(".formid-formularios form textarea.validar:visible, .formid-formularios form input.validar:visible").each(function(){
                 if($(this).val() === ''){
                   $('.formid-formularios form input:text').removeClass('error');
                   $(this).addClass('error');
@@ -1130,6 +1139,7 @@ var jq = jQuery.noConflict();
     }
 
     if ($('body').hasClass('subsection-formulario-de-denuncia')) {
+      $('.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório')
       insereInputFile();
       $('.infoUpload').html('Até 5 arquivos, com até 20 MB de tamanho.');
       //FORMULARIOS AREA SELECIONADA
