@@ -1649,7 +1649,7 @@ var jq = jQuery.noConflict();
       $(this).parent().addClass('ok');
       var $observacao = $("."+_id+"_observacao").html().trim();
       var $categoria = $("."+_id+"_categoria").html();
-      var $data = $("."+_id+"_data").html();
+      var $data = $("."+_id+"_datas").html();
       var $usuario = $("."+_id+"_usuario").html();
       var $pergunta = $("."+_id+"_pergunta").html();
       var $resposta = $("."+_id+"_resposta").html();
@@ -1663,25 +1663,28 @@ var jq = jQuery.noConflict();
       var $data_atualizacao = $("."+_id+"_data_atualizacao").html();
       var $status = $("."+_id+"_status").html().trim();
 
-      $("#column1").html($data);
-      $("#column2").html($("."+_id+"_usuario").html());
-      $("#column3").html($("."+_id+"_email").html());
-      $("#column3").html($("."+_id+"_cpf").html());
-      $("#column4").html($("."+_id+"_pr1").html());
-      $("#column6").html($("."+_id+"_pr2").html());
-      $("#column7").html($("."+_id+"_pr3").html());
-
 
       console.log($("."+_id+"_pr1").html());
       console.log($("."+_id+"_pr2").html());
       console.log($("."+_id+"_pr3").html());
-      // tela interna
-      $("#nome").html($("."+_id+"_nome").html().trim());
-      $("#email").html($("."+_id+"_email").html().trim());
-      $("#cpf").html($("."+_id+"_cpf").html().trim());
-      $("#pr1").html($("."+_id+"_pr1").html().trim());
-      $("#pr2").html($("."+_id+"_pr2").html().trim());
-      $("#pr3").html($("."+_id+"_pr3").html().trim());
+
+
+      $("#column1").html($data);
+      $("#column2").html($("."+_id+"_usuario").html());
+      $("#column3").html($("."+_id+"_email").html());
+      $("#column4").html($("."+_id+"_cpf").html());
+      $("#column5").html($("."+_id+"_pr1").html());
+      $("#column6").html($("."+_id+"_pr2").html());
+      $("#column7").html($("."+_id+"_pr3").html());
+
+
+      // // tela interna
+      // $("#nome").html($("."+_id+"_nome").html().trim());
+      // $("#email").html($("."+_id+"_email").html().trim());
+      // $("#cpf").html($("."+_id+"_cpf").html().trim());
+      // $("#pr1").html($("."+_id+"_pr1").html().trim());
+      // $("#pr2").html($("."+_id+"_pr2").html().trim());
+      // $("#pr3").html($("."+_id+"_pr3").html().trim());
 
       var $cpf = $("."+_id+"_cpf").html();
       var $municipio = $("."+_id+"_municipio").html();
@@ -1716,7 +1719,6 @@ var jq = jQuery.noConflict();
       $("#mensagem").html($mensagem);
       $("#assunto").html($assunto);
       $("#idObservacao").html(_id);
-      $("#email").html($email);
       $("#fullname").html($usuario);
       $("#prioridade").html($prioridade);
       $("#operador").html($fullname);
