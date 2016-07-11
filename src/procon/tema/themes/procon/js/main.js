@@ -271,6 +271,14 @@ var jq = jQuery.noConflict();
         $('#form-buttons-register').removeClass('disabled').attr('disabled', false);
       };
 
+      //NOME APENAS LETRAS
+      $("#form-widgets-fullname").on("input", function(){
+        var regexp = /[^a-zA-Z]/g;
+        if($(this).val().match(regexp)){
+          $(this).val( $(this).val().replace(regexp,'') );
+        }
+      });
+
       pf = $(form).clone();
       pj = $(form).clone();
       $('div', pf).remove();
