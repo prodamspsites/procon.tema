@@ -1709,7 +1709,6 @@ var jq = jQuery.noConflict();
       $("#mensagem").html($mensagem);
       $("#assunto").html($assunto);
       $("#idObservacao").html(_id);
-      $("#email").html($email);
       $("#fullname").html($usuario);
       $("#prioridade").html($prioridade);
       $("#operador").html($fullname);
