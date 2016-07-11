@@ -2321,7 +2321,9 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   margin: -5px 0 0 0;
   background: #efefef;
   padding: 10px;
+  display: block !important;
 }
+
 #content .usuario-ativo{
   color: #424242;
   margin: 0 0 0 -13px;
@@ -2336,7 +2338,17 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
 .botaoUpload{
   width: 600px;
   float: left;
-  margin: 13px 0 0 0;
+  margin: 13px 0 13px 0;
+}
+#archetypes-fieldname-anexo1 label, #archetypes-fieldname-anexo2 label, #archetypes-fieldname-anexo3 label, #archetypes-fieldname-anexo4 label, #archetypes-fieldname-anexo5 label, #archetypes-fieldname-anexo6 label, #archetypes-fieldname-anexo7 label{
+  display: none;
+}
+#archetypes-fieldname-anexo1 div .botaoUpload, #archetypes-fieldname-anexo2 div .botaoUpload, #archetypes-fieldname-anexo3 div .botaoUpload, #archetypes-fieldname-anexo4 div .botaoUpload, #archetypes-fieldname-anexo5 div .botaoUpload, #archetypes-fieldname-anexo6 div .botaoUpload, #archetypes-fieldname-anexo7 div .botaoUpload{
+  display: none;
+}
+#content .pfg-form.formid-formularios .ArchetypesFileWidget{
+  margin-top: -5px;
+  width: 100%;
 }
 .botaoUpload .btnupload{
   background: #710e0f;

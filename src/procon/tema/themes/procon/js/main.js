@@ -150,7 +150,7 @@ var jq = jQuery.noConflict();
     }
 
     $(document).on('click','.btnupload', function(){
-        $(this).parent().parent().find('input').trigger('click');
+        $('input:file[value=""]').first().trigger('click');
     });
     $(document).on('click','.clearImage', function(){
       contaUploads = contaUploads - 1;
@@ -170,6 +170,7 @@ var jq = jQuery.noConflict();
             $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
           }
           $("input[type='file']").on('change',function(){
+              console.log($(this));
               var id  = $(this).attr('id');
               $("#"+id).parent().parent().next().show();
               var nomeArquivo = this.files[0].name;
@@ -195,7 +196,7 @@ var jq = jQuery.noConflict();
             e.preventDefault();
             thisParent = $(this).parent()
             input = $('input', thisParent);
-            $(input).val('');
+            $('input:file[value!=""]').last().val('');
             $(this).remove();
             $('span',thisParent).remove();
             return false;
