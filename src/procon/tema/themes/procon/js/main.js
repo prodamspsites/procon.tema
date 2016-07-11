@@ -1552,8 +1552,8 @@ var jq = jQuery.noConflict();
             area: area
         }).done(function(){
           $('#enviarObservacao', $(this).parent()).attr('disabled',true)
-          location.reload();
         })
+        location.reload();
     });
 
     $(".template-buscar_fornecedores #enviarTratativas").on('blur',function(){
