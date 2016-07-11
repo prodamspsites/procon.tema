@@ -97,7 +97,7 @@ var jq = jQuery.noConflict();
       $('html head').find('title').text("Esqueci Minha Senha");
       $('#content .documentFirstHeading').html('Esqueci Minha Senha');
       $('#content .documentDescription').html('Para obter uma nova senha de acesso ao site do PROCON Paulistano, digite abaixo o seu CPF/CNPJ e clique em ENVIAR.<br /><br />Em poucos minutos, você receberá no e-mail cadastrado no site do PROCON Paulistano uma mensagem contendo um link para a geração de uma nova senha.');
-      $('#mail_password .field label').text('O meu CPF/CNPJ é:');
+      $('#mail_password .field label').text('CPF:');
       $('.template-mail_password_form #portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Esqueci minha senha</span></span>');
     }
 
