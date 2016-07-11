@@ -97,7 +97,7 @@ var jq = jQuery.noConflict();
       $('html head').find('title').text("Esqueci Minha Senha");
       $('#content .documentFirstHeading').html('Esqueci Minha Senha');
       $('#content .documentDescription').html('Para obter uma nova senha de acesso ao site do PROCON Paulistano, digite abaixo o seu CPF/CNPJ e clique em ENVIAR.<br /><br />Em poucos minutos, você receberá no e-mail cadastrado no site do PROCON Paulistano uma mensagem contendo um link para a geração de uma nova senha.');
-      $('#mail_password .field label').text('O meu CPF/CNPJ é:');
+      $('#mail_password .field label').text('CPF:');
       $('.template-mail_password_form #portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Esqueci minha senha</span></span>');
     }
 
@@ -150,7 +150,7 @@ var jq = jQuery.noConflict();
     }
 
     $(document).on('click','.btnupload', function(){
-        $(this).parent().parent().find('input').trigger('click');
+        $('input:file[value=""]').first().trigger('click');
     });
     $(document).on('click','.clearImage', function(){
       contaUploads = contaUploads - 1;
@@ -170,6 +170,7 @@ var jq = jQuery.noConflict();
             $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
           }
           $("input[type='file']").on('change',function(){
+              console.log($(this));
               var id  = $(this).attr('id');
               $("#"+id).parent().parent().next().show();
               var nomeArquivo = this.files[0].name;
@@ -195,7 +196,7 @@ var jq = jQuery.noConflict();
             e.preventDefault();
             thisParent = $(this).parent()
             input = $('input', thisParent);
-            $(input).val('');
+            $('input:file[value!=""]').last().val('');
             $(this).remove();
             $('span',thisParent).remove();
             return false;
@@ -270,6 +271,14 @@ var jq = jQuery.noConflict();
       var verifyCallback = function(response) {
         $('#form-buttons-register').removeClass('disabled').attr('disabled', false);
       };
+
+      //NOME APENAS LETRAS
+      $("#form-widgets-fullname").on("input", function(){
+        var regexp = /[^a-zA-Z]/g;
+        if($(this).val().match(regexp)){
+          $(this).val( $(this).val().replace(regexp,'') );
+        }
+      });
 
       pf = $(form).clone();
       pj = $(form).clone();
@@ -851,18 +860,18 @@ var jq = jQuery.noConflict();
               });
         }
 
-    // if ($('body').hasClass('template-login_form') || $('body').hasClass('template-logged_out') || $('body').hasClass('template-register')) {
-    //   $('#login_form div.formControls input').addClass('disabled').attr('disabled', true);
-    //   var verifyCallbackRegister = function(response) {
-    //     $('#login_form div.formControls input').removeClass('disabled').attr('disabled', false);
-    //   };
-    //   $('<div id="g-recaptcha"></div>').insertBefore('#login_form div.formControls')
-    //   grecaptcha.render('g-recaptcha', {
-    //     'sitekey' : '6LdeTyATAAAAALjEG3QbmRh0hWAiZRM6jTx3mdtg',
-    //     'callback' : verifyCallbackRegister
-    //   });
+     if ($('body').hasClass('template-login_form') || $('body').hasClass('template-logged_out') || $('body').hasClass('template-register')) {
+       $('#login_form div.formControls input').addClass('disabled').attr('disabled', true);
+       var verifyCallbackRegister = function(response) {
+         $('#login_form div.formControls input').removeClass('disabled').attr('disabled', false);
+       };
+       $('<div id="g-recaptcha"></div>').insertBefore('#login_form div.formControls')
+       grecaptcha.render('g-recaptcha', {
+         'sitekey' : '6LdeTyATAAAAALjEG3QbmRh0hWAiZRM6jTx3mdtg',
+         'callback' : verifyCallbackRegister
+       });
 
-    // }
+     }
 
     if ($('body').hasClass('template-register')) {
       $('#login_form div.formControls input').addClass('disabled').attr('disabled', true);
@@ -1624,14 +1633,13 @@ var jq = jQuery.noConflict();
       $(this).parent().addClass('ok');
       var $observacao = $("."+_id+"_observacao").html().trim();
       var $categoria = $("."+_id+"_categoria").html();
-      var $data = $("."+_id+"_datas").html();
+      var $data = $("."+_id+"_data").html();
       var $usuario = $("."+_id+"_usuario").html();
       var $pergunta = $("."+_id+"_pergunta").html();
       var $resposta = $("."+_id+"_resposta").html();
       var $mensagem = $("."+_id+"_mensagem").html();
       var $assunto = $("."+_id+"_assunto").html();
       var $operador = $("."+_id+"_operador").html().trim();
-      var $email = $("."+_id+"_email").html();
       var $fullname = $("."+_id+"_fullname").html();
       var $prioridade = $("."+_id+"_prioridade").html();
       var $id = $("."+_id+"_id").html();
@@ -1639,6 +1647,17 @@ var jq = jQuery.noConflict();
       var $data_atualizacao = $("."+_id+"_data_atualizacao").html();
       var $status = $("."+_id+"_status").html().trim();
 
+
+      console.log($("."+_id+"_pr1").html());
+      console.log($("."+_id+"_pr2").html());
+      console.log($("."+_id+"_pr3").html());
+      // tela interna
+      $("#nome").html($("."+_id+"_nome").html().trim());
+      $("#email").html($("."+_id+"_email").html().trim());
+      $("#cpf").html($("."+_id+"_cpf").html().trim());
+      $("#pr1").html($("."+_id+"_pr1").html().trim());
+      $("#pr2").html($("."+_id+"_pr2").html().trim());
+      $("#pr3").html($("."+_id+"_pr3").html().trim());
 
       var $cpf = $("."+_id+"_cpf").html();
       var $municipio = $("."+_id+"_municipio").html();
@@ -1825,6 +1844,8 @@ var jq = jQuery.noConflict();
         "aoColumns": [
         null,
         { "sType": "date-uk" },
+        null,
+        null,
         null,
         null,
         null,
