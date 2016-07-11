@@ -2350,6 +2350,10 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   margin-top: -5px;
   width: 100%;
 }
+#o-produto-ou-servico-foi-pago-por-voce-no-seu-cpf .formQuestion.error{
+  border:1px solid red;
+  background: none;
+}
 .botaoUpload .btnupload{
   background: #710e0f;
   color: #fff;
