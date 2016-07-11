@@ -343,7 +343,6 @@ var jq = jQuery.noConflict();
       });
 
       if (checkUsername != '') {
-        console.log( checkUsername )
         if (checkRazaoSocial != '') {
           $('#form-widgets-cadastro-1').click();
         } else {
@@ -559,7 +558,7 @@ var jq = jQuery.noConflict();
       $('.btnProsseguir').removeClass('disabled').attr('disabled', false)
     })
 
-    $(document).on('keydown', '#bairro, #cidade', function() {
+    $(document).on('keydown, blur', '#bairro, #cidade, #form-widgets-fullname', function() {
       $(this).val( $(this).val().replace(/\d+/g, '') )
     })
 
@@ -1563,6 +1562,18 @@ var jq = jQuery.noConflict();
         })
     });
 
+    $(".template-buscar_fornecedores #enviarTratativas").on('blur',function(){
+        area = 'fornecedores'
+        thisItem = $(this)
+        $.post( portal_url + '/@@atualiza_forms',
+        {
+            objId: $(thisItem).attr('rel'),
+            campo: 'tratativas',
+            valor: $(thisItem).val(),
+            area: area
+        })
+    });
+
     $(".template-buscar_fornecedores #lido, .template-buscar_denuncias #lido").on('click',function(){
       var r = confirm("Você tem certeza? Não será permitido desfazer essa operação.");
       if (r == true) {
@@ -1663,7 +1674,6 @@ var jq = jQuery.noConflict();
       } else {
         $("#observacao").html($observacao).attr('disabled',false);
       }
-      // /console.log($status)
       $('#duvidas_status option[value="'+$status+'"]').attr('selected','selected');
 
       if($lido == "True"){
@@ -1826,7 +1836,6 @@ var jq = jQuery.noConflict();
         });
 
         $("#enviarComentario").on('click',function(){
-            console.log($("#duvidas_status").val());
             $.post( portal_url + '/@@duvidas_salvar',
             {
                 identificacao: $("#idObservacao").html(),
@@ -2095,9 +2104,7 @@ function validatedate(txt) {
 
 //COMPARA DATAS
 function compareDates(date1, date2){
-      console.log('antes');
       //checaMaiorQAmanha(date2);
-      console.log('dtes');
       var int_date1 = parseInt(date1.split("/")[2].toString() + date1.split("/")[1].toString() + date1.split("/")[0].toString());
       var int_date2 = parseInt(date2.split("/")[2].toString() + date2.split("/")[1].toString() + date2.split("/")[0].toString());
 
@@ -2114,7 +2121,6 @@ function compareDates(date1, date2){
   }
 
 function checaMaiorQAmanha(data) {
-console.log('chama func');
  //data para checar
     var str = data.split("/");
     var diacheck = str[0];
@@ -2131,13 +2137,11 @@ console.log('chama func');
   // }
 
     if(validatedate(data)===false){
-        console.log("DATA INVALIDA!!");
         alert("Data Inválida!");
         $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
         $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
         return;
     }else{
-        console.log("DATA VALIDA!!");
     }
 
     //recupera o valor de hj
@@ -2165,7 +2169,6 @@ console.log('chama func');
 
     //se a data for amanha ou outro dia depois de manha, não permita
      if(amanhamili > diaparachecar){
-        console.log("Data ok");
         return true;
 
     }else{

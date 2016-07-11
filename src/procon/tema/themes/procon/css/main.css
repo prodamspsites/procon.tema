@@ -2675,6 +2675,11 @@ form#mail_password label{
   margin: 25px 0 0;
 }
 
+#enviarComentario {
+  float: left;
+  clear: both;
+  margin-top:15px;
+}
 .label.fonteMaior {
   font-size: 18px;
   margin: 35px 0 5px;
