@@ -475,7 +475,7 @@ var jq = jQuery.noConflict();
            $("#data-de-nascimento, #form-widgets-data_nascimento").mask("99/99/9999");
            $("#data-de-compra-ou-assinatura-do-contrato").mask("99/99/9999");
            $("#quando-voce-comprou-o-produto-ou-contratou-o-servico-1").mask("99/99/9999");
-           $("#qual-o-valor-total-do-produto-servico-clique-ou-toque-aqui-para-inserir-o-texto-1").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
+           $("#qual-o-valor-total-do-produto-servico-clique-ou-toque-aqui-para-inserir-o-texto-1").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:".", precision: 2});
            $("#valor-da-parcela-clique-ou-toque-aqui-para-inserir-o-texto").maskMoney({showSymbol:true, symbol:"R$", decimal:",", thousands:"."});
            $("#quando-o-produto-ou-servico-apresentou-problema").mask("99/99/9999");
            $("#data-da-compra-ou-assinatura-do-contrato").mask("99/99/9999");
@@ -884,6 +884,12 @@ var jq = jQuery.noConflict();
         'callback' : verifyCallbackRegister
       });
 
+    }
+
+    if ($('body').hasClass('template-login_form')) {
+      if((window.location.hash) && ($("#__ac_name").length)) {
+        $('<div class="ErrorMessage">Por favor, verifique se o CPF/CNPJ e a senha estão corretos</div>').insertBefore($('div.field').first())
+      }
     }
 
 
@@ -1313,7 +1319,7 @@ var jq = jQuery.noConflict();
 
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
-      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Adesão ao Procon Paulistano</h1><h2>O formulário de adesão e respectivos documentos foram enviados com sucesso.</h2><p>Após a recepção e análise da documentação, o PROCON Paulistano encaminhará, através do e-mail <a href="mailto:cid.procon@prefeitura.sp.gov.br">cid.procon@prefeitura.sp.gov.br</a>, o usuário e senha para acesso ao sistema, bem como o manual para a sua utilização.</p><p>Ficamos à disposição, no e-mail <a href="mailto:cid.procon@prefeitura.sp.gov.br">cid.procon@prefeitura.sp.gov.br</a>, para esclarecer eventuais dúvidas.</p></div>');
+      $('#content').html('<div class="sucessoReclamacao" style="display:block"><h1 id="parent-fieldname-title" class="documentFirstHeading">Adesão ao Procon Paulistano</h1><h2>O formulário de adesão e respectivos documentos foram enviados com sucesso.</h2><p>Após a recepção e análise da documentação, o PROCON Paulistano encaminhará, através do e-mail <a href="mailto:cip.procon@prefeitura.sp.gov.br">cip.procon@prefeitura.sp.gov.br</a>, o usuário e senha para acesso ao sistema, bem como o manual para a sua utilização.</p><p>Ficamos à disposição, no e-mail <a href="mailto:cip.procon@prefeitura.sp.gov.br">cip.procon@prefeitura.sp.gov.br</a>, para esclarecer eventuais dúvidas.</p></div>');
     }
 
 
