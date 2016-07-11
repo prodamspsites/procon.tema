@@ -1647,6 +1647,14 @@ var jq = jQuery.noConflict();
       var $data_atualizacao = $("."+_id+"_data_atualizacao").html();
       var $status = $("."+_id+"_status").html().trim();
 
+      $("#column1").html($data);
+      $("#column2").html($("."+_id+"_usuario").html());
+      $("#column3").html($("."+_id+"_email").html());
+      $("#column3").html($("."+_id+"_cpf").html());
+      $("#column4").html($("."+_id+"_pr1").html());
+      $("#column6").html($("."+_id+"_pr2").html());
+      $("#column7").html($("."+_id+"_pr3").html());
+
 
       console.log($("."+_id+"_pr1").html());
       console.log($("."+_id+"_pr2").html());
