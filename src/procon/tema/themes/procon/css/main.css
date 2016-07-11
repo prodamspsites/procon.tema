@@ -2987,8 +2987,15 @@ h4.fonteMenor {
   padding: 0 0 10px 0;
   float: left;
   clear: both;
-  margin: 40px 0 20px 0;
+  margin: 40px 0 10px 0;
   width: 100%;
+}
+#content #login-new-user p{
+  float: left;
+  clear: both;
+  width: 100%;
+  text-align: center;
+  margin: 0 0 40px 0;
 }
 #content #login-new-user a{
     color: #f21c30;
@@ -3560,6 +3567,8 @@ body.section-consumidor .divLoginDenuncia{
   font-weight: bold;
   border: none;
   cursor: pointer;
+  float: left;
+  clear: both;
 }
 /*RECLAMACOES RECEBIDAS*/
 

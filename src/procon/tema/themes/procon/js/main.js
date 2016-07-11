@@ -852,18 +852,18 @@ var jq = jQuery.noConflict();
               });
         }
 
-    // if ($('body').hasClass('template-login_form') || $('body').hasClass('template-logged_out') || $('body').hasClass('template-register')) {
-    //   $('#login_form div.formControls input').addClass('disabled').attr('disabled', true);
-    //   var verifyCallbackRegister = function(response) {
-    //     $('#login_form div.formControls input').removeClass('disabled').attr('disabled', false);
-    //   };
-    //   $('<div id="g-recaptcha"></div>').insertBefore('#login_form div.formControls')
-    //   grecaptcha.render('g-recaptcha', {
-    //     'sitekey' : '6LdeTyATAAAAALjEG3QbmRh0hWAiZRM6jTx3mdtg',
-    //     'callback' : verifyCallbackRegister
-    //   });
+     if ($('body').hasClass('template-login_form') || $('body').hasClass('template-logged_out') || $('body').hasClass('template-register')) {
+       $('#login_form div.formControls input').addClass('disabled').attr('disabled', true);
+       var verifyCallbackRegister = function(response) {
+         $('#login_form div.formControls input').removeClass('disabled').attr('disabled', false);
+       };
+       $('<div id="g-recaptcha"></div>').insertBefore('#login_form div.formControls')
+       grecaptcha.render('g-recaptcha', {
+         'sitekey' : '6LdeTyATAAAAALjEG3QbmRh0hWAiZRM6jTx3mdtg',
+         'callback' : verifyCallbackRegister
+       });
 
-    // }
+     }
 
     if ($('body').hasClass('template-register')) {
       $('#login_form div.formControls input').addClass('disabled').attr('disabled', true);
