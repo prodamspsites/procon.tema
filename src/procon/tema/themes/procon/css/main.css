@@ -2669,6 +2669,12 @@ form#mail_password label{
   margin-top: 65px;
 }
 
+#mensagemCaptcha {
+  float: left;
+  clear: both;
+  margin-top: 15px;
+}
+
 #g-recaptcha {
   float: left;
   clear: both;

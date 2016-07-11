@@ -264,7 +264,7 @@ var jq = jQuery.noConflict();
       estado_civil = $('.kssattr-fieldname-form\\.widgets\\.estadocivil').clone();
       nascimento = $('.kssattr-fieldname-form\\.widgets\\.data_nascimento').clone();
       celular = $('.kssattr-fieldname-form\\.widgets\\.contato_celular').clone();
-      captcha = '<div id="g-recaptcha"></div>';
+      captcha = '<div id="g-recaptcha"></div><span id="mensagemCaptcha">Caso você tenha dificuldade para visualizar a imagem do captcha, utilize o navegador <a href="https://www.google.com.br/chrome/browser/desktop/">Google Chrome</a> ou <a href="https://www.mozilla.org/pt-BR/firefox/new/">Mozilla Firefox</a>.</span>';
       $('#form-buttons-register').addClass('disabled').attr('disabled', true);
       enviar = $('.formControls').clone();
 
@@ -865,7 +865,7 @@ var jq = jQuery.noConflict();
        var verifyCallbackRegister = function(response) {
          $('#login_form div.formControls input').removeClass('disabled').attr('disabled', false);
        };
-       $('<div id="g-recaptcha"></div>').insertBefore('#login_form div.formControls')
+       $('<div id="g-recaptcha"></div><span id="mensagemCaptcha">Caso você tenha dificuldade para visualizar a imagem do captcha, utilize o navegador <a href="https://www.google.com.br/chrome/browser/desktop/">Google Chrome</a> ou <a href="https://www.mozilla.org/pt-BR/firefox/new/">Mozilla Firefox</a>.</span>').insertBefore('#login_form div.formControls')
        grecaptcha.render('g-recaptcha', {
          'sitekey' : '6LdeTyATAAAAALjEG3QbmRh0hWAiZRM6jTx3mdtg',
          'callback' : verifyCallbackRegister
