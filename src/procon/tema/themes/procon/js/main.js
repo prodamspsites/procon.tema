@@ -1111,6 +1111,7 @@ var jq = jQuery.noConflict();
 
 
     if ($('body').hasClass('subsection-adesao-ao-procon-paulistano')) {
+      $('.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório')
       labelFile = $('#archetypes-fieldname-anexe-arquivos-como-contrato-social-ou-outros-documentos-de-empresa label');
       labelFile.html( '<div class="justificado">' + $(labelFile).text() + '</div>' );
       insereInputFile();
