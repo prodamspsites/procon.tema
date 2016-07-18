@@ -1579,7 +1579,7 @@ var jq = jQuery.noConflict();
         }).done(function(){
           $('#enviarObservacao', $(this).parent()).attr('disabled',true)
         })
-        location.reload();
+        window.location.reload(true);
     });
 
     $(".template-buscar_fornecedores #enviarTratativas").on('blur',function(){
@@ -1591,6 +1591,25 @@ var jq = jQuery.noConflict();
             campo: 'tratativas',
             valor: $(thisItem).val(),
             area: area
+        })
+    });
+
+    $(document).on('change',"#duvidas_status",function(){
+      $this = $(this);
+      var duvida_status = $("option:selected", $this).text();
+
+      $.post( portal_url + '/@@duvidas_salvar',
+      {
+          identificacao: $("#idObservacao").html(),
+          status: duvida_status
+      })
+    });
+
+    $(".template-buscar_duvidas #observacao").on('blur',function(){
+        $.post( portal_url + '/@@duvidas_salvar',
+        {
+            identificacao: $("#idObservacao").html(),
+            observacao: $("#observacao").val(),
         })
     });
 
@@ -1807,6 +1826,7 @@ var jq = jQuery.noConflict();
                   $("#enviarDuvida").attr("disabled",false);
                   $(".replica").hide();
                   $('.mensagem_enviada', $('input.ok').removeClass('ok').parent().parent()).append("<b>"+ $('.agradece', parent_div).text() +"</b>");
+
                 })
               });
             }
@@ -1866,14 +1886,7 @@ var jq = jQuery.noConflict();
         });
 
         $("#enviarComentario").on('click',function(){
-            $.post( portal_url + '/@@duvidas_salvar',
-            {
-                identificacao: $("#idObservacao").html(),
-                observacao: $("#observacao").val() ,
-                status: $("#duvidas_status").val()
-            }).done(function(){
-              //$('#observacao').attr('disabled',true);
-            })
+          window.location.reload(true);
         });
 
         $('#table_id').dataTable( {
