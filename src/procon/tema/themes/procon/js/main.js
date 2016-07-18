@@ -1030,6 +1030,9 @@ var jq = jQuery.noConflict();
                 event.preventDefault();
                 return false;
               }
+              else{
+                $('#o-produto-ou-servico-foi-pago-por-voce-no-seu-cpf .formQuestion').removeClass('error');
+              }
               $(thisForm).submit();
             });
 
