@@ -2163,7 +2163,7 @@ function checaMaiorQAmanha(data) {
   //   return;
   // }
 
-    if(validatedate(data)===false){
+     if(validatedate((mescheck + "/" + diacheck + "/" + anocheck))===false){
         alert("Data Inválida!");
         $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
         $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val('');
