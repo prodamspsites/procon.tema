@@ -4360,7 +4360,7 @@ body.contraste1, body.contraste1 #footer, body.contraste1 #footer .footerBottom,
   background: #000 !important;
   color: #fff !important;
 }
-body.contraste1 #content p, body.contraste1 #content .titPage, body.contraste1 #portal-breadcrumbs a, body.contraste1 #portal-breadcrumbs, body.contraste1 .acessibilidade ul li a, body.contraste1 #content .blocoNoticias .noticiasColuna h2 a{
+body.contraste1 #content p, body.contraste1 #content .titPage, body.contraste1 #portal-breadcrumbs a, body.contraste1 #portal-breadcrumbs, body.contraste1 .acessibilidade ul li a, body.contraste1 #content .blocoNoticias .noticiasColuna h2 a, body.contraste1, body.contraste1 #content .blocoNoticias div h2 a, body.contraste1 #divSidebar .lstServicos li a:hover, body.contraste1 #divSidebar .lstServicos li a, body.contraste1 .blocoNoticias > div time, body.contraste1 #divSidebar .lstNoticias time, body.contraste1 #divSidebar .noticiasTitulo, body.contraste1 #divSidebar .lstNoticias .titNotPortlet, body.contraste1 #main-content h1, body.contraste1 #divSidebar h2, body.contraste1 #content .subTitNoticias, body.contraste1 #content .noticias_media .autor, body.contraste1 #content .noticias_media time, body.contraste1 #content a:link, dl.portlet a:link, body.contraste1 #footer .menuFooter > ul > li a, body.contraste1 #footer .menuFooter > ul > li > ul > li a, body.contraste1 #footer .footerBottom p.copyright, body.contraste1 #footer .socialFooter p, body.contraste1 #footer .footerBottom .divProdam p{
   color: #fff !important;
 }
 body.contraste1 .acessibilidade,body.contraste1  .listaHome{
