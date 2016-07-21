@@ -1888,7 +1888,7 @@ body.section-denuncia #pfg-fieldwrapper{
 body.section-denuncia #pfg-fieldwrapper input[type=submit]{
   margin: -62px 0 0 55px;
 }
-.fieldErrorBox .error{
+.fieldErrorBox .error, #voce-procurou-a-empresa-para-solucionar-o-problema.error{
   border: 1px solid red;
   padding: 3px;
   color: red;

@@ -726,15 +726,24 @@ var jq = jQuery.noConflict();
       } else {
         $(errorWrapper).text(message)
       }
+      adicionaMensagemErroFim();
       wrapper = $('#hasErrors');
       btnSubmit = $("input[name='form_submit']");
-      if (wrapper.length == 0) {
-        $('<span id="hasErrors">Por favor, corrija os campos em vermelho para enviar o formulário</span>').insertBefore($(btnSubmit))
-        $(btnSubmit).addClass('disabled').attr('disabled', true);
-      }
 
     }
-
+    function adicionaMensagemErroFim(){
+      var wrapper = $('#hasErrors');
+      var textoError = 'Por favor, corrija os campos em vermelho para enviar o formulário';
+      var btnSubmit = $("input[name='form_submit']");
+      if (wrapper.length != 0) {
+        $(wrapper).text(textoError);
+        console.log('existe');
+      }else {
+        console.log('nao existe');
+        $('<span id="hasErrors">'+textoError+'</span>').insertBefore($(btnSubmit))
+      }
+      $(btnSubmit).addClass('disabled').attr('disabled', true);
+    }
     //COMPARA DATAS
     $( "#quando-o-produto-ou-servico-apresentou-problema" ).focusout(function() {
         dataInicial = $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val();
@@ -901,6 +910,7 @@ var jq = jQuery.noConflict();
         var itensForm = $(".formDuvidas .pfg-form").detach();
         $('.form-group #project').addClass('loading')
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
+
             $(document).on('blur', '#quando-voce-comprou-o-produto-ou-contratou-o-servico-1', function() {
               //checa se uma data é valida
               if(!checaMaiorQAmanha($(this).val()) ){
@@ -956,7 +966,7 @@ var jq = jQuery.noConflict();
             $('div.field label').each( function() {
               thisParent = $(this).parent()
               if($(this).text().indexOf('*') != -1) {
-                $('input', thisParent).addClass('validar')
+                $('input, textarea', thisParent).addClass('validar')
               }
             })
 
@@ -1001,19 +1011,14 @@ var jq = jQuery.noConflict();
             //VALIDA FORM RECLAMACAO
 
             $(".formid-formularios form").submit(function( event ) {
-              $('.pfg-form.formid-formularios input[type="submit"]').css('opacity','0.4').prop( "disabled", true );
-              setTimeout( function(){
-                $('.pfg-form.formid-formularios input[type="submit"]').css('opacity','1').prop( "disabled", false );
-              }  , 2000 );
+              console.log('enviou');
               thisForm = this;
               $(".formid-formularios form textarea.validar:visible, .formid-formularios form input.validar:visible").each(function(){
                 if($(this).val() === ''){
                   $('.formid-formularios form input:text').removeClass('error');
                   $(this).addClass('error');
                   //$('html,body').animate({ scrollTop: $('.error').offset().top - 40}, 'slow');
-                  if (!$('#hasErrors').length) {
-                      $('<span id="hasErrors">Por favor, corrija os campos em vermelho para enviar o formulário</span>').insertBefore($('.pfg-form.formid-formularios input[type="submit"]')).effect("pulsate", { times:2 }, 2000);
-                  }
+                  adicionaMensagemErroFim();
                   event.preventDefault();
                   return false;
                 }
@@ -1025,7 +1030,7 @@ var jq = jQuery.noConflict();
                 return false;
               }
               if (!$("#o-produto-ou-servico-foi-pago-por-voce-no-seu-cpf_1:checked").is(":checked") && !$("#o-produto-ou-servico-foi-pago-por-voce-no-seu-cpf_2:checked").is(":checked")){
-                $('<span id="hasErrors">Por favor, corrija os campos em vermelho para enviar o formulário</span>').insertBefore($('.pfg-form.formid-formularios input[type="submit"]')).effect("pulsate", { times:2 }, 2000);
+                adicionaMensagemErroFim();
                 $('#o-produto-ou-servico-foi-pago-por-voce-no-seu-cpf .formQuestion').addClass('error');
                 event.preventDefault();
                 return false;
@@ -1033,7 +1038,16 @@ var jq = jQuery.noConflict();
               else{
                 $('#o-produto-ou-servico-foi-pago-por-voce-no-seu-cpf .formQuestion').removeClass('error');
               }
-              $(thisForm).submit();
+              if (!$("#voce-procurou-a-empresa-para-solucionar-o-problema_1:checked").is(":checked") && !$("#voce-procurou-a-empresa-para-solucionar-o-problema_2:checked").is(":checked")){
+                adicionaMensagemErroFim();
+                $('#voce-procurou-a-empresa-para-solucionar-o-problema').addClass('error');
+                event.preventDefault();
+                return false;
+              }
+              else{
+                $('#voce-procurou-a-empresa-para-solucionar-o-problema').removeClass('error');
+              }
+              //$(thisForm).submit();
             });
 
             $('#area-relativa-ao-produto-servico-reclamado').change(function(){
@@ -1073,6 +1087,12 @@ var jq = jQuery.noConflict();
                 escondeItens();
                 $('#archetypes-fieldname-especificar-produto-servicos').show();
               }
+            });
+          //Adiciona Placeholder nos textareas
+            $('textarea').each(function() {
+              var valtextarea = $(this).val();
+              $(this).val('');
+              $(this).attr('placeholder',valtextarea);
             });
         });
 
