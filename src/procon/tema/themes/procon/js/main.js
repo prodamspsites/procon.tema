@@ -621,7 +621,7 @@ var jq = jQuery.noConflict();
         alert('CNPJ inválido')
         $(this).val('')
       } else {
-        $(inputs).removeClass('inputObrigatorio').each(function() {
+        $(inputs).removeClass('inputObrigatorio validar').each(function() {
           removeError($(this));
           thisParent = $(this).parent();
           label = $('label', thisParent)
