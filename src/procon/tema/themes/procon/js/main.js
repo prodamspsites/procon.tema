@@ -1134,7 +1134,11 @@ var jq = jQuery.noConflict();
 
 
     if ($('body').hasClass('subsection-adesao-ao-procon-paulistano')) {
-      $('.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório')
+      $('#cidade--juridico').val('');
+      $('.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório');
+      $('#archetypes-fieldname-e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente .fieldErrorBox').text('E-mail inválido. Favor corrigir');
+      $('#archetypes-fieldname-email--juridico .fieldErrorBox').text('E-mail inválido. Favor corrigir');
+      $('#archetypes-fieldname-e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail .fieldErrorBox').text('E-mail inválido. Favor corrigir');
       labelFile = $('#archetypes-fieldname-anexe-arquivos-como-contrato-social-ou-outros-documentos-de-empresa label');
       labelFile.html( '<div class="justificado">' + $(labelFile).text() + '</div>' );
       insereInputFile();
