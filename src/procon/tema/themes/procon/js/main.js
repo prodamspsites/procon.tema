@@ -1170,17 +1170,6 @@ var jq = jQuery.noConflict();
               $('#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').removeClass('error');
             }
       })
-      $(document).on('click','.btnupload', function(){
-          if ( $( ".clearImage" ).length >= 4){
-            $('.btnupload').hide();
-          }
-          else{
-            $('.btnupload').show();
-          }
-        });
-       $(document).on('click','.clearImage', function(){
-          $('.btnupload').show();
-       });
     }
 
     if ($('body').hasClass('subsection-formulario-de-denuncia')) {
@@ -1674,6 +1663,19 @@ var jq = jQuery.noConflict();
         }
       }
     });
+
+    //LIMITE BOTAO UPLOAD
+    $(document).on('click','.btnupload', function(){
+      if ( $( ".clearImage" ).length >= 4){
+          $('.btnupload').hide();
+        }
+        else{
+          $('.btnupload').show();
+        }
+      });
+     $(document).on('click','.clearImage', function(){
+        $('.btnupload').show();
+     });
 
     // ABRE TELA INTERNA DA TABELA DE RECLAMAÇÕES
     $(document).on('click',"td.reclamacao_buscar",function(){
