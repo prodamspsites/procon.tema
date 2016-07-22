@@ -584,7 +584,7 @@ var jq = jQuery.noConflict();
       CPF = $(this).val().replace(/\D/g,'');
       inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, label[for=copy_of_uf]')
       if (!(testaCPF(CPF))) {
-        $(inputs).addClass('inputObrigatorio').each(function() {
+        $(inputs).addClass('inputObrigatorio, validar').each(function() {
           thisParent = $(this).parent();
           label = $('label', thisParent)
           if ($(label).text().indexOf('*') == -1) {
