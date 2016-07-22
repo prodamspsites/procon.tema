@@ -3846,18 +3846,31 @@ body.section-consumidor .divLoginDenuncia{
 /* ==========================================================================
    Adaptações responsivas
    ========================================================================== */
-@media screen and (min-width: 1024px) and (max-width: 1240px){
+@media screen and (min-width: 1024px) and (max-width: 1280px){
   body.portaltype-collective-cover-content #content div.position-2{
-    margin-left: -99%;
+    margin-left: -90.375%;
   }
   body.portaltype-collective-cover-content #content .cover-embed-tile{
     margin: 41px 0 0 18px;
+  }
+  div.position-6 {
+      margin-left: -65.375% !important;
   }
 }
 /* Medium Devices, Desktops */
 @media only screen and (max-width : 1022px) {
   .wrap{
     width:100%;
+  }
+  body.portaltype-collective-cover-content #content div.position-2{
+    margin-left: -100%;
+  }
+  .template-view div.position-6{
+    margin-left: -100%;
+    clear: both;
+  }
+  .cover-banner-tile.tile-content img{
+    width: auto !important;
   }
   #portal-column-content{
     width:100%;
