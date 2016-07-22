@@ -2090,6 +2090,15 @@ body.section-denuncia #pfg-fieldwrapper input[type=submit]{
     padding: 23px 0 0 0;
     margin: 0 0 0 -12px;
 }
+#copy_of_uf{
+  clear: both;
+  float: left;
+  margin: 0 0 25px 0;
+}
+label[for=copy_of_uf]{
+  clear: both;
+  float: left;
+}
 #content input.disable[type=submit]{
   opacity: 0.5;
   cursor: default;

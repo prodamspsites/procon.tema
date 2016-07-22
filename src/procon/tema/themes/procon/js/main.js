@@ -582,7 +582,7 @@ var jq = jQuery.noConflict();
 
     $(document).on('blur', '.CPF, #cpf', function() {
       CPF = $(this).val().replace(/\D/g,'');
-      inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, #uf')
+      inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, label[for=copy_of_uf]')
       if (!(testaCPF(CPF))) {
         $(inputs).addClass('inputObrigatorio').each(function() {
           thisParent = $(this).parent();
@@ -608,7 +608,7 @@ var jq = jQuery.noConflict();
 
     $(document).on('blur', '.CNPJ', function() {
       CNPJ = $(this).val().replace(/\D/g,'');
-      inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, #uf')
+      inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, label[for=copy_of_uf]')
       if (!(testaCNPJ(CNPJ))) {
         $(inputs).addClass('inputObrigatorio').each(function() {
           thisParent = $(this).parent();
@@ -953,7 +953,7 @@ var jq = jQuery.noConflict();
               $('#content-core .formid-formularios #fg-base-edit').remove();
             }
 
-            inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, #uf')
+            inputs = $('#cep, #logradouro, #numero-complemento, #bairro, #cidade, label[for=copy_of_uf]')
             $(inputs).addClass('inputObrigatorio').each(function() {
               thisParent = $(this).parent();
               label = $('label', thisParent)
