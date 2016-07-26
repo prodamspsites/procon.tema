@@ -2174,6 +2174,7 @@ function validatedate(txt) {
 function abreMobile() {
   //MENU RESP
      var desativaLnkMenu = false;
+    $('.btnMenuResp').removeClass('active');
     $( ".btnMenuResp" ).unbind('click');
      $('.btnMenuResp').bind('click', function() {
          $(this).toggleClass('active');
