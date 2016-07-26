@@ -4054,6 +4054,7 @@ body.section-consumidor .divLoginDenuncia{
     top: 100px;
     position: absolute;
     right: 1px;
+    z-index: 99;
   }
   .loginAdmin.logout{
     background: url(../img/setaLoginMobile.png) no-repeat 6px 12px #3f393b;
