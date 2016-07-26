@@ -455,21 +455,7 @@ var jq = jQuery.noConflict();
                 $(this).attr('target', '_blank')
             }
         });
-    //MENU RESP
-     var desativaLnkMenu = false;
-     $('.btnMenuResp').bind('click', function() {
-         $(this).toggleClass('active');
-         $('#portal-header nav.menu').slideToggle();
-         $('#portal-header .divBusca').toggle();
-         desativaLnkMenu = true;
-         if (desativaLnkMenu == true){
-             $('.subMenu > a').bind('click', function() {
-                 $(this).parent().find('.menuNivel').slideToggle();
-                 $(this).parent().toggleClass('active');
-                 return false;
-             });
-        }
-    });
+    
 
 
            function preparaForm() {
@@ -528,17 +514,17 @@ var jq = jQuery.noConflict();
               this.value = this.value.replace(/[^0-9\.]/g,'');
           });
          }mascarasForms();
-    //MENU HOVER
-      if ($(window).width() >= 1020){
-               $(".menu .subMenu a").mouseenter(function () {
-                   $(this).parent().find('ul.menuNivel').show();
-                   $(this).addClass('active');
-               });
-               $(".menu .subMenu").mouseleave(function () {
-                   $(this).parent().find('ul.menuNivel').hide();
-                   $(this).removeClass('active');
-               });
-        }
+      //MENU HOVER
+        if ($(window).width() >= 1020){
+                 $(".menu .subMenu a").mouseenter(function () {
+                     $(this).parent().find('ul.menuNivel').show();
+                     $(this).addClass('active');
+                 });
+                 $(".menu .subMenu").mouseleave(function () {
+                     $(this).parent().find('ul.menuNivel').hide();
+                     $(this).removeClass('active');
+                 });
+          }
 
     //ACCORDEON
     $('.divAccordeon .textoAccordeon').hide();
@@ -2186,6 +2172,24 @@ function validatedate(txt) {
 
 //RESIZE MOBILE
 function abreMobile() {
+  //MENU RESP
+     var desativaLnkMenu = false;
+    $( ".btnMenuResp" ).unbind('click');
+     $('.btnMenuResp').bind('click', function() {
+         $(this).toggleClass('active');
+         $('#portal-header nav.menu').slideToggle();
+         $('#portal-header .divBusca').toggle();
+         desativaLnkMenu = true;
+         if (desativaLnkMenu == true){
+             $( ".subMenu > a" ).unbind('click');
+             $('.subMenu > a').bind('click', function() {
+                 $(this).parent().find('.menuNivel').slideToggle();
+                 $(this).parent().toggleClass('active');
+                 return false;
+             });
+        }
+    });
+
   $( ".loginAdmin").removeClass('resize');
   $( ".loginAdmin").addClass('resizeMobile');
   console.log('mobile');
@@ -2205,6 +2209,9 @@ function resizeMobile(){
   $( window ).resize( debouncer( function ( e ) {
   //$(window).resize(function() {
     if ($(window).width() < 1020){
+        $('#portal-header nav.menu').hide();
+        $('#portal-header .divBusca').hide();
+        abreMobile();
         $( ".divMenuLogin").addClass('resize');
         $( ".loginAdmin").removeClass('resizeMobile');
         console.log('resize');
@@ -2218,9 +2225,28 @@ function resizeMobile(){
             $('.loginAdmin .cadastro').toggle();
             $('.loginAdmin .setaLogin').toggle();
         });
+        //MENU HOVER RESIZE
+         $(".menu .subMenu a").mouseenter(function () {
+             $(this).parent().find('ul.menuNivel').hide();
+             $(this).removeClass('active');
+         });
+
       }
       else{
+        $( ".loginAdmin").removeClass('resizeMobile');
         $( ".divMenuLogin.resize .loginAdmin" ).unbind('click');
+        $('#portal-header nav.menu').show();
+        $('#portal-header .divBusca').show();
+        //MENU HOVER RESIZE
+         $(".menu .subMenu a").mouseenter(function () {
+             $(this).parent().find('ul.menuNivel').show();
+             $(this).addClass('active');
+         });
+         $(".menu .subMenu").mouseleave(function () {
+             $(this).parent().find('ul.menuNivel').hide();
+             $(this).removeClass('active');
+         });
+
       }
 
   } ) );
