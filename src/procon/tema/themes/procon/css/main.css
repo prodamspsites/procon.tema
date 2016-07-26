@@ -157,9 +157,10 @@ body.template-news_item_view #content .wrap{
   padding: 7px 7px 0 10px;
 }
 .loginAdmin .setaLogin{
-    background: url(../img/setaLogin.png) no-repeat right -4px;
+    background: url(../img/setaLogin.png) no-repeat right 14px;
     color: #fff;
-    padding: 4px 27px 0 0;
+    padding: 0px 27px 0 0;
+    display: block;
 }
 .loginAdmin .cadastro{
     color: #fff;
@@ -4075,9 +4076,6 @@ body.section-consumidor .divLoginDenuncia{
     padding: 8px;
     background: #f5f5f5;
   }
-  .loginAdmin .cadastro{
-    display: none;
-  }
   .loginAdmin a{
     background: #f5f5f5;
     border: 1px solid #cbcbcb;
@@ -4088,7 +4086,6 @@ body.section-consumidor .divLoginDenuncia{
     padding: 8px;
     right: 0;
     width: 115px !important;
-    display: none;
   }
   #footer .menuFooter{
     display:none;
@@ -4371,7 +4368,14 @@ body.section-consumidor .divLoginDenuncia{
   display: block;
   padding: 5px
 }
-
+@media only screen and (min-width : 1024px) {
+  .loginAdmin .setaLogin{
+    display: block !important;
+  }
+  .loginAdmin .cadastro{
+    display: block !important;
+  }
+}
 @media only screen and (min-width : 1500px) {
   .div.position-2{
     margin-left: 77.4%;

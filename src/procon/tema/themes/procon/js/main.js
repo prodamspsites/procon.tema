@@ -2,6 +2,20 @@ var jq = jQuery.noConflict();
 
 (function($) {
   $(document).ready(function() {
+
+    //MENU LOGIN MOBILE
+    $(document).on('click','.loginAdmin .setaLogin', function(){
+      if ($(window).width() > 1020){
+        $('.menuLogin').toggle();
+        return false;
+      }
+    });
+    
+    if ($(window).width() < 1020){
+      abreMobile();
+    }
+    resizeMobile();
+
     if ($('body').hasClass('section-contato')) {
       $('#pfg-fieldwrapper').removeAttr('id');
     }
@@ -515,16 +529,18 @@ var jq = jQuery.noConflict();
           });
          }mascarasForms();
     //MENU HOVER
-    if ($(window).width() >= 900){
-             $(".menu .subMenu a").mouseenter(function () {
-                 $(this).parent().find('ul.menuNivel').show();
-                 $(this).addClass('active');
-             });
-             $(".menu .subMenu").mouseleave(function () {
-                 $(this).parent().find('ul.menuNivel').hide();
-                 $(this).removeClass('active');
-             });
+   /* $(window).on('resize', function(){ 
+      if ($(window).width() >= 1020){
+               $(".menu .subMenu a").mouseenter(function () {
+                   $(this).parent().find('ul.menuNivel').show();
+                   $(this).addClass('active');
+               });
+               $(".menu .subMenu").mouseleave(function () {
+                   $(this).parent().find('ul.menuNivel').hide();
+                   $(this).removeClass('active');
+               });
         }
+     })*/
 
     //ACCORDEON
     $('.divAccordeon .textoAccordeon').hide();
@@ -855,19 +871,6 @@ var jq = jQuery.noConflict();
           });
       }
 
-    // MENU LOGIN
-    $(document).on('click','.loginAdmin .setaLogin', function(){
-      $('.menuLogin').toggle();
-      return false;
-    });
-    //MENU LOGIN MOBILE
-    if ($(window).width() <= 1020){
-               $(document).on('click','.loginAdmin', function(){
-                $('.menuLogin').toggle();
-                $('.loginAdmin a').toggle();
-                //return false;
-              });
-        }
 
      if ($('body').hasClass('template-login_form') || $('body').hasClass('template-logged_out') || $('body').hasClass('template-register')) {
        $('#login_form div.formControls input').addClass('disabled').attr('disabled', true);
@@ -2182,6 +2185,59 @@ function validatedate(txt) {
     }
 }
 
+
+//RESIZE MOBILE
+function abreMobile() {
+  $( ".loginAdmin").removeClass('resize');
+  $( ".loginAdmin").addClass('resizeMobile');
+  console.log('mobile');
+  $('.loginAdmin .cadastro').hide();
+  $('.loginAdmin .setaLogin').hide();
+  $( ".loginAdmin.resizeMobile" ).unbind('click');
+  $('.setaLogin').unbind( "click" );
+  $(document).on('click','.loginAdmin.resizeMobile', function(){
+      console.log('clicou mobile');
+      $('.menuLogin').toggle();
+      $('.loginAdmin .cadastro').toggle();
+      $('.loginAdmin .setaLogin').toggle();
+  });
+}
+
+function resizeMobile(){
+  $( window ).resize( debouncer( function ( e ) {
+  //$(window).resize(function() {
+    if ($(window).width() < 1020){
+        $( ".divMenuLogin").addClass('resize');
+        $( ".loginAdmin").removeClass('resizeMobile');
+        console.log('resize');
+        $('.loginAdmin .cadastro').hide();
+        $('.loginAdmin .setaLogin').hide();
+        $('.menuLogin').hide();
+        $( ".divMenuLogin.resize .loginAdmin" ).unbind('click');
+        $( ".divMenuLogin.resize .loginAdmin" ).on('click', function(){
+          console.log('clicou resize');
+            $('.menuLogin').toggle();
+            $('.loginAdmin .cadastro').toggle();
+            $('.loginAdmin .setaLogin').toggle();
+        });
+      }
+      else{
+        $( ".divMenuLogin.resize .loginAdmin" ).unbind('click');
+      }
+
+  } ) );
+}
+
+function debouncer( func , timeout ) {
+   var timeoutID , timeout = timeout || 200;
+   return function () {
+      var scope = this , args = arguments;
+      clearTimeout( timeoutID );
+      timeoutID = setTimeout( function () {
+          func.apply( scope , Array.prototype.slice.call( args ) );
+      } , timeout );
+   }
+}
 //COMPARA DATAS
 function compareDates(date1, date2){
       //checaMaiorQAmanha(date2);
