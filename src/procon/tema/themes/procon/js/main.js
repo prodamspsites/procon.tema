@@ -2210,8 +2210,6 @@ function resizeMobile(){
   $( window ).resize( debouncer( function ( e ) {
   //$(window).resize(function() {
     if ($(window).width() < 1020){
-        $('#portal-header nav.menu').hide();
-        $('#portal-header .divBusca').hide();
         abreMobile();
         $( ".divMenuLogin").addClass('resize');
         $( ".loginAdmin").removeClass('resizeMobile');
