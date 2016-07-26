@@ -529,7 +529,6 @@ var jq = jQuery.noConflict();
           });
          }mascarasForms();
     //MENU HOVER
-   /* $(window).on('resize', function(){ 
       if ($(window).width() >= 1020){
                $(".menu .subMenu a").mouseenter(function () {
                    $(this).parent().find('ul.menuNivel').show();
@@ -540,7 +539,6 @@ var jq = jQuery.noConflict();
                    $(this).removeClass('active');
                });
         }
-     })*/
 
     //ACCORDEON
     $('.divAccordeon .textoAccordeon').hide();
