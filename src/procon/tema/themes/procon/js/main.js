@@ -105,7 +105,8 @@ var jq = jQuery.noConflict();
 
     if ($('body').hasClass('template-login_success')) {
       $('.template-login_success #content .documentFirstHeading').html('Você agora está autenticado');
-      $('#content-core div p').html('Note que a barra superior direita foi modificada.<br />Ela agora contém uma área com seu CPF/CNPJ. Clique na seta ao lado do seu CPF/CNPJ para sair com segurança ou alterar sua senha.<br /><br />Atenção! Se você não permanecer autenticado após deixar esta página, configure o seu navegador para habilitar o uso de cookies.')
+      $('.documentDescription').remove()
+      $('#content-core').html('<p>Note que a barra superior direita foi modificada.<br />Ela agora contém uma área com seu CPF/CNPJ. Clique na seta ao lado do seu CPF/CNPJ para sair com segurança ou alterar sua senha.<br /><br />Atenção! Se você não permanecer autenticado após deixar esta página, configure o seu navegador para habilitar o uso de cookies.</p>')
     }
     if ($('body').hasClass('template-mail_password_form')) {
       $('html head').find('title').text("Esqueci Minha Senha");
@@ -241,8 +242,12 @@ var jq = jQuery.noConflict();
       $('label', user_CNPJ).text('CNPJ *');
       $('input', user_CNPJ).addClass('CNPJ');
       idade = $('#formfield-form-widgets-adicional_um').clone();
-      deficiencia = $('#formfield-form-widgets-adicional_tres').clone();
-      doenca_grave = $('#formfield-form-widgets-doenca_grave').clone();
+      especificar_1 = $('#formfield-form-widgets-deficiencia_especificar').clone();
+      especificar_2 = $('#formfield-form-widgets-doenca_especificar').clone();
+      $('label', especificar_1).text('Por favor, não preencha este campo');
+      $('label', especificar_2).text('Por favor, não preencha este campo');
+      deficiencia = $('#formfield-form-widgets-campo_adicional_tres').clone();
+      doenca_grave = $('#formfield-form-widgets-campo_doenca_grave').clone();
       especificar = $('#formfield-form-widgets-deficiencia_especificar').clone()
       cnpj = $('.kssattr-fieldname-form\\.widgets\\.cpf').clone();
       $('label', cnpj).text('CNPJ *');
@@ -293,7 +298,8 @@ var jq = jQuery.noConflict();
           $(this).val( $(this).val().replace(regexp,'') );
         }
       });
-
+      console.log('a')
+      console.log($(idade).html())
       pf = $(form).clone();
       pj = $(form).clone();
       $('div', pf).remove();
@@ -310,7 +316,7 @@ var jq = jQuery.noConflict();
                     $(senha).html() + $(senha_confirmacao).html() +
                     '<div class="formQuestion label fonteMaior">Dados adicionais<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
-                    $(idade).html() + $(deficiencia).html() + $(doenca_grave).html() + captcha + $(enviar).html()
+                    $(idade).html() + $(deficiencia).html() + $(doenca_grave).html() + '<div class="register_especificar">' + $(especificar_1).html() + $(especificar_2).html() + '</div>' + captcha + $(enviar).html()
                    );
 
       $(municipio, pj).remove()
@@ -323,7 +329,7 @@ var jq = jQuery.noConflict();
                     $(telefone).html() + $(cep).html() + $(logradouro).html() +
                     $(complemento).html() + $(bairro).html() + $(cidade).html() +
                     $(uf).html() + $(site).html() + $(email).html() + $(email_confirmacao).html() +
-                    $(senha).html() + $(senha_confirmacao).html() + captcha + $(enviar).html()
+                    $(senha).html() + $(senha_confirmacao).html() + '<div class="register_especificar">' + $(especificar_1).html() + $(especificar_2).html() + '</div>' + captcha + $(enviar).html()
                    );
       $(user_CNPJ, pf).find('input').mask("999.999.999-99");
       $(document).on('click', '#form-widgets-cadastro-0', function(){
@@ -432,7 +438,13 @@ var jq = jQuery.noConflict();
       })
 
       $("form.kssattr-formname-register").submit(function( event ) {
-        $(".kssattr-formname-register input:text").not('#form-widgets-data_nascimento, #form-widgets-deficiencia_especificar, #form-widgets-contato_celular, #form-widgets-site, #form-widgets-nome_fantasia').each(function(){
+        if( ($('#form-widgets-doenca_especificar').val() != '') || ($('#form-widgets-deficiencia_especificar').val() != '')) {
+          window.location.reload(true);
+          event.preventDefault();
+          return false
+        }
+
+        $(".kssattr-formname-register input:text").not('#form-widgets-data_nascimento, #form-widgets-deficiencia_especificar, #form-widgets-contato_celular, #form-widgets-site, #form-widgets-nome_fantasia, #form-widgets-doenca_especificar, #form-widgets-deficiencia_especificar').each(function(){
           if($(this).val() === ''){
             $('.kssattr-formname-register input:text').removeClass('error');
             $(this).addClass('error');
@@ -2072,7 +2084,7 @@ function CEPCallback(conteudo) {
 }
 
 function pesquisaCEP(cep) {
-  if ((cep != "") && (01000000 < CEP && 05999999 > CEP ))  {
+  if ((cep != "") && ((01000000 < CEP && 05999999 > CEP ) || (08000000 < CEP && 08499999 > CEP )))  {
     var validacep = /^[0-9]{8}$/;
     if(validacep.test(cep)) {
       $('#form-widgets-logradouro').val("...");

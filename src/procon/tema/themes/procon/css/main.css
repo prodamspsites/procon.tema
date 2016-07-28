@@ -2696,6 +2696,9 @@ form#mail_password label{
   clear: both;
   margin-top:15px;
 }
+.register_especificar {
+  display: none;
+}
 .label.fonteMaior {
   font-size: 18px;
   margin: 35px 0 5px;
