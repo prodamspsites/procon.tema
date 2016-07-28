@@ -283,12 +283,7 @@ var jq = jQuery.noConflict();
       estado_civil = $('.kssattr-fieldname-form\\.widgets\\.estadocivil').clone();
       nascimento = $('.kssattr-fieldname-form\\.widgets\\.data_nascimento').clone();
       celular = $('.kssattr-fieldname-form\\.widgets\\.contato_celular').clone();
-      $('#form-buttons-register').addClass('disabled').attr('disabled', true);
       enviar = $('.formControls').clone();
-
-      var verifyCallback = function(response) {
-        $('#form-buttons-register').removeClass('disabled').attr('disabled', false);
-      };
 
       //NOME APENAS LETRAS
       $("#form-widgets-fullname").on("input", function(){
@@ -858,22 +853,6 @@ var jq = jQuery.noConflict();
           });
       }
 
-
-     if ($('body').hasClass('template-login_form') || $('body').hasClass('template-logged_out') || $('body').hasClass('template-register')) {
-       $('#login_form div.formControls input').addClass('disabled').attr('disabled', true);
-       var verifyCallbackRegister = function(response) {
-         $('#login_form div.formControls input').removeClass('disabled').attr('disabled', false);
-       };
-
-     }
-
-    if ($('body').hasClass('template-register')) {
-      $('#login_form div.formControls input').addClass('disabled').attr('disabled', true);
-      var verifyCallbackRegister = function(response) {
-        $('#login_form div.formControls input').removeClass('disabled').attr('disabled', false);
-      };
-
-    }
 
     if ($('body').hasClass('template-login_form')) {
       if((window.location.hash) && ($("#__ac_name").length)) {
