@@ -283,7 +283,6 @@ var jq = jQuery.noConflict();
       estado_civil = $('.kssattr-fieldname-form\\.widgets\\.estadocivil').clone();
       nascimento = $('.kssattr-fieldname-form\\.widgets\\.data_nascimento').clone();
       celular = $('.kssattr-fieldname-form\\.widgets\\.contato_celular').clone();
-      captcha = '<div id="g-recaptcha"></div><span id="mensagemCaptcha">Caso você tenha dificuldade para visualizar a imagem do captcha, utilize o navegador <a href="https://www.google.com.br/chrome/browser/desktop/">Google Chrome</a> ou <a href="https://www.mozilla.org/pt-BR/firefox/new/">Mozilla Firefox</a>.</span>';
       $('#form-buttons-register').addClass('disabled').attr('disabled', true);
       enviar = $('.formControls').clone();
 
@@ -316,7 +315,7 @@ var jq = jQuery.noConflict();
                     $(senha).html() + $(senha_confirmacao).html() +
                     '<div class="formQuestion label fonteMaior">Dados adicionais<span class="formHelp"' +
                     'id="dados-de-contato-juridico_help"></span></div>' +
-                    $(idade).html() + $(deficiencia).html() + $(doenca_grave).html() + '<div class="register_especificar">' + $(especificar_1).html() + $(especificar_2).html() + '</div>' + captcha + $(enviar).html()
+                    $(idade).html() + $(deficiencia).html() + $(doenca_grave).html() + '<div class="register_especificar">' + $(especificar_1).html() + $(especificar_2).html() + '</div>' + $(enviar).html()
                    );
 
       $(municipio, pj).remove()
@@ -329,16 +328,12 @@ var jq = jQuery.noConflict();
                     $(telefone).html() + $(cep).html() + $(logradouro).html() +
                     $(complemento).html() + $(bairro).html() + $(cidade).html() +
                     $(uf).html() + $(site).html() + $(email).html() + $(email_confirmacao).html() +
-                    $(senha).html() + $(senha_confirmacao).html() + '<div class="register_especificar">' + $(especificar_1).html() + $(especificar_2).html() + '</div>' + captcha + $(enviar).html()
+                    $(senha).html() + $(senha_confirmacao).html() + '<div class="register_especificar">' + $(especificar_1).html() + $(especificar_2).html() + '</div>' + $(enviar).html()
                    );
       $(user_CNPJ, pf).find('input').mask("999.999.999-99");
       $(document).on('click', '#form-widgets-cadastro-0', function(){
         form.html($(pf).html()).show()
         mascarasForms();
-        grecaptcha.render('g-recaptcha', {
-          'sitekey' : '6LdeTyATAAAAALjEG3QbmRh0hWAiZRM6jTx3mdtg',
-          'callback' : verifyCallback
-        });
 
         $('#form-widgets-data_nascimento').datepicker({ dateFormat: 'dd/mm/yy' });
         $('#form-widgets-cadastro-0').prop('checked', true);
@@ -351,10 +346,6 @@ var jq = jQuery.noConflict();
       $(document).on('click', '#form-widgets-cadastro-1', function(){
         form.html($(pj).html()).show()
         mascarasForms();
-        grecaptcha.render('g-recaptcha', {
-          'sitekey' : '6LdeTyATAAAAALjEG3QbmRh0hWAiZRM6jTx3mdtg',
-          'callback' : verifyCallback,
-        });
         $('#form-widgets-cadastro-1').prop('checked', true);
         $('#content .rowlike select').find('option:first-child').remove();
         $('#form-widgets-municipio-0').attr('checked', 'checked');
@@ -873,11 +864,6 @@ var jq = jQuery.noConflict();
        var verifyCallbackRegister = function(response) {
          $('#login_form div.formControls input').removeClass('disabled').attr('disabled', false);
        };
-       $('<div id="g-recaptcha"></div><span id="mensagemCaptcha">Caso você tenha dificuldade para visualizar a imagem do captcha, utilize o navegador <a href="https://www.google.com.br/chrome/browser/desktop/">Google Chrome</a> ou <a href="https://www.mozilla.org/pt-BR/firefox/new/">Mozilla Firefox</a>.</span>').insertBefore('#login_form div.formControls')
-       grecaptcha.render('g-recaptcha', {
-         'sitekey' : '6LdeTyATAAAAALjEG3QbmRh0hWAiZRM6jTx3mdtg',
-         'callback' : verifyCallbackRegister
-       });
 
      }
 
@@ -886,11 +872,6 @@ var jq = jQuery.noConflict();
       var verifyCallbackRegister = function(response) {
         $('#login_form div.formControls input').removeClass('disabled').attr('disabled', false);
       };
-      $('<div id="g-recaptcha"></div>').insertBefore('#login_form div.formControls')
-      grecaptcha.render('g-recaptcha', {
-        'sitekey' : '6LdeTyATAAAAALjEG3QbmRh0hWAiZRM6jTx3mdtg',
-        'callback' : verifyCallbackRegister
-      });
 
     }
 
