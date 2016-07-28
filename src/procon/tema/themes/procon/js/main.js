@@ -185,16 +185,19 @@ var jq = jQuery.noConflict();
             $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Até 5 arquivos, com até 20 MB de tamanho.</p></div>');
           }
           $("input[type='file']").on('change',function(){
-              console.log($(this));
               var id  = $(this).attr('id');
               $("#"+id).parent().parent().next().show();
               var nomeArquivo = this.files[0].name;
               var tamanhoArquivo = this.files[0].size;
+              if (tamanhoArquivo > 21000000) {
+                $(this).val('')
+                alert('O tamanho do arquivo é maior que o permitido');
+              } else{
+                $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER ARQUIVO</a></div>');
 
-              $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER ARQUIVO</a></div>');
-
-              contaUploads = $('.divDadosUpload .clearImage').length;
-              $('#archetypes-fieldname-filenumber input').val(contaUploads);
+                contaUploads = $('.divDadosUpload .clearImage').length;
+                $('#archetypes-fieldname-filenumber input').val(contaUploads);
+              }
           });
 
           //formata tamanho do arquivo upload
@@ -292,8 +295,6 @@ var jq = jQuery.noConflict();
           $(this).val( $(this).val().replace(regexp,'') );
         }
       });
-      console.log('a')
-      console.log($(idade).html())
       pf = $(form).clone();
       pj = $(form).clone();
       $('div', pf).remove();
@@ -735,9 +736,7 @@ var jq = jQuery.noConflict();
       var btnSubmit = $("input[name='form_submit']");
       if (wrapper.length != 0) {
         $(wrapper).text(textoError);
-        console.log('existe');
       }else {
-        console.log('nao existe');
         $('<span id="hasErrors">'+textoError+'</span>').insertBefore($(btnSubmit))
       }
       $(btnSubmit).addClass('disabled').attr('disabled', true);
@@ -970,7 +969,6 @@ var jq = jQuery.noConflict();
             //VALIDA FORM RECLAMACAO
 
             $(".formid-formularios form").submit(function( event ) {
-              console.log('enviou');
               thisForm = this;
               $(".formid-formularios form textarea.validar:visible, .formid-formularios form input.validar:visible").each(function(){
                 if($(this).val() === ''){
@@ -1689,10 +1687,6 @@ var jq = jQuery.noConflict();
       var $status = $("."+_id+"_status").html().trim();
 
 
-      console.log($("."+_id+"_pr1").html());
-      console.log($("."+_id+"_pr2").html());
-      console.log($("."+_id+"_pr3").html());
-
 
       $("#column1").html($data);
       $("#column2").html($("."+_id+"_usuario").html());
@@ -2165,13 +2159,11 @@ function abreMobile() {
 
   $( ".loginAdmin").removeClass('resize');
   $( ".loginAdmin").addClass('resizeMobile');
-  console.log('mobile');
   $('.loginAdmin .cadastro').hide();
   $('.loginAdmin .setaLogin').hide();
   $( ".loginAdmin.resizeMobile" ).unbind('click');
   $('.setaLogin').unbind( "click" );
   $(document).on('click','.loginAdmin.resizeMobile', function(){
-      console.log('clicou mobile');
       $('.menuLogin').toggle();
       $('.loginAdmin .cadastro').toggle();
       $('.loginAdmin .setaLogin').toggle();
@@ -2185,13 +2177,11 @@ function resizeMobile(){
         abreMobile();
         $( ".divMenuLogin").addClass('resize');
         $( ".loginAdmin").removeClass('resizeMobile');
-        console.log('resize');
         $('.loginAdmin .cadastro').hide();
         $('.loginAdmin .setaLogin').hide();
         $('.menuLogin').hide();
         $( ".divMenuLogin.resize .loginAdmin" ).unbind('click');
         $( ".divMenuLogin.resize .loginAdmin" ).on('click', function(){
-          console.log('clicou resize');
             $('.menuLogin').toggle();
             $('.loginAdmin .cadastro').toggle();
             $('.loginAdmin .setaLogin').toggle();
