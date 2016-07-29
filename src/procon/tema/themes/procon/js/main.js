@@ -1138,6 +1138,22 @@ var jq = jQuery.noConflict();
               $('#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').removeClass('error');
             }
       })
+      
+      //VALIDACAO DE EMAIL APOS O ENVIO DO FORM ADESAO
+      var emailReg = /^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)+$/;
+
+      var emailaddressJur = $("#email--juridico").val();
+      if( !emailReg.test(emailaddressJur) && !$('#email--juridico').val() == '' ) {
+        $('#email--juridico').parent().find('.fieldErrorBox').text('E-mail inválido. Favor corrigir.');
+      }
+      var emailaddressCli = $("#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente").val();
+      if( !emailReg.test(emailaddressCli) && !$('#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente').val() == '' ) {
+        $('#e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente').parent().find('.fieldErrorBox').text('E-mail inválido. Favor corrigir.');
+      }
+      var emailaddressNot = $("#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail").val();
+      if( !emailReg.test(emailaddressNot) && !$('#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').val() == '' ) {
+        $('#e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').parent().find('.fieldErrorBox').text('E-mail inválido. Favor corrigir.');
+      }
     }
 
     if ($('body').hasClass('subsection-formulario-de-denuncia')) {
