@@ -1796,6 +1796,7 @@ var jq = jQuery.noConflict();
             }
 
             if (this.value == 'sim') {
+              $(this).parent().find('input:radio').attr('disabled',true);
               $(".replica", $(this).parent().parent()).hide();
               $(this).addClass('ok');
 
@@ -1821,7 +1822,7 @@ var jq = jQuery.noConflict();
               $(".replica", $(this).parent().parent()).show();
               $(".replica", $(this).parent().parent()).addClass('current');
               $(".respostaUtil > fieldset > .current > #enviarDuvida").on('click', function(){
-
+                $(this).parent().parent().find('input:radio').attr('disabled',true);
                 $(this).addClass('ok')
                 var assunto = $("#assunto_opcao option:selected",parent_div).val();
                 var mensagem = $("textarea",parent_div).val();
