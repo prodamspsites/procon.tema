@@ -101,7 +101,7 @@ var jq = jQuery.noConflict();
     $('.template-logged_out #portal-breadcrumbs').append('<span class="breadcrumbSeparator">&gt;</span><span id="breadcrumbs-current">Login</span></span>');
     $('#content #mail_password input[type="submit"]').val('Enviar');
 
-    $('.template-registered #content .documentFirstHeading').html('Sucesso');
+    $('.template-registered #content .documentFirstHeading').html('Bem-vindo!');
 
     if ($('body').hasClass('template-login_success')) {
       $('.template-login_success #content .documentFirstHeading').html('Você agora está autenticado');
@@ -355,6 +355,7 @@ var jq = jQuery.noConflict();
         } else {
           $('#form-widgets-cadastro-0').click();
         }
+
       }
 
       $('#content-core').append('<form class="enableAutoFocus formCadastre" method="post" id="login_form" action="'+portal_url+'/login_form#register"><div id="login-form"><input type="hidden" name="came_from" value=""><input type="hidden" name="next"><input type="hidden" name="ajax_load"><input type="hidden" name="ajax_include_head"><input type="hidden" name="target"><input type="hidden" name="mail_password_url"><input type="hidden" name="join_url"><input type="hidden" name="form.submitted" value="1"><input type="hidden" name="js_enabled" id="js_enabled" value="0"><input type="hidden" name="cookies_enabled" id="cookies_enabled" value=""><input type="hidden" name="login_name" id="login_name" value=""><input type="hidden" name="pwd_empty" id="pwd_empty" value="0"><div class="divLoginCadastre"><h2>Já sou cadastrado</h2><p>Faça seu login:</p><div class="field"><label for="__ac_name">CPF/CNPJ:</label><input type="text" size="40" name="__ac_name" id="__ac_name" value=""></div><div class="field"><label for="__ac_password">Senha :</label><input type="password" size="40" name="__ac_password" id="__ac_password"></div><div id="login-forgotten-password"><p class="discreet"><span><a href="'+portal_url+'/Procon/mail_password_form?userid=">Esqueci minha senha</a></span>.</p></div><div class="formControls"><input class="context" type="submit" name="submit" value="ENTRAR"></div></div></form></div>')
@@ -454,7 +455,6 @@ var jq = jQuery.noConflict();
                 $(this).attr('target', '_blank')
             }
         });
-    
 
 
            function preparaForm() {
@@ -672,6 +672,7 @@ var jq = jQuery.noConflict();
 
     }
 
+
     function testaOtherInput(inputObject) {
       if ($(inputObject).val() != '') {
         removeError(inputObject);
@@ -854,6 +855,7 @@ var jq = jQuery.noConflict();
 
 
     if ($('body').hasClass('template-login_form')) {
+      $('#login_form').attr('action', portal_url + '/login_form#register')
       if((window.location.hash) && ($("#__ac_name").length)) {
         $('<div class="ErrorMessage">Por favor, verifique se o CPF/CNPJ e a senha estão corretos</div>').insertBefore($('div.field').first())
       }
@@ -1064,6 +1066,13 @@ var jq = jQuery.noConflict();
             }
         })
     }
+
+    if ($('body').hasClass('template-login_failed')) {
+      window.location.replace(portal_url + '/@@register');
+    }
+
+
+
     if ($('body').hasClass('template-login_form') || $('body').hasClass('template-logged_out')) {
       //MASCARA CPF CNPJ NO LOGIN
       // $('#cnpj-cpf').parent().find('label').html('CNPJ:');
@@ -1108,6 +1117,19 @@ var jq = jQuery.noConflict();
       labelFile = $('#archetypes-fieldname-anexe-arquivos-como-contrato-social-ou-outros-documentos-de-empresa label');
       labelFile.html( '<div class="justificado">' + $(labelFile).text() + '</div>' );
       insereInputFile();
+
+
+
+    if ( $('#archetypes-fieldname-e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente .fieldErrorBox').text() != '' ) {
+      $('#archetypes-fieldname-e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente .fieldErrorBox').text('E-mail inválido. Favor corrigir.')
+    }
+    if ( $('#archetypes-fieldname-e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail .fieldErrorBox').text() != '' ) {
+      $('#archetypes-fieldname-e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail .fieldErrorBox').text('E-mail inválido. Favor corrigir.')
+    }
+    if ( $('#archetypes-fieldname-email--juridico .fieldErrorBox').text() != '' ) {
+      $('#archetypes-fieldname-email--juridico .fieldErrorBox').text('E-mail inválido. Favor corrigir.')
+    }
+
       $('.infoUpload').append('<span class="required" title="Obrigatório">&nbsp;</span>');
 
       $(document).on('blur', '.formid-adesao-ao-procon-paulistano form', function() {
