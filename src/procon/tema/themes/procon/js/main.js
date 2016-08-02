@@ -1089,7 +1089,6 @@ var jq = jQuery.noConflict();
       $('#rfisica_login').click();
     }
 
-
     if ($('body').hasClass('userrole-reviewer') && ($('body').hasClass('template-login_success'))) {
        window.location.replace(portal_url + '/@@buscar_reclamacoes');
     }
@@ -1113,22 +1112,10 @@ var jq = jQuery.noConflict();
       }
       $('#archetypes-fieldname-e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório');
       $('#archetypes-fieldname-email--juridico.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório');
-      $('#archetypes-fieldname-e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório');
+      //$('#archetypes-fieldname-e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório');
       labelFile = $('#archetypes-fieldname-anexe-arquivos-como-contrato-social-ou-outros-documentos-de-empresa label');
       labelFile.html( '<div class="justificado">' + $(labelFile).text() + '</div>' );
       insereInputFile();
-
-
-
-    if ( $('#archetypes-fieldname-e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente .fieldErrorBox').text() != '' ) {
-      $('#archetypes-fieldname-e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente .fieldErrorBox').text('E-mail inválido. Favor corrigir.')
-    }
-    if ( $('#archetypes-fieldname-e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail .fieldErrorBox').text() != '' ) {
-      $('#archetypes-fieldname-e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail .fieldErrorBox').text('E-mail inválido. Favor corrigir.')
-    }
-    if ( $('#archetypes-fieldname-email--juridico .fieldErrorBox').text() != '' ) {
-      $('#archetypes-fieldname-email--juridico .fieldErrorBox').text('E-mail inválido. Favor corrigir.')
-    }
 
       $('.infoUpload').append('<span class="required" title="Obrigatório">&nbsp;</span>');
 
