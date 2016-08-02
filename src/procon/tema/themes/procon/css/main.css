@@ -21,6 +21,14 @@
  */
 
 
+.divBusca > #portal-searchbox ~ #portal-searchbox {
+  display: none;
+}
+.divBusca > #portal-searchbox {
+  display: block;
+}
+
+
 /*RESET*/
 html, body, form, fieldset {
     margin: 0;
