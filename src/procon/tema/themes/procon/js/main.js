@@ -1094,13 +1094,13 @@ var jq = jQuery.noConflict();
       $('#cidade--juridico').val('');
       $('.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório');
       if ($('#archetypes-fieldname-e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').hasClass('error')){
-        $('#archetypes-fieldname-e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').find('.fieldErrorBox').text('E-mail inválido. Favor corrigir');
+        $('#archetypes-fieldname-e-mail-para-recebimento-de-notificacoes-eletronicas-e-mail').find('.fieldErrorBox').text('Favor preencher o campo obrigatório');
       }
       if ($('#archetypes-fieldname-e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente').hasClass('error')){
-        $('#archetypes-fieldname-e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente').find('.fieldErrorBox').text('E-mail inválido. Favor corrigir');
+        $('#archetypes-fieldname-e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente').find('.fieldErrorBox').text('Favor preencher o campo obrigatório');
       }
       if ($('#archetypes-fieldname-email--juridico').hasClass('error')){
-        $('#archetypes-fieldname-email--juridico').find('.fieldErrorBox').text('E-mail inválido. Favor corrigir');
+        $('#archetypes-fieldname-email--juridico').find('.fieldErrorBox').text('Favor preencher o campo obrigatório');
       }
       $('#archetypes-fieldname-e-mail-do-responsavel-pela-area-de-atendimento-ao-cliente.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório');
       $('#archetypes-fieldname-email--juridico.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório');
