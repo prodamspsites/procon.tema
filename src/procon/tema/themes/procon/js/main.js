@@ -193,7 +193,7 @@ var jq = jQuery.noConflict();
                 $(this).val('')
                 alert('O tamanho do arquivo é maior que o permitido');
               } else{
-                $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER ARQUIVO</a></div>');
+                $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER TODOS OS ARQUIVOS</a></div>');
 
                 contaUploads = $('.divDadosUpload .clearImage').length;
                 $('#archetypes-fieldname-filenumber input').val(contaUploads);
