@@ -3890,6 +3890,12 @@ body.section-consumidor .divLoginDenuncia{
     margin-left: -100%;
     clear: both;
   }
+  .template-login_form #content #login-form{
+    margin-left: 0;
+  }
+  .template-login_form #content #login-form input[type=text], .template-login_form #content #login-form input[type=password]{
+    width:90%;
+  }
   .cover-banner-tile.tile-content img{
     width: auto !important;
   }
