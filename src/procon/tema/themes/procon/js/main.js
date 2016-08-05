@@ -193,6 +193,7 @@ var jq = jQuery.noConflict();
                 $(this).val('')
                 alert('O tamanho do arquivo é maior que o permitido');
               } else{
+                $('.clearImage').hide();
                 $("#"+id).after('<div class="divDadosUpload"><span class="nomeArq">'+nomeArquivo+'</span>'+'<span class="tamanhoArq">'+formatar(tamanhoArquivo)+'</span><a href="#" class="clearImage">REMOVER TODOS OS ARQUIVOS</a></div>');
 
                 contaUploads = $('.divDadosUpload .clearImage').length;
@@ -1016,6 +1017,9 @@ var jq = jQuery.noConflict();
                 $('#voce-procurou-a-empresa-para-solucionar-o-problema').removeClass('error');
               }
               //$(thisForm).submit();
+              if( !$('input, textarea').hasClass('error') ){
+                $('input.context').val('Enviando...');
+              }
             });
 
             $('#area-relativa-ao-produto-servico-reclamado').change(function(){
@@ -1336,6 +1340,11 @@ var jq = jQuery.noConflict();
       $('#content').html('<div class="form-group active" style="display:block"></div><div class="form-group2 active" style="display:block"></div><div class="form-group sucesso" style="display:block"><div class="sucessoReclamacao" style="display:block"><p><strong>Sua reclamação foi enviada com sucesso!</strong></p><p>O número de seu atendimento é:</p><span class="numeroProtocolo">'+protocoloNumber+'</span><p>Guarde o número de seu protocolo. Ele é a garantia do registro de sua reclamação</p><p>Esclarecemos que a cada andamento de sua reclamação, comunicaremos você por e-mail.</p></div></div>');
     }
 
+    //ENVIA FORM ADESAO
+    $(".subsection-adesao-ao-procon-paulistano .fgBaseEditForm").submit(function( event ) {
+      $('input.context').val('Enviando...');
+    });
+
     //VALIDA FORM DENUNCIA
     $(".formid-formulario-de-denuncia form").submit(function( event ) {
       if($('.contentLightbox input').prop('checked')==false) {
@@ -1343,6 +1352,9 @@ var jq = jQuery.noConflict();
         $('.contentLightbox').css('border','1px solid red');
           AdicionaMensagemErro($('.contentLightbox input'), 'Você deve ler os termos de uso e a política de privacidade do site e assinalar a caixa de seleção.')
           return false;
+      }
+      else{
+        $('input.context').val('Enviando...');
       }
     });
 
