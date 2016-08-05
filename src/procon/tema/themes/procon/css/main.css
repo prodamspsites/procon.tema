@@ -2402,11 +2402,18 @@ label[for=copy_of_uf]{
   font-size: 1em;
   width: 330px;
 }
-.nomeArq, .tamanhoArq{
+.nomeArq{
     font-family: 'Roboto';
     color: #424242;
     font-size: 1.2em;
-    width: 212px;
+    width: 390px;
+    float: left;
+}
+.tamanhoArq{
+    font-family: 'Roboto';
+    color: #424242;
+    font-size: 1.2em;
+    width: 100px;
     float: left;
 }
 .dadosReclamacoes .nomeArquivo{
@@ -3269,7 +3276,7 @@ input#rfisica, input#rjuridica{
 .pfg-form.formid-formulario-de-denuncia input[type=submit]{
   margin-top: 20px;
   cursor: pointer;
-  background: #f11c30;
+  background: #710e0f;
   color: #fff;
   text-transform: uppercase;
   padding: 5px 8px 5px 8px;
