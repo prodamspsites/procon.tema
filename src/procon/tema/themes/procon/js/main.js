@@ -189,7 +189,7 @@ var jq = jQuery.noConflict();
               $("#"+id).parent().parent().next().show();
               var nomeArquivo = this.files[0].name;
               var tamanhoArquivo = this.files[0].size;
-              if (tamanhoArquivo > 6000000) {
+              if (tamanhoArquivo > 1800000) {
                 $(this).val('')
                 alert('O tamanho do arquivo é maior que o permitido');
               } else{
