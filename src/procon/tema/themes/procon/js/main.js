@@ -182,7 +182,7 @@ var jq = jQuery.noConflict();
             }
           });
           if(!$('.botaoUpload').size()){
-            $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Até 5 arquivos, com até 5MB de tamanho cada.</p></div>');
+            $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Até 5 arquivos, com até 1MB de tamanho cada.</p></div>');
           }
           $("input[type='file']").on('change',function(){
               var id  = $(this).attr('id');
@@ -1192,7 +1192,7 @@ var jq = jQuery.noConflict();
     if ($('body').hasClass('subsection-formulario-de-denuncia')) {
       $('.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório')
       insereInputFile();
-      $('.infoUpload').html('Até 5 arquivos, com até 20 MB de tamanho.');
+      $('.infoUpload').html('Até 5 arquivos, com até 1 MB de tamanho.');
       //FORMULARIOS AREA SELECIONADA
       $('#archetypes-fieldname-especificar-comprou').hide();
       function escondeItens(){
