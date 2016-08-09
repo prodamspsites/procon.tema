@@ -771,7 +771,7 @@ border-radius: 0px;
   height: 45px;
 }
 #divSidebar .lstServicos li a{
-  color:#710e0f;
+  color:#710e0f !important;
   font-family: 'Roboto', Arial;
   font-size: 1.3em;
   float: left;
@@ -821,7 +821,7 @@ border-radius: 0px;
   padding: 10px 0 0 0;
 }
 #divSidebar .lstNoticias .titNotPortlet{
-  color: #f21c30;
+  color: #f21c30 !important;
   font-family: 'Roboto';
   border-bottom: none !important;
   display: block;
