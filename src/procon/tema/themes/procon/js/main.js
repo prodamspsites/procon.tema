@@ -1704,31 +1704,49 @@ var jq = jQuery.noConflict();
 
     // ABRE TELA INTERNA DA TABELA DE RECLAMAÇÕES
     $(document).on('click',"td.reclamacao_buscar",function(){
-      $this  = $(this);
-      thisParent = $(this).parent()
+      // $this  = $(this);
+      // thisParent = $(this).parent()
 
-      $tbody = $this.parent().parent();
-      $this.parent().addClass('reclamacoes_abre_div_detalhes');
+      // $tbody = $this.parent().parent();
+      // $this.parent().addClass('reclamacoes_abre_div_detalhes');
 
-        // busca todas as tr da tabela
-        $.each($tbody.children(),function(){
-          $this  = $(this);
-          if(!$this.hasClass('reclamacoes_abre_div_detalhes')){
-            $this.hide()
-          }
-          else
+      //   // busca todas as tr da tabela
+      //   $.each($tbody.children(),function(){
+      //     $this  = $(this);
+      //     if(!$this.hasClass('reclamacoes_abre_div_detalhes')){
+      //       $this.hide()
+      //     }
+      //     else
+      //     {
+      //       var classes = ['reclamacao_buscar','categoria','pergunta','usuario'];
+      //       for (var i = classes.length - 1; i >= 0; i--) {
+      //         $this.find('.'+classes[i]).hide();
+      //         $('td, th').hide();
+      //       };
+      //     }
+      //   });
+      // $('.detalhesDuvida', thisParent).show();
+      // $('.detalhesDuvida', thisParent).parent().show();
+      // $('td.td_interno').show().css('background-color','white');
+      // $(".filtrarPor").hide();
+      numero = $(this).attr('rel')
+      redirect = portal_url + '/@@buscar_reclamacoes_detalhe';
+      $.extend(
+      {
+          redirectPost: function(location, args)
           {
-            var classes = ['reclamacao_buscar','categoria','pergunta','usuario'];
-            for (var i = classes.length - 1; i >= 0; i--) {
-              $this.find('.'+classes[i]).hide();
-              $('td, th').hide();
-            };
+              var form = '';
+              $.each( args, function( key, value ) {
+                  form += '<input type="hidden" name="'+key+'" value="'+value+'">';
+              });
+              $('<form action="'+location+'" method="POST">'+form+'</form>').appendTo('body').submit();
           }
-        });
-      $('.detalhesDuvida', thisParent).show();
-      $('.detalhesDuvida', thisParent).parent().show();
-      $('td.td_interno').show().css('background-color','white');
-      $(".filtrarPor").hide();
+      });
+
+      $.redirectPost(redirect, {detailNumber: numero});
+
+
+
     });
 
     $(document).on('click',"td.duvidas_buscar",function(){
