@@ -157,7 +157,7 @@ var jq = jQuery.noConflict();
     $('.template-register #breadcrumbs-current').html('Login');
 
     //TEMPLATE BUSCAR_DUVIDAS
-    if ($('body').hasClass('template-buscar_duvidas') || $('body').hasClass('template-buscar_reclamacoes') || $('body').hasClass('template-buscar_denuncias') || $('body').hasClass('template-buscar_fornecedores')) {
+    if ($('body').hasClass('template-buscar_duvidas') || $('body').hasClass('template-buscar_reclamacoes') || $('body').hasClass('template-buscar_reclamacoes_detalhe') || $('body').hasClass('template-buscar_fornecedores_detalhe') || $('body').hasClass('template-buscar_denuncias_detalhe') || $('body').hasClass('template-buscar_denuncias') || $('body').hasClass('template-buscar_fornecedores')) {
       var currentUser = $('.currentUser').text();
       $('#portal-header nav.menu ul').html('<li><a href="'+portal_url+'/buscar_reclamacoes">Reclamações</a></li><li><a href="'+portal_url+'/buscar_duvidas">Dúvidas</a></li><li><a href="'+portal_url+'/buscar_denuncias">Denúncias</a></li><li><a href="'+portal_url+'/buscar_fornecedores">Fornecedores</a></li>')
       // $('#portal-header').append('<div class="wrap" style="position:relative"><div class="loginAdmin"><span class="nome">'+currentUser+'</span> <a href="'+portal_url+'/logout" title="sair" class="btnSair">Sair</a></div></div>');
@@ -1613,8 +1613,8 @@ var jq = jQuery.noConflict();
 
     });
 
-    $(".template-buscar_fornecedores #enviarComentario, .template-buscar_denuncias #enviarComentario").on('click',function(){
-        if ($('body').hasClass('template-buscar_fornecedores')) {
+    $(".template-buscar_fornecedores_detalhe #enviarComentario, .template-buscar_denuncias_detalhe #enviarComentario").on('click',function(){
+        if ($('body').hasClass('template-buscar_fornecedores_detalhe')) {
           area = 'fornecedores'
         } else {
           area = 'denuncias'
@@ -1628,7 +1628,13 @@ var jq = jQuery.noConflict();
         }).done(function(){
           $('#enviarObservacao', $(this).parent()).attr('disabled',true)
         })
-        window.location.reload(true);
+
+        if ($('body').hasClass('template-buscar_fornecedores_detalhe')) {
+          console.log('a')
+          window.location.replace(portal_url + '/@@buscar_fornecedores');
+        } else {
+          window.location.replace(portal_url + '/@@buscar_denuncias');
+        }
     });
 
     $(".template-buscar_fornecedores #enviarTratativas").on('blur',function(){
@@ -1662,10 +1668,10 @@ var jq = jQuery.noConflict();
         })
     });
 
-    $(".template-buscar_fornecedores #lido, .template-buscar_denuncias #lido").on('click',function(){
+    $(".template-buscar_fornecedores_detalhe #lido, .template-buscar_denuncias_detalhe #lido").on('click',function(){
       var r = confirm("Você tem certeza? Não será permitido desfazer essa operação.");
       if (r == true) {
-        if ($('body').hasClass('template-buscar_fornecedores')) {
+        if ($('body').hasClass('template-buscar_fornecedores_detalhe')) {
           area = 'fornecedores'
         } else {
           area = 'denuncias'
@@ -1704,31 +1710,6 @@ var jq = jQuery.noConflict();
 
     // ABRE TELA INTERNA DA TABELA DE RECLAMAÇÕES
     $(document).on('click',"td.reclamacao_buscar",function(){
-      // $this  = $(this);
-      // thisParent = $(this).parent()
-
-      // $tbody = $this.parent().parent();
-      // $this.parent().addClass('reclamacoes_abre_div_detalhes');
-
-      //   // busca todas as tr da tabela
-      //   $.each($tbody.children(),function(){
-      //     $this  = $(this);
-      //     if(!$this.hasClass('reclamacoes_abre_div_detalhes')){
-      //       $this.hide()
-      //     }
-      //     else
-      //     {
-      //       var classes = ['reclamacao_buscar','categoria','pergunta','usuario'];
-      //       for (var i = classes.length - 1; i >= 0; i--) {
-      //         $this.find('.'+classes[i]).hide();
-      //         $('td, th').hide();
-      //       };
-      //     }
-      //   });
-      // $('.detalhesDuvida', thisParent).show();
-      // $('.detalhesDuvida', thisParent).parent().show();
-      // $('td.td_interno').show().css('background-color','white');
-      // $(".filtrarPor").hide();
       numero = $(this).attr('rel')
       redirect = portal_url + '/@@buscar_reclamacoes_detalhe';
       $.extend(
@@ -1745,7 +1726,44 @@ var jq = jQuery.noConflict();
 
       $.redirectPost(redirect, {detailNumber: numero});
 
+    });
 
+    $(document).on('click',"td.denuncias_buscar",function(){
+      numero = $(this).attr('id')
+      redirect = portal_url + '/@@buscar_denuncias_detalhe';
+      $.extend(
+      {
+          redirectPost: function(location, args)
+          {
+              var form = '';
+              $.each( args, function( key, value ) {
+                  form += '<input type="hidden" name="'+key+'" value="'+value+'">';
+              });
+              $('<form action="'+location+'" method="POST">'+form+'</form>').appendTo('body').submit();
+          }
+      });
+
+      $.redirectPost(redirect, {detailNumber: numero});
+
+    });
+
+
+    $(document).on('click',"td.fornecedores_buscar",function(){
+      numero = $(this).attr('id')
+      redirect = portal_url + '/@@buscar_fornecedores_detalhe';
+      $.extend(
+      {
+          redirectPost: function(location, args)
+          {
+              var form = '';
+              $.each( args, function( key, value ) {
+                  form += '<input type="hidden" name="'+key+'" value="'+value+'">';
+              });
+              $('<form action="'+location+'" method="POST">'+form+'</form>').appendTo('body').submit();
+          }
+      });
+
+      $.redirectPost(redirect, {detailNumber: numero});
 
     });
 
@@ -1962,7 +1980,7 @@ var jq = jQuery.noConflict();
           }
         });
 
-        $("#enviarComentario").on('click',function(){
+        $(".template-buscar_duvidas #enviarComentario").on('click',function(){
           window.location.reload(true);
         });
 
