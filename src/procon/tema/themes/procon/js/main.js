@@ -1,5 +1,5 @@
 var jq = jQuery.noConflict();
-
+contBuscar = 0;
 (function($) {
   $(document).ready(function() {
 
@@ -177,6 +177,7 @@ var jq = jQuery.noConflict();
       if ( contBuscar > 1) {
         return false;
       }
+      else{
         //upload plone form gen
           var file = $("input:file").css('display', 'none');
           $.each(file,function(value){
@@ -232,6 +233,7 @@ var jq = jQuery.noConflict();
 
             return false;
           });
+      }
     }
     //$(document).on('click','.btnupload', function(){
         //$(this).parent().parent().find('input').trigger('click');
@@ -1215,6 +1217,7 @@ var jq = jQuery.noConflict();
 
     if ($('body').hasClass('subsection-formulario-de-denuncia')) {
       $('.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório')
+      contBuscar = 0;
       insereInputFile();
       $('.infoUpload').html('Até 5 arquivos, com até 1 MB de tamanho.');
       //FORMULARIOS AREA SELECIONADA
