@@ -174,6 +174,9 @@ var jq = jQuery.noConflict();
 
     var contaUploads = '';
     function insereInputFile() {
+      if ( contBuscar > 1) {
+        return false;
+      }
         //upload plone form gen
           var file = $("input:file").css('display', 'none');
           $.each(file,function(value){
@@ -879,7 +882,27 @@ var jq = jQuery.noConflict();
     if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('subsection-formularios')) {
         var itensForm = $(".formDuvidas .pfg-form").detach();
         $('.form-group #project').addClass('loading')
+
+        contBuscar = 0;
         $('.form-group .btnBuscar, .btnProsseguir').click(function(){
+          contBuscar ++;
+          $(this).attr('disabled', 'disabled');
+          $(this).addClass('disabled');
+          console.log(contBuscar);
+
+          //LIMPA TODOS OS DADOS VISIVEIS DO FORMULARIO DE RECLAMACAO
+          if ( $('.pfg-form.formid-formularios').is(':visible') && contBuscar > 1) {
+            apagaForm();
+            $('.divDadosUpload').remove();
+            $("input:file").val('');
+            nomeFornecedor = $('#nome-da-empresa-fornecedor').val();
+            $('.pfg-form.formid-formularios input:text:visible').val('');
+            $('.pfg-form.formid-formularios #cpf').val('');
+            $('.pfg-form.formid-formularios #informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1').val('');
+            $('.pfg-form.formid-formularios #informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1').val('');
+            $('.pfg-form.formid-formularios textarea:visible').val('');
+            $('#nome-da-empresa-fornecedor').val(nomeFornecedor);
+          }
 
             $(document).on('blur', '#quando-voce-comprou-o-produto-ou-contratou-o-servico-1', function() {
               //checa se uma data é valida
@@ -1066,6 +1089,7 @@ var jq = jQuery.noConflict();
               $(this).val('');
               $(this).attr('placeholder',valtextarea);
             });
+
         });
 
         $(document).on('change', 'input[type=radio][name=deseja-informar-a-empresa]', function(){
@@ -1305,6 +1329,7 @@ var jq = jQuery.noConflict();
 
       //var itensForm = $(".pfg-form.formid-formulario-de-denuncia").detach();
       $('.form-group .btnBuscar').click(function(){
+
           $('#content #content-core').append(itensForm);
           $('.form-group').addClass('active');
           $('.divRedireciona').slideUp();
@@ -2345,7 +2370,9 @@ function compareDates(date1, date2){
       }
       return false;
   }
-
+function apagaForm(){
+  alert('tyes');
+}
 function checaMaiorQAmanha(data) {
  //data para checar
     var str = data.split("/");
