@@ -147,8 +147,8 @@ contBuscar = 0;
     }
     if ($('body').hasClass('section-contato')) {
       $('.field.error').find('input, textarea').css('border','1px solid red');
-      $('.fieldErrorBox').hide();
-      $('.field.error').removeClass('error');
+      $('.field.error').find('.fieldErrorBox').html('Preencha o campo corretamente.');
+      $('.fieldErrorBox').removeClass('error');
     }
     if ($('body').hasClass('template-pwreset_invalid')) {
       $('#content-core p').text('Por favor, certifique-se que você copiou a URL exatamente como ela aparece no e-mail e que você digitou seu CPF/CNPJ corretamente.');
@@ -1956,6 +1956,11 @@ contBuscar = 0;
             }
         })
 
+        //inclui obrigatorio cpf cnpj contato
+        if ($('body').hasClass('section-contato')) {
+          $("label[for=cnpj-cpf]").append('<span class="required" title="Obrigatório">&nbsp;</span>');
+        }
+
         $(".lido_reclamacoes").on('click',function(){
           var r = confirm("Você tem certeza? Não será permitido desfazer essa operação.");
           if (r == true) {
@@ -2375,7 +2380,7 @@ function compareDates(date1, date2){
       return false;
   }
 function apagaForm(){
-  alert('tyes');
+  console.log('Trocou o nome do fornecedor.');
 }
 function checaMaiorQAmanha(data) {
  //data para checar

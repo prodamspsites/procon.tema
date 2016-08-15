@@ -1381,6 +1381,24 @@ body.subsection-duvidas .divAccordeon h3 span{
   font-size: 1.2em;
   color: #424242;
 }
+.formid-contato #archetypes-fieldname-dados-do-fornecedor-reclamado{
+  display: none;
+}
+.formid-contato .rpessoa{
+  margin: 26px 17px 8px 3px;
+}
+.formid-contato .fieldErrorBox{
+  float: left;
+  clear: both;
+  color: red;
+}
+.formid-contato div.field.error{
+  background: none !important;
+  border: none !important;
+}
+.formid-contato input#rfisica, .formid-contato input#rjuridica{
+  margin:20px 0 0 0
+}
 .formid-contato input[type=submit] {
     margin-top: 20px;
     cursor: pointer;
