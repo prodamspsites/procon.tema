@@ -1,5 +1,5 @@
 var jq = jQuery.noConflict();
-
+contBuscar = 0;
 (function($) {
   $(document).ready(function() {
 
@@ -147,8 +147,8 @@ var jq = jQuery.noConflict();
     }
     if ($('body').hasClass('section-contato')) {
       $('.field.error').find('input, textarea').css('border','1px solid red');
-      $('.fieldErrorBox').hide();
-      $('.field.error').removeClass('error');
+      $('.field.error').find('.fieldErrorBox').html('Preencha o campo corretamente.');
+      $('.fieldErrorBox').removeClass('error');
     }
     if ($('body').hasClass('template-pwreset_invalid')) {
       $('#content-core p').text('Por favor, certifique-se que você copiou a URL exatamente como ela aparece no e-mail e que você digitou seu CPF/CNPJ corretamente.');
@@ -177,6 +177,7 @@ var jq = jQuery.noConflict();
       if ( contBuscar > 1) {
         return false;
       }
+      else{
         //upload plone form gen
           var file = $("input:file").css('display', 'none');
           $.each(file,function(value){
@@ -232,6 +233,7 @@ var jq = jQuery.noConflict();
 
             return false;
           });
+      }
     }
     //$(document).on('click','.btnupload', function(){
         //$(this).parent().parent().find('input').trigger('click');
@@ -1216,6 +1218,7 @@ var jq = jQuery.noConflict();
 
     if ($('body').hasClass('subsection-formulario-de-denuncia')) {
       $('.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório')
+      contBuscar = 0;
       insereInputFile();
       $('.infoUpload').html('Até 5 arquivos, com até 1 MB de tamanho.');
       //FORMULARIOS AREA SELECIONADA
@@ -1976,6 +1979,11 @@ var jq = jQuery.noConflict();
             }
         })
 
+        //inclui obrigatorio cpf cnpj contato
+        if ($('body').hasClass('section-contato')) {
+          $("label[for=cnpj-cpf]").append('<span class="required" title="Obrigatório">&nbsp;</span>');
+        }
+
         $(".lido_reclamacoes").on('click',function(){
           var r = confirm("Você tem certeza? Não será permitido desfazer essa operação.");
           if (r == true) {
@@ -2395,7 +2403,7 @@ function compareDates(date1, date2){
       return false;
   }
 function apagaForm(){
-  alert('tyes');
+  console.log('Trocou o nome do fornecedor.');
 }
 function checaMaiorQAmanha(data) {
  //data para checar
