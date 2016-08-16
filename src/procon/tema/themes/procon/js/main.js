@@ -1455,6 +1455,29 @@ var jq = jQuery.noConflict();
              'original': value.titulo
             });
         });
+        $('#project').blur(function() {
+          val = $(this).val()
+          hasMatch = false
+          for (var index = 0; index < data_filtered.length; ++index) {
+            var empresa = data_filtered[index];
+
+            if(empresa.label.toLowerCase() == val.toLowerCase()){
+              hasMatch = true;
+              urlEmpresa = empresa.url;
+
+              $('.linkRedireciona').attr('href', urlEmpresa);
+              $('.divRedireciona').slideUp();
+              $('.pfg-form.formid-formularios').remove();
+              $('.divRedireciona').slideDown();
+              $('.form-group .btnBuscar').hide();
+
+              $('.form-group').addClass('active');
+              var itensForm = $(".formDuvidas").detach();
+              break;
+            }
+          }
+
+        })
 
         $( "#project" ).autocomplete({
               minLength: 0,
