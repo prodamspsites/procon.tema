@@ -877,6 +877,14 @@ contBuscar = 0;
       }
     }
 
+    //HASH URL BACKOFFICE
+    if (window.location.href.indexOf("/buscar_") > -1) {
+        var dt = new Date();
+        var hashBack = dt.getHours() * dt.getMinutes() * dt.getSeconds();
+        var hashBackNew = dt.getFullYear() +''+ (dt.getMonth()+1) +''+ dt.getDate() +''+ hashBack;
+
+        location.href = "#?" + hashBackNew;
+    }
 
     //OCULTA FORMULARIO CONSUMIDOR
     if (!($('body').hasClass('subsection-formularios'))){
