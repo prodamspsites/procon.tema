@@ -84,6 +84,8 @@ contBuscar = 0;
     if ($('body').hasClass('template-mail_password_form')) {
       //MASCARA CPF CNPJ NO LOGIN
       // $('#cnpj-cpf').parent().find('label').html('CNPJ:');
+
+      $('#userid').parent().append('<div class="register_especificar"><label for="form-widgets-deficiencia_especificar" class="horizontal">Por favor, não preencha este campo</label><div class="fieldErrorBox"></div><input id="form-widgets-deficiencia_especificar" name="form.widgets.deficiencia_especificar" class="text-widget textline-field" value="" type="text" originalvalue=""><label for="form-widgets-doenca_especificar" class="horizontal">Por favor, não preencha este campo</label><div class="fieldErrorBox"></div><input id="form-widgets-doenca_especificar" name="form.widgets.doenca_especificar" class="text-widget textline-field" value="" type="text" originalvalue=""></div>');
       $('#userid').parent().prepend('<input type="radio" name="pessoa" value="juridica" id="rjuridica_senha" checked /><span class="rpessoa">Pessoa Jurídica</span><input type="radio" name="pessoa" value="fisica" id="rfisica_senha" /><span class="rpessoa">Pessoa Física</span>')
       $(document).on('click','#rfisica_senha', function(){
           $('#userid').parent().find('label').html('CPF:');
@@ -883,6 +885,7 @@ contBuscar = 0;
       $('#viewlet-below-content-title .form-group').remove();
     }
     if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('subsection-formularios')) {
+        $('.form-group').show();
         var itensForm = $(".formDuvidas .pfg-form").detach();
         $('.form-group #project').addClass('loading')
 
@@ -1363,7 +1366,6 @@ contBuscar = 0;
 
     //CARREGA O NUMERO DE PROTOCOLO NA PAGINA DE OBRIGADO DO FORMULÁRIO CONSUMIDOR
     if ($('body').hasClass('template-fg_thankspage_view_p3') && $('body').hasClass('subsection-formularios')){
-
       var protocoloNumber = $( "dl dd:last-child" ).text();
       //var itensObrigado = $("#content").detach();
       $('#content').html('<div class="form-group active" style="display:block"></div><div class="form-group2 active" style="display:block"></div><div class="form-group sucesso" style="display:block"><div class="sucessoReclamacao" style="display:block"><p><strong>Sua reclamação foi enviada com sucesso!</strong></p><p>O número de seu atendimento é:</p><span class="numeroProtocolo">'+protocoloNumber+'</span><p>Guarde o número de seu protocolo. Ele é a garantia do registro de sua reclamação</p><p>Esclarecemos que a cada andamento de sua reclamação, comunicaremos você por e-mail.</p></div></div>');
