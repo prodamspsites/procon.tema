@@ -880,13 +880,16 @@ contBuscar = 0;
     }
 
     //HASH URL BACKOFFICE
-    if (window.location.href.indexOf("/buscar_") > -1) {
+    if ( (window.location.href.indexOf("buscar_duvidas") > -1) || (window.location.href.indexOf("@@buscar_reclamacoes") > -1) ){
         var dt = new Date();
         var hashBack = dt.getHours() * dt.getMinutes() * dt.getSeconds();
         var hashBackNew = dt.getFullYear() +''+ (dt.getMonth()+1) +''+ dt.getDate() +''+ hashBack;
 
-        location.href = "#?" + hashBackNew;
+        location.href = window.location.href + "#?" + hashBackNew;
     }
+    $('#table_id_reclamacoes tr').on( "click", function() {
+      window.location.hash = '';
+    });
 
     //OCULTA FORMULARIO CONSUMIDOR
     if (!($('body').hasClass('subsection-formularios'))){
