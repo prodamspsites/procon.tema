@@ -885,7 +885,9 @@ contBuscar = 0;
         var hashBack = dt.getHours() * dt.getMinutes() * dt.getSeconds();
         var hashBackNew = dt.getFullYear() +''+ (dt.getMonth()+1) +''+ dt.getDate() +''+ hashBack;
 
-        location.href = window.location.href + "#?" + hashBackNew;
+        if (window.location.href.indexOf("_reclamacoes_detalhe") == -1){
+          location.href = window.location.href + "#?" + hashBackNew;
+        }
     }
     $('#table_id_reclamacoes tr').on( "click", function() {
       window.location.hash = '';
