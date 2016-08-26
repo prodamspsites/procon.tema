@@ -2210,6 +2210,7 @@ function CEPCallback(conteudo) {
   }
   else {
     limpaCEPInputs();
+    $('#form-widgets-codigo_enderecamento_postal').val('');
     alert("CEP não encontrado.");
   }
 }
