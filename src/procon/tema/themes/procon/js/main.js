@@ -1704,9 +1704,10 @@ contBuscar = 0;
         }
     });
 
-    $(".template-buscar_fornecedores #enviarTratativas").on('blur',function(){
+    $(".template-buscar_fornecedores_detalhe #enviarTratativas").on('blur',function(){
         area = 'fornecedores'
         thisItem = $(this)
+        console.log($(thisItem).val())
         $.post( portal_url + '/@@atualiza_forms',
         {
             objId: $(thisItem).attr('rel'),
