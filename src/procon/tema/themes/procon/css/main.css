@@ -4445,3 +4445,16 @@ body.contraste1 .acessibilidade,body.contraste1  .listaHome, body.contraste1 #lo
   background: #000;
 }
 
+.modal-loading{
+  width: 600px;
+  padding: 2rem;
+  background-color: #fff;
+}
+#archetypes-fieldname-validacao .fieldErrorBox {
+  display: none;
+}
+
+.modal-content {
+  text-align: center;
+}
+

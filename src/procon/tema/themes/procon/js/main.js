@@ -3,6 +3,31 @@ contBuscar = 0;
 (function($) {
   $(document).ready(function() {
 
+    function addParam(key, value) {
+           new_url = "";
+           var regex = new RegExp(key + "=\\w*\\d*");
+           var valor = key + "=" + value
+
+           if(window.location.search && window.location.search.indexOf(key) != -1)
+              new_url = window.location.href.replace( regex, valor);
+           else if(window.location.search)
+              new_url = window.location.href + "&" + key +"=" + value;
+           else
+              new_url = window.location.href + "?" + key + "=" + value;
+
+           window.location.href = new_url;
+
+
+    }
+
+    $('.backoffice-pagination a').on('click', function(e) {
+          console.log('ok');
+          addParam('pg', $(this).attr("rel"));
+          e.preventDefault();
+          return false;
+    })
+
+
     //MENU LOGIN MOBILE
     $(document).on('click','.loginAdmin .setaLogin', function(){
       if ($(window).width() > 1020){
@@ -188,7 +213,7 @@ contBuscar = 0;
             }
           });
           if(!$('.botaoUpload').size()){
-            $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Até 5 arquivos, com até 1MB de tamanho cada.</p></div>');
+            $("input:file").before('<div class="botaoUpload"><a class="btnupload">ANEXAR ARQUIVO(S)</a><p class="infoUpload">Até 5 arquivos, com até 1 MB de tamanho.<p class="infoUpload">Formatos aceitos: Arquivos de texto (.doc, .docx, .txt), planilhas (.xls, xlsx, csv), todos os formatos de imagem (.jpeg, .gif, entre outros), arquivos de áudio, vídeo, arquivos compactados (.zip, .tar, .rar), arquivos PDF.</p></p></div>');
           }
           $("input[type='file']").on('change',function(){
               var id  = $(this).attr('id');
@@ -241,6 +266,26 @@ contBuscar = 0;
         //$(this).parent().parent().find('input').trigger('click');
         //console.log($('.divDadosUpload .clearImage').length);
     //});
+
+
+    if ($('body').hasClass('template-personal-information')) {
+      console.log('lero')
+      $('#form-widgets-home_page, #formfield-form-widgets-cadastro, #formfield-form-widgets-description, #formfield-form-widgets-confirmacao, #formfield-form-widgets-location, #formfield-form-widgets-portrait, #formfield-form-widgets-tipo_societario, #formfield-form-widgets-enquadramento').hide()
+      $('#form input:text').each(function() {
+        if ($(this).val() == "") {
+          $(this).parent().hide()
+        }
+      })
+
+
+      $(document).on('blur', '#form-widgets-codigo_enderecamento_postal', function() {
+        CEP = $(this).val().replace(/\D/g,'');
+        returnCEP = pesquisaCEPCadastral(CEP);
+        if (!(returnCEP)) {
+          $(this).val('');
+        }
+      })
+    }
 
     //AJUSTE NO TEMPLATE DE CADASTRO
     if ($('body').hasClass('template-register')) {
@@ -765,6 +810,15 @@ contBuscar = 0;
         dataInicial = $('#quando-voce-comprou-o-produto-ou-contratou-o-servico-1').val();
         dataFinal = $('#quando-o-produto-ou-servico-apresentou-problema').val();
         if(checaMaiorQAmanha(dataFinal)){
+           $(inputs).removeClass('inputObrigatorio validar').each(function() {
+             removeError($(this));
+             thisParent = $(this).parent();
+             label = $('label', thisParent)
+             if (label.text().indexOf('*') != -1) {
+               $(label).text(label.text().slice(0, -2))
+             }
+           });
+
           //data valida
           compareDates(dataInicial,dataFinal);
         }else{
@@ -802,6 +856,25 @@ contBuscar = 0;
       $('#archetypes-fieldname-cpf').show();
     });
 
+    //LIGHTBOX ENVIANDO
+    function lightboxEnviaForm() {
+          $('body').append("<div class='lightboxGeral'><div class='lightbox-div'><h2>Enviando reclamação</h2><div class='divScrollLight'><img src='../img/loading_reclamacao.gif' /><p>Aguarde enquanto o formulário é enviado</p></div><a href='javascript:void(0);' class='fechaLightbox'>FECHAR</a></div></div>");
+    }
+
+    function lightboxReclamacao() {
+          $('body').append("<div class='lightboxGeral'><div class='lightbox-div'><h2>Confirmação de residência</h2><input type='radio' style='float:left' checked=checked name='termosLei' value='aceito'><span style='float: left; margin-left: 5px; margin-top: -3px;'> declaro sob as penas da lei (artigo 299 do Código Penal) que sou morador da Cidade de São Paulo</span><br /><button type='button' style='float: left; margin-top: 10px' class='fechaLightboxReclamacao'>Entrar</button></div></div>");
+    }
+
+    $(document).on('click','.fechaLightbox, .fechaLightBoxReclamacao', 'body',function(){
+        $('.lightboxGeral').hide();
+        $('.lightboxGeralP').hide();
+    });
+    $(document).on('click','', 'body',function(){
+        $('.lightboxGeral').hide();
+        $('.lightboxGeralP').hide();
+    });
+
+
 
     //LIGHTBOX
     function lightboxForm() {
@@ -825,6 +898,10 @@ contBuscar = 0;
               $('.tooltip-area').toggle();
           });
           $(document).on('click','.fechaLightbox', 'body',function(){
+              $('.lightboxGeral').hide();
+              $('.lightboxGeralP').hide();
+          });
+          $(document).on('click','.fechaLightBoxReclamacao', 'body',function(){
               $('.lightboxGeral').hide();
               $('.lightboxGeralP').hide();
           });
@@ -880,16 +957,7 @@ contBuscar = 0;
     }
 
     //HASH URL BACKOFFICE
-    if ( (window.location.href.indexOf("buscar_duvidas") > -1) || (window.location.href.indexOf("@@buscar_reclamacoes") > -1) ){
-        var dt = new Date();
-        var hashBack = dt.getHours() * dt.getMinutes() * dt.getSeconds();
-        var hashBackNew = dt.getFullYear() +''+ (dt.getMonth()+1) +''+ dt.getDate() +''+ hashBack;
-
-        if (window.location.href.indexOf("_reclamacoes_detalhe") == -1){
-          location.href = window.location.href + "#?" + hashBackNew;
-        }
-    }
-    $('#table_id_reclamacoes tr').on( "click", function() {
+   $('#table_id_reclamacoes tr').on( "click", function() {
       window.location.hash = '';
     });
 
@@ -898,7 +966,22 @@ contBuscar = 0;
       $('#viewlet-below-content-title .form-group').remove();
     }
     if ($('body').hasClass('portaltype-formfolder') && $('body').hasClass('subsection-formularios')) {
+        lightboxReclamacao()
+        $('.lightboxGeral').show();
+        $('.lightboxGeralP').hide();
+
         $('.form-group').show();
+        fechar=true;
+        nomeEmpresa = $('#nome-da-empresa-fornecedor').val();
+        console.log(nomeEmpresa);
+        $('.formDuvidas .pfg-form .field input[type=text]').not('#maxlength_informe-como-foi-o-seu-contato-com-a-empresa-indique-o-s-numero-s-de-protocolo-s-caso-o-s-possua-1, #maxlength_informe-por-que-voce-nao-procurou-a-empresa-para-resolver-o-seu-problema-1, #maxlength_descreva-sua-reclamacao-no-campo-abaixo-mas-antes-de-preenche-la-leia-as-observacoes-a-seguir-1, #maxlength_no-campo-abaixo-descreva-de-forma-objetiva-o-seu-pedido-a-empresa-1, #maxlength_e-importante-que-voce-forneca-o-maior-numero-de-dados-possiveis-relativos-a-compra-ou-contratacao-do-servico-reclamado-tais-como-1').each(function(){
+          var text_value=$(this).val();
+          if(text_value!='') {
+            console.log($(this).attr('id'));
+            fechar=false;
+          }
+
+        })
         var itensForm = $(".formDuvidas .pfg-form").detach();
         $('.form-group #project').addClass('loading')
 
@@ -907,7 +990,6 @@ contBuscar = 0;
           contBuscar ++;
           $(this).attr('disabled', 'disabled');
           $(this).addClass('disabled');
-          console.log(contBuscar);
 
           //LIMPA TODOS OS DADOS VISIVEIS DO FORMULARIO DE RECLAMACAO
           if ( $('.pfg-form.formid-formularios').is(':visible') && contBuscar > 1) {
@@ -1024,7 +1106,7 @@ contBuscar = 0;
 
             $(".formid-formularios form").submit(function( event ) {
               thisForm = this;
-              $(".formid-formularios form textarea.validar:visible, .formid-formularios form input.validar:visible").each(function(){
+             $(".formid-formularios form textarea.validar:visible, .formid-formularios form input.validar:visible").each(function(){
                 if($(this).val() === ''){
                   $('.formid-formularios form input:text').removeClass('error');
                   $(this).addClass('error');
@@ -1060,8 +1142,12 @@ contBuscar = 0;
               }
               //$(thisForm).submit();
               if( !$('input, textarea').hasClass('error') ){
+                 lightboxEnviaForm();
+                 $('.lightboxGeral').show();
+                 $('.lightboxGeralP').hide();
                 $('input.context').val('Enviando...');
               }
+
             });
 
             $('#area-relativa-ao-produto-servico-reclamado').change(function(){
@@ -1110,6 +1196,11 @@ contBuscar = 0;
             });
 
         });
+
+        if (!(fechar)){ 
+           $('#project').val( nomeEmpresa );
+           $('.btnBuscar').click();
+        }
 
         $(document).on('change', 'input[type=radio][name=deseja-informar-a-empresa]', function(){
             if (this.value == 'Sim') {
@@ -1236,7 +1327,7 @@ contBuscar = 0;
       $('.field.error .fieldErrorBox').text('Favor preencher o campo obrigatório')
       contBuscar = 0;
       insereInputFile();
-      $('.infoUpload').html('Até 5 arquivos, com até 1 MB de tamanho.');
+      $('.infoUpload').html('<p>Até 5 arquivos, com até 1 MB de tamanho.<p>Formatos aceitos: Arquivos de texto (.doc, docx, txt), planilhas (.xls, xlsx, csv), todos os formatos de imagem, arquivos de áudio, vídeo, arquivos compactados (.zip, .tar, .rar), arquivos PDF.</p>');
       //FORMULARIOS AREA SELECIONADA
       $('#archetypes-fieldname-especificar-comprou').hide();
       function escondeItens(){
@@ -1697,7 +1788,6 @@ contBuscar = 0;
         })
 
         if ($('body').hasClass('template-buscar_fornecedores_detalhe')) {
-          console.log('a')
           window.location.replace(portal_url + '/@@buscar_fornecedores');
         } else {
           window.location.replace(portal_url + '/@@buscar_denuncias');
@@ -1707,7 +1797,6 @@ contBuscar = 0;
     $(".template-buscar_fornecedores_detalhe #enviarTratativas").on('blur',function(){
         area = 'fornecedores'
         thisItem = $(this)
-        console.log($(thisItem).val())
         $.post( portal_url + '/@@atualiza_forms',
         {
             objId: $(thisItem).attr('rel'),
@@ -1763,6 +1852,26 @@ contBuscar = 0;
       }
     });
 
+   $(".template-buscar_reclamacoes_detalhe .PROTOCOLO_reclamacoes").on('blur',function(){ 
+        var objId = $(this).attr('rel');
+        var campo = 'cProtocolo';
+        var value = $(this).val();
+        if(objId != ''){
+console.log('lero');
+
+          $.post( portal_url + '/@@atualiza_forms',
+          {
+              objId: objId,
+              campo: campo,
+              valor: value,
+              area: 'reclamacoes' 
+          }).done(function(){
+          })
+        }
+    });
+
+ 
+
     //LIMITE BOTAO UPLOAD
     $(document).on('click','.btnupload', function(){
       if ( $( ".clearImage" ).length >= 4){
@@ -1779,7 +1888,9 @@ contBuscar = 0;
     // ABRE TELA INTERNA DA TABELA DE RECLAMAÇÕES
     $(document).on('click',"td.reclamacao_buscar",function(){
       numero = $(this).attr('rel')
+      filtro = window.location.href.split('?')[1]
       redirect = portal_url + '/@@buscar_reclamacoes_detalhe';
+      redirect = filtro ? redirect + '?' + filtro : redirect
       $.extend(
       {
           redirectPost: function(location, args)
@@ -1799,6 +1910,8 @@ contBuscar = 0;
     $(document).on('click',"td.denuncias_buscar",function(){
       numero = $(this).attr('id')
       redirect = portal_url + '/@@buscar_denuncias_detalhe';
+      filtro = window.location.href.split('?')[1]
+      redirect = filtro ? redirect + '?' + filtro : redirect
       $.extend(
       {
           redirectPost: function(location, args)
@@ -1819,6 +1932,8 @@ contBuscar = 0;
     $(document).on('click',"td.fornecedores_buscar",function(){
       numero = $(this).attr('id')
       redirect = portal_url + '/@@buscar_fornecedores_detalhe';
+      filtro = window.location.href.split('?')[1]
+      redirect = filtro ? redirect + '?' + filtro : redirect
       $.extend(
       {
           redirectPost: function(location, args)
@@ -2216,6 +2331,31 @@ function CEPCallback(conteudo) {
   }
 }
 
+function pesquisaCEPCadastral(cep) {
+  if (cep != "")  {
+    var validacep = /^[0-9]{8}$/;
+    if(validacep.test(cep)) {
+      $('#form-widgets-logradouro').val("...");
+      $('#form-widgets-bairro').val("...");
+      var script = document.createElement('script');
+      script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=CEPCallback';
+      document.body.appendChild(script);
+      console.log('cep')
+      return true
+    }
+    else {
+      limpaCEPInputs();
+      alert("Formato de CEP inválido.");
+    }
+  }
+  else {
+    limpaCEPInputs();
+    alert('CEP inválido')
+    return false;
+  }
+};
+
+
 function pesquisaCEP(cep) {
   if ((cep != "") && ((01000000 < CEP && 05999999 > CEP ) || (08000000 < CEP && 08499999 > CEP )))  {
     var validacep = /^[0-9]{8}$/;
@@ -2225,6 +2365,7 @@ function pesquisaCEP(cep) {
       var script = document.createElement('script');
       script.src = '//viacep.com.br/ws/'+ cep + '/json/?callback=CEPCallback';
       document.body.appendChild(script);
+      console.log('cep')
       return true
     }
     else {
@@ -2420,7 +2561,6 @@ function compareDates(date1, date2){
       return false;
   }
 function apagaForm(){
-  console.log('Trocou o nome do fornecedor.');
 }
 function checaMaiorQAmanha(data) {
  //data para checar
@@ -2474,7 +2614,6 @@ function checaMaiorQAmanha(data) {
         return true;
 
     }else{
-      //console.log('entrouuuu.')
       //$('#quando-o-produto-ou-servico-apresentou-problema').val('');
       //alert("Não é possivel inserir esta data");
       return false;
